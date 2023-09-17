@@ -50,18 +50,18 @@ const Header = () => {
                   {
                     userlogininfo ? <div className='usertitle'>
                       <div className='username'>مرحبا <br />{usertitle(userlogininfo.id)} 
-                      <span class="material-symbols-outlined" onClick={()=>setlogout(!openlogout)}>
+                      <span className="material-symbols-outlined" onClick={()=>setlogout(!openlogout)}>
                         expand_more
                       </span>
                       </div>
                       {openlogout?<div className="nav-logout" onClick={logout}> خروج
-                        <span class="material-symbols-outlined">logout</span>
+                        <span className="material-symbols-outlined">logout</span>
                         </div>:""}
                       </div>
                       : id ? <div className='usertitle'>
                         <div className='username'>مرحباضيوف <br />{usertitle(id)}</div>
                       </div>
-                        : <div className='nav-login' onClick={(e) => { e.preventDefault(); setopenlogin(!openlogin) }}>دخول<span class="material-symbols-outlined">
+                        : <div className='nav-login' onClick={(e) => { e.preventDefault(); setopenlogin(!openlogin) }}>دخول<span className="material-symbols-outlined">
                           login
                         </span></div>}
                   <div className='cart-icon' onClick={(e) => { e.preventDefault(); setopencart(!opencart) }}>

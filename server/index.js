@@ -17,7 +17,11 @@ connectdb();
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+  origin : process.env.FRONR_END,
+  methods : ['GET', 'POST', 'PUT' , ' UPDATE', 'DELETE'],
+  credentials: true 
+}));
 app.use(cookieParser());
 app.use(express.json());
 app.use('/',express.static("images"));

@@ -27,7 +27,7 @@ const MenuCard = () => {
                                  <div className='product-det'>
                                     <div className='product-name'>
                                        <h2>{product.name}</h2>
-                                       <span class="material-symbols-outlined" onClick={()=>{setnoteArea(!noteArea);setproductid(product._id)}}>note_alt</span>
+                                       <span className="material-symbols-outlined" onClick={()=>{setnoteArea(!noteArea);setproductid(product._id)}}>note_alt</span>
                                     </div>
                                     <p>{product.description}</p>
                                  </div>
