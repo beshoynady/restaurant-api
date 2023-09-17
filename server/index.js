@@ -38,6 +38,12 @@ app.get('/',(req, res) => {
 //     console.log('Signed Cookies: ', req.signedCookies)
 //   })
 
+const port = process.env.PORT|| 8000;
+
+app.listen(port, (req, res) => {
+    console.log(`listening on port ${port}`);
+});
+
 //ROUTER
 app.use('/api/product', routeproduct)
 app.use('/api/category', routecategory);
@@ -49,8 +55,3 @@ app.use('/api/auth', routeauth);
 
 
 //open server
-const port = process.env.PORT|| 8000;
-
-app.listen(port, (req, res) => {
-    console.log(`listening on port ${port}`);
-});
