@@ -19,16 +19,14 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   origin : process.env.FRONR_END,
-  methods : ['GET', 'POST', 'PUT' , ' UPDATE', 'DELETE'],
+  methods : ['GET', 'POST', 'PUT', ' UPDATE', 'DELETE'],
   credentials: true 
 }));
+
 app.use(cookieParser());
 app.use(express.json());
 app.use('/',express.static("images"));
 
-app.get('/',(req, res) => {
-    res.send('beshoy')
-})
 
 // app.get('/', function (req, res) {
 //     // Cookies that have not been signed
@@ -41,9 +39,12 @@ app.get('/',(req, res) => {
 const port = process.env.PORT|| 8000;
 
 app.listen(port, (req, res) => {
-    console.log(`listening on port ${port}`);
+  console.log(`listening on port ${port}`);
 });
 
+app.get('/',(req, res) => {
+    res.send('beshoy')
+})
 //ROUTER
 app.use('/api/product', routeproduct)
 app.use('/api/category', routecategory);
