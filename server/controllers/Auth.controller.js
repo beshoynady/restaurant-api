@@ -38,13 +38,13 @@ const signup = async (req, res) => {
 
 const login = async (req, res) => {
     try {
+        console.loge('server login fu')
         const phone = await req.body.phone;
         const password = await req.body.password;
 
         if (!phone || !password) {
             return res.status(404).json({ message: 'phone or password is required' });
         }
-        console.loge('server login fu')
         const finduser = await Usermodel.findOne({ phone: phone });
 
         if (!finduser) {
