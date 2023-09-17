@@ -6,7 +6,7 @@ const connectdb = require('./database/connectdb.js');
 const routecategory = require('./router/Category.router.js');
 const routeproduct = require('./router/Product.router.js');
 const routeuser = require('./router/User.router.js');
-const routetable = require('./router/Table.router');
+const routetable = require('./router/Table.router.js');
 const routeorder = require('./router/Order.router.js');
 const routeauth = require('./router/Auth.router.js');
 
