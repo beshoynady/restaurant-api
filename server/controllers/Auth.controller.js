@@ -44,7 +44,7 @@ const login = async (req, res) => {
         if (!phone || !password) {
             return res.status(404).json({ message: 'phone or password is required' });
         }
-
+        console.loge('server login fu')
         const finduser = await Usermodel.findOne({ phone: phone });
 
         if (!finduser) {

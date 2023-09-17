@@ -449,7 +449,7 @@ function App() {
         // returnToMange()
       }
       if (client.data.finduser.isAdmin == true) {
-        window.location.href = "http://localhost:3000/management";
+        window.location.href = "https://restaurant-demo-omega.vercel.app/management";
       }
     } catch (error) {
       console.log(error)
