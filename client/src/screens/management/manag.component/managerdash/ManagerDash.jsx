@@ -23,7 +23,7 @@ const ManagerDash = () => {
   const [pending_order, setpending_order] = useState([])
   const [pending_payment, setpending_payment] = useState([])
   const PendingOrder = async () => {
-    const res = await axios.get('http://localhost:8000/api/order')
+    const res = await axios.get('https://restaurant-api-theta.vercel.app/api/order')
     const recent_status = await res.data.filter((order) => order.status == 'انتظار')
     const recent_payment_status = await res.data.filter((order) => order.payment_status == 'انتظار')
     setpending_order(recent_status)
@@ -37,7 +37,7 @@ const ManagerDash = () => {
   const changeorderstauts = async (e, id) => {
     try {
       const status = await e.target.value
-      const order = await axios.put('http://localhost:8000/api/order/' + id, {
+      const order = await axios.put('https://restaurant-api-theta.vercel.app/api/order/' + id, {
         status
       })
 
@@ -51,7 +51,7 @@ const ManagerDash = () => {
   const changePaymentorderstauts = async (e, id) => {
     try {
       const payment_status = e.target.value
-      const order = axios.put('http://localhost:8000/api/order/' + id, {
+      const order = axios.put('https://restaurant-api-theta.vercel.app/api/order/' + id, {
         payment_status
       })
       setupdate(!update)

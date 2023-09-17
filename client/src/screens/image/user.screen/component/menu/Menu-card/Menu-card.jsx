@@ -12,7 +12,7 @@ const MenuCard = () => {
                      {allProducts.filter(pro=>pro.category==categoryid).map((product, index) =>{
                         return(
                            <div className="menu-card" key={index}>
-                              <img className='img-card' src={`http://localhost:8000/${product.image}`} alt="" />
+                              <img className='img-card' src={`https://restaurant-api-theta.vercel.app/${product.image}`} alt="" />
                               <div className="detalis">
                                  <div className='product-det'>
                                     <h2>{product.name}</h2>

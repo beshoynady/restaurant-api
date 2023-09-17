@@ -14,7 +14,7 @@ const MenuCard = () => {
                      {allProducts.filter(pro => pro.category === categoryid).map((product, index) => {
                         return (
                            <div className="menu-card" key={index}>
-                              <img className='img-card' src={`http://localhost:8000/${product.image}`} alt="" />
+                              <img className='img-card' src={`https://restaurant-api-theta.vercel.app/${product.image}`} alt="" />
                               {product._id==productid&noteArea==true?<form onSubmit={(e)=>{addnotrstoproduct(e,product._id);;setnoteArea(!noteArea)}}>
                                     <textarea name="note" cols="100" rows="3" onChange={(e)=>{setproductnote(e.target.value)}}></textarea>
                                     <div className='note-btn'>
