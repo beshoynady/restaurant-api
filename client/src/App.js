@@ -32,7 +32,7 @@ function App() {
   //+++++++++++++++++ product ++++++++++++++++++++
   const [allProducts, setallProducts] = useState([])
   const getProducts = async () => {
-    const products = await axios.get('https://restaurant-api-theta.vercel.app/api/product')
+    const products = await axios.get('https://restaurant-api-delta.vercel.app/api/product')
     setallProducts(products.data)
   }
 
@@ -40,7 +40,7 @@ function App() {
   const [allcategories, setallcategories] = useState([])
   const getCategories = async () => {
     try {
-      const allcategories = await axios.get('https://restaurant-api-theta.vercel.app/api/category')
+      const allcategories = await axios.get('https://restaurant-api-delta.vercel.app/api/category')
       setallcategories(allcategories.data)
     } catch (error) {
       console.log(error)
@@ -59,7 +59,7 @@ function App() {
   // ++++++++++ order ++++++++++++
   const [allorders, setallorders] = useState([])
   const getallorders = async () => {
-    const orders = await axios.get('https://restaurant-api-theta.vercel.app/api/order');
+    const orders = await axios.get('https://restaurant-api-delta.vercel.app/api/order');
     setallorders(orders.data)
   }
 
@@ -68,7 +68,7 @@ function App() {
   //+++++++++++ table ++++++++++++++
   const [alltable, setalltable] = useState([])
   const getalltable = async () => {
-    const tables = await axios.get('https://restaurant-api-theta.vercel.app/api/table');
+    const tables = await axios.get('https://restaurant-api-delta.vercel.app/api/table');
     setalltable(tables.data)
   }
 
@@ -76,7 +76,7 @@ function App() {
   // +++++++++++++++ user +++++++++++++
   const [allusers, setallusers] = useState([])
   const getallusers = async () => {
-    const users = await axios.get('https://restaurant-api-theta.vercel.app/api/user');
+    const users = await axios.get('https://restaurant-api-delta.vercel.app/api/user');
     setallusers(users.data)
   }
 
@@ -170,7 +170,7 @@ function App() {
         const products = [...itemsincart, ...oldproducts]
         const total = costOrder + oldtotal
         const status = 'انتظار'
-        const neworder = await axios.put('https://restaurant-api-theta.vercel.app/api/order/' + id, {
+        const neworder = await axios.put('https://restaurant-api-delta.vercel.app/api/order/' + id, {
           products, total, status
         })
         setitemsincart([])
@@ -182,7 +182,7 @@ function App() {
         const total = costOrder + oldtotal;
         const status = 'انتظار'
         const order_type = 'ديلفري'
-        const neworder = await axios.put('https://restaurant-api-theta.vercel.app/api/order/' + id, {
+        const neworder = await axios.put('https://restaurant-api-delta.vercel.app/api/order/' + id, {
           products, total, status, order_type
         })
         // console.log(neworder.data);
@@ -196,7 +196,7 @@ function App() {
           const total = costOrder;
           if (user) {
             const order_type = 'ديلفري'
-            const neworder = await axios.post('https://restaurant-api-theta.vercel.app/api/order', {
+            const neworder = await axios.post('https://restaurant-api-delta.vercel.app/api/order', {
               serial,
               table,
               user,
@@ -206,7 +206,7 @@ function App() {
             })
           } else {
             const order_type = 'داخلي'
-            const neworder = await axios.post('https://restaurant-api-theta.vercel.app/api/order', {
+            const neworder = await axios.post('https://restaurant-api-delta.vercel.app/api/order', {
               serial,
               table,
               user,
@@ -245,7 +245,7 @@ function App() {
     if (queryid) {
       if (lasttableorderactive) {
         const id = await lasttableorder._id
-        const myorder = await axios.get('https://restaurant-api-theta.vercel.app/api/order/' + id,)
+        const myorder = await axios.get('https://restaurant-api-delta.vercel.app/api/order/' + id,)
         const data = myorder.data
         setmyorder(data)
         settotalinvoice(data.total)
@@ -255,7 +255,7 @@ function App() {
         setitemsincart([])
       } else if (lastuserorderactive) {
         const id = await lastuserorder._id
-        const myorder = await axios.get('https://restaurant-api-theta.vercel.app/api/order/' + id,)
+        const myorder = await axios.get('https://restaurant-api-delta.vercel.app/api/order/' + id,)
         const data = myorder.data
         console.log(data)
         setmyorder(data)
@@ -267,14 +267,14 @@ function App() {
         // for (var i = 0; i < data.products.length; i++){
         //   const productid =await data.products[i]._id
         //   const productquantity =await  data.products[i].quantity
-        //   const findprduct = await axios.get('https://restaurant-api-theta.vercel.app/api/product/' + productid)
+        //   const findprduct = await axios.get('https://restaurant-api-delta.vercel.app/api/product/' + productid)
         //   const sales = await findprduct.data.sales + productquantity
 
         //   console.log(productid)
         //   console.log(findprduct)
         //   console.log(sales)
         //   console.log(productquantity)
-        //   const updatprduct = await axios.put('https://restaurant-api-theta.vercel.app/api/product/withoutimage/' + productid,{
+        //   const updatprduct = await axios.put('https://restaurant-api-delta.vercel.app/api/product/withoutimage/' + productid,{
         //     sales
         //   })
         //   console.log(updatprduct)
@@ -290,19 +290,19 @@ function App() {
 
 
   const updatecountofsales = async (id) => {
-    const myorder = await axios.get('https://restaurant-api-theta.vercel.app/api/order/' + id,)
+    const myorder = await axios.get('https://restaurant-api-delta.vercel.app/api/order/' + id,)
     const data = myorder.data
     for (var i = 0; i < data.products.length; i++) {
       const productid = await data.products[i]._id
       const productquantity = await data.products[i].quantity
-      const findprduct = await axios.get('https://restaurant-api-theta.vercel.app/api/product/' + productid)
+      const findprduct = await axios.get('https://restaurant-api-delta.vercel.app/api/product/' + productid)
       const sales = await findprduct.data.sales + productquantity
 
       console.log(productid)
       console.log(findprduct)
       console.log(sales)
       console.log(productquantity)
-      const updatprduct = await axios.put('https://restaurant-api-theta.vercel.app/api/product/withoutimage/' + productid, {
+      const updatprduct = await axios.put('https://restaurant-api-delta.vercel.app/api/product/withoutimage/' + productid, {
         sales
       })
       console.log(updatprduct)
@@ -322,12 +322,12 @@ function App() {
     const help = true;
     const table = tablenum
     if (!lasttableorderactive) {
-      const neworder = await axios.post('https://restaurant-api-theta.vercel.app/api/order/', {
+      const neworder = await axios.post('https://restaurant-api-delta.vercel.app/api/order/', {
         serial,table,help
       })
       console.log(neworder)
     } else {
-      const neworder = await axios.put('https://restaurant-api-theta.vercel.app/api/order/' + id, {
+      const neworder = await axios.put('https://restaurant-api-delta.vercel.app/api/order/' + id, {
         help
       })
       console.log(neworder)
@@ -339,7 +339,7 @@ function App() {
     const id = myorderid
     // console.log(id)
     const isActive = false;
-    const neworder = await axios.put('https://restaurant-api-theta.vercel.app/api/order/' + id, {
+    const neworder = await axios.put('https://restaurant-api-delta.vercel.app/api/order/' + id, {
       isActive
     })
     console.log(neworder)
@@ -388,7 +388,7 @@ function App() {
   const signup = async (e, username, password, phone, address, email) => {
     e.preventDefault()
     try {
-      const newclient = await axios.post('https://restaurant-api-theta.vercel.app/api/auth/signup', { username, password, phone, address, email })
+      const newclient = await axios.post('https://restaurant-api-delta.vercel.app/api/auth/signup', { username, password, phone, address, email })
       console.log(newclient)
       if (newclient) {
         const token = newclient.accessToken
@@ -425,7 +425,7 @@ function App() {
     console.log(phone);
     console.log(password);
     try {
-      const client = await axios.post('https://restaurant-api-theta.vercel.app/api/auth/login', { phone, password })
+      const client = await axios.post('https://restaurant-api-delta.vercel.app/api/auth/login', { phone, password })
       // console.log(client.data)
       // window.location.href =`http://localhost:3000/${client?.data._id}`;
       console.log(client.data)

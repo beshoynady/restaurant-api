@@ -14,7 +14,7 @@ const Kitchen = () => {
   const [allorders, setallorders] = useState([])
   const GetPrductstoKit = async () => {
     try {
-      const orders = await axios.get('https://restaurant-api-theta.vercel.app/api/order');
+      const orders = await axios.get('https://restaurant-api-delta.vercel.app/api/order');
       // console.log(orders.data)
       setallorders(orders.data)
 
@@ -28,7 +28,7 @@ const Kitchen = () => {
 
   const [waiters, setwaiters] = useState([])
   const getAllWaiter = async()=>{
-    const alluser = await axios.get('https://restaurant-api-theta.vercel.app/api/user')
+    const alluser = await axios.get('https://restaurant-api-delta.vercel.app/api/user')
     const allwaiter =await alluser.data.filter((user)=>user.role === 'waiter')
     // console.log(allwaiter)
     const listId = []
@@ -65,7 +65,7 @@ const Kitchen = () => {
     // await specifiedWaiter();
     const waiter = specifiedWaiter()
     const status = 'جاري التحضير'
-    const order = await axios.put('https://restaurant-api-theta.vercel.app/api/order/' + id, {
+    const order = await axios.put('https://restaurant-api-delta.vercel.app/api/order/' + id, {
       status,waiter
     })
     console.log(order.data)
@@ -76,7 +76,7 @@ const Kitchen = () => {
 
   const orderDone = async (id) => {
     const status = 'تم التحضير'
-    const done = await axios.put('https://restaurant-api-theta.vercel.app/api/order/' + id, {
+    const done = await axios.put('https://restaurant-api-delta.vercel.app/api/order/' + id, {
       status
     })
     GetPrductstoKit()

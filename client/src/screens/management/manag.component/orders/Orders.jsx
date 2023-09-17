@@ -27,14 +27,14 @@ const Orders = () => {
 
   const [listofoeders, setlistofoeders] = useState([])
   const getorders = async () => {
-    const res = await axios.get('https://restaurant-api-theta.vercel.app/api/order')
+    const res = await axios.get('https://restaurant-api-delta.vercel.app/api/order')
     setlistofoeders(res.data)
   }
   const [orederid, setorederid] = useState()
   const deletorder = async()=>{
     console.log(orederid)
     const id = orederid;
-    await axios.delete('https://restaurant-api-theta.vercel.app/api/order/'+id).then((res)=>console.log(res.data))
+    await axios.delete('https://restaurant-api-delta.vercel.app/api/order/'+id).then((res)=>console.log(res.data))
     getorders()
   }
 

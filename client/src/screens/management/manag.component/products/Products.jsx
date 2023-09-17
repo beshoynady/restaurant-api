@@ -36,7 +36,7 @@ const Products = () => {
       formdata.append('productcategoryid', productcategoryid);
       formdata.append('image', productimg);
       console.log(...formdata)
-      const response = await axios.post('https://restaurant-api-theta.vercel.app/api/product/', formdata);
+      const response = await axios.post('https://restaurant-api-delta.vercel.app/api/product/', formdata);
       console.log(response.data);
     } catch (error) {
       console.log(error)
@@ -50,7 +50,7 @@ const Products = () => {
     e.preventDefault()
     if (productimg) {
       try {
-        const response = await axios.put('https://restaurant-api-theta.vercel.app/api/product/' + productid, {
+        const response = await axios.put('https://restaurant-api-delta.vercel.app/api/product/' + productid, {
           productname, productprice, productdescription, productcategoryid, productdiscount, image: productimg
         });
         console.log(response.data);
@@ -63,7 +63,7 @@ const Products = () => {
       }
     } else {
       try {
-        const response = await axios.put('https://restaurant-api-theta.vercel.app/api/product/withoutimage/' + productid, {
+        const response = await axios.put('https://restaurant-api-delta.vercel.app/api/product/withoutimage/' + productid, {
           productname, productprice, productdescription, productcategoryid, productdiscount
         });
         // console.log(productid);
@@ -84,7 +84,7 @@ const Products = () => {
 
   const getallproducts = async () => {
     try {
-      const response = await axios.get('https://restaurant-api-theta.vercel.app/api/product/');
+      const response = await axios.get('https://restaurant-api-delta.vercel.app/api/product/');
       const products = await response.data;
       // console.log(response.data)
       setlistofProducts(products)
@@ -99,7 +99,7 @@ const Products = () => {
   const deleteProduct = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.delete(`https://restaurant-api-theta.vercel.app/api/product/${productid}`);
+      const response = await axios.delete(`https://restaurant-api-delta.vercel.app/api/product/${productid}`);
       if (response) {
         console.log(response);
         getallproducts();
@@ -112,7 +112,7 @@ const Products = () => {
   const [listofcategories, setlistofcategories] = useState([])
   const getallCategories = async () => {
     try {
-      const response = await axios.get('https://restaurant-api-theta.vercel.app/api/category/');
+      const response = await axios.get('https://restaurant-api-delta.vercel.app/api/category/');
       const categories = await response.data;
       // console.log(response.data)
       setlistofcategories(categories)
@@ -177,7 +177,7 @@ const Products = () => {
                         </span>
                       </td>
                       <td>{i + 1}</td>
-                      <td><img src={`https://restaurant-api-theta.vercel.app/${p.image}`} style={{ "width": "60px", "height": "50px" }} /></td>
+                      <td><img src={`https://restaurant-api-delta.vercel.app/${p.image}`} style={{ "width": "60px", "height": "50px" }} /></td>
                       <td>{p.name}</td>
                       <td>{p.description}</td>
                       <td>{listofcategories.length > 0 ? listofcategories.find(c => c._id == p.category).name : ""}</td>

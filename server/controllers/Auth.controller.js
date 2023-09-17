@@ -64,22 +64,7 @@ const login = async (req, res) => {
         }, process.env.jwt_secret_key,
             { expiresIn: process.env.jwt_expire }
         )
-        // if(!accessToken){
-        //     console.log("accessToken")
-        // }
-        // const refreshToken = jwt.sign({
-        //     userinfo: {
-        //         id: finduser._id
-        //     }
-        // }, process.env.jwt_refresh_key,
-        //     { expiresIn: process.env.jwt_refresh_expire, }
-        // )
-        // res.cookie("jwt", accessToken, {
-        //     httpOnly: true,
-        //     secure: true,
-        //     sameSite: 'none',
-        //     maxAge: 1 * 24 * 60 * 60 * 1000
-        // })
+
         // res.status(200).json(finduser)
         res.status(200).json({finduser, accessToken})
     } catch (error) {
