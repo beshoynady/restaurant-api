@@ -49,28 +49,31 @@ const login = async (req, res) => {
         const finduser = await Usermodel.findOne({ phone: phone });
         if (!finduser) {
             return res.status(400).json({ message: 'this user not founded' })
-        }
+        } else {
+            const match = bcrypt.compare(password, finduser.password);
+            if (!match) {
+                return res.status(401).json({ message: "Wrong Password" })
+            } else {
+                const accessToken = jwt.sign({
+                    userinfo: {
+                        id: finduser._id,
+                        isAdmin: finduser.isAdmin,
+                        role: finduser.role
+                    }
+                }, process.env.jwt_secret_key,
+                    { expiresIn: process.env.jwt_expire }
+                )
+                if (!accessToken) {
+                    return res.status(401).json({ message: "accessToken not sign" })
+                }
 
-        const match = bcrypt.compare(password, finduser.password);
+                res.status(200).json({ finduser, accessToken })
 
-        if (!match) {
-            return res.status(401).json({ message: "Wrong Password" })
-        }
-
-        const accessToken = jwt.sign({
-            userinfo: {
-                id: finduser._id,
-                isAdmin: finduser.isAdmin,
-                role: finduser.role
             }
-        }, process.env.jwt_secret_key,
-            { expiresIn: process.env.jwt_expire }
-        )
-        if (!accessToken) {
-            return res.status(401).json({ message: "accessToken not sign" })
+
         }
 
-        res.status(200).json({ finduser, accessToken })
+
 
         // res.status(200).json(finduser)
     } catch (error) {
