@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <detacontext.Consumer>
       {
-        ({userlogininfo, logout }) => {
+        ({ usertitle, userlogininfo, logout }) => {
           return (
             <header className='header-client'>
               <div className="container container-lg">
@@ -48,15 +48,22 @@ const Header = () => {
                 </nav>
                 <div className='right-nav'>
                   {
-                    userlogininfo ?
-                      <div className="nav-logout" onClick={logout}> خروج
-                        <span className="material-symbols-outlined">logout</span>
-                      </div>
-                      :
-                      <div className='nav-login' onClick={(e) => { e.preventDefault(); setopenlogin(!openlogin) }}>دخول<span className="material-symbols-outlined">
-                        login
+                    userlogininfo ? <div className='usertitle'>
+                      <div className='username'>مرحبا <br />{usertitle(userlogininfo.id)} 
+                      <span className="material-symbols-outlined" onClick={()=>setlogout(!openlogout)}>
+                        expand_more
                       </span>
-                      </div>}
+                      </div>
+                      {openlogout?<div className="nav-logout" onClick={logout}> خروج
+                        <span className="material-symbols-outlined">logout</span>
+                        </div>:""}
+                      </div>
+                      : id ? <div className='usertitle'>
+                        <div className='username'>مرحباضيوف <br />{usertitle(id)}</div>
+                      </div>
+                        : <div className='nav-login' onClick={(e) => { e.preventDefault(); setopenlogin(!openlogin) }}>دخول<span className="material-symbols-outlined">
+                          login
+                        </span></div>}
                   <div className='cart-icon' onClick={(e) => { e.preventDefault(); setopencart(!opencart) }}>
                     <span className="material-symbols-rounded">shopping_cart</span></div>
                   <LoginRegistr openlogin={openlogin} />

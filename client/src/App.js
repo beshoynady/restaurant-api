@@ -343,7 +343,7 @@ function App() {
       isActive
     })
     console.log(neworder)
-    window.location.href = `http://${window.location.hostname}`;
+    // window.location.href = `http://localhost:3000/`;
   }
 
 
@@ -420,6 +420,7 @@ function App() {
       const client = await axios.post('https://restaurant-api-blush.vercel.app/api/auth/login', { phone, password })
       console.log(client.data)
       if (client) {
+        setislogin(!islogin)
         const token = client.data.accessToken;
         console.log(token)
         if (token) {
@@ -431,10 +432,11 @@ function App() {
               const decodetoken =await jwt_decode(tokenStorage)
               console.log(decodetoken)
               setuserlogininfo(decodetoken.userinfo)
-              setislogin(!islogin)
             }
           }
         }
+        setislogin(!islogin)
+        // returnToMange()
       }
       if (client.data.finduser.isAdmin == true) {
         window.location.href = `https://${window.location.hostname}/management`;
@@ -446,8 +448,6 @@ function App() {
 
   const logout = () => {
     localStorage.clear('token');
-    setislogin(!islogin)
-    window.location.href = `https://${window.location.hostname}`;
     // location.reload();
     console.log(userlogininfo)
   }
