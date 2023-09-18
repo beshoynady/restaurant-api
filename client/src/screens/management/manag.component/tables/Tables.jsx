@@ -24,7 +24,7 @@ const Tables = () => {
   const [qrimage, setqrimage] = useState("")
   const createQR = async (e) => {
     e.preventDefault();
-    const URL = `http://localhost:3000/${tableid}`;
+    const URL = `https://restaurant-api-fawn.vercel.app/${tableid}`;
     const qr = await axios.post('https://restaurant-api-fawn.vercel.app/api/table/qr', { URL });
     // console.log(qr.data);
     setqrimage(qr.data);
