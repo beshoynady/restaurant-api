@@ -21,7 +21,7 @@ const Employees = () => {
   const [listofemployee, setlistofemployee] = useState([])
   const getemployees = async () => {
     try {
-      const response = await axios.get('https://restaurant-api-delta.vercel.app/api/user')
+      const response = await axios.get('https://restaurant-api-fawn.vercel.app/api/user')
       setlistofemployee(response.data)
     } catch (error) {
       console.log(error)
@@ -51,7 +51,7 @@ const Employees = () => {
     console.log(salary)
 
     try {
-      const newemployee = await axios.post('https://restaurant-api-delta.vercel.app/api/user', { username, password, address, phone, email, isAdmin, role, salary })
+      const newemployee = await axios.post('https://restaurant-api-fawn.vercel.app/api/user', { username, password, address, phone, email, isAdmin, role, salary })
       console.log(newemployee)
       if(newemployee){
         getemployees()
@@ -74,13 +74,13 @@ const Employees = () => {
     console.log(salary)
     try {
       if(password){
-      const update = await axios.put('https://restaurant-api-delta.vercel.app/api/user/' + userid, { username, password, address, phone, email, isAdmin, role, salary })
+      const update = await axios.put('https://restaurant-api-fawn.vercel.app/api/user/' + userid, { username, password, address, phone, email, isAdmin, role, salary })
       console.log(update)
       if(update){
         getemployees()
       }
   }else{
-      const update = await axios.put('https://restaurant-api-delta.vercel.app/api/user/' + userid, { username, address, phone, email, isAdmin, role, salary })
+      const update = await axios.put('https://restaurant-api-fawn.vercel.app/api/user/' + userid, { username, address, phone, email, isAdmin, role, salary })
       console.log(update)
       if(update){
         getemployees()
@@ -94,7 +94,7 @@ const Employees = () => {
     e.preventDefault()
     try {
       console.log(userid)
-      const deleted = await axios.delete(`https://restaurant-api-delta.vercel.app/api/user/${userid}`)
+      const deleted = await axios.delete(`https://restaurant-api-fawn.vercel.app/api/user/${userid}`)
       if(deleted){
       console.log(deleted)
       getemployees()
