@@ -52,26 +52,27 @@ const login = async (req, res) => {
         }
 
         const match = bcrypt.compare(password, finduser.password);
+
         if (!match) {
             return res.status(401).json({ message: "Wrong Password" })
         }
 
-        // const accessToken = jwt.sign({
-        //     userinfo: {
-        //         id: finduser._id,
-        //         isAdmin: finduser.isAdmin,
-        //         role: finduser.role
-        //     }
-        // }, process.env.jwt_secret_key,
-        //     { expiresIn: process.env.jwt_expire }
-        // )
-        // if (!accessToken) {
-        //     return res.status(401).json({ message: "accessToken not sign" })
-        // }
+        const accessToken = jwt.sign({
+            userinfo: {
+                id: finduser._id,
+                isAdmin: finduser.isAdmin,
+                role: finduser.role
+            }
+        }, process.env.jwt_secret_key,
+            { expiresIn: process.env.jwt_expire }
+        )
+        if (!accessToken) {
+            return res.status(401).json({ message: "accessToken not sign" })
+        }
 
-        // res.status(200).json({ finduser, accessToken })
+        res.status(200).json({ finduser, accessToken })
 
-        res.status(200).json(finduser)
+        // res.status(200).json(finduser)
     } catch (error) {
         res.status(404).send('error');
     }
