@@ -25,16 +25,8 @@ app.use(cors({
 
 app.use(cookieParser());
 app.use(express.json());
-app.use('/',express.static("images"));
+app.use('/',express.static("public"));
 
-
-// app.get('/', function (req, res) {
-//     // Cookies that have not been signed
-//     console.log('Cookies: ', req.cookies)
-  
-//     // Cookies that have been signed
-//     console.log('Signed Cookies: ', req.signedCookies)
-//   })
 
 const port = process.env.PORT|| 8000;
 
