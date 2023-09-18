@@ -71,30 +71,9 @@
   align-items: center;
   justify-content: space-between;
 }
-.header-client .container .right-nav .usertitle {
-  width: 70%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-.header-client .container .right-nav .usertitle .username {
-  font-size: 18px;
-  color: white;
-  width: 50%;
-  height: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.header-client .container .right-nav .usertitle .username > span {
-  color: white;
-  font-size: 25px;
-}
-.header-client .container .right-nav .usertitle .nav-logout {
-  width: 100px;
-  height: 50px;
+.header-client .container .right-nav .nav-logout {
+  width: 60%;
+  height: 60px;
   background-color: rgb(243, 0, 0);
   font-size: 18px;
   color: white;
@@ -104,13 +83,13 @@
   border-radius: 10px;
   cursor: pointer;
 }
-.header-client .container .right-nav .usertitle .nav-logout > span {
+.header-client .container .right-nav .nav-logout > span {
   color: white;
   font-size: 25px;
 }
 .header-client .container .right-nav .nav-login {
-  width: 120px;
-  height: 50px;
+  width: 60%;
+  height: 60px;
   background-color: var(--white);
   font-size: 20px;
   font-weight: 500;
@@ -228,34 +207,9 @@
     align-items: center;
     justify-content: flex-end;
   }
-  .header-client .container .right-nav .usertitle {
-    width: 60%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  .header-client .container .right-nav .usertitle .username {
-    width: 60%;
+  .header-client .container .right-nav .nav-logout {
+    width: 50%;
     height: 60%;
-    font-size: 12px;
-    font-weight: 600;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  .header-client .container .right-nav .usertitle .username > span {
-    color: white;
-    font-size: 25px;
-  }
-  .header-client .container .right-nav .usertitle .nav-logout {
-    width: 35%;
-    height: 60%;
-    position: absolute;
-    top: 80px;
-    left: 20px;
     background-color: rgb(243, 0, 0);
     font-size: 18px;
     color: white;
@@ -265,8 +219,8 @@
     border-radius: 10px;
     cursor: pointer;
   }
-  .header-client .container .right-nav .nav-login {
-    width: 25%;
+  .header-client .container .nav-login {
+    width: 50%;
     height: 60%;
     background-color: rgb(29, 255, 168);
     font-size: 18px;
@@ -277,19 +231,19 @@
     border-radius: 10px;
     cursor: pointer;
   }
-  .header-client .container .right-nav .nav-login:hover {
+  .header-client .container .nav-login:hover {
     color: var(--sacand-color);
     background-color: var(--yallow-color);
   }
-  .header-client .container .right-nav .nav-login > span {
+  .header-client .container .nav-login > span {
     font-size: 35px;
   }
-  .header-client .container .right-nav .cart-icon {
-    width: 40%;
+  .header-client .container .cart-icon {
+    width: 50%;
     height: 65%;
     text-align: center;
   }
-  .header-client .container .right-nav .cart-icon > span {
+  .header-client .container .cart-icon > span {
     font-size: 50px;
     color: white;
   }

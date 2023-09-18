@@ -448,6 +448,7 @@ function App() {
 
   const logout = () => {
     localStorage.clear('token');
+    window.location.href = `https://${window.location.hostname}`;
     // location.reload();
     console.log(userlogininfo)
   }
