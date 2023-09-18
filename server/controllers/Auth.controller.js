@@ -38,22 +38,23 @@ const signup = async (req, res) => {
 
 const login = async (req, res) => {
     try {
-        console.loge('server login fu')
-        const phone = await req.body.phone;
-        const password = await req.body.password;
+        res.send('ffffffffffff')
+    //     console.loge('server login fu')
+    //     const phone = await req.body.phone;
+    //     const password = await req.body.password;
 
-        if (!phone || !password) {
-            return res.status(404).json({ message: 'phone or password is required' });
-        }
-        const finduser = await Usermodel.findOne({ phone: phone });
+    //     if (!phone || !password) {
+    //         return res.status(404).json({ message: 'phone or password is required' });
+    //     }
+    //     const finduser = await Usermodel.findOne({ phone: phone });
 
-        if (!finduser) {
-            return res.status(400).json({ message: 'this user not founded' })
-        }
+    //     if (!finduser) {
+    //         return res.status(400).json({ message: 'this user not founded' })
+    //     }
 
-        const match = bcrypt.compare(password, finduser.password);
+    //     const match = bcrypt.compare(password, finduser.password);
 
-        if (!match) return res.status(401).json({ message: "Wrong Password" });
+    //     if (!match) return res.status(401).json({ message: "Wrong Password" });
 
         // const accessToken = jwt.sign({
         //     userinfo: {
@@ -66,7 +67,7 @@ const login = async (req, res) => {
         // )
         // res.status(200).json({finduser, accessToken})
 
-        res.status(200).json(finduser)
+        // res.status(200).json(finduser)
     } catch (error) {
         res.status(404).json(error);
     }
