@@ -49,15 +49,10 @@ const Header = () => {
                 <div className='right-nav'>
                   {
                     userlogininfo ? <div className='usertitle'>
-                      <div className='username'>مرحبا <br />{usertitle(userlogininfo.id)} 
-                      <span className="material-symbols-outlined" onClick={()=>setlogout(!openlogout)}>
-                        expand_more
-                      </span>
-                      </div>
-                      {openlogout?<div className="nav-logout" onClick={logout}> خروج
+                      <div className="nav-logout" onClick={logout}> خروج
                         <span className="material-symbols-outlined">logout</span>
-                        </div>:""}
                       </div>
+                    </div>
                       : id ? <div className='usertitle'>
                         <div className='username'>مرحباضيوف <br />{usertitle(id)}</div>
                       </div>
