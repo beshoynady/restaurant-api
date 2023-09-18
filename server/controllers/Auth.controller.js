@@ -50,26 +50,27 @@ const login = async (req, res) => {
         if (!finduser) {
             return res.status(400).json({ message: 'this user not founded' })
         } else {
-            const match = bcrypt.compare(password, finduser.password);
-            if (!match) {
-                return res.status(401).json({ message: "Wrong Password" })
-            } else {
-                const accessToken = jwt.sign({
-                    userinfo: {
-                        id: finduser._id,
-                        isAdmin: finduser.isAdmin,
-                        role: finduser.role
+            const match = bcrypt.compare(password, finduser.password, function(err, result) {
+                if (!result) {
+                    return res.status(401).json({ message: "Wrong Password" })
+                } else {
+                    const accessToken = jwt.sign({
+                        userinfo: {
+                            id: finduser._id,
+                            isAdmin: finduser.isAdmin,
+                            role: finduser.role
+                        }
+                    }, process.env.jwt_secret_key,
+                        { expiresIn: process.env.jwt_expire }
+                    )
+                    if (!accessToken) {
+                        return res.status(401).json({ message: "accessToken not sign" })
                     }
-                }, process.env.jwt_secret_key,
-                    { expiresIn: process.env.jwt_expire }
-                )
-                if (!accessToken) {
-                    return res.status(401).json({ message: "accessToken not sign" })
-                }
-
-                res.status(200).json({ finduser, accessToken })
-
-            }
+    
+                    res.status(200).json({ finduser, accessToken })
+    
+                }          
+            });
 
         }
 
