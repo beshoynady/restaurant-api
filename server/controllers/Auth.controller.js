@@ -43,38 +43,35 @@ const login = async (req, res) => {
 
         if (!phone || !password) {
             return res.status(404).json({ message: 'phone or password is required' });
-        } else {
-            const finduser = await Usermodel.findOne({ phone: phone });
-            if (!finduser) {
-                return res.status(400).json({ message: 'this user not founded' })
-            } else {
-                const match = bcrypt.compare(password, finduser.password);
-
-                if (!match) {
-                    return res.status(401).json({ message: "Wrong Password" })
-                } else {
-                    const accessToken = jwt.sign({
-                        userinfo: {
-                            id: finduser._id,
-                            isAdmin: finduser.isAdmin,
-                            role: finduser.role
-                        }
-                    }, process.env.jwt_secret_key,
-                        { expiresIn: process.env.jwt_expire }
-                    )
-                    res.status(200).json({ finduser, accessToken })
-                }
-
-            }
-
-
         }
 
 
+        const finduser = await Usermodel.findOne({ phone: phone });
+        if (!finduser) {
+            return res.status(400).json({ message: 'this user not founded' })
+        }
 
+        const match = bcrypt.compare(password, finduser.password);
+        if (!match) {
+            return res.status(401).json({ message: "Wrong Password" })
+        }
 
+        // const accessToken = jwt.sign({
+        //     userinfo: {
+        //         id: finduser._id,
+        //         isAdmin: finduser.isAdmin,
+        //         role: finduser.role
+        //     }
+        // }, process.env.jwt_secret_key,
+        //     { expiresIn: process.env.jwt_expire }
+        // )
+        // if (!accessToken) {
+        //     return res.status(401).json({ message: "accessToken not sign" })
+        // }
 
-        // res.status(200).json(finduser)
+        // res.status(200).json({ finduser, accessToken })
+
+        res.status(200).json(finduser)
     } catch (error) {
         res.status(404).send('error');
     }
