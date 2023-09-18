@@ -76,7 +76,7 @@ const login = async (req, res) => {
 
         // res.status(200).json(finduser)
     } catch (error) {
-        res.status(404).json(error);
+        res.status(404).send('error');
     }
 }
 
