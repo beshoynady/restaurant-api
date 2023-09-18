@@ -10,12 +10,12 @@ import jwt_decode from "jwt-decode";
 
 const ManagLayout = () => {
 
-    // if (localStorage.getItem('token')) {
-    //   // console.log(localStorage.getItem('token'))
-    //   const tokenStorage = localStorage.getItem('token')
-    //   if (tokenStorage) {
-    //     const decodetoken = jwt_decode(tokenStorage)
-    //    if(decodetoken.userinfo.isAdmin){
+    if (localStorage.getItem('token')) {
+      // console.log(localStorage.getItem('token'))
+      const tokenStorage = localStorage.getItem('token')
+      if (tokenStorage) {
+        const decodetoken = jwt_decode(tokenStorage)
+       if(decodetoken.userinfo.isAdmin){
         return(
           <div className='manag-screen'>
             <SideBar />
@@ -24,11 +24,11 @@ const ManagLayout = () => {
               <Outlet></Outlet>
             </main>
           </div>)
-    //       }else{
-    //         return <Navigate to={'/login'} />
-    //       }
-    //   }
-    // }
+          }else{
+            return <Navigate to={'/login'} />
+          }
+      }
+    }
 
 }
 

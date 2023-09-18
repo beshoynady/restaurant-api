@@ -11,7 +11,7 @@ const Waiter = () => {
 
   const GetPrductstowaiter = async () => {
     try {
-      const orders = await axios.get('https://restaurant-api-fawn.vercel.app/api/order');
+      const orders = await axios.get('https://restaurant-api-blush.vercel.app/api/order');
       // console.log(orders)
       const orderisctive = await orders.data.filter((order) => order.isActive == true && order.status == 'تم التحضير'|| order.status == 'في الطريق')
       console.log(orderisctive)
@@ -25,7 +25,7 @@ const Waiter = () => {
   const orderOnWay=async(id)=>{
     // const waiter = waiterid;
     const status = 'في الطريق'
-    const done = await axios.put('https://restaurant-api-fawn.vercel.app/api/order/' + id, {
+    const done = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
     status
   })
   GetPrductstowaiter()
@@ -33,7 +33,7 @@ const Waiter = () => {
 }
 
   const orderDelivered = async (id) => {
-    const order = await axios.get('https://restaurant-api-fawn.vercel.app/api/order/' + id)
+    const order = await axios.get('https://restaurant-api-blush.vercel.app/api/order/' + id)
     // console.log(order)
     const cloneproduct = await order.data.products
     // console.log(cloneproduct)
@@ -44,7 +44,7 @@ const Waiter = () => {
     }
     console.log(products)
     const status = 'تم التوصيل'
-    const done = await axios.put('https://restaurant-api-fawn.vercel.app/api/order/' + id, {
+    const done = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
       products,
       status
     })
@@ -53,7 +53,7 @@ const Waiter = () => {
 
   // const orderDone = async (id) => {
   //   console.log(id)
-  //   const order = await axios.get('https://restaurant-api-fawn.vercel.app/api/order/' + id)
+  //   const order = await axios.get('https://restaurant-api-blush.vercel.app/api/order/' + id)
   //   // console.log(order)
   //   const cloneproduct = await order.data.products
   //   // console.log(cloneproduct)
@@ -64,7 +64,7 @@ const Waiter = () => {
   //   }
   //   console.log(products)
   //   const status = 'Done'
-  //   const done = await axios.put('https://restaurant-api-fawn.vercel.app/api/order/' + id, {
+  //   const done = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
   //     products,
   //     status
   //   })
