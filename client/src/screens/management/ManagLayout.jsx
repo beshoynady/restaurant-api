@@ -9,7 +9,7 @@ import jwt_decode from "jwt-decode";
 
 
 const ManagLayout = () => {
-
+  const navigate = Navigate()
     if (localStorage.getItem('token')) {
       // console.log(localStorage.getItem('token'))
       const tokenStorage = localStorage.getItem('token')
@@ -25,7 +25,7 @@ const ManagLayout = () => {
             </main>
           </div>)
           }else{
-            return <Navigate to={'/login'} />
+            return navigate('/login')
           }
       }
     }

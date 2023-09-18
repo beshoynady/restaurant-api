@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import axios from 'axios';
 import './App.css';
 import jwt_decode from "jwt-decode";
-// import {useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 // import { useParams } from 'react-router-dom';
 
@@ -27,7 +27,7 @@ export const detacontext = createContext({})
 
 function App() {
   // const { id } = useParams()
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   //+++++++++++++++++ product ++++++++++++++++++++
   const [allProducts, setallProducts] = useState([])
@@ -343,7 +343,7 @@ function App() {
       isActive
     })
     console.log(neworder)
-    // window.location.href = `http://localhost:3000/`;
+    window.location.href = `http://${window.location.hostname}`;
   }
 
 
@@ -394,6 +394,8 @@ function App() {
         const token = newclient.accessToken
         localStorage.setItem("token", token)
       }
+      navigate('/login')
+
     } catch (error) {
       console.log(error)
     }
@@ -409,16 +411,6 @@ function App() {
     // console.log(decodetoken)
   }
 
-  // const returnToMange=()=>{
-  //   console.log(userlogininfo)
-  //   if(userlogininfo.isAdmin){
-  //     // console.log(userlogininfo.isAdmin)
-  //       window.location.href ='http://localhost:3000/management';
-  //     }else{
-  //     window.location.href ='http://localhost:3000/';
-  //   }
-  // }
-
   const [islogin, setislogin] = useState(false)
   const login = async (e, phone, password) => {
     e.preventDefault()
@@ -426,10 +418,9 @@ function App() {
     console.log(password);
     try {
       const client = await axios.post('https://restaurant-api-blush.vercel.app/api/auth/login', { phone, password })
-      // console.log(client.data)
-      // window.location.href =`http://localhost:3000/${client?.data._id}`;
       console.log(client.data)
       if (client) {
+        setislogin(!islogin)
         const token = client.data.accessToken;
         console.log(token)
         if (token) {
@@ -438,10 +429,9 @@ function App() {
             console.log(localStorage.getItem('token'))
             const tokenStorage = localStorage.getItem('token')
             if (tokenStorage) {
-              const decodetoken = jwt_decode(tokenStorage)
+              const decodetoken =await jwt_decode(tokenStorage)
               console.log(decodetoken)
               setuserlogininfo(decodetoken.userinfo)
-              console.log(userlogininfo)
             }
           }
         }
