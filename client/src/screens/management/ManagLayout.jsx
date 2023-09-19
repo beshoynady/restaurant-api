@@ -1,16 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import './ManagLayout.css'
 import { detacontext } from '../../App'
-import { useNavigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import NavBar from './manag.component/navbar/NavBar';
 import SideBar from './manag.component/sidebar/SideBar';
 import jwt_decode from "jwt-decode";
-import Login from './manag.component/login/Login';
 
 
 
 const ManagLayout = () => {
-  const navigate = useNavigate();
 
     if (localStorage.getItem('token')) {
       // console.log(localStorage.getItem('token'))
@@ -26,10 +24,9 @@ const ManagLayout = () => {
               <Outlet></Outlet>
             </main>
           </div>)
-          }else{
-            return <Login/>
-            // window.location.href = `http://${window.location.hostname}/login`;
-            // navigate('/login')
+          }
+        }else{
+            return <Navigate to={'/login'} />
           }
       }
     }
