@@ -96,12 +96,14 @@ const ManagerDash = () => {
     }
   }
 
+  const [waitersend, setwaitersend] = useState('')
   const sendwaiter = async (id) => {
     getAllWaiter()
     const waiter = specifiedWaiter()
     const order = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
       waiter
     })
+    setwaitersend(waiter)
     PendingOrder()
     console.log(order.data)
   }
@@ -253,7 +255,9 @@ const ManagerDash = () => {
                             
                             <p><i className='bx bx-check-circle'></i> {order.table != null ? usertitle(order.table) : usertitle(order.user)}</p>
                             <p>{order.help?'يحتاج المساعدة': order.isActive == false? 'يحتاج الفاتورة': ''}</p>
-                            <button type="button" className="btn btn-primary" onClick={()=>sendwaiter(order._id)}>ارسال ويتر</button>
+                            {!waitersend?<button type="button" className="btn btn-primary" onClick={()=>sendwaiter(order._id)}>ارسال ويتر</button>:
+                            <p>تم ارسال {waitersend}</p>}
+                            
                           </div>
                           <i className='bx bx-dots-vertical-rounded'></i>
                         </li>
