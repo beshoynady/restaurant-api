@@ -220,7 +220,7 @@
     cursor: pointer;
   }
   .header-client .container .right-nav .nav-logout > span {
-    font-size: 30px;
+    display: none;
   }
   .header-client .container .right-nav .nav-login {
     width: 47%;
@@ -239,7 +239,7 @@
     background-color: var(--yallow-color);
   }
   .header-client .container .right-nav .nav-login > span {
-    font-size: 30px;
+    display: none;
   }
   .header-client .container .right-nav .cart-icon {
     width: 50%;
