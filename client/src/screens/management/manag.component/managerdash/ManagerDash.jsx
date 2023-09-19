@@ -262,6 +262,7 @@ const ManagerDash = () => {
                           <i className='bx bx-dots-vertical-rounded'></i>
                         </li>
                       )
+                      
                     })}
 
                   </ul>
