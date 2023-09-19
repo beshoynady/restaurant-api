@@ -57,8 +57,9 @@
   text-align: center;
 }
 .main-home .container .content .main-btn .main-li.mrl-auto {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 50% !important;
 }
 .main-home .container .content .main-btn .main-li a {
   display: inline-block;
