@@ -64,7 +64,7 @@ const Cart = (props) => {
                           return (
                             <div className="cart-item" key={index}>
                               <div className="cart-img">
-                                <img src={`https://restaurant-api-blush.vercel.app/${i.image}`} />
+                                <img src={`https://raw.githubusercontent.com/beshoynady/restaurant-api/main/server/images/${i.image}`} />
                               </div>
                               <div className='cart-det'>
                                 <div className="item-head">
