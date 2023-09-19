@@ -23,7 +23,7 @@ const Home = () => {
                     <li className='main-li' onClick={()=>askingForHelp(id)}><a>طلب الويتر</a></li>
                     <li className='main-li'><a href="#menu">المنيو</a></li>
                     </>
-                    :<li className='main-li'><a href="#menu mrl-auto">المنيو</a></li>}
+                    :<li className='main-li mrl-auto'><a href="#menu">المنيو</a></li>}
                   </ul>
                 </div>
               </div>
