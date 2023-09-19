@@ -78,7 +78,7 @@ const ManagerDash = () => {
 
   // const [waiter, setwaiter] = useState()
   const specifiedWaiter =()=>{
-    const lastwaiter = allorders? allorders[allorders.length-1].waiter:''
+    const lastwaiter = pending_order? pending_order[pending_order.length-1].waiter:''
     console.log(lastwaiter)
     const indexoflastwaiter = waiters.indexOf(lastwaiter)
 
@@ -262,7 +262,7 @@ const ManagerDash = () => {
                           <i className='bx bx-dots-vertical-rounded'></i>
                         </li>
                       )
-                      
+
                     })}
 
                   </ul>
