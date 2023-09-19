@@ -341,7 +341,9 @@ function App() {
       isActive
     })
     console.log(neworder)
-    // window.location.href = `http://localhost:3000/`;
+    setTimeout(() => {
+      window.location.href = `https://${window.location.hostname}`;
+    }, 600000);
   }
 
 
