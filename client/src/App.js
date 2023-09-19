@@ -343,7 +343,7 @@ function App() {
     console.log(neworder)
     setTimeout(() => {
       window.location.href = `https://${window.location.hostname}`;
-    }, 600000);
+    }, 2000);
   }
 
 
