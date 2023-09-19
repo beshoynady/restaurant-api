@@ -177,7 +177,7 @@ const Products = () => {
                         </span>
                       </td>
                       <td>{i + 1}</td>
-                      <td><img src={`https://restaurant-api-blush.vercel.app/${p.image}`} style={{ "width": "60px", "height": "50px" }} /></td>
+                      <td><img src={`https://raw.githubusercontent.com/beshoynady/restaurant-api/main/server/images/${p.image}`} style={{ "width": "60px", "height": "50px" }} /></td>
                       <td>{p.name}</td>
                       <td>{p.description}</td>
                       <td>{listofcategories.length > 0 ? listofcategories.find(c => c._id == p.category).name : ""}</td>
