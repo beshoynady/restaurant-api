@@ -199,9 +199,11 @@
 .dashboard .bottom-data .reminders .task-list li .task-title {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
-.dashboard .bottom-data .reminders .task-list li .task-title p {
+.dashboard .bottom-data .reminders .task-list li .task-title > p {
   margin-left: 6px;
+  margin-bottom: 0 !important;
 }
 .dashboard .bottom-data .reminders .task-list li .bx {
   cursor: pointer;

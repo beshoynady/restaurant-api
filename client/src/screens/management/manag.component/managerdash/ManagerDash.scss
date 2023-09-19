@@ -217,8 +217,10 @@ $color_7: var(--danger);
 					.task-title {
 						display: flex;
 						align-items: center;
-						p {
+						justify-content: space-between;
+						>p {
 							margin-left: 6px;
+							margin-bottom: 0 !important;
 						}
 					}
 					.bx {

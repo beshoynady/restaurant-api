@@ -60,6 +60,53 @@ const ManagerDash = () => {
     }
   }
 
+  // ارسال ويتر 
+  const [waiters, setwaiters] = useState([])
+  const getAllWaiter = async()=>{
+    const alluser = await axios.get('https://restaurant-api-blush.vercel.app/api/user')
+    const allwaiter =await alluser.data.filter((user)=>user.role === 'waiter')
+    // console.log(allwaiter)
+    const listId = []
+    allwaiter.forEach((waiter)=>{
+      listId.push(waiter._id)
+    })
+    // console.log(listId)
+    if(listId.length>0){
+      setwaiters(listId)
+    }
+  }
+
+  // const [waiter, setwaiter] = useState()
+  const specifiedWaiter =()=>{
+    const lastwaiter = allorders? allorders[allorders.length-1].waiter:''
+    console.log(lastwaiter)
+    const indexoflastwaiter = waiters.indexOf(lastwaiter)
+
+    console.log(indexoflastwaiter)
+    console.log(indexoflastwaiter+1)
+    console.log(waiters.length)
+    console.log(waiters)
+    // setwaiter(waiters[indexofwaiter+1])
+    if(waiters.length < indexoflastwaiter+1){
+      const waiter = waiters[0]
+      return waiter     
+    }else{
+      const waiter = waiters[indexoflastwaiter+1]
+      return waiter
+    }
+  }
+
+  const sendwaiter = async (id) => {
+    getAllWaiter()
+    const waiter = specifiedWaiter()
+    const order = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
+      waiter
+    })
+    PendingOrder()
+    console.log(order.data)
+  }
+
+
   useEffect(() => {
     PendingOrder()
   }, [update])
@@ -74,7 +121,7 @@ const ManagerDash = () => {
                 <div className="left">
                   <h1>الصفحة الرئيسيه</h1>
                 </div>
-                <a href="http://localhost:3000/" className="website">
+                <a href={`http://${window.location.hostname}`} className="website">
                   <i className='bx bx-cloud-download'></i>
                   <span>الموقع</span>
                 </a>
@@ -194,7 +241,7 @@ const ManagerDash = () => {
                 <div className="reminders">
                   <div className="header">
                     <i className='bx bx-note'></i>
-                    <h3>طلب الفاتوره</h3>
+                    <h3>متابعه العميل</h3>
                     <i className='bx bx-filter'></i>
                     <i className='bx bx-plus'></i>
                   </div>
@@ -203,29 +250,16 @@ const ManagerDash = () => {
                       return (
                         <li className="completed" key={i}>
                           <div className="task-title">
-                            <i className='bx bx-check-circle'></i>
-                            <p>{order.table != null ? usertitle(order.table) : usertitle(order.user)}</p>
+                            
+                            <p><i className='bx bx-check-circle'></i> {order.table != null ? usertitle(order.table) : usertitle(order.user)}</p>
                             <p>{order.help?'يحتاج المساعدة': order.isActive == false? 'يحتاج الفاتورة': ''}</p>
+                            <button type="button" className="btn btn-primary" onClick={()=>sendwaiter(order._id)}>ارسال ويتر</button>
                           </div>
                           <i className='bx bx-dots-vertical-rounded'></i>
                         </li>
                       )
                     })}
 
-                    {/* <li className="completed">
-                      <div className="task-title">
-                        <i className='bx bx-check-circle'></i>
-                        <p>Analyse Our Site</p>
-                      </div>
-                      <i className='bx bx-dots-vertical-rounded'></i>
-                    </li>
-                    <li className="not-completed">
-                      <div className="task-title">
-                        <i className='bx bx-x-circle'></i>
-                        <p>Play Footbal</p>
-                      </div>
-                      <i className='bx bx-dots-vertical-rounded'></i>
-                    </li> */}
                   </ul>
                 </div>
 
