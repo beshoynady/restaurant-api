@@ -71,33 +71,9 @@
   align-items: center;
   justify-content: space-between;
 }
-.header-client .container .right-nav .usertitle {
-  width: 70%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-.header-client .container .right-nav .usertitle .username {
-  font-size: 18px;
-  color: white;
-  width: 50%;
-  height: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.header-client .container .right-nav .usertitle .username > span {
-  color: white;
-  font-size: 25px;
-}
-.header-client .container .right-nav .usertitle .nav-logout {
-  width: 150px;
-  height: 50px;
-  position: absolute;
-  top: 80px;
-  left: 200px;
+.header-client .container .right-nav .nav-logout {
+  width: 60%;
+  height: 60px;
   background-color: rgb(243, 0, 0);
   font-size: 18px;
   color: white;
@@ -107,13 +83,13 @@
   border-radius: 10px;
   cursor: pointer;
 }
-.header-client .container .right-nav .usertitle .nav-logout > span {
+.header-client .container .right-nav .nav-logout > span {
   color: white;
   font-size: 25px;
 }
 .header-client .container .right-nav .nav-login {
-  width: 120px;
-  height: 50px;
+  width: 60%;
+  height: 60px;
   background-color: var(--white);
   font-size: 20px;
   font-weight: 500;
@@ -231,34 +207,9 @@
     align-items: center;
     justify-content: flex-end;
   }
-  .header-client .container .right-nav .usertitle {
-    width: 60%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  .header-client .container .right-nav .usertitle .username {
-    width: 60%;
+  .header-client .container .right-nav .nav-logout {
+    width: 47%;
     height: 60%;
-    font-size: 12px;
-    font-weight: 600;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  .header-client .container .right-nav .usertitle .username > span {
-    color: white;
-    font-size: 25px;
-  }
-  .header-client .container .right-nav .usertitle .nav-logout {
-    width: 35%;
-    height: 60%;
-    position: absolute;
-    top: 80px;
-    left: 20px;
     background-color: rgb(243, 0, 0);
     font-size: 18px;
     color: white;
@@ -268,8 +219,11 @@
     border-radius: 10px;
     cursor: pointer;
   }
+  .header-client .container .right-nav .nav-logout > span {
+    font-size: 30px;
+  }
   .header-client .container .right-nav .nav-login {
-    width: 25%;
+    width: 47%;
     height: 60%;
     background-color: rgb(29, 255, 168);
     font-size: 18px;
@@ -285,10 +239,10 @@
     background-color: var(--yallow-color);
   }
   .header-client .container .right-nav .nav-login > span {
-    font-size: 35px;
+    font-size: 30px;
   }
   .header-client .container .right-nav .cart-icon {
-    width: 40%;
+    width: 50%;
     height: 65%;
     text-align: center;
   }
