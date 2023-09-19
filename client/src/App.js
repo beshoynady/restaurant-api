@@ -3,9 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import axios from 'axios';
 import './App.css';
 import jwt_decode from "jwt-decode";
-import {useNavigate } from 'react-router-dom';
 
-// import { useParams } from 'react-router-dom';
 
 import Userscreen from './screens/user.screen/Userscreen';
 
@@ -26,8 +24,8 @@ import Login from './screens/management/manag.component/login/Login';
 export const detacontext = createContext({})
 
 function App() {
-  // const { id } = useParams()
-  const navigate = useNavigate()
+
+  
 
   //+++++++++++++++++ product ++++++++++++++++++++
   const [allProducts, setallProducts] = useState([])
@@ -394,7 +392,7 @@ function App() {
         const token = newclient.accessToken
         localStorage.setItem("token", token)
       }
-      navigate('/login')
+      // navigate('/login')
 
     } catch (error) {
       console.log(error)
