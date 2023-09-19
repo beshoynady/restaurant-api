@@ -47,14 +47,14 @@ const Header = () => {
                   </ul>
                 </nav>
                 <div className='right-nav'>
-                  {
-                    userlogininfo ? <div className="nav-logout" onClick={logout}> خروج
+                  {id?''
+                    :userlogininfo ? <div className="nav-logout" onClick={logout}> خروج
                         <span className="material-symbols-outlined">logout</span>
                         </div>
-                      
                         : <div className='nav-login' onClick={(e) => { e.preventDefault(); setopenlogin(!openlogin) }}>دخول<span className="material-symbols-outlined">
                           login
-                        </span></div>}
+                        </span></div>
+                        }
                   <div className='cart-icon' onClick={(e) => { e.preventDefault(); setopencart(!opencart) }}>
                     <span className="material-symbols-rounded">shopping_cart</span></div>
                   <LoginRegistr openlogin={openlogin} />
