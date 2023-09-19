@@ -56,6 +56,10 @@
   background-color: rgb(0, 195, 255);
   text-align: center;
 }
+.main-home .container .content .main-btn .main-li.mrl-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
 .main-home .container .content .main-btn .main-li a {
   display: inline-block;
   text-decoration: none;
