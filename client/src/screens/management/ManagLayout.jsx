@@ -26,7 +26,8 @@ const ManagLayout = () => {
             </main>
           </div>)
           }else{
-            navigate('/login')
+            window.location.href = `http://${window.location.hostname}/login`;
+            // navigate('/login')
           }
       }
     }
