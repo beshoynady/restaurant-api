@@ -5,6 +5,7 @@ import { useNavigate, Outlet } from 'react-router-dom';
 import NavBar from './manag.component/navbar/NavBar';
 import SideBar from './manag.component/sidebar/SideBar';
 import jwt_decode from "jwt-decode";
+import Login from './manag.component/login/Login';
 
 
 
@@ -26,7 +27,8 @@ const ManagLayout = () => {
             </main>
           </div>)
           }else{
-            window.location.href = `http://${window.location.hostname}/login`;
+            return <Login/>
+            // window.location.href = `http://${window.location.hostname}/login`;
             // navigate('/login')
           }
       }
