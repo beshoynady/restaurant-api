@@ -255,8 +255,8 @@ const ManagerDash = () => {
                           <i className='bx bx-check-circle'></i>
                             <p> {order.table != null ? usertitle(order.table) : usertitle(order.user)}</p>
                             <p>{order.help?'يحتاج المساعدة': order.isActive == false? 'يحتاج الفاتورة': ''}</p>
-                            {!waitersend?<button type="button" className="btn btn-primary" onClick={()=>sendwaiter(order._id)}>ارسال ويتر</button>:
-                            <p>تم ارسال {waitersend}</p>}
+                            {/* {!waitersend?<button type="button" className="btn btn-primary" onClick={()=>sendwaiter(order._id)}>ارسال ويتر</button>:
+                            <p>تم ارسال {waitersend}</p>} */}
                             
                           </div>
                           <i className='bx bx-dots-vertical-rounded'></i>
