@@ -7,8 +7,19 @@ import axios from 'axios'
 const Waiter = () => {
   const start = useRef()
   const ready = useRef()
-  const [orderactive, setorderactive] = useState([])
 
+  const [pending_order, setpending_order] = useState([])
+  const [pending_payment, setpending_payment] = useState([])
+  const PendingOrder = async () => {
+    const res = await axios.get('https://restaurant-api-blush.vercel.app/api/order')
+    const recent_status = await res.data.filter((order) => order.status == 'انتظار')
+    const recent_payment_status = await res.data.filter((order) => order.payment_status == 'انتظار')
+    setpending_order(recent_status)
+    setpending_payment(recent_payment_status)
+  }
+
+
+  const [orderactive, setorderactive] = useState([])
   const GetPrductstowaiter = async () => {
     try {
       const orders = await axios.get('https://restaurant-api-blush.vercel.app/api/order');
@@ -71,6 +82,7 @@ const Waiter = () => {
 
 
   useEffect(() => {
+    PendingOrder()
     GetPrductstowaiter()
   }, [])
 
@@ -81,8 +93,7 @@ const Waiter = () => {
           return (
             <div className='Waiter'>
 
-              //  اضافه كارت طلبات الخدمة لم يضاف لجت هب 
-              {orderactive.filter((order) => order.payment_status == 'انتظار' && order.isActive == false || order.help == 'ارسال ويتر' ||order.help == 'في الطريق').map((order, i) => {
+              {pending_payment.filter((order) => order.isActive == false || order.help == 'ارسال ويتر' ||order.help == 'في الطريق').map((order, i) => {
                 return (
                   <div className="wai-card" key={i}>
                     <div className="card-info">
