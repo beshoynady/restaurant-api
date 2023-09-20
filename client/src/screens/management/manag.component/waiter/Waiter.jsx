@@ -22,8 +22,16 @@ const Waiter = () => {
     }
   }
 
-  const helpOnWay = async (id) => {
+  const orderOnWay = async (id) => {
     // const waiter = waiterid;
+    const status = 'في الطريق'
+    const done = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
+      status
+    })
+    GetPrductstowaiter()
+    console.log(done)
+  }
+  const helpOnWay = async (id) => {
     const help = 'في الطريق'
     const done = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
       help
@@ -35,31 +43,32 @@ const Waiter = () => {
   const helpDone = async (id) => {
     const help = 'تمت المساعدة'
     const done = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
-      help,
+      help
     })
     GetPrductstowaiter()
   }
 
 
-  // const orderDone = async (id) => {
-  //   console.log(id)
-  //   const order = await axios.get('https://restaurant-api-blush.vercel.app/api/order/' + id)
-  //   // console.log(order)
-  //   const cloneproduct = await order.data.products
-  //   // console.log(cloneproduct)
-  //   const products = []
-  //   for (let i = 0; i < cloneproduct.length; i++) {
-  //     cloneproduct[i].isDone = true;
-  //     products.push(cloneproduct[i])
-  //   }
-  //   console.log(products)
-  //   const status = 'Done'
-  //   const done = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
-  //     products,
-  //     status
-  //   })
-  //   GetPrductstowaiter()
-  // }
+  const orderDelivered = async (id) => {
+    const order = await axios.get('https://restaurant-api-blush.vercel.app/api/order/' + id)
+    // console.log(order)
+    const cloneproduct = await order.data.products
+    // console.log(cloneproduct)
+    const products = []
+    for (let i = 0; i < cloneproduct.length; i++) {
+      cloneproduct[i].isDone = true;
+      products.push(cloneproduct[i])
+    }
+    console.log(products)
+    const status = 'تم التوصيل'
+    const done = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
+      products,
+      status
+    })
+    GetPrductstowaiter()
+  }
+
+
 
   useEffect(() => {
     GetPrductstowaiter()
@@ -73,12 +82,13 @@ const Waiter = () => {
             <div className='Waiter'>
 
               //  اضافه كارت طلبات الخدمة لم يضاف لجت هب 
-              {pending_payment.filter((order) => order.help == 'ارسال ويتر'||order.help == 'في الطريق').map((order, i) => {
+              {orderactive.filter((order) => order.payment_status == 'انتظار' && order.isActive == false || order.help == 'ارسال ويتر' ||order.help == 'في الطريق').map((order, i) => {
                 return (
                   <div className="wai-card" key={i}>
                     <div className="card-info">
-                      <p className="info-p">طاولة رقم {order.table != null ? usertitle(order.table) : usertitle(order.user)}</p>
+                      <p className="info-p">اسم العميل {order.table != null ? usertitle(order.table) : usertitle(order.user)}</p>
                       <p className="info-p">رقم الطلب {order.serial}</p>
+                      <p className="info-p">نوع الطلب {order.order_type}</p>
                       <p className="info-p">اسم الويتر {usertitle(order.waiter)}</p>
                       <p className="info-p">وقت الاستلام {new Date(order.createdAt).getHours() + ":" + new Date(order.createdAt).getMinutes()}</p>
                       <p className="info-p">وقت التنفيذ {new Date(order.updatedAt).getHours() + ":" + new Date(order.updatedAt).getMinutes()}</p>
@@ -86,18 +96,18 @@ const Waiter = () => {
                     <div className="card-product">
                       <ul className='card-ul'>
                         <li className="card-li">
-                            <p className='product-name' >{usertitle(order.table)}</p>
-                            <p className='product-name' >{order.help =='ارسال ويتر'?'يطلب مساعده': order.help}</p>
+                            <p className='product-name' >{order.table != null ? usertitle(order.table) : usertitle(order.user)}</p>
+                            <p className='product-name' >{order.help!= 'لم يطلب' ? 'يحتاج المساعدة' : order.isActive == false ? 'يحتاج الفاتورة' : ''}</p>
 
                         </li>
 
                       </ul>
                     </div>
                     <div className='card-btn'>
-                      {order.status == 'تم التحضير' ?
-                        <button ref={ready} className='btn-ready' onClick={() => { helpOnWay(order._id) }}>متجه للمساعدة</button>
-                        : <button ref={start} className='btn-start' onClick={() => helpDone(order._id)}>تم المساعدة</button>
-                      }
+                      {order.help == 'ارسال ويتر' ?
+                        <button ref={ready} className='btn-ready' onClick={() => { helpOnWay(order._id) }}>متجة للعميل</button>
+                        :order.help == 'في الطريق' ? <button ref={start} className='btn-start' onClick={() => helpDone(order._id)}>تم</button>
+                      :''}
                     </div>
                   </div>
                 )
