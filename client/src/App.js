@@ -317,7 +317,7 @@ function App() {
     console.log(id)
     const serial = allorders.length > 0 ? allorders[allorders.length - 1].serial + 1 : 1;
     console.log(serial)
-    const help = true;
+    const help = 'يطلب مساعدة';
     const table = tablenum
     if (!lasttableorderactive) {
       const neworder = await axios.post('https://restaurant-api-blush.vercel.app/api/order/', {

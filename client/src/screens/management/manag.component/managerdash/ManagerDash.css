@@ -197,6 +197,7 @@
   justify-content: space-between;
 }
 .dashboard .bottom-data .reminders .task-list li .task-title {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;

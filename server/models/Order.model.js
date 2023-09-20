@@ -107,8 +107,10 @@ const OrderSchema = new mongoose.Schema({
         required: true,
     },
     help:{
-        type: Boolean,
-        default: false,
+        type: String,
+        default: 'لم يطلب',
+        required: true,
+        enum: ['لم يطلب', 'يطلب مساعدة','ارسال ويتر','في الطريق','تمت المساعدة'],
     },
     status: {
         type: String,

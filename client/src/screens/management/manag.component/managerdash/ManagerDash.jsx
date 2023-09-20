@@ -96,21 +96,22 @@ const ManagerDash = () => {
     }
   }
 
-  const [waitersend, setwaitersend] = useState('')
   const sendwaiter = async (id) => {
-    getAllWaiter()
+    const help = 'ارسال ويتر';
     const waiter = specifiedWaiter()
     const order = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
-      waiter
+      waiter , help
     })
-    setwaitersend(waiter)
     PendingOrder()
+    setupdate(!update)
     console.log(order.data)
   }
 
 
   useEffect(() => {
     PendingOrder()
+    getAllWaiter()
+
   }, [update])
 
   return (
@@ -248,16 +249,15 @@ const ManagerDash = () => {
                     <i className='bx bx-plus'></i>
                   </div>
                   <ul className="task-list">
-                    {pending_payment.filter((order) => order.payment_status == 'انتظار' && order.isActive == false || order.help == true).map((order, i) => {
+                    {pending_payment.filter((order) => order.payment_status == 'انتظار' && order.isActive == false || order.help !=='لم يطلب').map((order, i) => {
                       return (
                         <li className="completed" key={i}>
                           <div className="task-title">
-                          <i className='bx bx-check-circle'></i>
-                            <p> {order.table != null ? usertitle(order.table) : usertitle(order.user)}</p>
+                            <p><i className='bx bx-check-circle'></i> {order.table != null ? usertitle(order.table) : usertitle(order.user)}</p>
                             <p>{order.help?'يحتاج المساعدة': order.isActive == false? 'يحتاج الفاتورة': ''}</p>
-                            {!waitersend?<button type="button" className="btn btn-primary" onClick={()=>sendwaiter(order._id)}>ارسال ويتر</button>:
-                            <p>تم ارسال {waitersend}</p>}
-                            
+                            {order.help =='يطلب مساعدة'?<button type="button" className="btn btn-primary" onClick={()=>sendwaiter(order._id)}>ارسال ويتر</button>:
+                            <p>تم ارسال {usertitle(order.waiter)}</p>}
+                            <p>{order.table != null ? order.help : order.isActive == false? 'يحتاج الفاتورة': ''}</p>
                           </div>
                           <i className='bx bx-dots-vertical-rounded'></i>
                         </li>
