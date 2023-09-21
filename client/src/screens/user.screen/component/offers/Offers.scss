@@ -16,6 +16,7 @@
       .swiper-slide {
         width: 280px;
         height: 350px;
+        background-color: white;
         .offer-card{
           width: 100%;
           height: 100;
@@ -114,20 +115,20 @@
                   justify-content: center;
                 }
               }
-              .offer-card-btn{
-                width: 100%;
-                height: 30%;
+            }
+            .offer-card-btn{
+              width: 100%;
+              height: 30%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              .addtocart{
+                width: 90%;
+                height: 90%;
+                border-radius: 15px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                .addtocart{
-                  width: 90%;
-                  height: 90%;
-                  border-radius: 15px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                }
               }
             }
           }
@@ -136,6 +137,7 @@
   }
 
 }
+
 
 
 @media (max-width: 480px) {
