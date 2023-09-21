@@ -3,12 +3,13 @@ import './Menu-card.css';
 import { detacontext } from '../../../../../App';
 
 const MenuCard = () => {
+   const [itemid, setitemid] = useState([])
    const [noteArea, setnoteArea] = useState(false)
    const [productid, setproductid] = useState('')
    return (
       <detacontext.Consumer>
          {
-            ({ allProducts, categoryid,itemsincart, additemtocart, deleteitems, increment, descrement,setproductnote,addnotrstoproduct, }) => {
+            ({ allProducts, categoryid, additemtocart, deleteitems, increment, descrement,setproductnote,addnotrstoproduct, }) => {
                return (
                   <div className="card-group">
                      {allProducts.filter(pro => pro.category === categoryid).map((product, index) => {
