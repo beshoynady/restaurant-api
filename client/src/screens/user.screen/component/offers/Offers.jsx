@@ -15,6 +15,7 @@ import './Offers.css';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 
 export default function Offers() {
+  const [isadd, setisadd] = useState(false)
   const [noteArea, setnoteArea] = useState(false)
   const [productid, setproductid] = useState('')
   return (
@@ -79,8 +80,8 @@ export default function Offers() {
                             {console.log(itemsincart)} 
                             {console.log(itemsincart.filter((pr) => pr._id == product._name))}
                             {itemsincart.filter((pr) => pr._id == product._name).length >0 ?
-                              <button className='delcart' onClick={() => { deleteitems(product._id) }}>احذف من الطلبات</button>
-                              : <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) } }}>اضف الي طلباتي</button>}
+                              <button className='delcart' onClick={() => { deleteitems(product._id);setisadd(!isadd) }}>احذف من الطلبات</button>
+                              : <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) };setisadd(!isadd) }}>اضف الي طلباتي</button>}
                           </div>
                         </div>
                       </div>

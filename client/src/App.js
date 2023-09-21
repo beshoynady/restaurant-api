@@ -476,13 +476,7 @@ function App() {
     getallorders()
     costOfOrder()
     getdatafromtoken()
-    // if (localStorage.getItem('token')) {
-    //   getdatafromtoken()
-    // } else {
-    //   setuserlogininfo(null)
-    // }
-    // returnToMange()
-    // console.log(userlogininfo.isAdmin)
+
   }, [count, itemsincart, islogin])
 
   return (
