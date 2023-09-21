@@ -117,7 +117,7 @@ function App() {
 
   const additemtocart = (id) => {
     const cartitem = allProducts.filter(item => item._id === id)
-    cartitem.quantity == count 
+    cartitem.quantity = count 
     if (itemsincart.length > 0) {
       const repeateditem = itemsincart.filter(item => item._id === id)
       if (repeateditem.length == 0) { 
