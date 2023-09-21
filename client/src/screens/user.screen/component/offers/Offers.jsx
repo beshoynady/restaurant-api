@@ -76,8 +76,9 @@ export default function Offers() {
                             <div className='p-price'>{product.price - product.discount}ج <span>{product.price}</span></div>
                           </div>
                           <div className='offer-card-btn'>
-                            {itemsincart.filter((pr) => pr._id == product._id) ?
-                              <button className='delcart' onClick={() => { if (product.quantity > 0) { deleteitems(product._id) } }}>احذف من الطلبات</button>
+                            {console.log(itemsincart)} {console.log(itemsincart.filter((pr) => pr._id == product._name))}
+                            {itemsincart.filter((pr) => pr._id == product._name) ?
+                              <button className='delcart' onClick={() => { deleteitems(product._id) }}>احذف من الطلبات</button>
                               : <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) } }}>اضف الي طلباتي</button>}
                           </div>
                         </div>
