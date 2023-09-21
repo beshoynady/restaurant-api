@@ -8,132 +8,187 @@
   justify-content: center;
   scroll-margin-top: 80px;
   padding-bottom: 15px;
+
   .swiper {
     width: 100%;
     height: 90%;
     padding-top: 50px;
     padding-bottom: 50px;
-      .swiper-slide {
-        width: 280px;
-        height: 350px;
+
+    .swiper-slide {
+      width: 280px;
+      height: 350px;
+      background-color: white;
+      
+      .offer-card {
+        width: 100%;
+        height: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
         background-color: white;
-        .offer-card{
+        border-radius: 20px 20px 0 0;
+        position: relative;
+        .offers-note {
           width: 100%;
-          height: 100;
+          height: 30%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border-radius: 20px 20p 0 0;
+
+          form {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            >textarea {
+              width: 95%;
+              height: 70%;
+              margin: 5px;
+            }
+
+            .note-btn {
+              width: 100%;
+              height: 20%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              >button {
+                width: 45%;
+                height: 100%;
+                background-color: aqua;
+                border-radius: 10px
+              }
+
+              ;
+            }
+          }
+        }
+
+        .offer-img {
+          width: 100%;
+          height: 30%;
+          border-radius: 20px 20px 0 0;
+        }
+
+        .offer-detalis {
+          width: 100%;
+          height: 70%;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           justify-content: center;
-          border-radius: 20px 20p 0 0;
-          .offers-note{
+
+          .offer-info {
             width: 100%;
             height: 30%;
-            border-radius: 20px 20p 0 0;
-            form{
-              width: 100%;
-              height: 100%;
-              background-color: white;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              >textarea{
-                  width: 95%;
-                  height: 70%;
-                  margin: 5px;
-              }
-              .note-btn{
-                  width: 100%;
-                  height: 20%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  >button{
-                      width: 45%;
-                      height: 100%;
-                      background-color:aqua;
-                      border-radius: 10px
-                  };
-              }
-          }
-          }
-          .offer-img{
-            width: 100%;
-            height: 30%;
-            border-radius: 20px 20p 0 0;
-          }
-          .offer-detalis{
-            width: 100%;
-            height: 70%;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             justify-content: center;
-            .offer-info{
+
+            .offer-name {
               width: 100%;
-              height: 30%;
-              .offer-name{
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-              }
-            }
-            .offer-price{
-              width: 100%;
-              height: 40%;
+              height: 50%;
               display: flex;
               align-items: center;
               justify-content: space-between;
-              .p-price{
-                width: 20%;
-                height: 80%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid gray;
+              .p-name {
+                font-size: 24px;
+                font-weight: 600;
               }
-              .p-counter{
-                width: 70%;
-                height: 80%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                .counter-symb{
-                  width: 30%;
-                  height: 100%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  border-radius: 20px;
-                }
-                .counter-num{
-                  width: 40%;
-                  height: 100%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                }
+              .note-icon {
+                font-size: 40px;
+                color: red;
+                cursor: pointer;
               }
             }
-            .offer-card-btn{
+
+            .offer-description {
               width: 100%;
-              height: 30%;
+              height: 50%;
               display: flex;
               align-items: center;
               justify-content: center;
-              .addtocart{
-                width: 90%;
-                height: 90%;
-                border-radius: 15px;
+              font-size: 14px;
+              font-weight: 500;
+
+            }
+
+          }
+
+          .offer-price {
+            width: 100%;
+            height: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .p-counter {
+              width: 60%;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              .counter-symb {
+                width: 30%;
+                height: 80%;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 20px;
+              }
+
+              .counter-num {
+                width: 40%;
+                height: 100%;
+                font-size: 24px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
               }
+            }
+
+            .p-price {
+              width: 30%;
+              height: 80%;
+              font-size: 24px;
+              font-weight: 600;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 1px solid gray;
+            }
+          }
+
+          .offer-card-btn {
+            width: 100%;
+            height: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .addtocart {
+              width: 90%;
+              height: 90%;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
             }
           }
         }
       }
+    }
   }
 
 }
@@ -141,7 +196,7 @@
 
 
 @media (max-width: 480px) {
-  .swiper-slide{
+  .swiper-slide {
     width: 85%;
   }
 }

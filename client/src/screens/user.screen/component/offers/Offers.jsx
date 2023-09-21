@@ -62,18 +62,18 @@ export default function Offers() {
                         <div className="offer-detalis">
                           <div className='offer-info'>
                             <div className='product-name'>
-                              <h2>{product.name}</h2>
-                              <span className="material-symbols-outlined" onClick={() => { setnoteArea(!noteArea); setproductid(product._id) }}>note_alt</span>
+                              <h2 className='p-name'>{product.name}</h2>
+                              <span className="material-symbols-outlined note-icon" onClick={() => { setnoteArea(!noteArea); setproductid(product._id) }}>note_alt</span>
                             </div>
-                            <p>{product.description}</p>
+                            <div className='offer-description'>{product.description}</div>
                           </div>
                           <div className="offer-price">
-                            <div className='p-price'>{product.price}ج</div>
                             <div className="p-counter">
                               <button className='counter-symb' onClick={() => descrement(product._id)}>-</button>
                               <div className='counter-num'>{product.quantity}</div>
                               <button className='counter-symb' onClick={() => increment(product._id)}>+</button>
                             </div>
+                            <div className='p-price'>{product.price}ج</div>
                           </div>
                           <div className='offer-card-btn'>
                             <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) } }}>اضف الي طلباتي</button>
