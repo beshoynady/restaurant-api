@@ -20,7 +20,7 @@ const Home = () => {
                   <ul className="main-btn">
 
                     {id?<>
-                    <li className='main-li' onClick={()=>askingForHelp(id)}><a>طلب الويتر</a></li>
+                    <li className='main-li' onClick={()=>askingForHelp(id)}>طلب الويتر</li>
                     <li className='main-li'><a href="#menu">المنيو</a></li>
                     </>
                     :<li className='main-li mrl-auto'><a href="#menu">المنيو</a></li>}
