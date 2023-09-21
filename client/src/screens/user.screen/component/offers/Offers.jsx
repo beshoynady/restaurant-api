@@ -78,7 +78,7 @@ export default function Offers() {
                           <div className='offer-card-btn'>
                             {console.log(itemsincart)} 
                             {console.log(itemsincart.filter((pr) => pr._id == product._name))}
-                            {product.quantity>0 ?
+                            {product.add?
                               <button className='delcart' onClick={() => { deleteitems(product._id)}}>احذف من الطلبات</button>
                               : <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) }}}>اضف الي طلباتي</button>}
                           </div>

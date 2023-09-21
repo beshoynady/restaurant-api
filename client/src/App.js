@@ -117,7 +117,7 @@ function App() {
 
   const additemtocart = (id) => {
     const cartitem = allProducts.filter(item => item._id === id)
-    cartitem.quantity = count 
+    cartitem.add = true
     if (itemsincart.length > 0) {
       const repeateditem = itemsincart.filter(item => item._id === id)
       if (repeateditem.length == 0) { 
@@ -148,6 +148,7 @@ function App() {
   const deleteitems = (id) => {
     const withotdeleted = itemsincart.filter(item => item._id !== id)
     const product = allProducts.find((pro,i)=>pro._id =id )
+    cartitem.add = false
     product.quantity = 0
     setitemsincart(withotdeleted);
   }
