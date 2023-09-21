@@ -117,7 +117,7 @@ function App() {
 
   const additemtocart = (id) => {
     const cartitem = allProducts.filter(item => item._id === id)
-    cartitem.add = true
+    
     if (itemsincart.length > 0) {
       const repeateditem = itemsincart.filter(item => item._id === id)
       if (repeateditem.length == 0) { 
@@ -127,10 +127,18 @@ function App() {
       setitemsincart([...cartitem])
     }
   }
+  
+  // delete item from cart by id
+    const deleteitems = (id) => {
+      const withotdeleted = itemsincart.filter(item => item._id !== id)
+      const product = allProducts.find((pro,i)=>pro._id =id )
+      product.quantity = 0
+      setitemsincart(withotdeleted);
+    }
+    
 
-
-  // Calculate costOrder of cart item
-  const [costOrder, setcostOrder] = useState(0)
+    // Calculate costOrder of cart item
+    const [costOrder, setcostOrder] = useState(0)
   const costOfOrder = () => {
     if (itemsincart.length > 0) {
       let total = 0;
@@ -142,15 +150,6 @@ function App() {
     } else {
       setcostOrder(0)
     }
-  }
-
-  // delete item from cart by id
-  const deleteitems = (id) => {
-    const withotdeleted = itemsincart.filter(item => item._id !== id)
-    const product = allProducts.find((pro,i)=>pro._id =id )
-    product.add = false
-    product.quantity = 0
-    setitemsincart(withotdeleted);
   }
 
 
