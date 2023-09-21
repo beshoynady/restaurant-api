@@ -119,7 +119,7 @@ function App() {
     const cartitem = allProducts.filter(item => item._id === id)
     if (itemsincart.length > 0) {
       const repeateditem = itemsincart.filter(item => item._id === id)
-      if (repeateditem.length == 0) {
+      if (repeateditem.length == 0) { 
         setitemsincart([...itemsincart, ...cartitem])
       }
     } else {
@@ -146,6 +146,8 @@ function App() {
   // delete item from cart by id
   const deleteitems = (id) => {
     const withotdeleted = itemsincart.filter(item => item._id !== id)
+    const product = allProducts.fill((pro,i)=>pro._id =id )
+    product.quantity = 0
     setitemsincart(withotdeleted);
   }
 
