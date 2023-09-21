@@ -1,18 +1,144 @@
-.swiper {
+.offers-section {
   width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  height: calc(100vh - 80px);
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-margin-top: 80px;
+  padding-bottom: 15px;
+  .swiper {
+    width: 100%;
+    height: 90%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+      .swiper-slide {
+        width: 280px;
+        height: 350px;
+        .offer-card{
+          width: 100%;
+          height: 100;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          border-radius: 20px 20p 0 0;
+          .offers-note{
+            width: 100%;
+            height: 30%;
+            border-radius: 20px 20p 0 0;
+            form{
+              width: 100%;
+              height: 100%;
+              background-color: white;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              >textarea{
+                  width: 95%;
+                  height: 70%;
+                  margin: 5px;
+              }
+              .note-btn{
+                  width: 100%;
+                  height: 20%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  >button{
+                      width: 45%;
+                      height: 100%;
+                      background-color:aqua;
+                      border-radius: 10px
+                  };
+              }
+          }
+          }
+          .offer-img{
+            width: 100%;
+            height: 30%;
+            border-radius: 20px 20p 0 0;
+          }
+          .offer-detalis{
+            width: 100%;
+            height: 70%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            .offer-info{
+              width: 100%;
+              height: 30%;
+              .offer-name{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+              }
+            }
+            .offer-price{
+              width: 100%;
+              height: 40%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              .p-price{
+                width: 20%;
+                height: 80%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid gray;
+              }
+              .p-counter{
+                width: 70%;
+                height: 80%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .counter-symb{
+                  width: 30%;
+                  height: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 20px;
+                }
+                .counter-num{
+                  width: 40%;
+                  height: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+              }
+              .offer-card-btn{
+                width: 100%;
+                height: 30%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .addtocart{
+                  width: 90%;
+                  height: 90%;
+                  border-radius: 15px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+              }
+            }
+          }
+        }
+      }
+  }
+
 }
 
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 300px;
-  height: 300px;
-}
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
+@media (max-width: 480px) {
+  .swiper-slide{
+    width: 85%;
+  }
 }
-
