@@ -61,7 +61,7 @@ export default function Offers() {
 
                         <div className="offer-detalis">
                           <div className='offer-info'>
-                            <div className='product-name'>
+                            <div className='p-info'>
                               <h2 className='p-name'>{product.name}</h2>
                               <span className="material-symbols-outlined note-icon" onClick={() => { setnoteArea(!noteArea); setproductid(product._id) }}>note_alt</span>
                             </div>
