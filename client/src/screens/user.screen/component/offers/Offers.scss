@@ -18,8 +18,7 @@
     .swiper-slide {
       width: 280px;
       height: 350px;
-      background-color: white;
-      border-radius: 20px 20px 0 0;
+      border-radius: 20px;
       .offer-card {
         width: 100%;
         height: 100%;
@@ -28,11 +27,11 @@
         align-items: flex-start;
         justify-content: space-between;
         background-color: white;
-        border-radius: 20px 20px 0 0;
+        border-radius: 20prgba(255, 255, 255, 0.514)x 0 0;
         position: relative;
         .offers-note {
           width: 100%;
-          height: 85%;
+          height: 40%;
           position: absolute;
           top: 0;
           left: 0;
@@ -85,7 +84,7 @@
           flex-direction: column;
           align-items: flex-start;
           justify-content: center;
-          margin: 0 5px;
+          margin: 5px;
           .offer-info {
             width: 100%;
             height: 40%;
@@ -152,7 +151,8 @@
               .counter-num {
                 width: 40%;
                 height: 100%;
-                font-size: 24px;
+                font-size: 30px;
+                font-family: 600;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -160,14 +160,17 @@
             }
 
             .p-price {
-              width: 30%;
+              width: 35%;
               height: 80%;
               font-size: 30px;
               font-weight: 600;
               display: flex;
               align-items: center;
               justify-content: center;
-              border: 1px solid gray;
+              >span{
+                text-decoration: line-through;
+                font-size: 18px;
+              }
             }
           }
 

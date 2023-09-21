@@ -42,7 +42,7 @@ export default function Offers() {
                 modules={[EffectCoverflow, Pagination]}
                 className="mySwiper"
               >
-                {allProducts.filter(pro => pro.category === categoryid).map((product, index) => {
+                {allProducts.filter(pro => pro.discount > 0).map((product, index) => {
                   return (
                     <SwiperSlide>
                       <div className="offer-card" key={index}>
@@ -73,7 +73,7 @@ export default function Offers() {
                               <div className='counter-num'>{product.quantity}</div>
                               <button className='counter-symb' onClick={() => increment(product._id)}>+</button>
                             </div>
-                            <div className='p-price'>{product.price}ج</div>
+                            <div className='p-price'>{product.price - product.discount}ج <span>{product.price}</span></div>
                           </div>
                           <div className='offer-card-btn'>
                             <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) } }}>اضف الي طلباتي</button>
