@@ -3,6 +3,7 @@
   height: calc(100vh - 80px);
   margin-top: 80px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   scroll-margin-top: 80px;
