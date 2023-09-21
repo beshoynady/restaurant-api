@@ -41,7 +41,7 @@ const MenuCard = () => {
                                     </div>
                                  </div>
                                  <div className='card-btn'>
-                                 {itemsincart.filter((pr) => pr._id == product._id) ?
+                                 {isadd == true ?
                               <button className='delfromcart' onClick={() => { if (product.quantity > 0) { deleteitems(product._id);setisadd(!isadd) } }}>احذف من الطلبات</button>
                               : <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity);setisadd(!isadd) } }}>اضف الي طلباتي</button>}
                                  </div>
