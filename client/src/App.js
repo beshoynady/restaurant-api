@@ -91,8 +91,8 @@ function App() {
 
   const increment = (id) => {
     setcount(count + 1)
-    const product = allProducts.find(product => product._id == id)
-    product.quantity += 1;
+    // const product = allProducts.find(product => product._id == id)
+    // product.quantity += 1;
     // console.log(product.quantity)
   };
 
@@ -117,6 +117,7 @@ function App() {
 
   const additemtocart = (id) => {
     const cartitem = allProducts.filter(item => item._id === id)
+    cartitem.quantity == count 
     if (itemsincart.length > 0) {
       const repeateditem = itemsincart.filter(item => item._id === id)
       if (repeateditem.length == 0) { 
