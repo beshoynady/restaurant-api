@@ -166,13 +166,27 @@
   align-items: center;
   justify-content: center;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-card-btn .addtocart {
+.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-card-btn .delcart {
   width: 90%;
   height: 95%;
+  font-size: 24px;
+  font-family: 600;
   border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgb(216, 0, 0);
+}
+.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-card-btn .addtocart {
+  width: 90%;
+  height: 95%;
+  font-size: 24px;
+  font-family: 600;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(153, 255, 0);
 }
 
 @media (max-width: 480px) {

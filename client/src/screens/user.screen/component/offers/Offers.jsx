@@ -20,7 +20,7 @@ export default function Offers() {
   return (
     <detacontext.Consumer>
       {
-        ({ allProducts, categoryid, additemtocart, increment, descrement, setproductnote, addnotrstoproduct, }) => {
+        ({ allProducts, itemsincart, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, }) => {
           return (
             <section className='offers-section'>
               <div className='section-title'>
@@ -76,7 +76,9 @@ export default function Offers() {
                             <div className='p-price'>{product.price - product.discount}ج <span>{product.price}</span></div>
                           </div>
                           <div className='offer-card-btn'>
-                            <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) } }}>اضف الي طلباتي</button>
+                            {itemsincart.filter((pr) => pr._id == product._id) ?
+                              <button className='delcart' onClick={() => { if (product.quantity > 0) { deleteitems(product._id) } }}>احذف من الطلبات</button>
+                              : <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) } }}>اضف الي طلباتي</button>}
                           </div>
                         </div>
                       </div>

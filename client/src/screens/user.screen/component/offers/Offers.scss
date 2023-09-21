@@ -180,14 +180,27 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
-            .addtocart {
+            .delcart{
               width: 90%;
               height: 95%;
+              font-size: 24px;
+              font-family: 600;
               border-radius: 15px;
               display: flex;
               align-items: center;
               justify-content: center;
+              background-color: rgb(216, 0, 0);
+            }
+            .addtocart {
+              width: 90%;
+              height: 95%;
+              font-size: 24px;
+              font-family: 600;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: rgb(153, 255, 0);
             }
           }
         }
