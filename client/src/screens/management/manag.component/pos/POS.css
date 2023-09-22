@@ -57,6 +57,7 @@
   justify-content: center;
   margin: 5px;
   border: 2px solid whitesmoke;
+  background-color: rgb(24, 24, 24);
   cursor: pointer;
 }
 .pos-section .pos-menu .pos-card .pos-img-card {
@@ -112,6 +113,38 @@
   height: 100%;
   border: 2px solid rgb(255, 255, 255);
   background-color: gray;
+  position: relative;
+}
+.pos-section .pos-cart .pos-note {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0px;
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.pos-section .pos-cart .pos-note > textarea {
+  width: 95%;
+  height: 70%;
+  margin: 5px;
+}
+.pos-section .pos-cart .pos-note .note-btn {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pos-section .pos-cart .pos-note .note-btn > button {
+  width: 45%;
+  height: 100%;
+  background-color: aqua;
+  border-radius: 10px;
 }
 .pos-section .pos-cart .pos-cart-item {
   width: 100%;
@@ -121,7 +154,7 @@
   align-items: center;
   justify-content: flex-start;
   background-color: white;
-  border-bottom: gray;
+  border-bottom: 2px solid gray;
 }
 .pos-section .pos-cart .pos-cart-item .cart-item-name {
   width: 100%;
@@ -182,7 +215,8 @@
   width: 35%;
   height: 100%;
   font-size: 20px;
-  background-color: firebrick;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
 }
 .pos-section .pos-cart .pos-cart-item .item-cost .pos-card-counter .counter-num {
   display: inline-block;

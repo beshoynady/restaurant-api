@@ -56,6 +56,7 @@
             justify-content: center;
             margin: 5px;
             border: 2px solid whitesmoke;
+            background-color: rgb(24, 24, 24);
             cursor: pointer;
             .pos-img-card{
                 width: 100%;
@@ -118,6 +119,38 @@
         height: 100%;
         border: 2px solid rgb(255, 255, 255);
         background-color: gray;
+        position: relative;
+        .pos-note{
+            position:absolute ;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: 0px;
+            border-radius: 20px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            >textarea{
+                width: 95%;
+                height: 70%;
+                margin: 5px;
+            }
+            .note-btn{
+                width: 100%;
+                height: 20%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                >button{
+                    width: 45%;
+                    height: 100%;
+                    background-color:aqua;
+                    border-radius: 10px
+                };
+            }
+        }
         .pos-cart-item{
             width: 100%;
             height: 100px;
@@ -126,7 +159,7 @@
             align-items: center;
             justify-content: flex-start;
             background-color: white;
-            border-bottom: gray;
+            border-bottom: 2px solid gray;
             .cart-item-name{
                 width: 100%;
                 height: 40%;
@@ -186,7 +219,8 @@
                         width: 35%;
                         height: 100%;
                         font-size: 20px;
-                        background-color: firebrick;
+                        background-color: rgb(255, 255, 255);
+                        border-radius: 10px;
                     }
                     .counter-num{
                         display: inline-block;

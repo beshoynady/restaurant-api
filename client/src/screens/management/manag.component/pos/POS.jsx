@@ -104,8 +104,7 @@ const POS = () => {
                           {itemsincart.map((i, index) => {
                             return (
                               <div className="pos-cart-item" key={index}>
-                                <></>
-                                {i._id == productid & noteArea == true ? <form onSubmit={(e) => { addnotrstoproduct(e, i._id);; setnoteArea(!noteArea) }}>
+                                {i._id == productid & noteArea == true ? <form className='pos-note' onSubmit={(e) => { addnotrstoproduct(e, i._id);; setnoteArea(!noteArea) }}>
                         <textarea placeholder='اضف تعليماتك الخاصة بهذا الطبق' name="note" cols="100" rows="3" onChange={(e) => { setproductnote(e.target.value) }}></textarea>
                         <div className='note-btn'>
                           <button>تاكيد</button>
@@ -124,7 +123,7 @@ const POS = () => {
                                     <span className='counter-num'>{i.quantity}</span>
                                     <button className='counter-symb' onClick={() => increment(i._id)}>+</button>
                                   </div>
-                                  <div className='item-subprice'>{i.price * i.quantity}</div>
+                                  <div className='item-subprice'>{i.price * i.quantity} ج</div>
                                 </div>
                                 {i.notes ? <div className='pos-cart-note'>{i.notes}</div> : ''}
                               </div>
