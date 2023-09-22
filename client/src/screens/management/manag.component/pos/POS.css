@@ -115,7 +115,7 @@
   background-color: gray;
   position: relative;
 }
-.pos-section .pos-cart .pos-note {
+.pos-section .pos-cart .pos-note-text {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -128,19 +128,19 @@
   align-items: center;
   justify-content: center;
 }
-.pos-section .pos-cart .pos-note > textarea {
+.pos-section .pos-cart .pos-note-text > textarea {
   width: 95%;
   height: 70%;
   margin: 5px;
 }
-.pos-section .pos-cart .pos-note .note-btn {
+.pos-section .pos-cart .pos-note-text .note-btn {
   width: 100%;
   height: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.pos-section .pos-cart .pos-note .note-btn > button {
+.pos-section .pos-cart .pos-note-text .note-btn > button {
   width: 45%;
   height: 100%;
   background-color: aqua;

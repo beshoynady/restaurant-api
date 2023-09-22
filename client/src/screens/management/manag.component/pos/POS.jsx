@@ -49,11 +49,10 @@ const POS = () => {
                     <div className="pos-card" key={index} onClick={() => additemtocart(product._id)}>
                       <img className='pos-img-card' src={`https://raw.githubusercontent.com/beshoynady/restaurant-api/main/server/images/${product.image}`} alt="" />
                       <div className="pos-card-detalis">
-                        {/* <div className='pos-card-head'> */}
                         <div className='card-name'>
                           <div className='product-name'>{product.name}</div>
                           <div className='product-price'>{product.price}ج</div>
-                          {/* <span className="material-symbols-outlined card-note" onClick={() => { setnoteArea(!noteArea); setproductid(product._id) }}>note_alt</span> */}
+
                         </div>
                         <div className='card-discription'>{product.description}</div>
 
@@ -104,7 +103,7 @@ const POS = () => {
                           {itemsincart.map((i, index) => {
                             return (
                               <div className="pos-cart-item" key={index}>
-                                {i._id == productid & noteArea == true ? <form className='pos-note' onSubmit={(e) => { addnotrstoproduct(e, i._id);; setnoteArea(!noteArea) }}>
+                                {i._id == productid & noteArea == true ? <form className='pos-note-text' onSubmit={(e) => { addnotrstoproduct(e, i._id);; setnoteArea(!noteArea) }}>
                         <textarea placeholder='اضف تعليماتك الخاصة بهذا الطبق' name="note" cols="100" rows="3" onChange={(e) => { setproductnote(e.target.value) }}></textarea>
                         <div className='note-btn'>
                           <button>تاكيد</button>
