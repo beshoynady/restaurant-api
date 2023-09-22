@@ -51,7 +51,7 @@ export default function Offers() {
                         {product._id == productid & noteArea == true ?
                           <div className='offers-note'>
                             <form onSubmit={(e) => { addnotrstoproduct(e, product._id);; setnoteArea(!noteArea) }}>
-                              <textarea name="note" cols="100" rows="3" onChange={(e) => { setproductnote(e.target.value) }}></textarea>
+                              <textarea placeholder='اضف تعليماتك الخاصة بهذا الطبق ' name="note" cols="100" rows="3" onChange={(e) => { setproductnote(e.target.value) }}></textarea>
                               <div className='note-btn'>
                                 <button>تاكيد</button>
                                 <button onClick={() => setnoteArea(!noteArea)}>الغاء</button>
