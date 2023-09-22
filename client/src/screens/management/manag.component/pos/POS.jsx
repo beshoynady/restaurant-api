@@ -63,7 +63,7 @@ const POS = () => {
                             <p className='product-price'>{product.price}ج</p>
                             {/* <span className="material-symbols-outlined card-note" onClick={() => { setnoteArea(!noteArea); setproductid(product._id) }}>note_alt</span> */}
                           </div>
-                          <p className='card-discription'>{product.description}</p>
+                          <div className='card-discription'>{product.description}</div>
                         {/* </div> */}
                         {/* <div className="card-price">
                           <p>{product.price}ج</p>
@@ -77,8 +77,8 @@ const POS = () => {
                         {/* <button className='addtocart-btn' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) } }}>اضف الي طلباتي</button> */}
 
                           {itemid.filter((i) => i == product._id).length > 0 && product.quantity > 0 ?
-                            <button className='delfromcart' onClick={() => { deleteitems(product._id); setitemid(itemid.filter((i) => i !== product._id)) }}>احذف من الطلبات</button>
-                            : <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) }; setitemid([...itemid, product._id]) }}>اضف الي طلباتي</button>} 
+                            <button className='delete-item' onClick={() => { deleteitems(product._id); setitemid(itemid.filter((i) => i !== product._id)) }}>احذف من الطلبات</button>
+                            : <button className='add-item' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) }; setitemid([...itemid, product._id]) }}>اضف الي طلباتي</button>} 
                         </div>
                       </div>
                     </div>
