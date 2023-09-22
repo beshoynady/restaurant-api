@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom'
 const SideBar = () => {
   const menuitem = [
     { title: 'الرئسيه', sideitem: 'dashboard', icon: "dashboard" },
+    { title: 'POS', sideitem: 'pos', icon: "point_of_sale" },
+    { title: 'الويتر', sideitem: 'waiter', icon: "directions_run" },
+    { title: 'المطبخ', sideitem: 'kitchen', icon: "set_meal" },
     { title: 'الطلبات', sideitem: 'orders', icon: "list_alt" },
     { title: 'التصنيفات', sideitem: 'category', icon: "category" },
     { title: 'المنتجات', sideitem: 'products', icon: "restaurant" },
     { title: 'الطاولة', sideitem: 'tables', icon: "table_restaurant" },
     { title: 'الموظفين', sideitem: 'employees', icon: "group_add" },
-    { title: 'المطبخ', sideitem: 'kitchen', icon: "set_meal" },
-    { title: 'الويتر', sideitem: 'waiter', icon: "directions_run" },
-    { title: 'POS', sideitem: 'pos', icon: "directions_run" },
   ]
 
 
