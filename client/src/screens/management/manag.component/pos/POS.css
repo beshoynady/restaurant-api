@@ -2,6 +2,7 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: row-reverse;
   align-items: flex-start;
   justify-content: space-between;
   background-color: rgb(56, 56, 56);
@@ -42,6 +43,26 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+}
+.pos-section .pos-menu .pos-cart {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border: 2px solid whitesmoke;
+}
+.pos-section .pos-menu .pos-cart .pos-img-card {
+  width: 100%;
+  height: 40%;
+}
+.pos-section .pos-menu .pos-cart .pos-card-detalis {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .pos-section .pos-cart {
   display: none;
