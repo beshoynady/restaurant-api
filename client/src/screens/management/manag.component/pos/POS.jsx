@@ -46,7 +46,7 @@ const POS = () => {
               <div className='pos-menu'>
                 {allProducts.filter(pro => pro.category === categoryid).map((product, index) => {
                   return (
-                    <div className="pos-card" key={index}>
+                    <div className="pos-card" key={index} onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) }}}>
                       <img className='pos-img-card' src={`https://raw.githubusercontent.com/beshoynady/restaurant-api/main/server/images/${product.image}`} alt="" />
                       {product._id == productid & noteArea == true ? <form onSubmit={(e) => { addnotrstoproduct(e, product._id);; setnoteArea(!noteArea) }}>
                         <textarea placeholder='اضف تعليماتك الخاصة بهذا الطبق' name="note" cols="100" rows="3" onChange={(e) => { setproductnote(e.target.value) }}></textarea>
@@ -76,9 +76,9 @@ const POS = () => {
                         <div className='pos-btn'>
                         {/* <button className='addtocart-btn' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) } }}>اضف الي طلباتي</button> */}
 
-                          {itemid.filter((i) => i == product._id).length > 0 && product.quantity > 0 ?
+                          {/* {itemid.filter((i) => i == product._id).length > 0 && product.quantity > 0 ?
                             <button className='delete-item' onClick={() => { deleteitems(product._id); setitemid(itemid.filter((i) => i !== product._id)) }}>احذف من الطلبات</button>
-                            : <button className='add-item' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) }; setitemid([...itemid, product._id]) }}>اضف الي طلباتي</button>} 
+                            : <button className='add-item' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) }; setitemid([...itemid, product._id]) }}>اضف الي طلباتي</button>}  */}
                         </div>
                       </div>
                     </div>
