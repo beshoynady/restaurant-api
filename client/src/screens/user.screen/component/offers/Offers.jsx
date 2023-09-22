@@ -23,7 +23,7 @@ export default function Offers() {
       {
         ({ allProducts, itemsincart, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, }) => {
           return (
-            <section className='offers-section'>
+            <section id='offers-section'>
               <div className='section-title'>
                 <h2>OFFERS</h2>
               </div>

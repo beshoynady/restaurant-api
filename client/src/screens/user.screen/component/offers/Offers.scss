@@ -1,4 +1,4 @@
-.offers-section {
+#offers-section {
   width: 100%;
   height: calc(100vh - 80px);
   margin-top: 80px;
@@ -8,13 +8,11 @@
   justify-content: center;
   scroll-margin-top: 80px;
   padding-bottom: 15px;
-
   .swiper {
     width: 100%;
     height: 90%;
     padding-top: 50px;
     padding-bottom: 50px;
-
     .swiper-slide {
       width: 280px;
       height: 350px;
@@ -51,7 +49,6 @@
               height: 70%;
               margin: 5px;
             }
-
             .note-btn {
               width: 100%;
               height: 25%;

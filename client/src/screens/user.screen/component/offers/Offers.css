@@ -1,4 +1,4 @@
-.offers-section {
+#offers-section {
   width: 100%;
   height: calc(100vh - 80px);
   margin-top: 80px;
@@ -9,18 +9,18 @@
   scroll-margin-top: 80px;
   padding-bottom: 15px;
 }
-.offers-section .swiper {
+#offers-section .swiper {
   width: 100%;
   height: 90%;
   padding-top: 50px;
   padding-bottom: 50px;
 }
-.offers-section .swiper .swiper-slide {
+#offers-section .swiper .swiper-slide {
   width: 280px;
   height: 350px;
   border-radius: 20px;
 }
-.offers-section .swiper .swiper-slide .offer-card {
+#offers-section .swiper .swiper-slide .offer-card {
   width: 100%;
   height: 100%;
   display: flex;
@@ -31,7 +31,7 @@
   border-radius: 20px;
   position: relative;
 }
-.offers-section .swiper .swiper-slide .offer-card .offers-note {
+#offers-section .swiper .swiper-slide .offer-card .offers-note {
   width: 100%;
   height: 40%;
   position: absolute;
@@ -39,7 +39,7 @@
   left: 0;
   border-radius: 20px 20p 0 0;
 }
-.offers-section .swiper .swiper-slide .offer-card .offers-note form {
+#offers-section .swiper .swiper-slide .offer-card .offers-note form {
   width: 100%;
   height: 100%;
   background-color: white;
@@ -48,30 +48,30 @@
   align-items: center;
   justify-content: center;
 }
-.offers-section .swiper .swiper-slide .offer-card .offers-note form > textarea {
+#offers-section .swiper .swiper-slide .offer-card .offers-note form > textarea {
   width: 95%;
   height: 70%;
   margin: 5px;
 }
-.offers-section .swiper .swiper-slide .offer-card .offers-note form .note-btn {
+#offers-section .swiper .swiper-slide .offer-card .offers-note form .note-btn {
   width: 100%;
   height: 25%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.offers-section .swiper .swiper-slide .offer-card .offers-note form .note-btn > button {
+#offers-section .swiper .swiper-slide .offer-card .offers-note form .note-btn > button {
   width: 45%;
   height: 100%;
   background-color: aqua;
   border-radius: 10px;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-img {
+#offers-section .swiper .swiper-slide .offer-card .offer-img {
   width: 100%;
   height: 40%;
   border-radius: 20px 20px 0 0;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis {
   width: 95%;
   height: 60%;
   display: flex;
@@ -80,7 +80,7 @@
   justify-content: center;
   margin: 5px;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-info {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-info {
   width: 100%;
   height: 40%;
   display: flex;
@@ -88,23 +88,23 @@
   align-items: flex-start;
   justify-content: center;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-info .p-info {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-info .p-info {
   width: 100%;
   height: 50%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-info .p-info .p-name {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-info .p-info .p-name {
   font-size: 24px;
   font-weight: 600;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-info .p-info .note-icon {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-info .p-info .note-icon {
   font-size: 45px;
   color: red;
   cursor: pointer;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-info .offer-description {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-info .offer-description {
   width: 100%;
   height: 50%;
   display: flex;
@@ -114,21 +114,21 @@
   font-weight: 500;
   padding: 5px 0;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-price {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-price {
   width: 100%;
   height: 35%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-price .p-counter {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-price .p-counter {
   width: 60%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-price .p-counter .counter-symb {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-price .p-counter .counter-symb {
   width: 35%;
   height: 80%;
   font-size: 25px;
@@ -137,7 +137,7 @@
   justify-content: center;
   border-radius: 20px;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-price .p-counter .counter-num {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-price .p-counter .counter-num {
   width: 30%;
   height: 100%;
   font-size: 30px;
@@ -146,7 +146,7 @@
   align-items: center;
   justify-content: center;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-price .p-price {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-price .p-price {
   width: 35%;
   height: 80%;
   font-size: 30px;
@@ -155,18 +155,18 @@
   align-items: center;
   justify-content: center;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-price .p-price > span {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-price .p-price > span {
   text-decoration: line-through;
   font-size: 18px;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-card-btn {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-card-btn {
   width: 100%;
   height: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-card-btn .delcart {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-card-btn .delcart {
   width: 90%;
   height: 95%;
   font-size: 24px;
@@ -177,7 +177,7 @@
   justify-content: center;
   background-color: rgb(216, 0, 0);
 }
-.offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-card-btn .addtocart {
+#offers-section .swiper .swiper-slide .offer-card .offer-detalis .offer-card-btn .addtocart {
   width: 90%;
   height: 95%;
   font-size: 24px;
