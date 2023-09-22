@@ -48,14 +48,6 @@ const POS = () => {
                   return (
                     <div className="pos-card" key={index} onClick={() => additemtocart(product._id)}>
                       <img className='pos-img-card' src={`https://raw.githubusercontent.com/beshoynady/restaurant-api/main/server/images/${product.image}`} alt="" />
-                      {product._id == productid & noteArea == true ? <form onSubmit={(e) => { addnotrstoproduct(e, product._id);; setnoteArea(!noteArea) }}>
-                        <textarea placeholder='اضف تعليماتك الخاصة بهذا الطبق' name="note" cols="100" rows="3" onChange={(e) => { setproductnote(e.target.value) }}></textarea>
-                        <div className='note-btn'>
-                          <button>تاكيد</button>
-                          <button onClick={() => setnoteArea(!noteArea)}>الغاء</button>
-                        </div>
-                      </form> : ''}
-
                       <div className="pos-card-detalis">
                         {/* <div className='pos-card-head'> */}
                         <div className='card-name'>
@@ -112,19 +104,26 @@ const POS = () => {
                           {itemsincart.map((i, index) => {
                             return (
                               <div className="pos-cart-item" key={index}>
+                                {i._id == productid & noteArea == true ? <form onSubmit={(e) => { addnotrstoproduct(e, i._id);; setnoteArea(!noteArea) }}>
+                        <textarea placeholder='اضف تعليماتك الخاصة بهذا الطبق' name="note" cols="100" rows="3" onChange={(e) => { setproductnote(e.target.value) }}></textarea>
+                        <div className='note-btn'>
+                          <button>تاكيد</button>
+                          <button onClick={() => setnoteArea(!noteArea)}>الغاء</button>
+                        </div>
+                      </form> : ''}
                                 <div className='cart-item-name'>
-                                  <div>{i.name}</div>
-                                  <span className="material-symbols-outlined card-note" onClick={() => { setnoteArea(!noteArea); setproductid(i._id) }}>note_alt</span>
+                                  <div className='pod-item-name'>{i.name}</div>
+                                  <span className="material-symbols-outlined pos-note" onClick={() => { setnoteArea(!noteArea); setproductid(i._id) }}>note_alt</span>
                                   <button onClick={() => deleteitems(i._id)}>حذف</button>
                                 </div>
                                 <div className="item-cost">
                                   <div className='item-price'>{i.price} ج</div>
                                   <div className="pos-card-counter">
-                                    <button className='symb' onClick={() => descrement(i._id)}>-</button>
-                                    <span className='num'>{i.quantity}</span>
-                                    <button className='symb' onClick={() => increment(i._id)}>+</button>
+                                    <button className='counter-symb' onClick={() => descrement(i._id)}>-</button>
+                                    <span className='counter-num'>{i.quantity}</span>
+                                    <button className='counter-symb' onClick={() => increment(i._id)}>+</button>
                                   </div>
-                                  <div>{i.price * i.quantity}</div>
+                                  <div className='item-subprice'>{i.price * i.quantity}</div>
                                 </div>
                                 {i.notes ? <div className='pos-cart-note'>{i.notes}</div> : ''}
                               </div>
