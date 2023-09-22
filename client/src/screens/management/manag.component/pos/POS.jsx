@@ -37,8 +37,8 @@ const POS = () => {
             <div className='pos-section'>
               <nav className='pos-category'>
                 <ul className='category-ul'>
-                  {allcategories.map((c, i) => <li key={i} className='category-li'>
-                    <a className='category-pos-btn' onClick={() => setcategoryid(c._id)}>{c.name}</a>
+                  {allcategories.map((c, i) => <li key={i} className='category-li' onClick={() => setcategoryid(c._id)}>
+                    <a className='category-pos-btn'>{c.name}</a>
                   </li>
                   )}
                 </ul>
@@ -104,12 +104,12 @@ const POS = () => {
                             return (
                               <div className="pos-cart-item" key={index}>
                                 {i._id == productid & noteArea == true ? <form className='pos-note-text' onSubmit={(e) => { addnotrstoproduct(e, i._id);; setnoteArea(!noteArea) }}>
-                        <textarea placeholder='اضف تعليماتك الخاصة بهذا الطبق' name="note" cols="100" rows="3" onChange={(e) => { setproductnote(e.target.value) }}></textarea>
-                        <div className='note-btn'>
-                          <button>تاكيد</button>
-                          <button onClick={() => setnoteArea(!noteArea)}>الغاء</button>
-                        </div>
-                      </form> : ''}
+                                  <textarea placeholder='اضف تعليماتك الخاصة بهذا الطبق' name="note" cols="100" rows="3" onChange={(e) => { setproductnote(e.target.value) }}></textarea>
+                                  <div className='note-btn'>
+                                    <button>تاكيد</button>
+                                    <button onClick={() => setnoteArea(!noteArea)}>الغاء</button>
+                                  </div>
+                                </form> : ''}
                                 <div className='cart-item-name'>
                                   <div className='pod-item-name'>{i.name}</div>
                                   <span className="material-symbols-outlined pos-note" onClick={() => { setnoteArea(!noteArea); setproductid(i._id) }}>note_alt</span>
@@ -132,7 +132,7 @@ const POS = () => {
                         </div>
                         <div className="total-order">
 
-                        <button className='total-order-btn' onClick={() => createclientorder(userlogininfo.id)}>تاكيد الطلب</button>
+                          <button className='total-order-btn' onClick={() => createclientorder(userlogininfo.id)}>تاكيد الطلب</button>
 
                           <div className='total-order-details'>
                             <h2>المجموع</h2>

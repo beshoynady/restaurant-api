@@ -56,7 +56,7 @@
             justify-content: center;
             margin: 5px;
             border: 2px solid whitesmoke;
-            background-color: rgb(24, 24, 24);
+            background-color: rgb(46, 46, 46);
             cursor: pointer;
             .pos-img-card{
                 width: 100%;
@@ -148,7 +148,7 @@
                 }
                 .note-btn{
                     width: 100%;
-                    height: 20%;
+                    height: 30%;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -221,6 +221,9 @@
                         font-size: 20px;
                         background-color: rgb(255, 255, 255);
                         border-radius: 10px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                     }
                     .counter-num{
                         display: inline-block;
@@ -247,6 +250,8 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                font-size: 14;
+                color: rgb(29, 29, 255);
             }
 
         }

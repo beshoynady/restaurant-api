@@ -57,7 +57,7 @@
   justify-content: center;
   margin: 5px;
   border: 2px solid whitesmoke;
-  background-color: rgb(24, 24, 24);
+  background-color: rgb(46, 46, 46);
   cursor: pointer;
 }
 .pos-section .pos-menu .pos-card .pos-img-card {
@@ -145,7 +145,7 @@
 }
 .pos-section .pos-cart .pos-cart-item .pos-note-text .note-btn {
   width: 100%;
-  height: 20%;
+  height: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -217,6 +217,9 @@
   font-size: 20px;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .pos-section .pos-cart .pos-cart-item .item-cost .pos-card-counter .counter-num {
   display: inline-block;
@@ -240,4 +243,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 14;
+  color: rgb(29, 29, 255);
 }/*# sourceMappingURL=POS.css.map */
