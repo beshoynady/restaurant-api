@@ -43,6 +43,7 @@ export default function Offers() {
                 modules={[EffectCoverflow, Pagination]}
                 className="mySwiper"
               >
+                
                 {allProducts.filter(pro => pro.discount > 0).map((product, index) => {
                   return (
                     <SwiperSlide>
