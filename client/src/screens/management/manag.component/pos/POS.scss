@@ -56,11 +56,11 @@
             border: 2px solid whitesmoke;
             .pos-img-card{
                 width: 100%;
-                height: 40%;
+                height: 50%;
             }
             .pos-card-detalis{
                 width: 100%;
-                height: 60%;
+                height: 50%;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
@@ -68,7 +68,7 @@
                 margin: 2px;
                     .card-name{
                         width: 100%;
-                        height: 40%;
+                        height: 60%;
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
@@ -94,7 +94,7 @@
                     }
                     .card-discription{
                         width: 100%;
-                        height: 20%;
+                        height: 40%;
                         font-size: 16px;
                         color: white;
                         display: flex;

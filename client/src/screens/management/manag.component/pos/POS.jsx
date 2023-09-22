@@ -46,7 +46,7 @@ const POS = () => {
               <div className='pos-menu'>
                 {allProducts.filter(pro => pro.category === categoryid).map((product, index) => {
                   return (
-                    <div className="pos-card" key={index} onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) }}}>
+                    <div className="pos-card" key={index} onClick={() => additemtocart(product._id) }>
                       <img className='pos-img-card' src={`https://raw.githubusercontent.com/beshoynady/restaurant-api/main/server/images/${product.image}`} alt="" />
                       {product._id == productid & noteArea == true ? <form onSubmit={(e) => { addnotrstoproduct(e, product._id);; setnoteArea(!noteArea) }}>
                         <textarea placeholder='اضف تعليماتك الخاصة بهذا الطبق' name="note" cols="100" rows="3" onChange={(e) => { setproductnote(e.target.value) }}></textarea>
