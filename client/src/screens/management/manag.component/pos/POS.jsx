@@ -87,7 +87,6 @@ const POS = () => {
                 )}
               </div>
               <div className='pos-cart'>
-                <div className='cart-section' style={ { 'display': 'flex' }}>
                   <div className="cart-wrapper">
                     <div className="title-text">
                       <div ref={ordersText} className="title order">
@@ -250,7 +249,6 @@ const POS = () => {
                       </div>
                     </div>
                   </div>
-                </div>
               </div>
             </div>
           )
