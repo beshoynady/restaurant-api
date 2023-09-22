@@ -118,21 +118,21 @@
   height: 100px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-start;
   background-color: white;
   border-bottom: gray;
 }
 .pos-section .pos-cart .pos-cart-item .cart-item-name {
   width: 100%;
-  height: 30%;
+  height: 40%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 5px;
 }
 .pos-section .pos-cart .pos-cart-item .cart-item-name .pod-item-name {
-  width: 30%;
+  width: 50%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -140,18 +140,17 @@
   font-size: 20px;
 }
 .pos-section .pos-cart .pos-cart-item .cart-item-name .pos-note {
-  display: inline-block;
-  width: 40%;
+  width: 30%;
   height: 100%;
-  font-size: 25px;
-  color: red;
+  font-size: 40px;
+  color: rgb(0, 238, 255);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .pos-section .pos-cart .pos-cart-item .cart-item-name > button {
-  width: 30%;
-  height: 80%;
+  width: 20%;
+  height: 100%;
   background-color: red;
   color: white;
 }
@@ -164,7 +163,7 @@
   padding: 5px;
 }
 .pos-section .pos-cart .pos-cart-item .item-cost .item-price {
-  width: 30%;
+  width: 25%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -172,7 +171,7 @@
   font-size: 20px;
 }
 .pos-section .pos-cart .pos-cart-item .item-cost .pos-card-counter {
-  width: 40%;
+  width: 50%;
   height: 100%;
   font-size: 25px;
   display: flex;
@@ -180,20 +179,21 @@
   justify-content: space-between;
 }
 .pos-section .pos-cart .pos-cart-item .item-cost .pos-card-counter .counter-symb {
-  width: 30%;
-  height: 90%;
+  width: 35%;
+  height: 100%;
   font-size: 20px;
+  background-color: firebrick;
 }
 .pos-section .pos-cart .pos-cart-item .item-cost .pos-card-counter .counter-num {
   display: inline-block;
-  width: 40%;
-  height: 90%;
-  font-size: 24px;
+  width: 30%;
+  height: 100%;
+  font-size: 21px;
   text-align: center;
 }
 .pos-section .pos-cart .pos-cart-item .item-cost .item-subprice {
-  width: 30%;
-  height: 80%;
+  width: 25%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

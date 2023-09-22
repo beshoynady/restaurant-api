@@ -104,6 +104,7 @@ const POS = () => {
                           {itemsincart.map((i, index) => {
                             return (
                               <div className="pos-cart-item" key={index}>
+                                <></>
                                 {i._id == productid & noteArea == true ? <form onSubmit={(e) => { addnotrstoproduct(e, i._id);; setnoteArea(!noteArea) }}>
                         <textarea placeholder='اضف تعليماتك الخاصة بهذا الطبق' name="note" cols="100" rows="3" onChange={(e) => { setproductnote(e.target.value) }}></textarea>
                         <div className='note-btn'>
