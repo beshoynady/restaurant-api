@@ -1,0 +1,23 @@
+.pos-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.pos-section .pos-category {
+  width: 150px;
+  height: 100%;
+}
+.pos-section .pos-menu {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.pos-section .pos-cart {
+  width: 30%;
+  height: 100%;
+}/*# sourceMappingURL=POS.css.map */
