@@ -2,7 +2,7 @@ import React, { useState,useRef } from 'react'
 import { detacontext } from '../../../../App'
 import { useParams } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
-
+import './POS.css'
 
 const POS = () => {
   const ordersText = useRef()
