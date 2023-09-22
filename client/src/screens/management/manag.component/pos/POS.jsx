@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useRef } from 'react'
 import { detacontext } from '../../../../App'
 import { useParams } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
@@ -74,10 +74,9 @@ const POS = () => {
                         <div className='card-btn'>
                         <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) } }}>اضف الي طلباتي</button>
 
-
-                          {/*  */}{itemid.filter((i) => i == product._id).length > 0 && product.quantity > 0 ?
+                          {/* {itemid.filter((i) => i == product._id).length > 0 && product.quantity > 0 ?
                             <button className='delfromcart' onClick={() => { deleteitems(product._id); setitemid(itemid.filter((i) => i !== product._id)) }}>احذف من الطلبات</button>
-                            : <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) }; setitemid([...itemid, product._id]) }}>اضف الي طلباتي</button>}
+                            : <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) }; setitemid([...itemid, product._id]) }}>اضف الي طلباتي</button>} */}
                         </div>
                       </div>
                     </div>
