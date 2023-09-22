@@ -6,6 +6,7 @@
     align-items: flex-start;
     justify-content: space-between;
     background-color: rgb(56, 56, 56);
+    overflow: hidden;
     .pos-category{
         width: 150px;
         height: 100%;
@@ -45,6 +46,7 @@
         align-items: flex-start;
         justify-content: space-between;
         margin: 5px;
+        overflow-y: auto;
         .pos-card{
             width: 180px;
             height: 180px;
@@ -54,6 +56,7 @@
             justify-content: center;
             margin: 5px;
             border: 2px solid whitesmoke;
+            cursor: pointer;
             .pos-img-card{
                 width: 100%;
                 height: 50%;
@@ -100,33 +103,9 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                        text-align: center;
                     }
-                    // .pos-btn{
-                    //     width: 100%;
-                    //     height: 40%;
-                    //     display: flex;
-                    //     align-items: center;
-                    //     justify-content: center;
-                    //     margin: 2px;
-                    //     .add-item{
-                    //         width: 95%;
-                    //         height: 100%;
-                    //         display: flex;
-                    //         align-items: center;
-                    //         justify-content: center;
-                    //         font-size: 18px;
-                    //         background-color: greenyellow;
-                    //     }
-                    //     .delete-item{
-                    //         width: 95%;
-                    //         height: 100%;
-                    //         display: flex;
-                    //         align-items: center;
-                    //         justify-content: center;
-                    //         font-size: 18px;
-                    //         background-color: rgb(207, 0, 0);
-                    //     }
-                    // }
+
                 }
             }
         }
@@ -138,5 +117,22 @@
         width: 30%;
         height: 100%;
         border: 2px solid gold;
+        .pos-cart-item{
+            width: 100%;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            .cart-item-name{
+                width: 100%;
+                height: 30%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 5px;
+            }
+
+        }
     }
 }

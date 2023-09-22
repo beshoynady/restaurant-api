@@ -6,6 +6,7 @@
   align-items: flex-start;
   justify-content: space-between;
   background-color: rgb(56, 56, 56);
+  overflow: hidden;
 }
 .pos-section .pos-category {
   width: 150px;
@@ -45,6 +46,7 @@
   align-items: flex-start;
   justify-content: space-between;
   margin: 5px;
+  overflow-y: auto;
 }
 .pos-section .pos-menu .pos-card {
   width: 180px;
@@ -55,6 +57,7 @@
   justify-content: center;
   margin: 5px;
   border: 2px solid whitesmoke;
+  cursor: pointer;
 }
 .pos-section .pos-menu .pos-card .pos-img-card {
   width: 100%;
@@ -102,9 +105,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 .pos-section .pos-cart {
   width: 30%;
   height: 100%;
   border: 2px solid gold;
+}
+.pos-section .pos-cart .pos-cart-item {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.pos-section .pos-cart .pos-cart-item .cart-item-name {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
 }/*# sourceMappingURL=POS.css.map */
