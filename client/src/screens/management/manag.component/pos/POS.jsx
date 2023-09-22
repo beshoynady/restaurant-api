@@ -114,7 +114,7 @@ const POS = () => {
                               <div className="pos-cart-item" key={index}>
                                 <div className='cart-item-name'>
                                   <div>{i.name}</div>
-                                  <span className="material-symbols-outlined card-note" onClick={() => { setnoteArea(!noteArea); setproductid(product._id) }}>note_alt</span>
+                                  <span className="material-symbols-outlined card-note" onClick={() => { setnoteArea(!noteArea); setproductid(i._id) }}>note_alt</span>
                                   <button onClick={() => deleteitems(i._id)}>حذف</button>
                                 </div>
                                 <div className="item-cost">
