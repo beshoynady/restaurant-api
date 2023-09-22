@@ -33,19 +33,18 @@ const POS = () => {
         ({allProducts, allcategories,userlogininfo, setcategoryid, filterByCategoryId, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, createclientorder, invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
           return (
             <div className='pos-section'>
-              <div className='pos-category'>
-                <nav className="menu-nav">
-                  <ul className='menu-ul'>
-                    {allcategories.map((c, i) => <li key={i} className='menu-nav-li'>
-                      <a className='category-btn' onClick={() => setcategoryid(c._id)}>{c.name}</a>
-                    </li>)}
+              <nav className='pos-category'>
+                  <ul className='category-ul'>
+                    {allcategories.map((c, i) => <li key={i} className='category-li'>
+                      <a className='category-pos-btn' onClick={() => setcategoryid(c._id)}>{c.name}</a>
+                    </li>
+                    )}
                   </ul>
-                </nav>
-              </div>
+              </nav>
               <div className='pos-menu'>
                 {allProducts.filter(pro => pro.category === categoryid).map((product, index) => {
                   return (
-                    <div className="menu-card" key={index}>
+                    <div className="pos-card" key={index}>
                       {/* <img className='img-card' src={`https://raw.githubusercontent.com/beshoynady/restaurant-api/main/server/images/${product.image}`} alt="" /> */}
                       {/* {product._id == productid & noteArea == true ? <form onSubmit={(e) => { addnotrstoproduct(e, product._id);; setnoteArea(!noteArea) }}>
                         <textarea placeholder='اضف تعليماتك الخاصة بهذا الطبق' name="note" cols="100" rows="3" onChange={(e) => { setproductnote(e.target.value) }}></textarea>
