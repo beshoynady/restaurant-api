@@ -46,11 +46,12 @@
 }
 .pos-section .pos-menu .pos-card {
   width: 100px;
-  height: 100px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  margin: 5px;
   border: 2px solid whitesmoke;
 }
 .pos-section .pos-menu .pos-card .pos-img-card {
@@ -60,6 +61,35 @@
 .pos-section .pos-menu .pos-card .pos-card-detalis {
   width: 100%;
   height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+}
+.pos-section .pos-menu .pos-card .pos-card-detalis .card-name {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pos-section .pos-menu .pos-card .pos-card-detalis .card-name .product-name {
+  width: 60%;
+  height: 100%;
+  font-size: 20px;
+}
+.pos-section .pos-menu .pos-card .pos-card-detalis .card-name .product-price {
+  width: 40%;
+  height: 100%;
+  font-size: 30px;
+}
+.pos-section .pos-menu .pos-card .pos-card-detalis .card-discription {
+  width: 100%;
+  height: 30%;
+}
+.pos-section .pos-menu .pos-card .pos-card-detalis .pos-btn {
+  width: 100%;
+  height: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
