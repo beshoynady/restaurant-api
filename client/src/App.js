@@ -117,7 +117,9 @@ function App() {
   const [itemsincart, setitemsincart] = useState([])
 
   const additemtocart = (id) => {
+    console.log(id)
     const cartitem = allProducts.filter(item => item._id === id)
+    console.log(cartitem)
     
     if (itemsincart.length > 0) {
       const repeateditem = itemsincart.filter(item => item._id === id)
