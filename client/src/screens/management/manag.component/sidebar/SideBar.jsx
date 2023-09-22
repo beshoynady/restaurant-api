@@ -12,6 +12,7 @@ const SideBar = () => {
     { title: 'الموظفين', sideitem: 'employees', icon: "group_add" },
     { title: 'المطبخ', sideitem: 'kitchen', icon: "set_meal" },
     { title: 'الويتر', sideitem: 'waiter', icon: "directions_run" },
+    { title: 'POS', sideitem: 'pos', icon: "directions_run" },
   ]
 
 
