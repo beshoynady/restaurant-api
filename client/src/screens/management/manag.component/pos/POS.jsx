@@ -59,8 +59,8 @@ const POS = () => {
                       <div className="pos-card-detalis">
                         {/* <div className='pos-card-head'> */}
                           <div className='card-name'>
-                            <h2 className='product-name'>{product.name}</h2>
-                            <p className='product-price'>{product.price}ج</p>
+                            <div className='product-name'>{product.name}</div>
+                            <div className='product-price'>{product.price}ج</div>
                             {/* <span className="material-symbols-outlined card-note" onClick={() => { setnoteArea(!noteArea); setproductid(product._id) }}>note_alt</span> */}
                           </div>
                           <div className='card-discription'>{product.description}</div>
