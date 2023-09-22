@@ -1,12 +1,36 @@
 import React, { useState } from 'react'
+import { detacontext } from '../../../../App'
+import { useParams } from 'react-router-dom';
+import { useReactToPrint } from 'react-to-print';
+
 
 const POS = () => {
+  const ordersText = useRef()
+  const orderside = useRef()
+  const printContainer = useRef()
+  const handlePrint = useReactToPrint({
+    content: () => printContainer.current,
+    copyStyles: true,
+    removeAfterPrint: true,
+    bodyClass: 'printpage'
+  });
+
+  const { id } = useParams()
   const [noteArea, setnoteArea] = useState(false)
   const [productid, setproductid] = useState('')
+
+
+  const opensidebar = () => {
+    sidebar.current.classList.toggle("toggle-width")
+    menuicon.current.classList.toggle("rotate")
+  }
+
+  const sidebar = useRef()
+  const menuicon = useRef()
   return (
     <detacontext.Consumer>
       {
-        ({ allcategories, setcategoryid, filterByCategoryId, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, createclientorder, invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
+        ({ allcategories,userlogininfo, setcategoryid, filterByCategoryId, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, createclientorder, invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
           return (
             <div className='pos-section'>
               <div className='pos-category'>
@@ -22,14 +46,14 @@ const POS = () => {
                 {allProducts.filter(pro => pro.category === categoryid).map((product, index) => {
                   return (
                     <div className="menu-card" key={index}>
-                      <img className='img-card' src={`https://raw.githubusercontent.com/beshoynady/restaurant-api/main/server/images/${product.image}`} alt="" />
-                      {product._id == productid & noteArea == true ? <form onSubmit={(e) => { addnotrstoproduct(e, product._id);; setnoteArea(!noteArea) }}>
+                      {/* <img className='img-card' src={`https://raw.githubusercontent.com/beshoynady/restaurant-api/main/server/images/${product.image}`} alt="" /> */}
+                      {/* {product._id == productid & noteArea == true ? <form onSubmit={(e) => { addnotrstoproduct(e, product._id);; setnoteArea(!noteArea) }}>
                         <textarea placeholder='اضف تعليماتك الخاصة بهذا الطبق' name="note" cols="100" rows="3" onChange={(e) => { setproductnote(e.target.value) }}></textarea>
                         <div className='note-btn'>
                           <button>تاكيد</button>
                           <button onClick={() => setnoteArea(!noteArea)}>الغاء</button>
                         </div>
-                      </form> : ''}
+                      </form> : ''} */}
 
                       <div className="detalis">
                         <div className='product-det'>
@@ -48,7 +72,10 @@ const POS = () => {
                           </div>
                         </div>
                         <div className='card-btn'>
-                          {itemid.filter((i) => i == product._id).length > 0 && product.quantity > 0 ?
+                        <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) } }}>اضف الي طلباتي</button>
+
+
+                          {/*  */}{itemid.filter((i) => i == product._id).length > 0 && product.quantity > 0 ?
                             <button className='delfromcart' onClick={() => { deleteitems(product._id); setitemid(itemid.filter((i) => i !== product._id)) }}>احذف من الطلبات</button>
                             : <button className='addtocart' onClick={() => { if (product.quantity > 0) { additemtocart(product._id, product.quantity) }; setitemid([...itemid, product._id]) }}>اضف الي طلباتي</button>}
                         </div>
@@ -59,7 +86,7 @@ const POS = () => {
                 )}
               </div>
               <div className='pos-cart'>
-                <div className='cart-section' style={open_cart ? { 'display': 'flex' } : { 'display': 'none' }}>
+                <div className='cart-section' style={ { 'display': 'flex' }}>
                   <div className="cart-wrapper">
                     <div className="title-text">
                       <div ref={ordersText} className="title order">
