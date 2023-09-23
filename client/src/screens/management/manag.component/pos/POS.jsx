@@ -57,14 +57,6 @@ const [tableID, settableID] = useState('')
               </div>
               <div className='pos-cart'>
                 <div className="cart-wrapper">
-                  <div className="title-text">
-                    <div ref={ordersText} className="title order">
-                      طلباتك الحالية
-                    </div>
-                    <div className="title invoice">
-                      الفاتورة
-                    </div>
-                  </div>
                   <div className="cart-container">
                     <div className="slide-controler">
                       <input type="radio" name="slide" id="order-radio" defaultChecked />
