@@ -248,7 +248,7 @@ function App() {
       const status = 'انتظار'
       const employee= waiterid
       const neworder = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
-        products, total, status,employee
+        products, total, status, employee
       })
       console.log(employee)
       console.log(neworder)
@@ -267,9 +267,9 @@ function App() {
           serial,
           table,
           products,
+          employee,
           total,
-          order_type,
-          employee
+          order_type
         })
         console.log(neworder)
           setitemsincart([])

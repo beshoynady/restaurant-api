@@ -75,10 +75,10 @@ const updateorder = async (req, res) => {
             status,
             payment_status,
             help,
+            employee,
             isActive,
             order_type,
             notes,
-            employee,
             waiter
         })
         updatedorder.save();

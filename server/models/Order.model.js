@@ -93,7 +93,8 @@ const OrderSchema = new mongoose.Schema({
     employee: {
         type: ObjectId,
         ref: 'User',
-        default: null
+        default: null,
+        required: true
     },
     address: {
         type: String,
