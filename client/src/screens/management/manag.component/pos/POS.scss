@@ -5,12 +5,12 @@
     flex-direction: row-reverse;
     align-items: flex-start;
     justify-content: space-between;
-    background-color: #1c1e21;
+    background-color: #202020;
     overflow: hidden;
     .pos-category{
         width: 150px;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: #202020;;
         border-right: 2px solid white;
         .category-ul{
             width: 100%;
@@ -28,6 +28,7 @@
                 align-items: center;
                 justify-content: center;
                 border-bottom: 2px solid gainsboro;
+                background-color: #141414;
                 cursor: pointer;
                 .category-pos-btn{
                     text-decoration: none;
@@ -119,12 +120,12 @@
         height: 100%;
         border: 2px solid rgb(255, 255, 255);
         background-color: gray;
-        cart-wrapper{
-            padding: 0;
+        .cart-wrapper{
+            padding: 0 !important;
             .cart-inner{
-                height: 87%;
+                height: 87% !important;
                 .cart-container{
-                    height: 100%;
+                    height: 100% !important;
                     .pos-cart-item{
                         width: 100%;
                         height: 100px;
