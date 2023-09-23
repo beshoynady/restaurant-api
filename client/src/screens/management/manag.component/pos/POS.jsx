@@ -25,48 +25,7 @@ const POS = () => {
         ({ allProducts, allcategories, alltable, userlogininfo, setcategoryid, filterByCategoryId, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, CreateWaiterOrder, invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
           return (
             <section className='pos-section'>
-              <nav className='pos-category'>
-                <ul className='category-ul'>
-                  {allcategories.map((c, i) => <li key={i} className='category-li' onClick={() => setcategoryid(c._id)}>
-                    <a className='category-pos-btn'>{c.name}</a>
-                  </li>
-                  )}
-                </ul>
-              </nav>
-              <div className='pos-content'>
-                <div className='client-info'>
-                  <form className="table-number">
-                    <label for='table'>table:</label>
-                    <select id='table' onSelect={(e) => { settableID(e.target.value) }}>
-                      {alltable.map((table, i) =>
-                        <option value={table._id} key={i}>{table.tablenum}</option>
-                      )}
-                    </select>
-                  </form>
-                </div>
-                <div className='pos-menu'>
-                  {allProducts.filter(pro => pro.category === categoryid).map((product, index) => {
-                    return (
-                      <div className="pos-card" key={index} onClick={() => additemtocart(product._id)}>
-                        <img className='pos-img-card' src={`https://raw.githubusercontent.com/beshoynady/restaurant-api/main/server/images/${product.image}`} alt="" />
-                        <div className="pos-card-detalis">
-                          <div className='card-name'>
-                            <div className='product-name'>{product.name}</div>
-                            <div className='product-price'>{product.price}ج</div>
-
-                          </div>
-                          <div className='card-discription'>{product.description}</div>
-
-                          <div className='pos-btn'>
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  }
-                  )}
-                </div>
-              </div>
-              <div className='pos-cart'>
+                            <div className='pos-cart'>
                 <div className="cart-wrapper">
                   <div className="cart-container">
                     <div className="slide-controler">
@@ -225,6 +184,48 @@ const POS = () => {
                   </div>
                 </div>
               </div>
+
+              <div className='pos-content'>
+                <div className='client-info'>
+                  <form className="table-number">
+                    <label for='table'>table:</label>
+                    <select id='table' onSelect={(e) => { settableID(e.target.value) }}>
+                      {alltable.map((table, i) =>
+                        <option value={table._id} key={i}>{table.tablenum}</option>
+                      )}
+                    </select>
+                  </form>
+                </div>
+                <div className='pos-menu'>
+                  {allProducts.filter(pro => pro.category === categoryid).map((product, index) => {
+                    return (
+                      <div className="pos-card" key={index} onClick={() => additemtocart(product._id)}>
+                        <img className='pos-img-card' src={`https://raw.githubusercontent.com/beshoynady/restaurant-api/main/server/images/${product.image}`} alt="" />
+                        <div className="pos-card-detalis">
+                          <div className='card-name'>
+                            <div className='product-name'>{product.name}</div>
+                            <div className='product-price'>{product.price}ج</div>
+
+                          </div>
+                          <div className='card-discription'>{product.description}</div>
+
+                          <div className='pos-btn'>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  }
+                  )}
+                </div>
+              </div>
+              <nav className='pos-category'>
+                <ul className='category-ul'>
+                  {allcategories.map((c, i) => <li key={i} className='category-li' onClick={() => setcategoryid(c._id)}>
+                    <a className='category-pos-btn'>{c.name}</a>
+                  </li>
+                  )}
+                </ul>
+              </nav>
             </section>
           )
         }
