@@ -94,7 +94,7 @@ const Orders = () => {
                       </td>
                       <td>{i+1}</td>
                       <td>{o.serial}</td>
-                      <td>{o.table?usertitle(o.table) : usertitle(o.customer)}</td>
+                      <td>{o.table!=null?usertitle(o.table) : usertitle(o.customer)}</td>
                       <td>{o.total}</td>                      
                       <td>{o.status}</td>                      
                       <td>{o.payment_status}</td>                      
