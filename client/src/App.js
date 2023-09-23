@@ -232,9 +232,9 @@ function App() {
 
   }
 
-  const CreateWaiterOrder = async (tableid, Waiter) => {
+  const CreateWaiterOrder = async (tableid, waiterid) => {
     console.log(tableid)
-    console.log(Waiter)
+    console.log(waiterid)
     const tableorder = allorders.filter((o, i) => o.table == tableid);
     const lasttableorder = tableorder.length > 0 ? tableorder[tableorder.length - 1] : [];
     const lasttableorderactive = lasttableorder.isActive
@@ -246,17 +246,20 @@ function App() {
       const products = [...itemsincart, ...oldproducts]
       const total = costOrder + oldtotal
       const status = 'انتظار'
+      const createdBy= waiterid
       const neworder = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
-        products, total, status
+        products, total, status,createdBy
       })
+      console.log(createdBy)
+      console.log(neworder)
       setitemsincart([])
     } else {
       try {
         const serial = allorders.length > 0 ? allorders[allorders.length - 1].serial + 1 : 1;
         const products = [...itemsincart]
         const total = costOrder;
-        const table =  tableid 
-        const createdBy = Waiter;
+        const table =await tableid 
+        const createdBy =await waiterid;
         const order_type = 'داخلي';
         console.log(table)
         console.log(createdBy)

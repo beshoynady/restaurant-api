@@ -33,13 +33,11 @@ const POS = () => {
                       <input type="radio" name="slide" id="invoice-radio" />
                       <label htmlFor="order-radio" className="slide order" onClick={() => {
                         orderside.current.style.marginRight = "0%";
-                        ordersText.current.style.marginRight = "0%";
                       }}>طلباتك الحالية</label>
                       {userlogininfo ?
                         <label htmlFor="invoice-radio" className="slide invoice" onClick={() => {
                           invoice(userlogininfo.id);
                           orderside.current.style.marginRight = "-50%";
-                          ordersText.current.style.marginRight = "-50%";
                         }}>الفاتورة</label> :
                         <label htmlFor="invoice-radio" className="slide invoice" onClick={() => {
                           invoice(tableID);
