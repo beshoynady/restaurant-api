@@ -14,7 +14,7 @@ const POS = () => {
     removeAfterPrint: true,
     bodyClass: 'printpage'
   });
-
+const [tableID, settableID] = useState('')
 
   const [itemid, setitemid] = useState([])
   const [noteArea, setnoteArea] = useState(false)
@@ -80,7 +80,7 @@ const POS = () => {
                           ordersText.current.style.marginRight = "-50%";
                         }}>الفاتورة</label> :
                         <label htmlFor="invoice-radio" className="slide invoice" onClick={() => {
-                          invoice(id);
+                          invoice(tableID);
                           orderside.current.style.marginRight = "-50%";
                           ordersText.current.style.marginRight = "-50%";
                         }}>الفاتورة</label>}
