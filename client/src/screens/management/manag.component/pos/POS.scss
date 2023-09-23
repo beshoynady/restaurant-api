@@ -5,12 +5,12 @@
     flex-direction: row-reverse;
     align-items: flex-start;
     justify-content: space-between;
-    background-color: #1c1e21;
+    background-color: rgb(56, 56, 56);
     overflow: hidden;
     .pos-category{
         width: 150px;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgb(56, 56, 56);
         border-right: 2px solid white;
         .category-ul{
             width: 100%;
@@ -110,6 +110,8 @@
                 }
             }
         }
+
+
 
 
     .pos-cart{
