@@ -259,7 +259,6 @@ function App() {
         const neworder = await axios.post('https://restaurant-api-blush.vercel.app/api/order', {
           serial,
           table,
-          user,
           products,
           total,
           order_type,
