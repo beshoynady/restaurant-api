@@ -90,8 +90,7 @@ const OrderSchema = new mongoose.Schema({
         ref: 'User',
         default: null
     },
-
-    waiter:{
+    createdBy: {
         type: ObjectId,
         ref: 'User',
         default: null
@@ -101,16 +100,17 @@ const OrderSchema = new mongoose.Schema({
         default: Date.now,
         required: true,
     },
-    isActive: {
-        type: Boolean,
-        default: true,
-        required: true,
+
+    waiter:{
+        type: ObjectId,
+        ref: 'User',
+        default: null
     },
     help:{
         type: String,
         default: 'لم يطلب',
         required: true,
-        enum: ['لم يطلب', 'يطلب مساعدة','ارسال ويتر','في الطريق','تمت المساعدة'],
+        enum: ['لم يطلب', 'يطلب مساعدة','يطلب الفاتورة','ارسال ويتر','في الطريق','تمت المساعدة'],
     },
     status: {
         type: String,
@@ -124,6 +124,12 @@ const OrderSchema = new mongoose.Schema({
         default : 'داخلي',
         required: true
     },
+    isActive: {
+        type: Boolean,
+        default: true,
+        required: true,
+    },
+    
     payment_status: {
         type: String,
         default: 'انتظار',

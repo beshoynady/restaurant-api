@@ -231,6 +231,9 @@ function App() {
     }
 
   }
+
+
+
   const [myorder, setmyorder] = useState({})
   const [totalinvoice, settotalinvoice] = useState(0)
   const [list_produccts_order, setlist_produccts_order] = useState([])
@@ -338,6 +341,7 @@ function App() {
       // window.location.href = `http://localhost:3000/`;
     }
   }
+  
   const checkout = async () => {
     console.log(myorderid)
     const id = myorderid

@@ -8,8 +8,9 @@ const createorder = async (req, res) => {
     const user = await req.body.user;
     const total = await req.body.total;
     const order_type = await req.body.order_type;
-    const notes = await req.body.notes
-    const help = await req.body.help
+    const notes = await req.body.notes;
+    const help = await req.body.help;
+    const createdBy = await req.body.createdBy
 
     try {
         const neworder = await OrderModel.create({
@@ -20,7 +21,8 @@ const createorder = async (req, res) => {
             total,
             order_type,
             notes,
-            help
+            help,
+            createdBy
         });
         neworder.save();
         res.status(200).json(neworder)
@@ -63,6 +65,7 @@ const updateorder = async (req, res) => {
     const notes = await req.body.notes
     const waiter = await req.body.waiter
     const help = await req.body.help
+    const createdBy = await req.body.createdBy
     try {
         const updatedorder = await OrderModel.findByIdAndUpdate(orderid, {
             products,
@@ -75,7 +78,8 @@ const updateorder = async (req, res) => {
             isActive,
             order_type,
             notes,
-            waiter
+            waiter,
+            createdBy
         })
         updatedorder.save();
         res.status(200).json(updatedorder)

@@ -15,20 +15,11 @@ const POS = () => {
     bodyClass: 'printpage'
   });
 
-  const { id } = useParams()
 
   const [itemid, setitemid] = useState([])
   const [noteArea, setnoteArea] = useState(false)
   const [productid, setproductid] = useState('')
 
-
-  const opensidebar = () => {
-    sidebar.current.classList.toggle("toggle-width")
-    menuicon.current.classList.toggle("rotate")
-  }
-
-  const sidebar = useRef()
-  const menuicon = useRef()
   return (
     <detacontext.Consumer>
       {
