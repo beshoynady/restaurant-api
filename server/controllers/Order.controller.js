@@ -78,8 +78,9 @@ const updateorder = async (req, res) => {
             isActive,
             order_type,
             notes,
-            createdBy
-        },{"$push": {'waiter':{waiter}}})
+            createdBy,
+            waiter
+        })
         updatedorder.save();
         res.status(200).json(updatedorder)
     } catch (err) {
