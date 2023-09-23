@@ -96,11 +96,11 @@ const OrderSchema = new mongoose.Schema({
         default: null
     },
     address: {
-        type: string,
+        type: String,
         default: null,
     },
     phone: {
-        type: string,
+        type: String,
         default: null,
         },
     createdAt: {
@@ -110,7 +110,7 @@ const OrderSchema = new mongoose.Schema({
     },
 
     waiter:{
-        type: ObjectId,
+        type: Array | Object, 
         ref: 'User',
         default: null
     },
