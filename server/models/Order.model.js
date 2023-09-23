@@ -85,15 +85,15 @@ const OrderSchema = new mongoose.Schema({
         ref: 'Table',
         default: null
     },
-    // user: {
-    //     type: ObjectId,
-    //     ref: 'User',
-    //     default: null
-    // },
+    user: {
+        type: ObjectId,
+        ref: 'User',
+        default: null
+    },
     employee: {
-        type: String,
-        default: '',
-        required: true
+        type: ObjectId,
+        ref: 'User',
+        default: null
     },
     address: {
         type: String,
@@ -103,17 +103,17 @@ const OrderSchema = new mongoose.Schema({
         type: String,
         default: null,
         },
-    // createdAt: {
-    //     type: Date,
-    //     default: Date.now,
-    //     required: true,
-    // },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        required: true,
+    },
 
-    // waiter:{
-    //     type: ObjectId,
-    //     ref: 'User',
-    //     default: null
-    // },
+    waiter:{
+        type: ObjectId,
+        ref: 'User',
+        default: null
+    },
     deliveryMan:{
         type: ObjectId,
         ref: 'User',
