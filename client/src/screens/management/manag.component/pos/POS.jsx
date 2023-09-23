@@ -56,8 +56,8 @@ const [tableID, settableID] = useState('')
                 )}
               </div>
               <div className='pos-cart'>
-                <div className="cart-wrapper">
-                  <div className="cart-container">
+                <div className="pos-cart-wrapper">
+                  <div className="pos-cart-container">
                     <div className="slide-controler">
                       <input type="radio" name="slide" id="order-radio" defaultChecked />
                       <input type="radio" name="slide" id="invoice-radio" />
@@ -80,7 +80,7 @@ const [tableID, settableID] = useState('')
 
                       </div>
                     </div>
-                    <div className="cart-inner">
+                    <div className="cart-in">
                       <div ref={orderside} className="order side">
                         <div className='side-content'>
                           {itemsincart.map((i, index) => {
