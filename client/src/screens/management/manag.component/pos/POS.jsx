@@ -22,10 +22,10 @@ const POS = () => {
   return (
     <detacontext.Consumer>
       {
-        ({ allProducts, allcategories, alltable, userlogininfo, setcategoryid, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, CreateWaiterOrder, invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
+        ({ allProducts, allcategories, alltable, userlogininfo, setcategoryid, filterByCategoryId, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, CreateWaiterOrder, invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
           return (
             <section className='pos-section'>
-              <div className='pos-cart'>
+                            <div className='pos-cart'>
                 <div className="cart-wrapper">
                   <div className="cart-container">
                     <div className="slide-controler">
@@ -188,7 +188,7 @@ const POS = () => {
               <div className='pos-content'>
                 <div className='client-info'>
                   <form className="table-number">
-                    <label for='table'>الطاولة:</label>
+                    <label for='table'>table:</label>
                     <select id='table' onSelect={(e) => { settableID(e.target.value) }}>
                       {alltable.map((table, i) =>
                         <option value={table._id} key={i}>{table.tablenum}</option>
