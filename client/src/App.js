@@ -26,7 +26,7 @@ export const detacontext = createContext({})
 
 function App() {
 
-  
+
 
   //+++++++++++++++++ product ++++++++++++++++++++
   const [allProducts, setallProducts] = useState([])
@@ -108,7 +108,7 @@ function App() {
     }
   };
   const [productnote, setproductnote] = useState('')
-  const addnotrstoproduct =(e,id)=>{
+  const addnotrstoproduct = (e, id) => {
     e.preventDefault()
     const product = allProducts.find(product => product._id == id)
     product.notes = productnote
@@ -120,28 +120,28 @@ function App() {
     console.log(id)
     const cartitem = allProducts.filter(item => item._id === id)
     console.log(cartitem)
-    
+
     if (itemsincart.length > 0) {
       const repeateditem = itemsincart.filter(item => item._id === id)
-      if (repeateditem.length == 0) { 
+      if (repeateditem.length == 0) {
         setitemsincart([...itemsincart, ...cartitem])
       }
     } else {
       setitemsincart([...cartitem])
     }
   }
-  
-  // delete item from cart by id
-    const deleteitems = (id) => {
-      const withotdeleted = itemsincart.filter(item => item._id !== id)
-      const product = allProducts.find((pro,i)=>pro._id =id )
-      product.quantity = 0
-      setitemsincart(withotdeleted);
-    }
-    
 
-    // Calculate costOrder of cart item
-    const [costOrder, setcostOrder] = useState(0)
+  // delete item from cart by id
+  const deleteitems = (id) => {
+    const withotdeleted = itemsincart.filter(item => item._id !== id)
+    const product = allProducts.find((pro, i) => pro._id = id)
+    product.quantity = 0
+    setitemsincart(withotdeleted);
+  }
+
+
+  // Calculate costOrder of cart item
+  const [costOrder, setcostOrder] = useState(0)
   const costOfOrder = () => {
     if (itemsincart.length > 0) {
       let total = 0;
@@ -157,16 +157,16 @@ function App() {
 
 
 
-  const createclientorder = async (queryid) => {
-    const tableorder = allorders.filter((o, i) => o.table == queryid);
+  const createclientorder = async (clientid) => {
+    const tableorder = allorders.filter((o, i) => o.table == clientid);
     const lasttableorder = tableorder.length > 0 ? tableorder[tableorder.length - 1] : [];
     const lasttableorderactive = lasttableorder.isActive
 
-    const userorder = allorders.filter((o, i) => o.user == queryid);
+    const userorder = allorders.filter((o, i) => o.user == clientid);
     const lastuserorder = userorder.length > 0 ? userorder[userorder.length - 1] : [];
     const lastuserorderactive = lastuserorder.isActive
 
-    if (queryid) {
+    if (clientid) {
       if (lasttableorderactive) {
         const id = await lasttableorder._id
         const oldproducts = await allorders.find((order) => order._id == id).products;
@@ -194,8 +194,8 @@ function App() {
       } else {
         try {
           const serial = allorders.length > 0 ? allorders[allorders.length - 1].serial + 1 : 1;
-          const table = alltable.find((t, i) => t._id == queryid) ? queryid : null;
-          const user = allusers.find((u, i) => u._id == queryid) ? queryid : null;
+          const table = alltable.find((t, i) => t._id == clientid) ? clientid : null;
+          const user = allusers.find((u, i) => u._id == clientid) ? clientid : null;
           const products = [...itemsincart]
           const total = costOrder;
           if (user) {
@@ -232,7 +232,45 @@ function App() {
 
   }
 
+  const CreateWaiterOrder = async (tableid, employeeid) => {
+    const tableorder = allorders.filter((o, i) => o.table == tableid);
+    const lasttableorder = tableorder.length > 0 ? tableorder[tableorder.length - 1] : [];
+    const lasttableorderactive = lasttableorder.isActive
 
+    if (lasttableorderactive) {
+      const id = await lasttableorder._id
+      const oldproducts = await allorders.find((order) => order._id == id).products;
+      const oldtotal = await allorders.find((order) => order._id == id).total
+      const products = [...itemsincart, ...oldproducts]
+      const total = costOrder + oldtotal
+      const status = 'انتظار'
+      const neworder = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
+        products, total, status
+      })
+      setitemsincart([])
+    } else {
+      try {
+        const serial = allorders.length > 0 ? allorders[allorders.length - 1].serial + 1 : 1;
+        const table = alltable.find((t, i) => t._id == clientid) ? clientid : null;
+        const user = allusers.find((u, i) => u._id == clientid) ? clientid : null;
+        const products = [...itemsincart]
+        const total = costOrder;
+        const order_type = 'داخلي';
+        const neworder = await axios.post('https://restaurant-api-blush.vercel.app/api/order', {
+          serial,
+          table,
+          user,
+          products,
+          total,
+          order_type
+        })
+          setitemsincart([])
+
+        } catch (error) {
+        console.log(error)
+      }
+    }
+  }
 
   const [myorder, setmyorder] = useState({})
   const [totalinvoice, settotalinvoice] = useState(0)
@@ -240,16 +278,16 @@ function App() {
   const [orderupdate_date, setorderupdate_date] = useState('')
   const [myorderid, setmyorderid] = useState()
 
-  const invoice = async (queryid) => {
+  const invoice = async (clientid) => {
     // console.log(allorders)
-    const tableorder = allorders.filter((o, i) => o.table == queryid);
+    const tableorder = allorders.filter((o, i) => o.table == clientid);
     const lasttableorder = tableorder.length > 0 ? tableorder[tableorder.length - 1] : [];
     const lasttableorderactive = lasttableorder.isActive
-    const userorder = allorders.filter((o, i) => o.user == queryid);
+    const userorder = allorders.filter((o, i) => o.user == clientid);
     const lastuserorder = userorder.length > 0 ? userorder[userorder.length - 1] : [];
     const lastuserorderactive = lastuserorder.isActive
 
-    if (queryid) {
+    if (clientid) {
       if (lasttableorderactive) {
         const id = await lasttableorder._id
         const myorder = await axios.get('https://restaurant-api-blush.vercel.app/api/order/' + id,)
@@ -320,9 +358,9 @@ function App() {
   const askingForHelp = async (tablenum) => {
     const tableorder = allorders.filter((o, i) => o.table == tablenum);
     const lasttableorder = tableorder.length > 0 ? tableorder[tableorder.length - 1] : [];
-    const lasttableorderactive =await lasttableorder.isActive
+    const lasttableorderactive = await lasttableorder.isActive
 
-    const id =await lasttableorder._id
+    const id = await lasttableorder._id
     console.log(id)
     const serial = allorders.length > 0 ? allorders[allorders.length - 1].serial + 1 : 1;
     console.log(serial)
@@ -330,7 +368,7 @@ function App() {
     const table = tablenum
     if (!lasttableorderactive) {
       const neworder = await axios.post('https://restaurant-api-blush.vercel.app/api/order/', {
-        serial,table,help
+        serial, table, help
       })
       console.log(neworder)
     } else {
@@ -341,7 +379,7 @@ function App() {
       // window.location.href = `http://localhost:3000/`;
     }
   }
-  
+
   const checkout = async () => {
     console.log(myorderid)
     const id = myorderid
@@ -439,7 +477,7 @@ function App() {
             console.log(localStorage.getItem('token'))
             const tokenStorage = localStorage.getItem('token')
             if (tokenStorage) {
-              const decodetoken =await jwt_decode(tokenStorage)
+              const decodetoken = await jwt_decode(tokenStorage)
               console.log(decodetoken)
               setuserlogininfo(decodetoken.userinfo)
             }
@@ -494,7 +532,7 @@ function App() {
       userlogininfo, getdatafromtoken, login, signup, logout,
       allProducts, allcategories, filterByCategoryId, setcategoryid, deleteitems,
       allusers, alltable, usertitle, allorders, askingForHelp,
-      setproductnote,addnotrstoproduct,
+      setproductnote, addnotrstoproduct,
       invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder,
       list_day_order, total_day_salse,
       categoryid, itemsincart, costOrder, additemtocart, increment, descrement,
@@ -515,7 +553,7 @@ function App() {
             <Route path='category' element={<Category />} />
             <Route path='kitchen' element={<Kitchen />} />
             <Route path='waiter' element={<Waiter />} />
-            <Route path='pos' element={<POS/>} />
+            <Route path='pos' element={<POS />} />
           </Route>
 
         </Routes>

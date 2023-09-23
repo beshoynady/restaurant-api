@@ -95,6 +95,14 @@ const OrderSchema = new mongoose.Schema({
         ref: 'User',
         default: null
     },
+    address: {
+        type: string,
+        default: null,
+    },
+    phone: {
+        type: string,
+        default: null,
+        },
     createdAt: {
         type: Date,
         default: Date.now,
@@ -102,6 +110,11 @@ const OrderSchema = new mongoose.Schema({
     },
 
     waiter:{
+        type: ObjectId,
+        ref: 'User',
+        default: null
+    },
+    deliveryMan:{
         type: ObjectId,
         ref: 'User',
         default: null
