@@ -251,8 +251,7 @@ function App() {
     } else {
       try {
         const serial = allorders.length > 0 ? allorders[allorders.length - 1].serial + 1 : 1;
-        const table = alltable.find((t, i) => t._id == clientid) ? clientid : null;
-        const user = allusers.find((u, i) => u._id == clientid) ? clientid : null;
+        const table = alltable.find((t, i) => t._id == tableid) ? tableid : null;
         const products = [...itemsincart]
         const total = costOrder;
         const createdBy = Waiter;
