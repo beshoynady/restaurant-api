@@ -1,7 +1,7 @@
 import './Orders.css'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useReactToPrint } from 'react-to-print';
+import { detacontext } from '../../../../App'
 
 
 const Orders = () => {
