@@ -246,11 +246,11 @@ function App() {
       const products = [...itemsincart, ...oldproducts]
       const total = costOrder + oldtotal
       const status = 'انتظار'
-      const createdBy= waiterid
+      const employee= waiterid
       const neworder = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
-        products, total, status,createdBy
+        products, total, status,employee
       })
-      console.log(createdBy)
+      console.log(employee)
       console.log(neworder)
       setitemsincart([])
     } else {
@@ -259,17 +259,17 @@ function App() {
         const products = [...itemsincart]
         const total = costOrder;
         const table =await tableid 
-        const createdBy =await waiterid;
+        const employee =await waiterid;
         const order_type = 'داخلي';
         console.log(table)
-        console.log(createdBy)
+        console.log(employee)
         const neworder = await axios.post('https://restaurant-api-blush.vercel.app/api/order', {
           serial,
           table,
           products,
           total,
           order_type,
-          createdBy
+          employee
         })
         console.log(neworder)
           setitemsincart([])
