@@ -19,6 +19,7 @@ import Kitchen from './screens/management/manag.component/kitchen/Kitchen';
 import Waiter from './screens/management/manag.component/waiter/Waiter';
 import Login from './screens/management/manag.component/login/Login';
 import POS from './screens/management/manag.component/pos/POS';
+import { watch } from '../../server/models/Order.model';
 
 
 
@@ -256,6 +257,8 @@ function App() {
         const total = costOrder;
         const createdBy = Waiter;
         const order_type = 'داخلي';
+        console.log(tableid)
+        console.log(Waiter)
         const neworder = await axios.post('https://restaurant-api-blush.vercel.app/api/order', {
           serial,
           table,
@@ -264,6 +267,7 @@ function App() {
           order_type,
           createdBy
         })
+        console.log(neworder)
           setitemsincart([])
 
         } catch (error) {
