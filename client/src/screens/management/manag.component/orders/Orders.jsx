@@ -43,7 +43,10 @@ const Orders = () => {
   useEffect(() => {
     getorders()
   }, [])
-
+  return (
+    <detacontext.Consumer>
+      {
+        ({askingForHelp ,userlogininfo, usertitle}) => {
   return (
     <div className="container-xl mlr-auto">
       <div className="table-responsive">
@@ -91,7 +94,7 @@ const Orders = () => {
                       </td>
                       <td>{i+1}</td>
                       <td>{o.serial}</td>
-                      <td>{o.table?o.table : o.customer}</td>
+                      <td>{o.table?usertitle(o.table) : usertitle(o.customer)}</td>
                       <td>{o.total}</td>                      
                       <td>{o.status}</td>                      
                       <td>{o.payment_status}</td>                      
@@ -209,7 +212,13 @@ const Orders = () => {
           </div>
         </div>
       </div>
-    </div>)
+    </div>
+    )
+            }
+          }
+        </detacontext.Consumer>
+      )
+    
 }
 
 export default Orders
