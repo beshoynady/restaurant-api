@@ -110,7 +110,7 @@ const OrderSchema = new mongoose.Schema({
     },
 
     waiter:{
-        type: Array | Object, 
+        type: Array | Object, // array of objects
         ref: 'User',
         default: null
     },

@@ -79,7 +79,7 @@ const updateorder = async (req, res) => {
             order_type,
             notes,
             createdBy
-        },{"$push": {waiter}})
+        },{"$push": {'waiter':{waiter}}})
         updatedorder.save();
         res.status(200).json(updatedorder)
     } catch (err) {
