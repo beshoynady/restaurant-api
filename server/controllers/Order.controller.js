@@ -5,7 +5,7 @@ const createorder = async (req, res) => {
     const serial = await req.body.serial;
     const products = await req.body.products;
     const table = await req.body.table;
-    const user = await req.body.user;
+    // const user = await req.body.user;
     const total = await req.body.total;
     const order_type = await req.body.order_type;
     const notes = await req.body.notes;
@@ -17,7 +17,7 @@ const createorder = async (req, res) => {
             serial,
             products,
             table,
-            user,
+            // user,
             total,
             order_type,
             notes,
@@ -56,21 +56,22 @@ const updateorder = async (req, res) => {
     const orderid = await req.params.id;
     const products = await req.body.products;
     const table = await req.body.tableid;
-    const user = await req.body.userid;
+    // const user = await req.body.userid;
+    // const waiter = await req.body.waiter
     const total = await req.body.total;
     const status = await req.body.status;
     const payment_status = await req.body.payment_status;
     const isActive = await req.body.isActive;
     const order_type = await req.body.order_type
     const notes = await req.body.notes
-    const waiter = await req.body.waiter
     const help = await req.body.help
     const employee = await req.body.employee
     try {
         const updatedorder = await OrderModel.findByIdAndUpdate(orderid, {
             products,
             table,
-            user,
+            // user,
+            // waiter,
             total,
             status,
             payment_status,
@@ -79,7 +80,6 @@ const updateorder = async (req, res) => {
             isActive,
             order_type,
             notes,
-            waiter
         })
         updatedorder.save();
         res.status(200).json(updatedorder)
