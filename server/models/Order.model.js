@@ -90,11 +90,11 @@ const OrderSchema = new mongoose.Schema({
         ref: 'User',
         default: null
     },
-    createdBy: {
+    employee: {
         type: ObjectId,
         ref: 'User',
         default: null
-    },  
+    },
     address: {
         type: String,
         default: null,

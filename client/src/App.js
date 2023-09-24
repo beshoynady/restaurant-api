@@ -13,7 +13,7 @@ import ManagerDash from './screens/management/manag.component/managerdash/Manage
 import Orders from './screens/management/manag.component/orders/Orders';
 import Products from './screens/management/manag.component/products/Products';
 import Tables from './screens/management/manag.component/tables/Tables';
-import createdBys from './screens/management/manag.component/createdBys/createdBys';
+import Employees from './screens/management/manag.component/employees/Employees';
 import Category from './screens/management/manag.component/category/Category';
 import Kitchen from './screens/management/manag.component/kitchen/Kitchen';
 import Waiter from './screens/management/manag.component/waiter/Waiter';
@@ -246,11 +246,11 @@ function App() {
       const products = [...itemsincart, ...oldproducts]
       const total = costOrder + oldtotal
       const status = 'انتظار'
-      const createdBy= waiterid
+      const employee= waiterid
       const neworder = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
-        products, total, status,createdBy
+        products, total, status,employee
       })
-      console.log(createdBy)
+      console.log(employee)
       console.log(neworder)
       setitemsincart([])
     } else {
@@ -259,17 +259,17 @@ function App() {
         const products = [...itemsincart]
         const total = costOrder;
         const table =await tableid 
-        const createdBy =await waiterid;
+        const employee =await waiterid;
         const order_type = 'داخلي';
         console.log(table)
-        console.log(createdBy)
+        console.log(employee)
         const neworder = await axios.post('https://restaurant-api-blush.vercel.app/api/order', {
           serial,
           table,
           products,
           total,
           order_type,
-          createdBy
+          employee
         })
         console.log(neworder)
           setitemsincart([])
@@ -558,7 +558,7 @@ function App() {
             <Route path='orders' element={<Orders />} />
             <Route path='products' element={<Products />} />
             <Route path='tables' element={<Tables />} />
-            <Route path='createdBys' element={<createdBys />} />
+            <Route path='employees' element={<Employees />} />
             <Route path='category' element={<Category />} />
             <Route path='kitchen' element={<Kitchen />} />
             <Route path='waiter' element={<Waiter />} />

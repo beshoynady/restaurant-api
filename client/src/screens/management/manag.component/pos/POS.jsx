@@ -82,6 +82,7 @@ const POS = () => {
                           }
                         </div>
                         <div className="total-order">
+
                           <button className='total-order-btn' onClick={() => CreateWaiterOrder(tableID, userlogininfo.id)}>تاكيد الطلب</button>
 
                           <div className='total-order-details'>
@@ -90,7 +91,8 @@ const POS = () => {
                           </div>
                         </div>
                       </div>
-                      
+
+
                       <div className="invoice side" >
                         <div ref={printContainer} className="side-content">
                           <table className="invoice-info-container">
