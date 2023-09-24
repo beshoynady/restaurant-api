@@ -12,7 +12,7 @@ const SideBar = () => {
     { title: 'التصنيفات', sideitem: 'category', icon: "category" },
     { title: 'المنتجات', sideitem: 'products', icon: "restaurant" },
     { title: 'الطاولة', sideitem: 'tables', icon: "table_restaurant" },
-    { title: 'الموظفين', sideitem: 'employees', icon: "group_add" },
+    { title: 'الموظفين', sideitem: 'createdBys', icon: "group_add" },
   ]
 
 

@@ -1,8 +1,8 @@
 import React from 'react'
 
-const addEmployee = ({setaddboolean, addboolean}) => {
+const addcreatedBy = ({setaddboolean, addboolean}) => {
   return (
-    <div id="addEmployeeModal" className="modalsout">
+    <div id="addcreatedByModal" className="modalsout">
         <div className="modal-dialog">
         <div className="modal-content">
             <form>
@@ -39,4 +39,4 @@ const addEmployee = ({setaddboolean, addboolean}) => {
   )
 }
 
-export default addEmployee
+export default addcreatedBy

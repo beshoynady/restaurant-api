@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 
-const Employees = () => {
+const createdBys = () => {
   const [pagination, setpagination] = useState(5)
   const EditPagination = (e) => {
     if (e.target.innerHTML == 'Next') {
@@ -18,11 +18,11 @@ const Employees = () => {
     }
   }
 
-  const [listofemployee, setlistofemployee] = useState([])
-  const getemployees = async () => {
+  const [listofcreatedBy, setlistofcreatedBy] = useState([])
+  const getcreatedBys = async () => {
     try {
       const response = await axios.get('https://restaurant-api-blush.vercel.app/api/user')
-      setlistofemployee(response.data)
+      setlistofcreatedBy(response.data)
     } catch (error) {
       console.log(error)
     }
@@ -39,7 +39,7 @@ const Employees = () => {
   const [salary, setsalary] = useState()
 
 
-  const createEmployee = async (e) => {
+  const createcreatedBy = async (e) => {
     e.preventDefault()
     console.log(username)
     console.log(password)
@@ -51,17 +51,17 @@ const Employees = () => {
     console.log(salary)
 
     try {
-      const newemployee = await axios.post('https://restaurant-api-blush.vercel.app/api/user', { username, password, address, phone, email, isAdmin, role, salary })
-      console.log(newemployee)
-      if(newemployee){
-        getemployees()
+      const newcreatedBy = await axios.post('https://restaurant-api-blush.vercel.app/api/user', { username, password, address, phone, email, isAdmin, role, salary })
+      console.log(newcreatedBy)
+      if(newcreatedBy){
+        getcreatedBys()
       }
     } catch (error) {
       console.log(error)
     }
   }
 
-  const updateEmployee = async (e) => {
+  const updatecreatedBy = async (e) => {
     e.preventDefault()
     console.log(userid)
     console.log(username)
@@ -77,27 +77,27 @@ const Employees = () => {
       const update = await axios.put('https://restaurant-api-blush.vercel.app/api/user/' + userid, { username, password, address, phone, email, isAdmin, role, salary })
       console.log(update)
       if(update){
-        getemployees()
+        getcreatedBys()
       }
   }else{
       const update = await axios.put('https://restaurant-api-blush.vercel.app/api/user/' + userid, { username, address, phone, email, isAdmin, role, salary })
       console.log(update)
       if(update){
-        getemployees()
+        getcreatedBys()
     } 
   }}catch (error) {
       console.log(error)
     }
   }
 
-  const deleteEmployee = async (e) => {
+  const deletecreatedBy = async (e) => {
     e.preventDefault()
     try {
       console.log(userid)
       const deleted = await axios.delete(`https://restaurant-api-blush.vercel.app/api/user/${userid}`)
       if(deleted){
       console.log(deleted)
-      getemployees()
+      getcreatedBys()
     }
     } catch (error) {
       console.log(error)
@@ -106,7 +106,7 @@ const Employees = () => {
 
 
   useEffect(() => {
-    getemployees()
+    getcreatedBys()
   }, [])
 
   return (
@@ -119,8 +119,8 @@ const Employees = () => {
                 <h2>ادارة <b>الموظفين</b></h2>
               </div>
               <div className="col-sm-6">
-                <a href="#addEmployeeModal" className="btn btn-success" data-toggle="modal"><i className="material-icons">&#xE147;</i> <span>اضافة موظف جديد</span></a>
-                <a href="#deleteEmployeeModal" className="btn btn-danger" data-toggle="modal"><i className="material-icons">&#xE15C;</i> <span>حذف الكل</span></a>
+                <a href="#addcreatedByModal" className="btn btn-success" data-toggle="modal"><i className="material-icons">&#xE147;</i> <span>اضافة موظف جديد</span></a>
+                <a href="#deletecreatedByModal" className="btn btn-danger" data-toggle="modal"><i className="material-icons">&#xE15C;</i> <span>حذف الكل</span></a>
               </div>
             </div>
           </div>
@@ -143,7 +143,7 @@ const Employees = () => {
               </tr>
             </thead>
             <tbody>
-              {listofemployee.filter((em) => em.isAdmin == true).map((e, i) => {
+              {listofcreatedBy.filter((em) => em.isAdmin == true).map((e, i) => {
                 if (i < pagination & i >= pagination - 5) {
                   return (
                     <tr key={i}>
@@ -160,10 +160,10 @@ const Employees = () => {
                       <td>{e.role}</td>
                       <td>{e.salary}</td>
                       <td>
-                        <a href="#editEmployeeModal" className="edit" data-toggle="modal"><i className="material-icons" data-toggle="tooltip" title="Edit" onClick={()=>{
+                        <a href="#editcreatedByModal" className="edit" data-toggle="modal"><i className="material-icons" data-toggle="tooltip" title="Edit" onClick={()=>{
                           setuserid(e._id);setusername(e.username);setaddress(e.address);setemail(e.email); setisAdmin(e.isAdmin); setphone(e.phone); setrole(e.role); setsalary(e.salary)
                         }}>&#xE254;</i></a>
-                        <a href="#deleteEmployeeModal" className="delete" data-toggle="modal"><i className="material-icons" data-toggle="tooltip" title="Delete" onClick={()=> setuserid(e._id)}>&#xE872;</i></a>
+                        <a href="#deletecreatedByModal" className="delete" data-toggle="modal"><i className="material-icons" data-toggle="tooltip" title="Delete" onClick={()=> setuserid(e._id)}>&#xE872;</i></a>
                       </td>
                     </tr>
                   )
@@ -173,7 +173,7 @@ const Employees = () => {
             </tbody>
           </table>
           <div className="clearfix">
-            <div className="hint-text">Showing <b>{listofemployee.filter((em) => em.isAdmin == true).length > pagination ? pagination : listofemployee.filter((em) => em.isAdmin == true).length}</b> out of <b>{listofemployee.filter((em) => em.isAdmin == true).length}</b> entries</div>
+            <div className="hint-text">Showing <b>{listofcreatedBy.filter((em) => em.isAdmin == true).length > pagination ? pagination : listofcreatedBy.filter((em) => em.isAdmin == true).length}</b> out of <b>{listofcreatedBy.filter((em) => em.isAdmin == true).length}</b> entries</div>
             <ul className="pagination">
               <li onClick={EditPagination} className="page-item disabled"><a href="#">Previous</a></li>
               <li onClick={EditPagination} className="page-item"><a href="#" className="page-link">1</a></li>
@@ -186,10 +186,10 @@ const Employees = () => {
           </div>
         </div>
       </div>
-      <div id="addEmployeeModal" className="modal fade">
+      <div id="addcreatedByModal" className="modal fade">
         <div className="modal-dialog">
           <div className="modal-content">
-            <form onSubmit={createEmployee}>
+            <form onSubmit={createcreatedBy}>
               <div className="modal-header">
                 <h4 className="modal-title">اضافه موظف</h4>
                 <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -245,10 +245,10 @@ const Employees = () => {
           </div>
         </div>
       </div>
-      <div id="editEmployeeModal" className="modal fade">
+      <div id="editcreatedByModal" className="modal fade">
         <div className="modal-dialog">
           <div className="modal-content">
-            <form onSubmit={updateEmployee}>
+            <form onSubmit={updatecreatedBy}>
               <div className="modal-header">
                 <h4 className="modal-title">تعديل بيانات الموظفين</h4>
                 <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -304,10 +304,10 @@ const Employees = () => {
           </div>
         </div>
       </div>
-      <div id="deleteEmployeeModal" className="modal fade">
+      <div id="deletecreatedByModal" className="modal fade">
         <div className="modal-dialog">
           <div className="modal-content">
-            <form onSubmit={deleteEmployee}>
+            <form onSubmit={deletecreatedBy}>
               <div className="modal-header">
                 <h4 className="modal-title">حذف موظف</h4>
                 <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -328,4 +328,4 @@ const Employees = () => {
   )
 }
 
-export default Employees
+export default createdBys
