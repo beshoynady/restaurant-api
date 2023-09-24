@@ -90,8 +90,7 @@ const POS = () => {
                           </div>
                         </div>
                       </div>
-
-
+                      
                       <div className="invoice side" >
                         <div ref={printContainer} className="side-content">
                           <table className="invoice-info-container">

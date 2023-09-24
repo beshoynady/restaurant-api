@@ -236,6 +236,7 @@ const Products = () => {
                       return <option value={category._id} key={i} >{category.name}</option>
                     })
                     }
+                    
                   </select>
                 </div>
                 <div className="form-group">
