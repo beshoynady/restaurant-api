@@ -94,7 +94,7 @@ const OrderSchema = new mongoose.Schema({
         type: ObjectId,
         ref: 'User',
         default: null
-    },
+    },  
     address: {
         type: String,
         default: null,
