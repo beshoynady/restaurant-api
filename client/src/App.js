@@ -246,7 +246,7 @@ function App() {
       const products = [...itemsincart, ...oldproducts]
       const total = costOrder + oldtotal
       const status = 'انتظار'
-      const createdBy= waiterid
+      const createdBy= waiterid  
       const neworder = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
         products, total, status,createdBy
       })

@@ -229,7 +229,7 @@ const Products = () => {
                   <label>السعر</label>
                   <input type='Number' className="form-control" required onChange={(e) => setproductprice(e.target.value)} />
                 </div>
-                <div className="form-group">
+                <div className="form-group"> 
                   <label>التصنيف</label>
                   <select name="category" id="category" form="carform" onChange={(e) => setproductcategoryid(e.target.value)}>
                     {listofcategories.map((category, i) => {
