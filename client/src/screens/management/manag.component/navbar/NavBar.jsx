@@ -19,7 +19,7 @@ const NavBar = () => {
                       <p>اهلا, <b>{userlogininfo?usertitle(userlogininfo.id):''}</b></p>
                     </div>
                     <div className="logout-btn">
-                      <a href='/login' onClick={logout}>تسجيل خروج</a>
+                      <a href='/login' onClick={logout}>خروج</a>
                     </div>
                   </div>
 

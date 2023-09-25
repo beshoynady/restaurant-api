@@ -52,8 +52,8 @@
   margin-top: 5px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
 }
 .sidebar .menu .sid-list .item {
   width: 95%;
@@ -61,6 +61,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: white;
   background-color: rgb(48, 48, 48);
   margin-bottom: 5px;
   padding: 5px 10px;

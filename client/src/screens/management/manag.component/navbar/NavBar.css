@@ -25,6 +25,8 @@
   justify-content: flex-end;
 }
 .manag-header .container .manag-nav .profile .info {
+  max-width: 160px;
+  height: 100%;
   font-size: 18px;
   color: black;
   display: flex;
@@ -32,7 +34,7 @@
   justify-content: center;
 }
 .manag-header .container .manag-nav .profile .logout-btn {
-  width: 120px;
+  width: 100px;
   height: 70%;
   display: flex;
   align-items: center;
