@@ -464,7 +464,7 @@ function App() {
       const decodetoken = jwt_decode(tokenStorage)
       setuserlogininfo(decodetoken.userinfo)
     }
-    // console.log(decodetoken)
+    console.log(decodetoken)
   }
 
   const [islogin, setislogin] = useState(false)

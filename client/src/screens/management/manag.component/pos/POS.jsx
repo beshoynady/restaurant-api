@@ -184,20 +184,22 @@ const POS = () => {
               </div>
 
               <div className='pos-content'>
-                {userlogininfo.role == 'waiter'?
-                <div className='client-info'>
-                  <form className="table-number">
-                    <label for='table'>رقم الطاولة:</label>
-                    <select id='table' onChange={(e) => { settableID(e.target.value) }}>
-                    <option >اختر رقم الطاولة</option>
-                      {alltable.map((table, i) =>{
-                        return <option value={table._id} key={i}>{table.tablenum}</option>
-                      }
-                      )}
-                    </select>
-                  </form>
-                </div>
-                  : 'ddddddddddddd' }
+                { console.log(userlogininfo)
+                // userlogininfo.role == 'waiter'?
+                // <div className='client-info'>
+                //   <form className="table-number">
+                //     <label for='table'>رقم الطاولة:</label>
+                //     <select id='table' onChange={(e) => { settableID(e.target.value) }}>
+                //     <option >اختر رقم الطاولة</option>
+                //       {alltable.map((table, i) =>{
+                //         return <option value={table._id} key={i}>{table.tablenum}</option>
+                //       }
+                //       )}
+                //     </select>
+                //   </form>
+                // </div>
+                //   : 'ddddddddddddd' 
+                  }
                 <div className='pos-menu'>
                   {allProducts.filter(pro => pro.category === categoryid).map((product, index) => {
                     return (
