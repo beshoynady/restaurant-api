@@ -191,7 +191,7 @@ const POS = () => {
                 </div>
 
                 <div className='pos-content'>
-                  <div className='client-info'>
+                  <div className='client-formgroup'>
                     {userlogininfo.role == 'waiter' ?
                       <form className="form-info">
                         <label htmlFor='table'>رقم الطاولة:</label>
@@ -204,27 +204,35 @@ const POS = () => {
                         </select>
                       </form>
                       : <form className="form-info"> 
-                        <div className='info'>
+                        <div className='formgroup'>
                           <label htmlFor="name">نوع الاوردر</label>
-                          <select id='table' required onChange={(e) => { settableID(e.target.value) }}>
+                          <select id='table' required onChange={(e) => { setordertype(e.target.value) }}>
                           <option >اختر نوع الاوردر</option>
                           <option value='ديلفري'>ديلفري</option>
                           <option value='تيك اوي'>تيك اوي</option>
                         </select>                        
                         </div>
-                        {}
-                        <div className='info'>
-                          <label htmlFor="name">اسم العميل</label>
-                          <input type='text' className="info-input" required onChange={(e) => setclientname(e.target.value)} />
-                        </div>
-                        <div className='info'>
-                          <label htmlFor="name">رقم الوبايل</label>
-                          <input type='text' className="info-input" required onChange={(e) => setclientphone(e.target.value)} />
-                        </div>
-                        <div className='info-adress'>
-                          <label htmlFor="name">العنوان</label>
-                          <textarea  className="info-input" required onChange={(e) => setclientaddress(e.target.value)} />
-                        </div>
+                        {ordertype? ordertype == 'ديلفري' ? 
+                        <><div className='formgroup'>
+                        <label htmlFor="name">اسم العميل</label>
+                        <input type='text' className="info-input" required onChange={(e) => setclientname(e.target.value)} />
+                      </div>
+                      <div className='formgroup'>
+                        <label htmlFor="name">رقم الوبايل</label>
+                        <input type='text' className="info-input" required onChange={(e) => setclientphone(e.target.value)} />
+                      </div>
+                      <div className='info-adress'>
+                        <label htmlFor="name">العنوان</label>
+                        <textarea  className="info-input" required onChange={(e) => setclientaddress(e.target.value)} />
+                      </div></>:<><div className='formgroup'>
+                        <label htmlFor="name">اسم العميل</label>
+                        <input type='text' className="info-input" required onChange={(e) => setclientname(e.target.value)} />
+                      </div>
+                      <div className='formgroup'>
+                        <label htmlFor="name">رقم الوبايل</label>
+                        <input type='text' className="info-input" required onChange={(e) => setclientphone(e.target.value)} />
+                      </div></>
+                        :''}
                       </form>}
                   </div>
 

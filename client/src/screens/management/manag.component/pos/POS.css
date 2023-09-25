@@ -168,16 +168,42 @@
   justify-content: flex-start;
   border-bottom: 2px solid wheat;
 }
-.pos-section .pos-content .client-info .form-info > label {
+.pos-section .pos-content .client-info .form-info .formgroup {
+  width: -moz-max-content;
+  width: max-content;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pos-section .pos-content .client-info .form-info .formgroup > label {
   width: 100px;
   font-size: 20px;
   color: white;
   margin-left: 20px;
 }
-.pos-section .pos-content .client-info .form-info > select {
+.pos-section .pos-content .client-info .form-info .formgroup > select {
   width: 180px !important;
   font-weight: 600;
   font-size: 20px;
+}
+.pos-section .pos-content .client-info .form-info .info-adress {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.pos-section .pos-content .client-info .form-info .info-adress > label {
+  width: 100px;
+  font-size: 20px;
+  color: white;
+  margin-left: 20px;
+}
+.pos-section .pos-content .client-info .form-info .info-adress > textarea {
+  width: 70%;
+  height: 100%;
 }
 .pos-section .pos-content .pos-menu {
   width: 98%;
