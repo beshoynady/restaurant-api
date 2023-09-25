@@ -482,13 +482,7 @@ function App() {
         if (token) {
           localStorage.setItem("token", token)
           if (localStorage.getItem('token')) {
-            console.log(localStorage.getItem('token'))
-            const tokenStorage = localStorage.getItem('token')
-            if (tokenStorage) {
-              const decodetoken = await jwt_decode(tokenStorage)
-              console.log(decodetoken)
-              setuserlogininfo(decodetoken.userinfo)
-            }
+            getdatafromtoken()
           }
         }
         setislogin(!islogin)
