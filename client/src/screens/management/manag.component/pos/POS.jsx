@@ -26,7 +26,7 @@ const POS = () => {
   return (
     <detacontext.Consumer>
       {
-        ({ allProducts, allcategories, alltable, userlogininfo, setcategoryid, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, CreateWaiterOrder,CreateCasherOrder, invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
+        ({ allProducts, allcategories, alltable, userlogininfo, setcategoryid, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, CreateWaiterOrder, CreateCasherOrder, invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
           if (userlogininfo) {
             return (
               <section className='pos-section'>
@@ -87,9 +87,9 @@ const POS = () => {
                             }
                           </div>
                           <div className="total-order">
-                            {userlogininfo.role ==='waiter'?
-                            <button className='total-order-btn' onClick={() => CreateWaiterOrder(tableID, userlogininfo.id)}>تاكيد الطلب</button>
-                            :<button className='total-order-btn' onClick={() => CreateCasherOrder(userlogininfo.id, clientname, clientphone, clientaddress, ordertype)}>تاكيد الطلب</button>
+                            {userlogininfo.role === 'waiter' ?
+                              <button className='total-order-btn' onClick={() => CreateWaiterOrder(tableID, userlogininfo.id)}>تاكيد الطلب</button>
+                              : <button className='total-order-btn' onClick={() => CreateCasherOrder(userlogininfo.id, clientname, clientphone, clientaddress, ordertype)}>تاكيد الطلب</button>
                             }
 
                             <div className='total-order-details'>
@@ -194,45 +194,48 @@ const POS = () => {
                   <div className='client-formgroup'>
                     {userlogininfo.role == 'waiter' ?
                       <form className="form-info">
-                        <label htmlFor='table'>رقم الطاولة:</label>
-                        <select id='table' required onChange={(e) => { settableID(e.target.value) }}>
-                          <option >اختر رقم الطاولة</option>
-                          {alltable.map((table, i) => {
-                            return <option value={table._id} key={i}>{table.tablenum}</option>
-                          }
-                          )}
-                        </select>
+                        <div className='formgroup'>
+                          <label htmlFor='table'>رقم الطاولة:</label>
+                          <select id='table' required onChange={(e) => { settableID(e.target.value) }}>
+                            <option >اختر رقم الطاولة</option>
+                            {alltable.map((table, i) => {
+                              return <option value={table._id} key={i}>{table.tablenum}</option>
+                            }
+                            )}
+                          </select>
+                        </div>
                       </form>
-                      : <form className="form-info"> 
+                      :
+                      <form className="form-info">
                         <div className='formgroup'>
                           <label htmlFor="name">نوع الاوردر</label>
                           <select id='table' required onChange={(e) => { setordertype(e.target.value) }}>
-                          <option >اختر نوع الاوردر</option>
-                          <option value='ديلفري'>ديلفري</option>
-                          <option value='تيك اوي'>تيك اوي</option>
-                        </select>                        
+                            <option >اختر نوع الاوردر</option>
+                            <option value='ديلفري'>ديلفري</option>
+                            <option value='تيك اوي'>تيك اوي</option>
+                          </select>
                         </div>
-                        {ordertype? ordertype == 'ديلفري' ? 
-                        <><div className='formgroup'>
-                        <label htmlFor="name">اسم العميل</label>
-                        <input type='text' className="info-input" required onChange={(e) => setclientname(e.target.value)} />
-                      </div>
-                      <div className='formgroup'>
-                        <label htmlFor="name">رقم الوبايل</label>
-                        <input type='text' className="info-input" required onChange={(e) => setclientphone(e.target.value)} />
-                      </div>
-                      <div className='info-adress'>
-                        <label htmlFor="name">العنوان</label>
-                        <textarea  className="info-input" required onChange={(e) => setclientaddress(e.target.value)} />
-                      </div></>:<><div className='formgroup'>
-                        <label htmlFor="name">اسم العميل</label>
-                        <input type='text' className="info-input" required onChange={(e) => setclientname(e.target.value)} />
-                      </div>
-                      <div className='formgroup'>
-                        <label htmlFor="name">رقم الوبايل</label>
-                        <input type='text' className="info-input" required onChange={(e) => setclientphone(e.target.value)} />
-                      </div></>
-                        :''}
+                        {ordertype ? ordertype == 'ديلفري' ?
+                          <><div className='formgroup'>
+                            <label htmlFor="name">اسم العميل</label>
+                            <input type='text' className="info-input" required onChange={(e) => setclientname(e.target.value)} />
+                          </div>
+                            <div className='formgroup'>
+                              <label htmlFor="name">رقم الوبايل</label>
+                              <input type='text' className="info-input" required onChange={(e) => setclientphone(e.target.value)} />
+                            </div>
+                            <div className='info-adress'>
+                              <label htmlFor="name">العنوان</label>
+                              <textarea className="info-input" required onChange={(e) => setclientaddress(e.target.value)} />
+                            </div></> : <><div className='formgroup'>
+                              <label htmlFor="name">اسم العميل</label>
+                              <input type='text' className="info-input" required onChange={(e) => setclientname(e.target.value)} />
+                            </div>
+                            <div className='formgroup'>
+                              <label htmlFor="name">رقم الوبايل</label>
+                              <input type='text' className="info-input" required onChange={(e) => setclientphone(e.target.value)} />
+                            </div></>
+                          : ''}
                       </form>}
                   </div>
 

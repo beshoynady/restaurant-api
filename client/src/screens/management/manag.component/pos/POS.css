@@ -155,7 +155,7 @@
 }
 .pos-section .pos-content .client-info {
   width: 100%;
-  height: 100px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -169,12 +169,11 @@
   border-bottom: 2px solid wheat;
 }
 .pos-section .pos-content .client-info .form-info .formgroup {
-  width: -moz-max-content;
-  width: max-content;
-  height: -moz-max-content;
-  height: max-content;
+  max-width: 300px;
+  height: 50%;
   display: flex;
   align-items: center;
+  color: white;
   justify-content: center;
 }
 .pos-section .pos-content .client-info .form-info .formgroup > label {
@@ -182,6 +181,11 @@
   font-size: 20px;
   color: white;
   margin-left: 20px;
+}
+.pos-section .pos-content .client-info .form-info .formgroup > input {
+  width: 180px !important;
+  font-weight: 600;
+  font-size: 20px;
 }
 .pos-section .pos-content .client-info .form-info .formgroup > select {
   width: 180px !important;
