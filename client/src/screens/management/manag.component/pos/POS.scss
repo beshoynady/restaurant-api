@@ -226,19 +226,19 @@
                     display: flex;
                     height: 50%;
                     justify-content: flex-start;
-                    width: 55%;
+                    width: 50%;
 
                     >label {
                         color: #fff;
                         font-size: 15px;
                         margin-left: 10px;
-                        width: 74px;
+                        width: 60px;
                         padding: 0;
                     }
 
                     >textarea {
                         height: 100%;
-                        width: 70%;
+                        width: 85%;
                     }
                 }
             }
@@ -252,13 +252,13 @@
             display: flex;
             flex-wrap: wrap;
             align-items: flex-start;
-            justify-content: space-between;
+            justify-content: center;
             margin: 5px;
             overflow-y: auto;
 
             .pos-card {
-                width: 180px;
-                height: 180px;
+                width: 170px;
+                height: 10px;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
