@@ -68,8 +68,7 @@
   cursor: pointer;
 }
 .sidebar .menu .sid-list .item :hover {
-  color: black;
-  background-color: white;
+  border: 2px solid darkcyan;
 }
 .sidebar .menu .sid-list .item .icon-manag {
   display: inline-block;
