@@ -281,12 +281,12 @@ function App() {
   }
   
   const CreateCasherOrder = async (casherid, clientname, clientphone, clientaddress, ordertype) => {
+    if(new Date().getHours() == 0 && new Date().getMinutes()>= 0){
+      const ordernum = 0
+    }else{
+    const ordernum = allorders.length > 0 ? allorders[allorders.length - 1].ordernum + 1 : 1;
+  }
     try {
-        if(new Date().getHours()=0 && new Date().getMinutes()>=0){
-          const ordernum = 0
-        }else{
-        const ordernum = allorders.length > 0 ? allorders[allorders.length - 1].ordernum + 1 : 1;
-      }
         const serial = allorders.length > 0 ? allorders[allorders.length - 1].serial + 1 : 1;
         const products = [...itemsincart]
         const total = costOrder;
