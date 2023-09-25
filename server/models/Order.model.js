@@ -17,7 +17,7 @@ const OrderSchema = new mongoose.Schema({
         }
     },
     ordernum:{
-        type : 'integer',
+        type : Number,
         required: true,
         min: 1,
         trim: true, 
@@ -100,6 +100,10 @@ const OrderSchema = new mongoose.Schema({
         type: ObjectId,
         ref: 'User',
         default: null
+    },
+    name: {
+        type: String,
+        minLength: 3
     },
     address: {
         type: String,
