@@ -246,9 +246,9 @@ function App() {
       const products = [...itemsincart, ...oldproducts]
       const total = costOrder + oldtotal
       const status = 'انتظار'
-      const employee= waiterid
+      const employee = waiterid
       const neworder = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
-        products, total, status,employee
+        products, total, status, employee
       })
       console.log(employee)
       console.log(neworder)
@@ -258,8 +258,8 @@ function App() {
         const serial = allorders.length > 0 ? allorders[allorders.length - 1].serial + 1 : 1;
         const products = [...itemsincart]
         const total = costOrder;
-        const table =await tableid 
-        const employee =await waiterid;
+        const table = await tableid
+        const employee = await waiterid;
         const order_type = 'داخلي';
         console.log(table)
         console.log(employee)
@@ -272,45 +272,45 @@ function App() {
           employee
         })
         console.log(neworder)
-          setitemsincart([])
+        setitemsincart([])
 
-        } catch (error) {
+      } catch (error) {
         console.log(error)
       }
     }
   }
-  
-  const CreateCasherOrder = async (casherid, clientname, clientphone, clientaddress, ordertype) => {
-    if(new Date().getHours() == 0 && new Date().getMinutes()>= 0){
-      const ordernum = 0
-    }else{
-    const ordernum = allorders.length > 0 ? allorders[allorders.length - 1].ordernum + 1 : 1;
-  }
-    try {
-        const serial = allorders.length > 0 ? allorders[allorders.length - 1].serial + 1 : 1;
-        const products = [...itemsincart]
-        const total = costOrder;
-        const name =await clientname;
-        const phone =await clientphone;
-        const address =await clientaddress;
-        const employee =await casherid;
-        const order_type =await ordertype;
-        const neworder = await axios.post('https://restaurant-api-blush.vercel.app/api/order', {
-          serial,
-          products,
-          total,
-          order_type,
-          employee,
-          name,
-          phone,
-          address
-        })
-        console.log(neworder)
-          setitemsincart([])
 
-        } catch (error) {
-        console.log(error)
-      }
+  const CreateCasherOrder = async (casherid, clientname, clientphone, clientaddress, ordertype) => {
+    try {
+      const dayorders = await allorders.find((order) => new Date(order.createdAt).getDay() == new Date().getDay())
+      // const ordernum =  new Date().getHours() == 0 && new Date().getMinutes() >= 0 ?
+      //  allorders.find(order => order.createdAt.
+      const ordernum =await dayorders.length > 0 ? dayorders[dayorders.length - 1].ordernum + 1 : 1
+      const serial = allorders.length > 0 ? allorders[allorders.length - 1].serial + 1 : 1;
+      const products = [...itemsincart]
+      const total = costOrder;
+      const name = await clientname;
+      const phone = await clientphone;
+      const address = await clientaddress;
+      const employee = await casherid;
+      const order_type = await ordertype;
+      const neworder = await axios.post('https://restaurant-api-blush.vercel.app/api/order', {
+        serial,
+        ordernum,
+        products,
+        total,
+        order_type,
+        employee,
+        name,
+        phone,
+        address
+      })
+      console.log(neworder)
+      setitemsincart([])
+
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const [myorder, setmyorder] = useState({})
