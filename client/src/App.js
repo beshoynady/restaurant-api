@@ -279,6 +279,39 @@ function App() {
       }
     }
   }
+  
+  const CreateCasherOrder = async (casherid, clientname, clientphone, clientaddress, ordertype) => {
+    try {
+        if(new Date().getHours()=0 && new Date().getMinutes()>=0){
+          const ordernum = 0
+        }else{
+        const ordernum = allorders.length > 0 ? allorders[allorders.length - 1].ordernum + 1 : 1;
+      }
+        const serial = allorders.length > 0 ? allorders[allorders.length - 1].serial + 1 : 1;
+        const products = [...itemsincart]
+        const total = costOrder;
+        const name =await clientname;
+        const phone =await clientphone;
+        const address =await clientaddress;
+        const employee =await casherid;
+        const order_type =await ordertype;
+        const neworder = await axios.post('https://restaurant-api-blush.vercel.app/api/order', {
+          serial,
+          products,
+          total,
+          order_type,
+          employee,
+          name,
+          phone,
+          address
+        })
+        console.log(neworder)
+          setitemsincart([])
+
+        } catch (error) {
+        console.log(error)
+      }
+  }
 
   const [myorder, setmyorder] = useState({})
   const [totalinvoice, settotalinvoice] = useState(0)
@@ -539,7 +572,7 @@ function App() {
       list_day_order, total_day_salse,
       categoryid, itemsincart, costOrder, additemtocart, increment, descrement,
       createclientorder, checkout, calcTotalSalesOfCategory, updatecountofsales,
-      CreateWaiterOrder
+      CreateWaiterOrder, CreateCasherOrder
     }}>
       <BrowserRouter>
         <Routes>

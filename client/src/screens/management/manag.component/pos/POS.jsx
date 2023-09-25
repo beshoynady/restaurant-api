@@ -19,11 +19,15 @@ const POS = () => {
   const [noteArea, setnoteArea] = useState(false)
   const [productid, setproductid] = useState('')
 
+  const [clientname, setclientname] = useState('')
+  const [clientphone, setclientphone] = useState('')
+  const [clientaddress, setclientaddress] = useState('')
+  const [ordertype, setordertype] = useState('')
   return (
     <detacontext.Consumer>
-        {
-          ({ allProducts, allcategories, alltable, userlogininfo, setcategoryid, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, CreateWaiterOrder, invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
-            if (userlogininfo) {
+      {
+        ({ allProducts, allcategories, alltable, userlogininfo, setcategoryid, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, CreateWaiterOrder,CreateCasherOrder, invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
+          if (userlogininfo) {
             return (
               <section className='pos-section'>
                 <div className='pos-cart'>
@@ -83,8 +87,10 @@ const POS = () => {
                             }
                           </div>
                           <div className="total-order">
-
+                            {userlogininfo.role ==='waiter'?
                             <button className='total-order-btn' onClick={() => CreateWaiterOrder(tableID, userlogininfo.id)}>تاكيد الطلب</button>
+                            :<button className='total-order-btn' onClick={() => CreateCasherOrder(userlogininfo.id, clientname, clientphone, clientaddress, ordertype)}>تاكيد الطلب</button>
+                            }
 
                             <div className='total-order-details'>
                               <h2>المجموع</h2>
@@ -183,24 +189,44 @@ const POS = () => {
                     </div>
                   </div>
                 </div>
-                <div className='client-info'>
-                  {userlogininfo.role == 'waiter'?
-                  <form className="table-number">
-                    <label for='table'>رقم الطاولة:</label>
-                    <select id='table' onChange={(e) => { settableID(e.target.value) }}>
-                      <option >اختر رقم الطاولة</option>
-                      {alltable.map((table, i) => {
-                        return <option value={table._id} key={i}>{table.tablenum}</option>
-                      }
-                      )}
-                    </select>
-                  </form>
-                    : <div>caaaaaaaaaa </div>}
-                </div>
 
                 <div className='pos-content'>
-
-                // console.log(userlogininfo)
+                  <div className='client-info'>
+                    {userlogininfo.role == 'waiter' ?
+                      <form className="form-info">
+                        <label htmlFor='table'>رقم الطاولة:</label>
+                        <select id='table' required onChange={(e) => { settableID(e.target.value) }}>
+                          <option >اختر رقم الطاولة</option>
+                          {alltable.map((table, i) => {
+                            return <option value={table._id} key={i}>{table.tablenum}</option>
+                          }
+                          )}
+                        </select>
+                      </form>
+                      : <form className="form-info"> 
+                        <div className='info'>
+                          <label htmlFor="name">نوع الاوردر</label>
+                          <select id='table' required onChange={(e) => { settableID(e.target.value) }}>
+                          <option >اختر نوع الاوردر</option>
+                          <option value='ديلفري'>ديلفري</option>
+                          <option value='تيك اوي'>تيك اوي</option>
+                        </select>                        
+                        </div>
+                        {}
+                        <div className='info'>
+                          <label htmlFor="name">اسم العميل</label>
+                          <input type='text' className="info-input" required onChange={(e) => setclientname(e.target.value)} />
+                        </div>
+                        <div className='info'>
+                          <label htmlFor="name">رقم الوبايل</label>
+                          <input type='text' className="info-input" required onChange={(e) => setclientphone(e.target.value)} />
+                        </div>
+                        <div className='info-adress'>
+                          <label htmlFor="name">العنوان</label>
+                          <textarea  className="info-input" required onChange={(e) => setclientaddress(e.target.value)} />
+                        </div>
+                      </form>}
+                  </div>
 
                   <div className='pos-menu'>
                     {allProducts.filter(pro => pro.category === categoryid).map((product, index) => {
@@ -235,11 +261,11 @@ const POS = () => {
               </section>
             )
           } else { return <></> }
-          }
-          }
-        </detacontext.Consumer>
+        }
+      }
+    </detacontext.Consumer>
 
-    )
+  )
 }
 
 export default POS

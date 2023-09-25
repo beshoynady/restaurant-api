@@ -3,6 +3,7 @@ const OrderModel = require('../models/Order.model')
 
 const createorder = async (req, res) => {
     const serial = await req.body.serial;
+    const ordernum = await req.body.ordernum;
     const products = await req.body.products;
     const table = await req.body.table;
     const user = await req.body.user;
@@ -11,10 +12,14 @@ const createorder = async (req, res) => {
     const notes = await req.body.notes;
     const help = await req.body.help;
     const employee = await req.body.employee
+    const name = await req.body.name
+    const phone = await req.body.phone
+    const address = await req.body.address
 
     try {
         const neworder = await OrderModel.create({
             serial,
+            ordernum,
             products,
             table,
             user,
@@ -22,7 +27,10 @@ const createorder = async (req, res) => {
             order_type,
             notes,
             help,
-            employee
+            employee,
+            name,
+            phone,
+            address
         });
         neworder.save();
         res.status(200).json(neworder)

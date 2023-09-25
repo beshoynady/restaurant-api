@@ -16,6 +16,12 @@ const OrderSchema = new mongoose.Schema({
             message: '{VALUE} is not a valid sirial number'
         }
     },
+    ordernum:{
+        type : 'integer',
+        required: true,
+        min: 1,
+        trim: true, 
+    },
     products: [
         {
             productid: {
