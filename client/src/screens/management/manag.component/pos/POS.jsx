@@ -22,7 +22,7 @@ const POS = () => {
   return (
     <detacontext.Consumer>
       {
-        ({ allProducts, allcategories, alltable, userlogininfo, setcategoryid, filterByCategoryId, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, CreateWaiterOrder, invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
+        ({ allProducts, allcategories, alltable, userlogininfo, setcategoryid, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, CreateWaiterOrder, invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
           return (
             <section className='pos-section'>
               <div className='pos-cart'>
@@ -184,6 +184,7 @@ const POS = () => {
               </div>
 
               <div className='pos-content'>
+                {userlogininfo.role == 'waiter'?
                 <div className='client-info'>
                   <form className="table-number">
                     <label for='table'>رقم الطاولة:</label>
@@ -196,6 +197,7 @@ const POS = () => {
                     </select>
                   </form>
                 </div>
+                  : 'ddddddddddddd' }
                 <div className='pos-menu'>
                   {allProducts.filter(pro => pro.category === categoryid).map((product, index) => {
                     return (
