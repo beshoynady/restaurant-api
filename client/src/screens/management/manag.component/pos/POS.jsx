@@ -19,11 +19,11 @@ const POS = () => {
   const [noteArea, setnoteArea] = useState(false)
   const [productid, setproductid] = useState('')
 
-  if (userlogininfo) {
-    return (
-      <detacontext.Consumer>
+  return (
+    <detacontext.Consumer>
         {
           ({ allProducts, allcategories, alltable, userlogininfo, setcategoryid, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, CreateWaiterOrder, invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
+            if (userlogininfo) {
             return (
               <section className='pos-section'>
                 <div className='pos-cart'>
@@ -234,12 +234,12 @@ const POS = () => {
                 </nav>
               </section>
             )
+          } else { return <></> }
           }
           }
         </detacontext.Consumer>
 
     )
-  } else { return <></> }
 }
 
 export default POS
