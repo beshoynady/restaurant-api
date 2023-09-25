@@ -186,8 +186,9 @@ const POS = () => {
               <div className='pos-content'>
                 <div className='client-info'>
                   <form className="table-number">
-                    <label for='table'>table:</label>
+                    <label for='table'>رقم الطاولة:</label>
                     <select id='table' onChange={(e) => { settableID(e.target.value) }}>
+                    <option >اختر رقم الطاولة</option>
                       {alltable.map((table, i) =>{
                         return <option value={table._id} key={i}>{table.tablenum}</option>
                       }
