@@ -282,7 +282,7 @@ function App() {
 
   const CreateCasherOrder = async (casherid, clientname, clientphone, clientaddress, ordertype) => {
     try {
-      const dayorders = await allorders.find((order) => new Date(order.createdAt).getDay() == new Date().getDay())
+      const dayorders = await allorders.filter((order) => new Date(order.createdAt).getDay() == new Date().getDay())
       // const ordernum =  new Date().getHours() == 0 && new Date().getMinutes() >= 0 ?
       //  allorders.find(order => order.createdAt.
       const ordernum =await dayorders.length > 0 ? dayorders[dayorders.length - 1].ordernum + 1 : 1
