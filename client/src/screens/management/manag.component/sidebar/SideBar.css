@@ -67,9 +67,6 @@
   padding: 5px;
   cursor: pointer;
 }
-.sidebar .menu .sid-list .item :hover {
-  border: 2px solid darkcyan;
-}
 .sidebar .menu .sid-list .item .icon-manag {
   display: inline-block;
   width: 55px;
@@ -83,5 +80,6 @@
   text-align: left;
   font-size: 22px;
   font-weight: 600;
+  margin-right: 5px;
   text-transform: capitalize;
 }/*# sourceMappingURL=SideBar.css.map */
