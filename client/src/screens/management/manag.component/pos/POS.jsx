@@ -32,7 +32,7 @@ const POS = () => {
               <section className='pos-section'>
                 <div className='pos-cart'>
                   <div className="cart-wrapper">
-                    <div className="cart-container">
+                    <div className="cart-container h-100">
                       <div className="slide-controler">
                         <input type="radio" name="slide" id="order-radio" defaultChecked />
                         <input type="radio" name="slide" id="invoice-radio" />
