@@ -16,6 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  color: white;
 }
 .manag-header .container .manag-nav .profile {
   width: 100%;
@@ -28,7 +29,6 @@
   max-width: 160px;
   height: 100%;
   font-size: 18px;
-  color: black;
   display: flex;
   align-items: center;
   justify-content: center;
