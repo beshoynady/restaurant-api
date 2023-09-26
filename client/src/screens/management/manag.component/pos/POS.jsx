@@ -45,7 +45,7 @@ const POS = () => {
                             orderside.current.style.marginRight = "-50%";
                           }}>الفاتورة</label> :
                           <label htmlFor="invoice-radio" className="slide invoice" onClick={() => {
-                            invoice(tableID);
+                            invoice(userlogininfo.id);
                             orderside.current.style.marginRight = "-50%";
                             ordersText.current.style.marginRight = "-50%";
                           }}>الفاتورة</label>}
