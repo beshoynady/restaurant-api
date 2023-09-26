@@ -21,6 +21,7 @@ const OrderSchema = new mongoose.Schema({
         min: 1,
         trim: true, 
     },
+
     products: [
         {
             productid: {
