@@ -5,15 +5,13 @@
   }
 .table-responsive {
   margin: 5px 0 20px 0 ;
-  height: 100%;
 }
 .table-wrapper {
-  max-width: 100vw;
-  min-width: 500px !important;
-  height: 100%;
 background: #fff;
 padding: 10px;
 border-radius: 3px;
+max-width: 100vw;
+min-width: 500px !important;
 box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 .table-title {        
@@ -53,10 +51,6 @@ margin-right: 5px;
 float: left;
 margin-top: 2px;
 }
-table.table{
-  height: 75%;
-}
-
 table.table tr th, table.table tr td {
 border-color: #e9e9e9;
 padding: 12px 15px;
