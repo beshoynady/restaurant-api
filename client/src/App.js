@@ -373,7 +373,38 @@ function App() {
 
   }
 
+  const POSinvoice = async (checkid) => {
+    // console.log(allorders)
+    const tableorder = allorders.filter((o, i) => o.table == checkid);
+    const lasttableorder = tableorder.length > 0 ? tableorder[tableorder.length - 1] : [];
+    const lasttableorderactive = lasttableorder.isActive
+    const employeeorder = allorders.filter((o, i) => o.employee == checkid);
+    const lastemployeeorder = employeeorder.length > 0 ? employeeorder[employeeorder.length - 1] : [];
+    const lastemployeeorderactive = lastemployeeorder.isActive
 
+      if (lasttableorderactive) {
+        const id = await lasttableorder._id
+        const myorder = await axios.get('https://restaurant-api-blush.vercel.app/api/order/' + id,)
+        const data = myorder.data
+        setmyorder(data)
+        settotalinvoice(data.total)
+        setmyorderid(data._id)
+        setlist_produccts_order(data.products)
+        setorderupdate_date(data.updatedAt)
+        setitemsincart([])
+      } else if (lastemployeeorderactive) {
+        const id = await lastemployeeorder._id
+        const myorder = await axios.get('https://restaurant-api-blush.vercel.app/api/order/' + id,)
+        const data = myorder.data
+        console.log(data)
+        setmyorder(data)
+        setmyorderid(data._id)
+        settotalinvoice(data.total)
+        setlist_produccts_order(data.products)
+        setorderupdate_date(data.updatedAt)
+        setitemsincart([])
+      }
+  }
 
   const updatecountofsales = async (id) => {
     const myorder = await axios.get('https://restaurant-api-blush.vercel.app/api/order/' + id,)
@@ -572,7 +603,7 @@ function App() {
       list_day_order, total_day_salse,
       categoryid, itemsincart, costOrder, additemtocart, increment, descrement,
       createclientorder, checkout, calcTotalSalesOfCategory, updatecountofsales,
-      CreateWaiterOrder, CreateCasherOrder
+      CreateWaiterOrder, CreateCasherOrder ,POSinvoice
     }}>
       <BrowserRouter>
         <Routes>

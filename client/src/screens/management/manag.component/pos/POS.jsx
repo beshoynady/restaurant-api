@@ -26,7 +26,7 @@ const POS = () => {
   return (
     <detacontext.Consumer>
       {
-        ({ allProducts, allcategories, alltable, userlogininfo, setcategoryid, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, CreateWaiterOrder, CreateCasherOrder, invoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
+        ({ allProducts, allcategories, alltable, userlogininfo, setcategoryid, categoryid, additemtocart, deleteitems, increment, descrement, setproductnote, addnotrstoproduct, usertitle, itemsincart, costOrder, CreateWaiterOrder, CreateCasherOrder, POSinvoice, totalinvoice, list_produccts_order, orderupdate_date, myorder, checkout }) => {
           if (userlogininfo) {
             return (
               <section className='pos-section'>
@@ -39,21 +39,16 @@ const POS = () => {
                         <label htmlFor="order-radio" className="slide order" onClick={() => {
                           orderside.current.style.marginRight = "0%";
                         }}>طلباتك الحالية</label>
-                         <label htmlFor="invoice-radio" className="slide invoice" onClick={() => {console.log(tableID);
-                            invoice(tableID);
-                            orderside.current.style.marginRight = "-50%";
-                            ordersText.current.style.marginRight = "-50%";
-                          }}>الفاتورة</label>
-                        {/* {userlogininfo ?
+                        {tableID ?
                           <label htmlFor="invoice-radio" className="slide invoice" onClick={() => {
-                            invoice(userlogininfo.id);
+                            POSinvoice(tableID);
                             orderside.current.style.marginRight = "-50%";
                           }}>الفاتورة</label> :
                           <label htmlFor="invoice-radio" className="slide invoice" onClick={() => {
-                            invoice(tableID);
+                            POSinvoice(userlogininfo.id);
                             orderside.current.style.marginRight = "-50%";
                             ordersText.current.style.marginRight = "-50%";
-                          }}>الفاتورة</label>} */}
+                          }}>الفاتورة</label>}
                         <div className="slider-tab">
 
                         </div>
