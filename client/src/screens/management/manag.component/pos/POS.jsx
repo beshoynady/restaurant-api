@@ -189,7 +189,6 @@ const POS = () => {
                     </div>
                   </div>
                 </div>
-
                 <div className='pos-content'>
                   <div className='client-formgroup'>
                     {userlogininfo.role == 'waiter' ?
@@ -238,37 +237,38 @@ const POS = () => {
                           : ''}
                       </form>}
                   </div>
+                  <div className='categ-menu'>
+                    <div className='pos-menu'>
+                      {allProducts.filter(pro => pro.category === categoryid).map((product, index) => {
+                        return (
+                          <div className="pos-card" key={index} onClick={() => additemtocart(product._id)}>
+                            <img className='pos-img-card' src={`https://raw.githubusercontent.com/beshoynady/restaurant-api/main/server/images/${product.image}`} alt="" />
+                            <div className="pos-card-detalis">
+                              <div className='card-name'>
+                                <div className='product-name'>{product.name}</div>
+                                <div className='product-price'>{product.price}ج</div>
 
-                  <div className='pos-menu'>
-                    {allProducts.filter(pro => pro.category === categoryid).map((product, index) => {
-                      return (
-                        <div className="pos-card" key={index} onClick={() => additemtocart(product._id)}>
-                          <img className='pos-img-card' src={`https://raw.githubusercontent.com/beshoynady/restaurant-api/main/server/images/${product.image}`} alt="" />
-                          <div className="pos-card-detalis">
-                            <div className='card-name'>
-                              <div className='product-name'>{product.name}</div>
-                              <div className='product-price'>{product.price}ج</div>
+                              </div>
+                              <div className='card-discription'>{product.description}</div>
 
-                            </div>
-                            <div className='card-discription'>{product.description}</div>
-
-                            <div className='pos-btn'>
+                              <div className='pos-btn'>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      )
-                    }
-                    )}
+                        )
+                      }
+                      )}
+                    </div>
+                    <nav className='pos-category'>
+                      <ul className='category-ul'>
+                        {allcategories.map((c, i) => <li key={i} className='category-li' onClick={() => setcategoryid(c._id)}>
+                          <a className='category-pos-btn'>{c.name}</a>
+                        </li>
+                        )}
+                      </ul>
+                    </nav>
                   </div>
                 </div>
-                <nav className='pos-category'>
-                  <ul className='category-ul'>
-                    {allcategories.map((c, i) => <li key={i} className='category-li' onClick={() => setcategoryid(c._id)}>
-                      <a className='category-pos-btn'>{c.name}</a>
-                    </li>
-                    )}
-                  </ul>
-                </nav>
               </section>
             )
           } else { return <></> }
