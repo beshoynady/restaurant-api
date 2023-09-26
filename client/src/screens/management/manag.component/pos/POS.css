@@ -181,8 +181,10 @@
 }
 .pos-section .pos-content .client-formgroup .form-info .formgroup > label {
   color: #fff;
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 900;
   margin-left: 10px;
+  margin-bottom: 0;
   width: 75px;
   padding: 0;
 }
@@ -193,10 +195,12 @@
 }
 .pos-section .pos-content .client-formgroup .form-info .formgroup > select {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 900;
   width: 120px !important;
 }
 .pos-section .pos-content .client-formgroup .form-info .info-adress {
+  font-size: 16px;
+  font-weight: 900;
   align-items: center;
   display: flex;
   height: 50%;
@@ -205,12 +209,15 @@
 }
 .pos-section .pos-content .client-formgroup .form-info .info-adress > label {
   color: #fff;
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 900;
   margin-left: 10px;
   width: 60px;
   padding: 0;
 }
 .pos-section .pos-content .client-formgroup .form-info .info-adress > textarea {
+  font-size: 16px;
+  font-weight: 900;
   height: 100%;
   width: 85%;
 }
