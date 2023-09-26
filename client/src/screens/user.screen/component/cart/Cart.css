@@ -91,6 +91,10 @@
     height: 92%;
     overflow: hidden;
   }
+  .cart-wrapper .cart-container.h-100{
+    height: 100%;
+  }
+  
   .cart-container .cart-inner{
     display: flex;
     width: 200%;
