@@ -223,14 +223,14 @@
 }
 .pos-section .pos-content .categ-menu {
   width: 100%;
-  height: auto;
+  height: 85%;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 }
 .pos-section .pos-content .categ-menu .pos-menu {
   width: calc(100% - 120px);
-  height: 100%;
+  height: auto;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
