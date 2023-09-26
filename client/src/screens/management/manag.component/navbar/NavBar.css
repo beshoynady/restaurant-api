@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  border-bottom: 2px solid white;
 }
 .manag-header .container {
   display: flex;
