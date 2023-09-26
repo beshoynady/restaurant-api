@@ -144,7 +144,7 @@
   color: rgb(29, 29, 255);
 }
 .pos-section .pos-content {
-  width: calc(70% - 120px);
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -229,7 +229,7 @@
   justify-content: space-between;
 }
 .pos-section .pos-content .categ-menu .pos-menu {
-  width: 98%;
+  width: calc(100% - 120px);
   height: 100%;
   display: flex;
   flex-wrap: wrap;
