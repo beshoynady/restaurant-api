@@ -46,69 +46,69 @@ const StockItem = () => {
     }
   }
 
-  const [StockItemid, setStockItemid] = useState("")
+  // const [StockItemid, setStockItemid] = useState("")
 
-  const editStockItem = async (e) => {
-    e.preventDefault()
-    if (createBy) {
-      try {
-        const response = await axios.put('https://restaurant-api-blush.vercel.app/api/StockItem/' + StockItemid, {
-          itemName, unit, openingBalance, price, StockItemdiscount, image: createBy
-        });
-        console.log(response.data);
-        if (response) {
-          getallCategories()
-          getallStockItems()
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    } else {
-      try {
-        const response = await axios.put('https://restaurant-api-blush.vercel.app/api/StockItem/withoutimage/' + StockItemid, {
-          itemName, unit, openingBalance, price, StockItemdiscount
-        });
-        // console.log(StockItemid);
-        console.log(response.data);
-        if (response) {
-          getallCategories()
-          getallStockItems()
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
+  // const editStockItem = async (e) => {
+  //   e.preventDefault()
+  //   if (createBy) {
+  //     try {
+  //       const response = await axios.put('https://restaurant-api-blush.vercel.app/api/StockItem/' + StockItemid, {
+  //         itemName, unit, openingBalance, price, StockItemdiscount, image: createBy
+  //       });
+  //       console.log(response.data);
+  //       if (response) {
+  //         getallCategories()
+  //         getallStockItems()
+  //       }
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   } else {
+  //     try {
+  //       const response = await axios.put('https://restaurant-api-blush.vercel.app/api/StockItem/withoutimage/' + StockItemid, {
+  //         itemName, unit, openingBalance, price, StockItemdiscount
+  //       });
+  //       // console.log(StockItemid);
+  //       console.log(response.data);
+  //       if (response) {
+  //         getallCategories()
+  //         getallStockItems()
+  //       }
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
 
-  }
+  // }
 
 
-  const [AllStockItems, setAllStockItems] = useState([]);
+  // const [AllStockItems, setAllStockItems] = useState([]);
 
-  const getallStockItem = async () => {
-    try {
-      const response = await axios.get('https://restaurant-api-blush.vercel.app/api/stockitem/');
-      const StockItems = await response.data;
-      console.log(response.data)
-      setAllStockItems(StockItems)
+  // const getallStockItem = async () => {
+  //   try {
+  //     const response = await axios.get('https://restaurant-api-blush.vercel.app/api/stockitem/');
+  //     const StockItems = await response.data;
+  //     console.log(response.data)
+  //     setAllStockItems(StockItems)
 
-    } catch (error) {
-      console.log(error)
-    }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
 
-  }
+  // }
 
-  const deleteStockItem = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.delete(`https://restaurant-api-blush.vercel.app/api/StockItem/${StockItemid}`);
-      if (response) {
-        console.log(response);
-        getallStockItems();
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // const deleteStockItem = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.delete(`https://restaurant-api-blush.vercel.app/api/StockItem/${StockItemid}`);
+  //     if (response) {
+  //       console.log(response);
+  //       getallStockItems();
+  //     }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   useEffect(() => {
     getallStockItem()
