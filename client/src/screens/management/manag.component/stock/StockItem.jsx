@@ -29,6 +29,7 @@ const StockItem = () => {
   const createitem = async (e,userid) => {
     e.preventDefault();
     try {
+      const createBy = userid;
       // const formdata = new FormData();
       // formdata.append('itemName', itemName);
       // formdata.append('unit', unit);
