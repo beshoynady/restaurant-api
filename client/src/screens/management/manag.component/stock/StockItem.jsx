@@ -26,11 +26,11 @@ const StockItem = () => {
   const [price, setprice] = useState(0);
   const createAt = new Date()
 
-  const createitem = async (e,userid) => {
+  const createitem = async (e, userid) => {
     e.preventDefault();
     try {
       const createBy = userid;
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', {itemName, unit, openingBalance, price, createBy, createAt});
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', { itemName, unit, openingBalance, price, createBy, createAt });
       console.log(response.data);
     } catch (error) {
       console.log(error)
@@ -108,7 +108,7 @@ const StockItem = () => {
   return (
     <detacontext.Consumer>
       {
-        ({userlogininfo}) => {
+        ({ userlogininfo }) => {
           return (
             <div className="container-xl mlr-auto">
               <div className="table-responsive mt-1">
@@ -167,9 +167,9 @@ const StockItem = () => {
                               <td>{item.createAt}</td>
                               <td>{item.createBy}</td>
                               <td>
-                        <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(p._id); setitemName(item.itemName); setopeningBalance(item.openingBalance); setunit(item.unit) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <a href="#deleteStockItemModal" className="delete" data-toggle="modal" onClick={() => setStockItemid(item._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                      </td>
+                                <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(p._id); setitemName(item.itemName); setopeningBalance(item.openingBalance); setunit(item.unit) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#deleteStockItemModal" className="delete" data-toggle="modal" onClick={() => setStockItemid(item._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                              </td>
                             </tr>
                           )
                         }
@@ -193,7 +193,7 @@ const StockItem = () => {
               <div id="addStockItemModal" className="modal fade">
                 <div className="modal-dialog">
                   <div className="modal-content">
-                    <form onSubmit={(e)=>createitem(e,userlogininfo.id)}>
+                    <form onSubmit={(e) => createitem(e, userlogininfo.id)}>
                       <div className="modal-header">
                         <h4 className="modal-title">اضافه صنف</h4>
                         <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -276,26 +276,26 @@ const StockItem = () => {
         </div>
       </div>
             */}
-      <div id="deleteStockItemModal" className="modal fade">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <form onSubmit={deleteStockItem}>
-              <div className="modal-header">
-                <h4 className="modal-title">حذف منتج</h4>
-                <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <div id="deleteStockItemModal" className="modal fade">
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <form onSubmit={deleteStockItem}>
+                      <div className="modal-header">
+                        <h4 className="modal-title">حذف منتج</h4>
+                        <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      </div>
+                      <div className="modal-body">
+                        <p>هل انت متاكد من حذف هذا السجل؟</p>
+                        <p className="text-warning"><small>لا يمكن الرجوع في هذا الاجراء.</small></p>
+                      </div>
+                      <div className="modal-footer">
+                        <input type="button" className="btn btn-danger" data-dismiss="modal" value="إغلاق" />
+                        <input type="submit" className="btn btn-danger" value="حذف" />
+                      </div>
+                    </form>
+                  </div>
+                </div>
               </div>
-              <div className="modal-body">
-                <p>هل انت متاكد من حذف هذا السجل؟</p>
-                <p className="text-warning"><small>لا يمكن الرجوع في هذا الاجراء.</small></p>
-              </div>
-              <div className="modal-footer">
-                <input type="button" className="btn btn-danger" data-dismiss="modal" value="إغلاق" />
-                <input type="submit" className="btn btn-danger" value="حذف" />
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
             </div>
           )
         }
