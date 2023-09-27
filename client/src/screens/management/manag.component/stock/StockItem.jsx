@@ -91,7 +91,7 @@ const StockItem = () => {
   const deleteStockItem = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.delete(`https://restaurant-api-blush.vercel.app/api/StockItem/${StockItemid}`);
+      const response = await axios.delete(`https://restaurant-api-blush.vercel.app/api/stockitem/${StockItemid}`);
       if (response) {
         console.log(response);
         // getallStockItems();
