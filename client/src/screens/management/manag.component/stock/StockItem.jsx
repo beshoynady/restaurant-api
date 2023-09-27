@@ -30,14 +30,6 @@ const StockItem = () => {
     e.preventDefault();
     try {
       const createBy = userid;
-      // const formdata = new FormData();
-      // formdata.append('itemName', itemName);
-      // formdata.append('unit', unit);
-      // formdata.append('openingBalance', openingBalance);
-      // formdata.append('price', price);
-      // formdata.append('createBy', userid);
-      // formdata.append('createAt', createAt);
-      // console.log(formdata)
       const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', {itemName, unit, openingBalance, price, createBy, createAt});
       console.log(response.data);
     } catch (error) {
@@ -45,7 +37,7 @@ const StockItem = () => {
     }
   }
 
-  // const [StockItemid, setStockItemid] = useState("")
+  const [StockItemid, setStockItemid] = useState("")
 
   // const editStockItem = async (e) => {
   //   e.preventDefault()
@@ -96,18 +88,18 @@ const StockItem = () => {
 
   }
 
-  // const deleteStockItem = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.delete(`https://restaurant-api-blush.vercel.app/api/StockItem/${StockItemid}`);
-  //     if (response) {
-  //       console.log(response);
-  //       getallStockItems();
-  //     }
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+  const deleteStockItem = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.delete(`https://restaurant-api-blush.vercel.app/api/StockItem/${StockItemid}`);
+      if (response) {
+        console.log(response);
+        getallStockItems();
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   useEffect(() => {
     getallStockItem()
@@ -174,10 +166,10 @@ const StockItem = () => {
                               <td>{item.cost}</td>
                               <td>{item.createAt}</td>
                               <td>{item.createBy}</td>
-                              {/* <td>
-                        <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(p._id); setitemName(p.name); setopeningBalance(p.description); setunit(p.price); setStockItemdiscount(p.discount); setprice(p.category) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <a href="#deleteStockItemModal" className="delete" data-toggle="modal" onClick={() => setStockItemid(p._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                      </td> */}
+                              <td>
+                        <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(p._id); setitemName(item.itemName); setopeningBalance(item.openingBalance); setunit(item.unit) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a href="#deleteStockItemModal" className="delete" data-toggle="modal" onClick={() => setStockItemid(item._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                      </td>
                             </tr>
                           )
                         }
@@ -279,10 +271,11 @@ const StockItem = () => {
                 <input type="button" className="btn btn-danger" data-dismiss="modal" value="إغلاق" />
                 <input type="submit" className="btn btn-info" value="Save" />
               </div>
-            </form>
+              </form>
           </div>
         </div>
       </div>
+            */}
       <div id="deleteStockItemModal" className="modal fade">
         <div className="modal-dialog">
           <div className="modal-content">
@@ -302,7 +295,7 @@ const StockItem = () => {
             </form>
           </div>
         </div>
-      </div> */}
+      </div>
             </div>
           )
         }

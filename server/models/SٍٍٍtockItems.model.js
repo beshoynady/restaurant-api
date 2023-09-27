@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { ObjectId } = mongoose.Schema
 
 const StockItemSchema = new mongoose.Schema(
   {
@@ -20,16 +19,19 @@ const StockItemSchema = new mongoose.Schema(
     price: {
       type: Number,
       require: true,
+      default: 0,
     },
     cost:{
       type: Number,
       require: true,
+      default: 0,
     },
     createdAt: {
       type: Date,
     },
     balance:{
       type: Number,
+      default: 0,
     },
     updatedAt: {
       type: Date,
