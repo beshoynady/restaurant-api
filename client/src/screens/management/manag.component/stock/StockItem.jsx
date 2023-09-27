@@ -47,7 +47,6 @@ const StockItem = () => {
   }
 
   const [StockItemid, setStockItemid] = useState("")
-  const [StockItemdiscount, setStockItemdiscount] = useState(null)
 
   const editStockItem = async (e) => {
     e.preventDefault()
@@ -111,24 +110,9 @@ const StockItem = () => {
     }
   }
 
-  const [listofcategories, setlistofcategories] = useState([])
-  const getallCategories = async () => {
-    try {
-      const response = await axios.get('https://restaurant-api-blush.vercel.app/api/category/');
-      const categories = await response.data;
-      // console.log(response.data)
-      setlistofcategories(categories)
-      // console.log(listofcategories)
-
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-
   useEffect(() => {
     getallStockItem()
-    getallCategories()
+    // getallCategories()
   }, [])
 
   return (
@@ -188,10 +172,10 @@ const StockItem = () => {
                       <td>{item.cost}</td>
                       <td>{item.createAt}</td>
                       <td>{item.createBy}</td>
-                      <td>
+                      {/* <td>
                         <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(p._id); setitemName(p.name); setopeningBalance(p.description); setunit(p.price); setStockItemdiscount(p.discount); setprice(p.category) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                         <a href="#deleteStockItemModal" className="delete" data-toggle="modal" onClick={() => setStockItemid(p._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                      </td>
+                      </td> */}
                     </tr>
                   )
                 }
