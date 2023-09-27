@@ -15,8 +15,7 @@ const StockItemSchema = new mongoose.Schema(
     openingBalance:{
       type: Number,
       require: true,
-      default: 0, // default value is 0 for default value of opening balance
-      
+      default: 0,
     },
     price: {
       type: Number,

@@ -10,7 +10,7 @@ const CreateStockItem = async (req, res) => {
         const createBy = await req.body.createBy;             
         const createAt = await req.body.createAt;      
 
-        const newstockitem = await StockItemsModel.create({ itemName, unit, openingBalance, addQuantity, price, createBy, createAt });
+        const newstockitem = await StockItemsModel.create({ itemName, unit, openingBalance, price, createBy, createAt });
         
         newstockitem.save();
         res.status(200).json(newstockitem);

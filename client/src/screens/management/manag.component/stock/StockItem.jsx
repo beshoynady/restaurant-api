@@ -29,16 +29,15 @@ const StockItem = () => {
   const createitem = async (e,userid) => {
     e.preventDefault();
     try {
-
-      const formdata = new FormData();
-      formdata.append('itemName', itemName);
-      formdata.append('unit', unit);
-      formdata.append('openingBalance', openingBalance);
-      formdata.append('price', price);
-      formdata.append('createBy', userid);
-      formdata.append('createAt', createAt);
-      console.log(...formdata)
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', formdata);
+      // const formdata = new FormData();
+      // formdata.append('itemName', itemName);
+      // formdata.append('unit', unit);
+      // formdata.append('openingBalance', openingBalance);
+      // formdata.append('price', price);
+      // formdata.append('createBy', userid);
+      // formdata.append('createAt', createAt);
+      // console.log(formdata)
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', {itemName, unit, openingBalance, addQuantity, price, createBy, createAt});
       console.log(response.data);
     } catch (error) {
       console.log(error)
