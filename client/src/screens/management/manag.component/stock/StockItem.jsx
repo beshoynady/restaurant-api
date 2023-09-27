@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
-
+import {detacontext } from 'detacontext'
 const StockItem = () => {
 
 
@@ -213,7 +213,7 @@ const StockItem = () => {
                         </div>
                         <div className="form-group">
                           <label>الوحدة</label>
-                          <textarea className="form-control" required onChange={(e) => setunit(e.target.value)}></textarea>
+                          <input type='text' className="form-control" required onChange={(e) => setunit(e.target.value)}></input>
                         </div>
                         <div className="form-group">
                           <label>رصيد افتتاحي</label>
