@@ -37,7 +37,7 @@ const StockItem = () => {
       // formdata.append('createBy', userid);
       // formdata.append('createAt', createAt);
       // console.log(formdata)
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', {itemName, unit, openingBalance, addQuantity, price, createBy, createAt});
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', {itemName, unit, openingBalance, price, createBy, createAt});
       console.log(response.data);
     } catch (error) {
       console.log(error)
