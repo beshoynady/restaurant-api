@@ -61,10 +61,10 @@ const updateStockItem = async (req, res) => {
 const deleteItem = async (req, res) => {
     try {
         const itemId = await req.params.itemId;
-        const itemdelete = await Productmodel.findByIdAndDelete(itemId);
+        const itemdelete = await StockItemsModel.findByIdAndDelete(itemId);
         res.status(200).json(itemdelete);
     } catch (err) {
-        res.status(500).send(err.message)
+        res.status(500).json(err)
     }
 }
 
