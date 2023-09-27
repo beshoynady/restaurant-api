@@ -53,7 +53,7 @@ app.use('/api/user', routeuser);
 app.use('/api/table', routetable );
 app.use('/api/order', routeorder);
 app.use('/api/auth', routeauth);
-app.use('/api/stockitems', routestockitems);
+app.use('/api/stockitem', routestockitems);
 app.use('/api/stockmanag', routestockmanag);
 
 

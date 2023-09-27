@@ -28,7 +28,6 @@ const StockItemSchema = new mongoose.Schema(
     },
     createdAt: {
       type: Date,
-      default: Date.now,
     },
     balance:{
       type: Number,
