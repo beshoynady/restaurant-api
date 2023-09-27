@@ -9,6 +9,8 @@ const routeuser = require('./router/User.router.js');
 const routetable = require('./router/Table.router.js');
 const routeorder = require('./router/Order.router.js');
 const routeauth = require('./router/Auth.router.js');
+const routestockitems = require('./router/StockItem.router.js');
+const routestockmanag = require('./router/StockMang.router.js');
 
 
 dotenv.config();
@@ -51,6 +53,8 @@ app.use('/api/user', routeuser);
 app.use('/api/table', routetable );
 app.use('/api/order', routeorder);
 app.use('/api/auth', routeauth);
+app.use('/api/stockitems', routestockitems);
+app.use('/api/stockmanag', routestockmanag);
 
 
 
