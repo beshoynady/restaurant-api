@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
-import {detacontext } from 'detacontext'
+import { detacontext } from '../../../../App'
 const StockItem = () => {
 
 
