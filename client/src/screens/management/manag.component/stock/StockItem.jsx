@@ -82,20 +82,20 @@ const StockItem = () => {
   // }
 
 
-  // const [AllStockItems, setAllStockItems] = useState([]);
+  const [AllStockItems, setAllStockItems] = useState([]);
 
-  // const getallStockItem = async () => {
-  //   try {
-  //     const response = await axios.get('https://restaurant-api-blush.vercel.app/api/stockitem/');
-  //     const StockItems = await response.data;
-  //     console.log(response.data)
-  //     setAllStockItems(StockItems)
+  const getallStockItem = async () => {
+    try {
+      const response = await axios.get('https://restaurant-api-blush.vercel.app/api/stockitem/');
+      const StockItems = await response.data;
+      console.log(response.data)
+      setAllStockItems(StockItems)
 
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
+    } catch (error) {
+      console.log(error)
+    }
 
-  // }
+  }
 
   // const deleteStockItem = async (e) => {
   //   e.preventDefault();
