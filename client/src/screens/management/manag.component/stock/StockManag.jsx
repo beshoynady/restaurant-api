@@ -25,8 +25,11 @@ const StockManag = () => {
   
   const getiteminfo = (itemid)=>{
     setitemId(itemid);
-    setunit(itemid?AllStockItems.filter(stock => stock._id == itemid).unit:'');
-    setoldCost(itemid?AllStockItems.filter(stock => stock._id == itemid).cost:'')
+    setunit(AllStockItems.filter(stock => stock._id == itemid).unit);
+    setoldCost(AllStockItems.filter(stock => stock._id == itemid).cost)
+    console.log(itemid);
+    console.log(AllStockItems.filter(stock => stock._id == itemid).unit);
+    console.log(AllStockItems.filter(stock => stock._id == itemid).cost)
   }
   
   const Stockstatus = ["مشتريات", "منصرف", "راجع"];
@@ -42,6 +45,9 @@ const StockManag = () => {
     setQuantity(q)
     setcost(price * Quantity);
     setnewBalance(status=='منصرف'? oldCost - Quantity : oldCost+Quantity)
+    console.log(q)
+    console.log(price * Quantity);
+    console.log(status=='منصرف'? oldCost - Quantity : oldCost+Quantity)
   }
   // const unit =itemId?AllStockItems.filter(stock => stock._id == itemId).unit:'';
   // const cost =itemId?price * Quantity:0 ;
@@ -229,11 +235,9 @@ const StockManag = () => {
                         <div className="form-group">
                           <label>الكمية</label>
                           <input type='Number' className="form-control" required onChange={(e) =>{acontants(e.target.value)}} />
-                          <input type='text' className="form-control"defaultValue={unit} readOnly required></input>
+                          <input type='text' className="form-control" defaultValue={unit} readOnly required/>
                         </div>
-                        {/* <div className="form-group">
-                          <label>الوحدة</label>
-                        </div> */}
+
                         <div className="form-group">
                           <label>السعر</label>
                           <input type='Number' className="form-control" required onChange={(e) => setprice(e.target.value)} />
