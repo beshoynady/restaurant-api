@@ -19,7 +19,6 @@ const StockItem = () => {
     }
   }
 
-
   const [itemName, setitemName] = useState("");
   const [unit, setunit] = useState('');
   const [openingBalance, setopeningBalance] = useState(0);
@@ -40,11 +39,12 @@ const StockItem = () => {
 
   const [StockItemid, setStockItemid] = useState("")
 
-  const editStockItem = async (e) => {
+  const editStockItem = async (e,userid) => {
     e.preventDefault()
+    const createBy = userid
       try {
         const response = await axios.put('https://restaurant-api-blush.vercel.app/api/stockitem/' + StockItemid, {
-          itemName, unit, openingBalance, price, 'createBy':userid
+          itemName, unit, openingBalance, price, createBy
         });
         console.log(response.data);
         if (response) {
@@ -216,7 +216,7 @@ const StockItem = () => {
               <div id="editStockItemModal" className="modal fade">
                 <div className="modal-dialog">
                   <div className="modal-content">
-                    <form onSubmit={editStockItem}>
+                    <form onSubmit={(e)=>editStockItem(e,userlogininfo.id)}>
                       <div className="modal-header">
                         <h4 className="modal-title">تعديل صنف بالمخزن</h4>
                         <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
