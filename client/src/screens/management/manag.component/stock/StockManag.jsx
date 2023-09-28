@@ -22,15 +22,13 @@ const StockManag = () => {
   const [unit, setunit] = useState('')
   const [cost, setcost] = useState(0)
   const [oldCost, setoldCost] = useState(0)
-  const [newBalance, setnewBalance] = useState(0)
-
+  
   const getiteminfo = (itemid)=>{
     setitemId(itemid);
     setunit(itemid?AllStockItems.filter(stock => stock._id == itemid).unit:'');
-    setcost(itemid?price * Quantity:0 );
-    setoldCost(status=='منصرف'? oldCost - Quantity : oldCost+Quantity)
+    setoldCost(itemid?AllStockItems.filter(stock => stock._id == itemid).cost:'')
   }
-
+  
   const Stockstatus = ["مشتريات", "منصرف", "راجع"];
   
   const [actionId, setactionId] = useState("")
@@ -38,7 +36,13 @@ const StockManag = () => {
   const [itemId, setitemId] = useState("");
   const [Quantity, setQuantity] = useState(0);
   const [price, setprice] = useState(0);
+  const [newBalance, setnewBalance] = useState(0)
 
+  const acontants = (q)=>{
+    setQuantity(q)
+    setcost(price * Quantity);
+    setnewBalance(status=='منصرف'? oldCost - Quantity : oldCost+Quantity)
+  }
   // const unit =itemId?AllStockItems.filter(stock => stock._id == itemId).unit:'';
   // const cost =itemId?price * Quantity:0 ;
   // const oldCost = itemId?AllStockItems.filter(stock => stock._id == itemId).const:''
@@ -224,7 +228,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الكمية</label>
-                          <input type='Number' className="form-control" required onChange={(e) => setQuantity(e.target.value)} />
+                          <input type='Number' className="form-control" required onChange={(e) =>{acontants(e.target.value)}} />
                           <input type='text' className="form-control"defaultValue={unit} readOnly required></input>
                         </div>
                         {/* <div className="form-group">
