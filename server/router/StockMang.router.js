@@ -1,9 +1,9 @@
 const express = require('express');
-const { addQuantity, takeOutQuantity } = require('../controllers/StockMang.controller');
+const {createStockAction, UpdateStockAction,getoneStockActions, getAllStockActions, DeleteStockAction } = require('../controllers/StockMang.controller');
 
 const router = express.Router();
 
-router.route('/add').post(addQuantity)
-router.route('/takeOut').post(takeOutQuantity)
+router.route('/').post(createStockAction).get(getAllStockActions)
+router.route('/:actionid').get(getoneStockActions).put(UpdateStockAction).delete(DeleteStockAction)
 
 module.exports = router;

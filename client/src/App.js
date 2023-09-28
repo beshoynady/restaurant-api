@@ -20,12 +20,28 @@ import Waiter from './screens/management/manag.component/waiter/Waiter';
 import Login from './screens/management/manag.component/login/Login';
 import POS from './screens/management/manag.component/pos/POS';
 import StockItem from './screens/management/manag.component/stock/StockItem'
+import StockManag from './screens/management/manag.component/stock/StockMang';
 
 
 export const detacontext = createContext({})
 
 function App() {
+//++++++++++++++++++++ pagination ++++++++++
 
+  const [pagination, setpagination] = useState(5)
+  const EditPagination = (e) => {
+    if (e.target.innerHTML == 'Next') {
+      setpagination(pagination + 5)
+    } else if (e.target.innerHTML == 'Previous') {
+      if (pagination <= 5) {
+        setpagination(5)
+      } else {
+        setpagination(pagination - 5)
+      }
+    } else {
+      setpagination(e.target.innerHTML * 5)
+    }
+  }
 
 
   //+++++++++++++++++ product ++++++++++++++++++++
@@ -603,7 +619,8 @@ function App() {
       list_day_order, total_day_salse,
       categoryid, itemsincart, costOrder, additemtocart, increment, descrement,
       createclientorder, checkout, calcTotalSalesOfCategory, updatecountofsales,
-      CreateWaiterOrder, CreateCasherOrder ,POSinvoice
+      CreateWaiterOrder, CreateCasherOrder ,POSinvoice,
+      EditPagination,pagination
     }}>
       <BrowserRouter>
         <Routes>
@@ -622,6 +639,7 @@ function App() {
             <Route path='waiter' element={<Waiter />} />
             <Route path='pos' element={<POS />} />
             <Route path='stockitem' element={<StockItem/>} />
+            <Route path='stockmang' element={<StockManag/>} />
           </Route>
 
         </Routes>

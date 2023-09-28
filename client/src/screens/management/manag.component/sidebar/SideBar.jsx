@@ -14,6 +14,7 @@ const SideBar = () => {
     { title: 'الطاولة', sideitem: 'tables', icon: "table_restaurant" },
     { title: 'الموظفين', sideitem: 'employees', icon: "group_add" },
     { title: 'اصناف المخزن', sideitem: 'stockitem', icon: "inventory_2" },
+    { title: 'ادارة المخزون', sideitem: 'stockmang', icon: "inventory" },
   ]
 
 

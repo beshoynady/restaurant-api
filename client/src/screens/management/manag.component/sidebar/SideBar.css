@@ -49,7 +49,7 @@
 }
 .sidebar .menu .sid-list {
   width: 100%;
-  height: calc(100% - 60px);
+  height: auto;
   margin-top: 5px;
   display: flex;
   flex-direction: column;

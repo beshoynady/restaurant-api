@@ -2,40 +2,68 @@ const StockManagModel = require('../models/StockManag.model');
 
 
 
-const addQuantity = async (req, res, next) => {
+const createStockAction = async (req, res, next) => {
     try {
-        const itemId = req.params.itemId;
+        const itemId = await req.body.itemId
         const Quantity = await req.body.Quantity;
-        const addBy = await req.body.addBy;
         const price = await req.body.price;
-        const addAt = await req.body.addAt;
-        const unit = await req.body.unit;
+        const actionBy = await req.body.addBy;
+        const actionAt = await req.body.addAt;
         const status = await req.body.status;
-        const remainingQuantity = await req.body.remainingQuantity;
+        const newBalance = await req.body.newBalance;
 
-        const itemadded = StockManagModel.findByIdAndUpdate({ _id: itemId }, { Quantity, addBy, unit, status, remainingQuantity, price, addAt })
+        const itemadded = StockManagModel.create({itemId, Quantity, actionBy, unit, status, newBalance, price, actionAt })
         res.status(200).json(itemadded)
     } catch (error) {
         res.status(404).json({message: error.message});
     }
 }
 
-const takeOutQuantity = async (req, res, next) => {
+const UpdateStockAction = async (req, res, next) => {
     try {
-        const itemId = req.params.itemId;
+        const actionid = req.params.actionid;
+        const itemId = await req.body.itemId
         const Quantity = await req.body.Quantity;
-        const takeOutBy = await req.body.takeOutBy;
-        const takeOutAt = await req.body.takeOutAt;
-        const unit = await req.body.unit;
+        const price = await req.body.price;
+        const actionBy = await req.body.addBy;
+        const actionAt = await req.body.addAt;
         const status = await req.body.status;
-        const remainingQuantity = await req.body.remainingQuantity;
+        const newBalance = await req.body.newBalance;
 
-        const itemtakeOut = StockManagModel.findByIdAndUpdate({ _id: itemId }, { Quantity, takeOutAt, unit, status, remainingQuantity, takeOutBy })
-        res.status(200).json(itemtakeOut);
+        const updatedActon = StockManagModel.findByIdAndUpdate({ _id: actionid }, {itemId, Quantity, actionBy, unit, status, newBalance, price, actionAt })
+        res.status(200).json(updatedActon);
     } catch (error) {
         res.status(404).json({message: error.message});
     }
 }
 
+const getAllStockActions =async (req, res) =>{
+    try {
+        const allaction = StockManagModel.find({})
+        res.status(200).json(allaction)
+    } catch (error) {
+        res.status(404).json({ message : error.message});
+    }
+}
+const getoneStockActions =async (req, res) =>{
+    try {
+        const actionid =await req.params.actionid;
+        const action = StockManagModel.findById(actionid)
+        res.status(200).json(action)
+    } catch (error) {
+        res.status(404).json({ message : error.message});
+    }
+}
 
-module.exports = { addQuantity, takeOutQuantity }
+const DeleteStockAction= async (req, res) => {
+    try {
+        const actionid = await req.params.actionid;
+        const deletedAction = StockManagModel.findByIdAndDelete({_id: actionid})
+        res.status(200).json(deletedAction)
+    } catch (error) {
+        res.status( 404 ).json({message: error.message});
+  }
+}
+
+
+module.exports = {createStockAction, UpdateStockAction,getoneStockActions, getAllStockActions, DeleteStockAction }

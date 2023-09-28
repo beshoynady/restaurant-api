@@ -15,6 +15,15 @@ const StockManagSchema = new mongoose.Schema(
     Quantity: {
       type: Number,
       default: 0,
+      require: true,
+    },
+    Balance:{
+      type: Number,
+      require: true,
+    },
+    newBalance:{
+      type: Number,
+      require: true,
     },
     price: {
       type: Number,
@@ -24,23 +33,17 @@ const StockManagSchema = new mongoose.Schema(
       type: Number,
       require: true,
     },
-    addBy: {
+    actionBy: {
       type: ObjectId,
       ref: 'User',
     },
-    addAt: {
-      type: Date,
-    },
-    takeOutBy: {
-      type: ObjectId,
-      ref: 'User',
-    },
-    takeOutAt: {
+    actionAt: {
       type: Date,
     },
     status: {
       type: String,
       enum: ['مشتريات', 'منصرف', 'راجع'],
+      require: true
     },
   },
   {
