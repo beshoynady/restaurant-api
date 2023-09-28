@@ -32,6 +32,7 @@ const StockItem = () => {
       const createBy = userid;
       const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', { itemName, unit, openingBalance, price, createBy, createAt });
       console.log(response.data);
+      getallStockItem()
     } catch (error) {
       console.log(error)
     }
@@ -94,7 +95,7 @@ const StockItem = () => {
       const response = await axios.delete(`https://restaurant-api-blush.vercel.app/api/stockitem/${StockItemid}`);
       if (response) {
         console.log(response);
-        // getallStockItems();
+        getallStockItem();
       }
     } catch (error) {
       console.log(error)
