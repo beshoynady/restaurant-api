@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import { detacontext } from '../../../../App'
-const StockManag = () => {
 
+
+const StockManag = () => {
 
   const [AllStockItems, setAllStockItems] = useState([]);
 
   const getallStockItem = async () => {
     try {
-      const response = await axios.get('https://restaurant-api-blush.vercel.app/api/stockmanag/');
+      const response = await axios.get('https://restaurant-api-blush.vercel.app/api/stockitem/');
       const StockItems = await response.data;
       console.log(response.data)
       setAllStockItems(StockItems)
