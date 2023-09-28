@@ -48,7 +48,7 @@ const StockItem = () => {
         });
         console.log(response.data);
         if (response) {
-          getallStockItems()
+          getallStockItem()
         }
       } catch (error) {
         console.log(error)
