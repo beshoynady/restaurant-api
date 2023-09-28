@@ -37,32 +37,32 @@ const StockManag = () => {
     try {
       const actionAt = new Date()
       const actionBy = userid;
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockManag/', { itemId, unit,Quantity, price,cost, status,actionBy, actionAt ,newBalance});
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, unit,Quantity, price,cost, status,actionBy, actionAt ,newBalance});
       console.log(response.data);
-      getallStockManag()
+      getallStockaction()
     } catch (error) {
       console.log(error)
     }
   }
 
 
-  const editStockaction = async (e,userid) => {
-    e.preventDefault()
-    const createBy = userid
-      try {
-        const response = await axios.put('https://restaurant-api-blush.vercel.app/api/stockmang/' + actionId, {
-          item, unit, openingBalance, price, createBy
-        });
-        console.log(response.data);
-        if (response) {
-          getallStockaction()
-        }
-      } catch (error) {
-        console.log(error)
-      }
+  // const editStockaction = async (e,userid) => {
+  //   e.preventDefault()
+  //   const createBy = userid
+  //     try {
+  //       const response = await axios.put('https://restaurant-api-blush.vercel.app/api/stockmang/' + actionId, {
+  //         item, unit, openingBalance, price, createBy
+  //       });
+  //       console.log(response.data);
+  //       if (response) {
+  //         getallStockaction()
+  //       }
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
     
 
-  }
+  // }
 
 
   const [AllStockactions, setAllStockactions] = useState([]);
@@ -241,7 +241,7 @@ const StockManag = () => {
                   </div>
                 </div>
               </div>
-              <div id="editStockactionModal" className="modal fade">
+              {/* <div id="editStockactionModal" className="modal fade">
                 <div className="modal-dialog">
                   <div className="modal-content">
                     <form onSubmit={(e)=>editStockaction(e,userlogininfo.id)}>
@@ -275,7 +275,7 @@ const StockManag = () => {
                     </form>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               <div id="deleteStockactionModal" className="modal fade">
                 <div className="modal-dialog">
