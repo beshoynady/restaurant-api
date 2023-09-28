@@ -5,14 +5,14 @@ import { detacontext } from '../../../../App'
 
 const StockManag = () => {
 
-  const [AllStockItems, setAllStockItems] = useState([]);
+  const [StockItems, setStockItems] = useState([]);
 
-  const getallStockItem = async () => {
+  const getaStockItems = async () => {
     try {
       const response = await axios.get('https://restaurant-api-blush.vercel.app/api/stockitem/');
       const StockItems = await response.data;
       console.log(response.data)
-      setAllStockItems(StockItems)
+      setStockItems(StockItems)
 
     } catch (error) {
       console.log(error)
@@ -26,11 +26,11 @@ const StockManag = () => {
   
   const getiteminfo = (itemid)=>{
     setitemId(itemid);
-    setunit(AllStockItems.filter(stock => stock._id == itemid).unit);
-    setoldCost(AllStockItems.filter(stock => stock._id == itemid).cost)
+    setunit(StockItems.filter(stock => stock._id == itemid).unit);
+    setoldCost(StockItems.filter(stock => stock._id == itemid).cost)
     console.log(itemid);
-    console.log(AllStockItems.filter(stock => stock._id == itemid).unit);
-    console.log(AllStockItems.filter(stock => stock._id == itemid).cost)
+    console.log(StockItems.filter(stock => stock._id == itemid).unit);
+    console.log(StockItems.filter(stock => stock._id == itemid).cost)
   }
   
   const Stockstatus = ["مشتريات", "منصرف", "راجع"];
@@ -50,9 +50,9 @@ const StockManag = () => {
     console.log(price * Quantity);
     console.log(status=='منصرف'? oldCost - Quantity : oldCost+Quantity)
   }
-  // const unit =itemId?AllStockItems.filter(stock => stock._id == itemId).unit:'';
+  // const unit =itemId?StockItems.filter(stock => stock._id == itemId).unit:'';
   // const cost =itemId?price * Quantity:0 ;
-  // const oldCost = itemId?AllStockItems.filter(stock => stock._id == itemId).const:''
+  // const oldCost = itemId?StockItems.filter(stock => stock._id == itemId).const:''
   // const newBalance = status=='منصرف'? oldCost - Quantity : oldCost+Quantity
 
   const createStockaction = async (e, userid) => {
@@ -117,7 +117,7 @@ const StockManag = () => {
   }
 
   useEffect(() => {
-    getallStockItem()
+    getaStockItems()
     getallStockaction()
   }, [])
   return (
@@ -228,7 +228,7 @@ const StockManag = () => {
                         <div className="form-group">
                           <select name="" id="" onSelect={(e)=>{ getiteminfo(e.target.value) }}>
                           <option >اختر الصنف</option>
-                            {AllStockItems.map((item,i)=>{
+                            {StockItems.map((item,i)=>{
                               return <option key={i} defaultValue={item.itemName}>{item.itemName}</option>
                             })}
                           </select>
