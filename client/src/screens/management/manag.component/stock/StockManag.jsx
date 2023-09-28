@@ -163,7 +163,7 @@ const StockManag = () => {
                               <td>{usertitle(action.actionBy)}</td>
                               <td>
                                 <a href="#editStockactionModal" className="edit" data-toggle="modal" onClick={() => { setactionId(action._id)}}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteStockactionModal" className="delete" data-toggle="modal" onClick={() => setactionId(item._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                <a href="#deleteStockactionModal" className="delete" data-toggle="modal" onClick={() => setactionId(action._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                               </td>
                             </tr>
                           )
