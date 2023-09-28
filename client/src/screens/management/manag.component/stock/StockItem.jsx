@@ -42,34 +42,18 @@ const StockItem = () => {
 
   const editStockItem = async (e) => {
     e.preventDefault()
-    if (createBy) {
       try {
         const response = await axios.put('https://restaurant-api-blush.vercel.app/api/stockitem/' + StockItemid, {
-          itemName, unit, openingBalance, price, createBy
+          itemName, unit, openingBalance, price, 'createBy':userid
         });
         console.log(response.data);
         if (response) {
-          getallCategories()
           getallStockItems()
         }
       } catch (error) {
         console.log(error)
       }
-    } else {
-      try {
-        const response = await axios.put('https://restaurant-api-blush.vercel.app/api/StockItem/withoutimage/' + StockItemid, {
-          itemName, unit, openingBalance, price, StockItemdiscount
-        });
-        // console.log(StockItemid);
-        console.log(response.data);
-        if (response) {
-          getallCategories()
-          getallStockItems()
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
+    
 
   }
 
