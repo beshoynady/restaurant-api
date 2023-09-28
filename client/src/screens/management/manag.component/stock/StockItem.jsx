@@ -40,38 +40,38 @@ const StockItem = () => {
 
   const [StockItemid, setStockItemid] = useState("")
 
-  // const editStockItem = async (e) => {
-  //   e.preventDefault()
-  //   if (createBy) {
-  //     try {
-  //       const response = await axios.put('https://restaurant-api-blush.vercel.app/api/StockItem/' + StockItemid, {
-  //         itemName, unit, openingBalance, price, StockItemdiscount, image: createBy
-  //       });
-  //       console.log(response.data);
-  //       if (response) {
-  //         getallCategories()
-  //         getallStockItems()
-  //       }
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   } else {
-  //     try {
-  //       const response = await axios.put('https://restaurant-api-blush.vercel.app/api/StockItem/withoutimage/' + StockItemid, {
-  //         itemName, unit, openingBalance, price, StockItemdiscount
-  //       });
-  //       // console.log(StockItemid);
-  //       console.log(response.data);
-  //       if (response) {
-  //         getallCategories()
-  //         getallStockItems()
-  //       }
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
+  const editStockItem = async (e) => {
+    e.preventDefault()
+    if (createBy) {
+      try {
+        const response = await axios.put('https://restaurant-api-blush.vercel.app/api/stockitem/' + StockItemid, {
+          itemName, unit, openingBalance, price, createBy
+        });
+        console.log(response.data);
+        if (response) {
+          getallCategories()
+          getallStockItems()
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      try {
+        const response = await axios.put('https://restaurant-api-blush.vercel.app/api/StockItem/withoutimage/' + StockItemid, {
+          itemName, unit, openingBalance, price, StockItemdiscount
+        });
+        // console.log(StockItemid);
+        console.log(response.data);
+        if (response) {
+          getallCategories()
+          getallStockItems()
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
 
-  // }
+  }
 
 
   const [AllStockItems, setAllStockItems] = useState([]);
@@ -168,7 +168,7 @@ const StockItem = () => {
                               <td>{item.createAt}</td>
                               <td>{item.createBy}</td>
                               <td>
-                                <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(item._id); setitemName(item.itemName); setopeningBalance(item.openingBalance); setunit(item.unit) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(item._id); setitemName(item.itemName); setopeningBalance(item.openingBalance); setunit(item.unit); setprice(item.price) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#deleteStockItemModal" className="delete" data-toggle="modal" onClick={() => setStockItemid(item._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                               </td>
                             </tr>
@@ -196,7 +196,7 @@ const StockItem = () => {
                   <div className="modal-content">
                     <form onSubmit={(e) => createitem(e, userlogininfo.id)}>
                       <div className="modal-header">
-                        <h4 className="modal-title">اضافه صنف</h4>
+                        <h4 className="modal-title">اضافه صنف بالمخزن</h4>
                         <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                       </div>
                       <div className="modal-body">
@@ -229,54 +229,42 @@ const StockItem = () => {
                   </div>
                 </div>
               </div>
-              {/* <div id="editStockItemModal" className="modal fade">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <form onSubmit={editStockItem}>
-              <div className="modal-header">
-                <h4 className="modal-title">تعديل منتج</h4>
-                <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              </div>
-              <div className="modal-body">
-                <div className="form-group">
-                  <label>الاسم</label>
-                  <input type="text" className="form-control" defaultValue={AllStockItems.filter(p => p._id == StockItemid).length > 0 ? AllStockItems.filter(p => p._id == StockItemid)[0].name : ""} required onChange={(e) => setitemName(e.target.value)} />
-                </div>
-                <div className="form-group">
-                  <label>الوصف</label>
-                  <textarea className="form-control" defaultValue={AllStockItems.filter(p => p._id == StockItemid).length > 0 ? AllStockItems.filter(p => p._id == StockItemid)[0].description : ""} required onChange={(e) => setopeningBalance(e.target.value)}></textarea>
-                </div>
-                <div className="form-group">
-                  <label>السعر</label>
-                  <input type='Number' className="form-control" defaultValue={AllStockItems.filter(p => p._id == StockItemid).length > 0 ? AllStockItems.filter(p => p._id == StockItemid)[0].price : ""} required onChange={(e) => setunit(e.target.value)} />
-                </div>
-                <div className="form-group">
-                  <label>التخفيض</label>
-                  <input type='Number' className="form-control" defaultValue={AllStockItems.filter(p => p._id == StockItemid).length > 0 ? AllStockItems.filter(p => p._id == StockItemid)[0].discount : ""} required onChange={(e) => setStockItemdiscount(e.target.value)} />
-                </div>
-                <div className="form-group">
-                  <label>التصنيف</label>
-                  <select name="category" id="category" form="carform" defaultValue={AllStockItems.filter(p => p._id == StockItemid).length > 0 ? AllStockItems.filter(p => p._id == StockItemid)[0].category : ""} onChange={(e) => setprice(e.target.value)}>
-                    {listofcategories.map((category, i) => {
-                      return <option value={category._id} key={i} >{category.name}</option>
-                    })
-                    }
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label>الصورة</label>
-                  <input type="file" className="form-control" onChange={(e) => setcreateBy(e.target.files[0])} />
+              <div id="editStockItemModal" className="modal fade">
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <form onSubmit={editStockItem}>
+                      <div className="modal-header">
+                        <h4 className="modal-title">تعديل صنف بالمخزن</h4>
+                        <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      </div>
+                      <div className="modal-body">
+                        <div className="form-group">
+                          <label>اسم الصنف</label>
+                          <input type="text" className="form-control" defaultValue={itemName} required onChange={(e) => setitemName(e.target.value)} />
+                        </div>
+                        <div className="form-group">
+                          <label>الوحدة</label>
+                          <input type='text' className="form-control" defaultValue={unit} required onChange={(e) => setunit(e.target.value)}></input>
+                        </div>
+                        <div className="form-group">
+                          <label>رصيد افتتاحي</label>
+                          <input type='Number' className="form-control" defaultValue={openingBalance} required onChange={(e) => setopeningBalance(e.target.value)} />
+                        </div>
+                        <div className="form-group">
+                          <label>السعر</label>
+                          <input type='Number' className="form-control" defaultValue={price} required onChange={(e) => setprice(e.target.value)} />
+                        </div>
+
+                      </div>
+                      <div className="modal-footer">
+                        <input type="button" className="btn btn-danger" data-dismiss="modal" value="إغلاق" />
+                        <input type="submit" className="btn btn-info" value="Save" />
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
-              <div className="modal-footer">
-                <input type="button" className="btn btn-danger" data-dismiss="modal" value="إغلاق" />
-                <input type="submit" className="btn btn-info" value="Save" />
-              </div>
-              </form>
-          </div>
-        </div>
-      </div>
-            */}
+
               <div id="deleteStockItemModal" className="modal fade">
                 <div className="modal-dialog">
                   <div className="modal-content">
