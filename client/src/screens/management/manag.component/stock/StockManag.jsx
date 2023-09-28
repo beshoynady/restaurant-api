@@ -18,8 +18,20 @@ const StockManag = () => {
     }
 
   }
+  
+  const [unit, setunit] = useState('')
+  const [cost, setcost] = useState(0)
+  const [oldCost, setoldCost] = useState(0)
+  const [newBalance, setnewBalance] = useState(0)
 
-  const Stockstatus = ["مشتريات", "منصرف", "راجع"]
+  const getiteminfo = (itemid)=>{
+    setitemId(itemid);
+    setunit(itemid?AllStockItems.filter(stock => stock._id == itemid).unit:'');
+    setcost(itemid?price * Quantity:0 );
+    setoldCost(status=='منصرف'? oldCost - Quantity : oldCost+Quantity)
+  }
+
+  const Stockstatus = ["مشتريات", "منصرف", "راجع"];
   
   const [actionId, setactionId] = useState("")
   const [status, setstatus] = useState('');
@@ -27,10 +39,10 @@ const StockManag = () => {
   const [Quantity, setQuantity] = useState(0);
   const [price, setprice] = useState(0);
 
-  const unit =itemId?AllStockItems.filter(stock => stock._id == itemId).unit:'';
-  const cost =itemId?price * Quantity:0 ;
-  const oldCost = itemId?AllStockItems.filter(stock => stock._id == itemId).const:''
-  const newBalance = status=='منصرف'? oldCost - Quantity : oldCost+Quantity
+  // const unit =itemId?AllStockItems.filter(stock => stock._id == itemId).unit:'';
+  // const cost =itemId?price * Quantity:0 ;
+  // const oldCost = itemId?AllStockItems.filter(stock => stock._id == itemId).const:''
+  // const newBalance = status=='منصرف'? oldCost - Quantity : oldCost+Quantity
 
   const createStockaction = async (e, userid) => {
     e.preventDefault();
@@ -198,12 +210,12 @@ const StockManag = () => {
                           <select name="" id="" onSelect={(e)=>setstatus(e.target.value)}>
                           <option >اختر الاجراء</option>
                             {Stockstatus.map((statu, i)=>{
-                              return <option key={i} defaultValue={statu[i]}>{statu[i]}</option>
+                              return <option key={i} defaultValue={statu}>{statu}</option>
                             })}
                           </select>
                         </div>
                         <div className="form-group">
-                          <select name="" id="" onSelect={(e)=>setitemId(e.target.value)}>
+                          <select name="" id="" onSelect={(e)=>{ getiteminfo(e.target.value) }}>
                           <option >اختر الصنف</option>
                             {AllStockItems.map((item,i)=>{
                               return <option key={i} defaultValue={item.itemName}>{item.itemName}</option>
