@@ -23,13 +23,13 @@ const StockItem = () => {
   const [unit, setunit] = useState('');
   const [openingBalance, setopeningBalance] = useState(0);
   const [price, setprice] = useState(0);
-  const createdAt = new Date()
+  const createAt = new Date()
 
   const createitem = async (e, userid) => {
     e.preventDefault();
     try {
       const createBy = userid;
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', { itemName, unit, openingBalance, price, createBy, createdAt });
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', { itemName, unit, openingBalance, price,createBy, createAt });
       console.log(response.data);
       getallStockItem()
     } catch (error) {
@@ -149,7 +149,7 @@ const StockItem = () => {
                               <td>{item.price}</td>
                               <td>{item.balance}</td>
                               <td>{item.cost}</td>
-                              <td>{item.createdAt}</td>
+                              <td>{item.createAt}</td>
                               <td>{usertitle(item.createBy)}</td>
                               <td>
                                 <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(item._id); setitemName(item.itemName); setopeningBalance(item.openingBalance); setunit(item.unit); setprice(item.price) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>

@@ -4,14 +4,14 @@ const StockItemSchema = new mongoose.Schema(
   {
     itemName: {
       type: String,
-      require: true, 
+      require: true,
       unique: true
     },
     unit: {
       type: String,
-      require: true, 
+      require: true,
     },
-    openingBalance:{
+    openingBalance: {
       type: Number,
       require: true,
       default: 0,
@@ -21,15 +21,20 @@ const StockItemSchema = new mongoose.Schema(
       require: true,
       default: 0,
     },
-    cost:{
+    cost: {
       type: Number,
       require: true,
       default: 0,
     },
-    createdAt: {
+    createAt: {
       type: Date,
     },
-    balance:{
+    createBy: {
+      type: ObjectId,
+      ref: 'User',
+      required: true
+    },
+    balance: {
       type: Number,
       default: 0,
     },
