@@ -35,8 +35,9 @@ const StockManag = () => {
   const createStockaction = async (e, userid) => {
     e.preventDefault();
     try {
+      const actionAt = new Date()
       const actionBy = userid;
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockManag/', { itemId, unit, openingBalance,Quantity, price,cost, status,actionBy, actionAt ,newBalance});
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockManag/', { itemId, unit,Quantity, price,cost, status,actionBy, actionAt ,newBalance});
       console.log(response.data);
       getallStockManag()
     } catch (error) {
@@ -187,7 +188,7 @@ const StockManag = () => {
               <div id="addStockactionModal" className="modal fade">
                 <div className="modal-dialog">
                   <div className="modal-content">
-                    <form onSubmit={(e) => createitem(e, userlogininfo.id)}>
+                    <form onSubmit={(e) => createStockaction(e, userlogininfo.id)}>
                       <div className="modal-header">
                         <h4 className="modal-title">اضافه صنف بالمخزن</h4>
                         <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
