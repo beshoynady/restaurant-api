@@ -53,7 +53,7 @@ const StockManag = () => {
     try {
       const actionAt = new Date()
       const actionBy = userid;
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, unit,Quantity, price,cost, status,actionBy, actionAt ,newBalance});
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', { itemId, unit,Quantity, price,cost, status,actionBy, actionAt ,newBalance});
       console.log(response.data);
       getallStockaction()
     } catch (error) {
@@ -66,7 +66,7 @@ const StockManag = () => {
   //   e.preventDefault()
   //   const createBy = userid
   //     try {
-  //       const response = await axios.put('https://restaurant-api-blush.vercel.app/api/stockmang/' + actionId, {
+  //       const response = await axios.put('https://restaurant-api-blush.vercel.app/api/stockitem/' + actionId, {
   //         item, unit, openingBalance, price, createBy
   //       });
   //       console.log(response.data);
@@ -85,7 +85,7 @@ const StockManag = () => {
 
   const getallStockaction = async () => {
     try {
-      const response = await axios.get('https://restaurant-api-blush.vercel.app/api/stockmang/');
+      const response = await axios.get('https://restaurant-api-blush.vercel.app/api/stockitem/');
       const Stockactions = await response.data;
       console.log(response.data)
       setAllStockactions(Stockactions)
@@ -99,7 +99,7 @@ const StockManag = () => {
   const deleteStockaction = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.delete(`https://restaurant-api-blush.vercel.app/api/stockmang/${actionId}`);
+      const response = await axios.delete(`https://restaurant-api-blush.vercel.app/api/stockitem/${actionId}`);
       if (response) {
         console.log(response);
         getallStockaction();
