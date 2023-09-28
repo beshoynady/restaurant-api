@@ -19,7 +19,7 @@ const StockManag = () => {
 
   }
 
-  const Stockstatus = ['مشتريات', 'منصرف', 'راجع']
+  const Stockstatus = ["مشتريات", "منصرف", "راجع"]
   
   const [actionId, setactionId] = useState("")
   const [status, setstatus] = useState('');
@@ -196,13 +196,15 @@ const StockManag = () => {
                       <div className="modal-body">
                         <div className="form-group">
                           <select name="" id="" onSelect={(e)=>setstatus(e.target.value)}>
-                            {Stockstatus.map((statu,i)=>{
+                          <option >اختر الاجراء</option>
+                            {Stockstatus.map((statu, i)=>{
                               return <option key={i} defaultValue={statu[i]}>{statu[i]}</option>
                             })}
                           </select>
                         </div>
                         <div className="form-group">
                           <select name="" id="" onSelect={(e)=>setitemId(e.target.value)}>
+                          <option >اختر الصنف</option>
                             {AllStockItems.map((item,i)=>{
                               return <option key={i} defaultValue={item.itemName}>{item.itemName}</option>
                             })}
