@@ -23,13 +23,13 @@ const StockItem = () => {
   const [unit, setunit] = useState('');
   const [openingBalance, setopeningBalance] = useState(0);
   const [price, setprice] = useState(0);
-  const createAt = new Date()
+  const createdAt = new Date()
 
   const createitem = async (e, userid) => {
     e.preventDefault();
     try {
       const createBy = userid;
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', { itemName, unit, openingBalance, price, createBy, createAt });
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', { itemName, unit, openingBalance, price, createBy, createdAt });
       console.log(response.data);
       getallStockItem()
     } catch (error) {
@@ -93,7 +93,7 @@ const StockItem = () => {
   return (
     <detacontext.Consumer>
       {
-        ({ userlogininfo }) => {
+        ({ userlogininfo, usertitle }) => {
           return (
             <div className="container-xl mlr-auto">
               <div className="table-responsive mt-1">
@@ -149,8 +149,8 @@ const StockItem = () => {
                               <td>{item.price}</td>
                               <td>{item.balance}</td>
                               <td>{item.cost}</td>
-                              <td>{item.createAt}</td>
-                              <td>{item.createBy}</td>
+                              <td>{item.createdAt}</td>
+                              <td>{usertitle(item.createBy)}</td>
                               <td>
                                 <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(item._id); setitemName(item.itemName); setopeningBalance(item.openingBalance); setunit(item.unit); setprice(item.price) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#deleteStockItemModal" className="delete" data-toggle="modal" onClick={() => setStockItemid(item._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
