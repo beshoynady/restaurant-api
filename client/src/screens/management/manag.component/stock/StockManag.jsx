@@ -162,7 +162,7 @@ const StockManag = () => {
                               <td>{action.actionAt}</td>
                               <td>{usertitle(action.actionBy)}</td>
                               <td>
-                                <a href="#editStockactionModal" className="edit" data-toggle="modal" onClick={() => { setactionId(action._id); setaction(action.action); setopeningBalance(action.openingBalance); setunit(action.unit); setprice(action.price) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#editStockactionModal" className="edit" data-toggle="modal" onClick={() => { setactionId(action._id)}}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#deleteStockactionModal" className="delete" data-toggle="modal" onClick={() => setactionId(item._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                               </td>
                             </tr>
@@ -211,7 +211,7 @@ const StockManag = () => {
                         <div className="form-group">
                           <label>الكمية</label>
                           <input type='Number' className="form-control" required onChange={(e) => setQuantity(e.target.value)} />
-                          <input type='text' className="form-control"defaultValue={item.unit} readOnly required></input>
+                          <input type='text' className="form-control"defaultValue={unit} readOnly required></input>
                         </div>
                         {/* <div className="form-group">
                           <label>الوحدة</label>
