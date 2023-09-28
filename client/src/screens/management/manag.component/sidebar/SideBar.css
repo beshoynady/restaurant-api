@@ -61,10 +61,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: white;
   margin-bottom: 5px;
   padding: 5px;
   cursor: pointer;
+  color: black;
 }
 .sidebar .menu .sid-list .item .icon-manag {
   display: inline-block;
