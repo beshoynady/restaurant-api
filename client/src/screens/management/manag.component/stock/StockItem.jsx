@@ -205,7 +205,7 @@ const StockItem = () => {
                         </div>
                         <div className="form-group">
                           <label>التاريخ</label>
-                          <input type='date' className="form-control" defaultValue={new Date()} required readOnly />
+                          <input type='date' className="form-control" defaultValue={createAt} required readOnly />
                         </div>
                       </div>
                       <div className="modal-footer">
