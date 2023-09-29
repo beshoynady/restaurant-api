@@ -20,15 +20,15 @@ const StockManag = () => {
 
   }
   
-  const Stockstatus = ["مشتريات", "منصرف", "راجع"];
-  const [status, setstatus] = useState('');
+  const Stockmovement = ["مشتريات", "منصرف", "راجع"];
+  const [movement, setmovement] = useState('');
   const [itemId, setitemId] = useState("");
   const [unit, setunit] = useState('')
   const [Quantity, setQuantity] = useState(0);
   const [price, setprice] = useState(0);
   const [cost, setcost] = useState("")
+  const [oldBalance, setoldBalance] = useState(0)
   const [Balance, setBalance] = useState(0)
-  const [newBalance, setnewBalance] = useState(0)
 
   
   
@@ -40,7 +40,7 @@ const StockManag = () => {
     try {
       const actionAt = new Date()
       const actionBy = userid;
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, unit,Quantity, price,cost, status,actionBy, actionAt ,newBalance});
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, unit,Quantity, price,cost, movement,actionBy, actionAt ,Balance});
       console.log(response.data);
       getallStockaction()
     } catch (error) {
@@ -93,6 +93,14 @@ const StockManag = () => {
       }
     } catch (error) {
       console.log(error)
+    }
+  }
+
+  const calcBalance=(quantity) => {
+    if(movement='منصرف'){
+      setBalance(oldBalance - quantity)
+    }else{
+      setBalance(oldBalance + quantity)
     }
   }
 
@@ -160,7 +168,7 @@ const StockManag = () => {
                               <td>{action.item}</td>
                               <td>{action.Quantity}</td>
                               <td>{action.unit}</td>
-                              <td>{action.status}</td>
+                              <td>{action.movement}</td>
                               <td>{action.price}</td>
                               <td>{action.cost}</td>
                               <td>{action.balance}</td>
@@ -201,16 +209,16 @@ const StockManag = () => {
                       <div className="modal-body">
                         <div className="form-group">
                             <label>نوع الحركه</label>
-                          <select name="" id="" onChange={(e)=>setstatus(e.target.value)}>
+                          <select name="" id="" onChange={(e)=>setmovement(e.target.value)}>
                           <option >اختر الاجراء</option>
-                            {Stockstatus.map((statu, i)=>{
+                            {Stockmovement.map((statu, i)=>{
                               return <option key={i} defaultValue={statu}>{statu}</option>
                             })}
                           </select>
                         </div>
                         <div className="form-group">
                           <label>الصنف</label>
-                          <select name="" id="" onChange={(e)=>{setitemId(e.target.value);setunit(StockItems.filter(i=>i._id == e.target.value)[0].unit);setBalance(StockItems.filter(i=>i._id == e.target.value)[0].Balance)}}>
+                          <select name="" id="" onChange={(e)=>{setitemId(e.target.value);setunit(StockItems.filter(i=>i._id == e.target.value)[0].unit); setoldBalance(StockItems.filter(i=>i._id == e.target.value)[0].Balance)}}>
                           <option >اختر الصنف</option>
                             {StockItems.map((item,i)=>{
                               return <option key={i} value={item._id}>{item.itemName}</option>
@@ -219,7 +227,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الكمية</label>
-                          <input type='Number' className="form-control" required onChange={(e) =>{setQuantity(e.target.value)}} />
+                          <input type='Number' className="form-control" required onChange={(e) =>{setQuantity(e.target.value); calcBalance(e.target.value)}} />
                           <input type='text' className="form-control" defaultValue={unit} readOnly />
                         </div>
 
@@ -233,7 +241,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الرصيد الجديد</label>
-                          <input type='Number' className="form-control" required defaultValue={newBalance} />
+                          <input type='Number' className="form-control" required defaultValue={Balance} />
                         </div>
                         <div className="form-group">
                           <label>التاريخ</label>
