@@ -228,7 +228,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الصنف</label>
-                          <select name="" id="" onChange={(e)=>{setitemId(e.target.value);setunit(e.target.unit) ;console.log(StockItems.filter(i=>i._id == e.target.value));console.log(e.target.value)}}>
+                          <select name="" id="" onChange={(e)=>{setitemId(e.target.value);setunit(e.target.unit) ;console.log(StockItems.filter(i=>i._id == e.target.value)[0].unit);console.log(e.target.value)}}>
                           <option >اختر الصنف</option>
                             {StockItems.map((item,i)=>{
                               return <option key={i} value={item._id}>{item.itemName}</option>
