@@ -21,7 +21,7 @@ const StockItem = () => {
 
   const [itemName, setitemName] = useState("");
   const [unit, setunit] = useState('');
-  const [openingBalance, setopeningBalance] = useState(0);
+  const [Balance, setBalance] = useState(0);
   const [price, setprice] = useState(0);
   const createAt = new Date()
 
@@ -29,7 +29,7 @@ const StockItem = () => {
     e.preventDefault();
     try {
       const createBy = userid;
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', { itemName, unit, openingBalance, price,createBy, createAt });
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', { itemName, unit, Balance, price,createBy, createAt });
       console.log(response.data);
       getallStockItem()
     } catch (error) {
@@ -44,7 +44,7 @@ const StockItem = () => {
     const createBy = userid
       try {
         const response = await axios.put('https://restaurant-api-blush.vercel.app/api/stockitem/' + StockItemid, {
-          itemName, unit, openingBalance, price, createBy
+          itemName, unit, Balance, price, createBy
         });
         console.log(response.data);
         if (response) {
@@ -122,9 +122,8 @@ const StockItem = () => {
                         <th>م</th>
                         <th>اسم الصنف</th>
                         <th>الوحدة</th>
-                        <th>رصيد افتتاحي</th>
-                        <th>السعر</th>
                         <th>الرصيد الحالي</th>
+                        <th>السعر</th>
                         <th>اجمالي التكلفة</th>
                         <th>تاريخ الاضافه</th>
                         <th>اضيف بواسطه</th>
@@ -145,14 +144,13 @@ const StockItem = () => {
                               <td>{i + 1}</td>
                               <td>{item.itemName}</td>
                               <td>{item.unit}</td>
-                              <td>{item.openingBalance}</td>
+                              <td>{item.Balance}</td>
                               <td>{item.price}</td>
-                              <td>{item.balance}</td>
                               <td>{item.cost}</td>
                               <td>{item.createAt}</td>
                               <td>{usertitle(item.createBy)}</td>
                               <td>
-                                <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(item._id); setitemName(item.itemName); setopeningBalance(item.openingBalance); setunit(item.unit); setprice(item.price) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(item._id); setitemName(item.itemName); setBalance(item.Balance); setunit(item.unit); setprice(item.price) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#deleteStockItemModal" className="delete" data-toggle="modal" onClick={() => setStockItemid(item._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                               </td>
                             </tr>
@@ -194,7 +192,7 @@ const StockItem = () => {
                         </div>
                         <div className="form-group">
                           <label>رصيد افتتاحي</label>
-                          <input type='Number' className="form-control" required onChange={(e) => setopeningBalance(e.target.value)} />
+                          <input type='Number' className="form-control" required onChange={(e) => setBalance(e.target.value)} />
                         </div>
                         <div className="form-group">
                           <label>السعر</label>
@@ -232,7 +230,7 @@ const StockItem = () => {
                         </div>
                         <div className="form-group">
                           <label>رصيد افتتاحي</label>
-                          <input type='Number' className="form-control" defaultValue={openingBalance} required onChange={(e) => setopeningBalance(e.target.value)} />
+                          <input type='Number' className="form-control" defaultValue={Balance} required onChange={(e) => setBalance(e.target.value)} />
                         </div>
                         <div className="form-group">
                           <label>السعر</label>
