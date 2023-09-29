@@ -224,7 +224,7 @@ const StockManag = () => {
                       <div className="modal-body">
                         <div className="form-group">
                             <label>نوع الحركه</label>
-                          <select name="" id="" onSelect={(e)=>setstatus(e.target.value)}>
+                          <select name="" id="" onChange={(e)=>setstatus(e.target.value)}>
                           <option >اختر الاجراء</option>
                             {Stockstatus.map((statu, i)=>{
                               return <option key={i} defaultValue={statu}>{statu}</option>
@@ -233,7 +233,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الصنف</label>
-                          <select name="" id="" onSelect={(e)=>{setitemId(e.target.value);console.log(e.target.value)}}>
+                          <select name="" id="" onChange={(e)=>{setitemId(e.target.value);console.log(e.target.value)}}>
                           <option >اختر الصنف</option>
                             {StockItems.map((item,i)=>{
                               return <option key={i} value={item._id}>{item.itemName}</option>
