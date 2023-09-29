@@ -81,7 +81,7 @@ const StockItem = () => {
   return (
     <detacontext.Consumer>
       {
-        ({ userlogininfo, usertitle, pagination, setpagination }) => {
+        ({ userlogininfo, usertitle, pagination, EditPagination }) => {
           return (
             <div className="container-xl mlr-auto">
               <div className="table-responsive mt-1">
