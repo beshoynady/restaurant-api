@@ -23,37 +23,17 @@ const StockManag = () => {
   const [unit, setunit] = useState('')
   const [cost, setcost] = useState("")
   const [oldCost, setoldCost] = useState(0)
-  
-  // const getiteminfo = (itemid)=>{
-  //   setitemId(itemid);
-  //   setunit(StockItems.filter(stock => stock._id == itemid).unit);
-  //   setoldCost(StockItems.filter(stock => stock._id == itemid).cost)
-  //   console.log(itemid);
-  //   console.log(StockItems.filter(stock => stock._id == itemid).unit);
-  //   console.log(StockItems.filter(stock => stock._id == itemid).cost)
-  // }
+
   
   const Stockstatus = ["مشتريات", "منصرف", "راجع"];
   
   const [actionId, setactionId] = useState("")
+  const [actionAt, setactionAt] = useState(new Date())
   const [status, setstatus] = useState('');
   const [itemId, setitemId] = useState("");
   const [Quantity, setQuantity] = useState(0);
   const [price, setprice] = useState(0);
   const [newBalance, setnewBalance] = useState(0)
-
-  // const acontants = (q)=>{
-  //   setQuantity(q)
-  //   setcost(price * Quantity);
-  //   setnewBalance(status=='منصرف'? oldCost - Quantity : oldCost+Quantity)
-  //   console.log(q)
-  //   console.log(price * Quantity);
-  //   console.log(status=='منصرف'? oldCost - Quantity : oldCost+Quantity)
-  // }
-  // const unit =itemId?StockItems.filter(stock => stock._id == itemId).unit:'';
-  // const cost =itemId?price * Quantity:0 ;
-  // const oldCost = itemId?StockItems.filter(stock => stock._id == itemId).const:''
-  // const newBalance = status=='منصرف'? oldCost - Quantity : oldCost+Quantity
 
   const createStockaction = async (e, userid) => {
     e.preventDefault();
@@ -115,6 +95,10 @@ const StockManag = () => {
       console.log(error)
     }
   }
+  useEffect(() => {
+    setnewBalance(oldCost + cost)
+  }, [cost])
+  
 
   useEffect(() => {
     getaStockItems()
@@ -228,7 +212,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الصنف</label>
-                          <select name="" id="" onChange={(e)=>{setitemId(e.target.value);setunit(StockItems.filter(i=>i._id == e.target.value)[0].unit)}}>
+                          <select name="" id="" onChange={(e)=>{setitemId(e.target.value);setunit(StockItems.filter(i=>i._id == e.target.value)[0].unit);setoldCost(StockItems.filter(i=>i._id == e.target.value)[0].cost)}}>
                           <option >اختر الصنف</option>
                             {StockItems.map((item,i)=>{
                               return <option key={i} value={item._id}>{item.itemName}</option>
@@ -243,7 +227,7 @@ const StockManag = () => {
 
                         <div className="form-group">
                           <label>السعر</label>
-                          <input type='Number' className="form-control" required onChange={(e) =>{ setprice(e.target.value); setcost(e.target.value * Quantity)}} />
+                          <input type='Number' className="form-control" required onChange={(e) =>{ setprice(e.target.value); setcost(e.target.value * Quantity);}} />
                         </div>
                         <div className="form-group">
                           <label>التكلفة</label>
@@ -255,7 +239,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>التاريخ</label>
-                          <input type='date' className="form-control" defaultValue={new Date()} required readOnly />
+                          <input type='date' className="form-control" defaultValue={actionAt} required readOnly />
                         </div>
                       </div>
                       <div className="modal-footer">
