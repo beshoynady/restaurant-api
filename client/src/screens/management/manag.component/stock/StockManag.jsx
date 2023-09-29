@@ -243,7 +243,7 @@ const StockManag = () => {
 
                         <div className="form-group">
                           <label>السعر</label>
-                          <input type='Number' className="form-control" required onChange={(e) =>{ setprice(e.target.value); setcost(e.target.value * Quantity)}} />
+                          <input type='Number' className="form-control" required onChange={(e) =>{ setprice(e.target.value); setcost(20)}} />
                         </div>
                         <div className="form-group">
                           <label>التكلفة</label>
