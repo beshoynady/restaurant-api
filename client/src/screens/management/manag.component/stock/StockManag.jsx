@@ -21,7 +21,7 @@ const StockManag = () => {
   }
   
   const [unit, setunit] = useState('')
-  const [cost, setcost] = useState(0)
+  const [cost, setcost] = useState("")
   const [oldCost, setoldCost] = useState(0)
   
   // const getiteminfo = (itemid)=>{
