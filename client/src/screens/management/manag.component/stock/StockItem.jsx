@@ -23,13 +23,14 @@ const StockItem = () => {
   const [unit, setunit] = useState('');
   const [Balance, setBalance] = useState(0);
   const [price, setprice] = useState(0);
-  const createAt = new Date()
+  const [cost, setcost] = useState();
+  const createAt = Date.now
 
   const createitem = async (e, userid) => {
     e.preventDefault();
     try {
       const createBy = userid;
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', { itemName, unit, Balance, price,createBy, createAt });
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', { itemName, unit, Balance, price,cost,createBy, createAt });
       console.log(response.data);
       getallStockItem()
     } catch (error) {
@@ -196,7 +197,7 @@ const StockItem = () => {
                         </div>
                         <div className="form-group">
                           <label>السعر</label>
-                          <input type='Number' className="form-control" required onChange={(e) => setprice(e.target.value)} />
+                          <input type='Number' className="form-control" required onChange={(e) => {setprice(e.target.value); setcost(e.target.value * Balance)} }/>
                         </div>
                         <div className="form-group">
                           <label>التاريخ</label>
