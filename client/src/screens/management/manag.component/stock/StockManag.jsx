@@ -24,14 +24,14 @@ const StockManag = () => {
   const [cost, setcost] = useState(0)
   const [oldCost, setoldCost] = useState(0)
   
-  const getiteminfo = (itemid)=>{
-    setitemId(itemid);
-    setunit(StockItems.filter(stock => stock._id == itemid).unit);
-    setoldCost(StockItems.filter(stock => stock._id == itemid).cost)
-    console.log(itemid);
-    console.log(StockItems.filter(stock => stock._id == itemid).unit);
-    console.log(StockItems.filter(stock => stock._id == itemid).cost)
-  }
+  // const getiteminfo = (itemid)=>{
+  //   setitemId(itemid);
+  //   setunit(StockItems.filter(stock => stock._id == itemid).unit);
+  //   setoldCost(StockItems.filter(stock => stock._id == itemid).cost)
+  //   console.log(itemid);
+  //   console.log(StockItems.filter(stock => stock._id == itemid).unit);
+  //   console.log(StockItems.filter(stock => stock._id == itemid).cost)
+  // }
   
   const Stockstatus = ["مشتريات", "منصرف", "راجع"];
   
@@ -42,14 +42,14 @@ const StockManag = () => {
   const [price, setprice] = useState(0);
   const [newBalance, setnewBalance] = useState(0)
 
-  const acontants = (q)=>{
-    setQuantity(q)
-    setcost(price * Quantity);
-    setnewBalance(status=='منصرف'? oldCost - Quantity : oldCost+Quantity)
-    console.log(q)
-    console.log(price * Quantity);
-    console.log(status=='منصرف'? oldCost - Quantity : oldCost+Quantity)
-  }
+  // const acontants = (q)=>{
+  //   setQuantity(q)
+  //   setcost(price * Quantity);
+  //   setnewBalance(status=='منصرف'? oldCost - Quantity : oldCost+Quantity)
+  //   console.log(q)
+  //   console.log(price * Quantity);
+  //   console.log(status=='منصرف'? oldCost - Quantity : oldCost+Quantity)
+  // }
   // const unit =itemId?StockItems.filter(stock => stock._id == itemId).unit:'';
   // const cost =itemId?price * Quantity:0 ;
   // const oldCost = itemId?StockItems.filter(stock => stock._id == itemId).const:''
@@ -218,6 +218,7 @@ const StockManag = () => {
                       </div>
                       <div className="modal-body">
                         <div className="form-group">
+                            <label>نوع الحركه</label>
                           <select name="" id="" onSelect={(e)=>setstatus(e.target.value)}>
                           <option >اختر الاجراء</option>
                             {Stockstatus.map((statu, i)=>{
@@ -226,17 +227,18 @@ const StockManag = () => {
                           </select>
                         </div>
                         <div className="form-group">
-                          <select name="" id="" onSelect={(e)=>{ getiteminfo(e.target.value) }}>
+                          <label>الصنف</label>
+                          <select name="" id="" onSelect={(e)=>{setitemId(e.target.value) }}>
                           <option >اختر الصنف</option>
                             {StockItems.map((item,i)=>{
-                              return <option key={i} defaultValue={item.itemName}>{item.itemName}</option>
+                              return <option key={i} Value={item._id}>{item.itemName}</option>
                             })}
                           </select>
                         </div>
                         <div className="form-group">
                           <label>الكمية</label>
-                          <input type='Number' className="form-control" required onChange={(e) =>{acontants(e.target.value)}} />
-                          <input type='text' className="form-control" defaultValue={unit} readOnly required/>
+                          <input type='Number' className="form-control" required onChange={(e) =>{setQuantity(e.target.value)}} />
+                          <input type='text' className="form-control" defaultValue={unit} readOnly />
                         </div>
 
                         <div className="form-group">
