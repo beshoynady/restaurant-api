@@ -20,20 +20,20 @@ const StockManag = () => {
 
   }
   
+  const Stockstatus = ["مشتريات", "منصرف", "راجع"];
+  const [status, setstatus] = useState('');
+  const [itemId, setitemId] = useState("");
   const [unit, setunit] = useState('')
+  const [Quantity, setQuantity] = useState(0);
+  const [price, setprice] = useState(0);
   const [cost, setcost] = useState("")
-  const [oldCost, setoldCost] = useState(0)
+  const [Balance, setBalance] = useState(0)
+  const [newBalance, setnewBalance] = useState(0)
 
   
-  const Stockstatus = ["مشتريات", "منصرف", "راجع"];
   
   const [actionId, setactionId] = useState("")
   const [actionAt, setactionAt] = useState(new Date())
-  const [status, setstatus] = useState('');
-  const [itemId, setitemId] = useState("");
-  const [Quantity, setQuantity] = useState(0);
-  const [price, setprice] = useState(0);
-  const [newBalance, setnewBalance] = useState(0)
 
   const createStockaction = async (e, userid) => {
     e.preventDefault();
@@ -212,7 +212,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الصنف</label>
-                          <select name="" id="" onChange={(e)=>{setitemId(e.target.value);setunit(StockItems.filter(i=>i._id == e.target.value)[0].unit);setoldCost(StockItems.filter(i=>i._id == e.target.value)[0].cost)}}>
+                          <select name="" id="" onChange={(e)=>{setitemId(e.target.value);setunit(StockItems.filter(i=>i._id == e.target.value)[0].unit);setBalance(StockItems.filter(i=>i._id == e.target.value)[0].Balance)}}>
                           <option >اختر الصنف</option>
                             {StockItems.map((item,i)=>{
                               return <option key={i} value={item._id}>{item.itemName}</option>

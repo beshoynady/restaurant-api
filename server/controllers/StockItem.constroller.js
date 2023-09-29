@@ -5,12 +5,13 @@ const CreateStockItem = async (req, res) => {
     try {
         const itemName = await req.body.itemName;
         const unit = await req.body.unit;
-        const openingBalance = await req.body.openingBalance;
+        const Balance = await req.body.Balance;
         const price = await req.body.price;
+        const cost = await req.body.cost;
         const createBy = await req.body.createBy;             
         const createAt = await req.body.createAt;      
 
-        const newstockitem = await StockItemsModel.create({ itemName, unit, openingBalance, price, createBy, createAt });
+        const newstockitem = await StockItemsModel.create({ itemName, unit, price,Balance,cost, createBy, createAt });
         
         newstockitem.save();
         res.status(200).json(newstockitem);
@@ -43,14 +44,14 @@ const getoneItem = async (req, res) => {
 
 const updateStockItem = async (req, res) => {
     try {
-        const itemId = req.params.itemId;
         const itemName = await req.body.itemName;
         const unit = await req.body.unit;
-        const openingBalance = await req.body.openingBalance;
+        const Balance = await req.body.Balance;
         const price = await req.body.price;
+        const cost = await req.body.cost;
         const createBy = await req.body.createBy;             
 
-        const newstockitem = await StockItemsModel.findByIdAndUpdate({ _id: itemId },{ itemName, unit, openingBalance, price,createBy });
+        const newstockitem = await StockItemsModel.findByIdAndUpdate({ _id: itemId },{ itemName, unit, Balance,cost, price,createBy});
         newstockitem.save();
         res.status(200).json(newstockitem);
     } catch (err) {
@@ -58,6 +59,16 @@ const updateStockItem = async (req, res) => {
     }
 }
 
+const movements = async(req, res)=>{
+    try {
+        const itemId = req.params.item
+        const updatedstockitem = await StockItemsModel.findByIdAndUpdate({ _id: itemId },{ Balance, cost, price});
+        res.status(200).json(updatedstockitem)        
+    } catch (error) {
+        res.status(500).json({ err: error });
+    }
+
+}
 
 const deleteItem = async (req, res) => {
     try {
@@ -71,4 +82,4 @@ const deleteItem = async (req, res) => {
 
 
 
-module.exports = { CreateStockItem, getAllStockItems, getoneItem, updateStockItem, deleteItem }
+module.exports = { CreateStockItem, getAllStockItems, getoneItem, updateStockItem,movements, deleteItem }

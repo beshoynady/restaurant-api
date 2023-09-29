@@ -12,7 +12,7 @@ const StockItemSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
-    openingBalance: {
+    Balance: {
       type: Number,
       require: true,
       default: 0,
@@ -34,10 +34,6 @@ const StockItemSchema = new mongoose.Schema(
       type: ObjectId,
       ref: 'User',
       required: true
-    },
-    balance: {
-      type: Number,
-      default: 0,
     },
     updatedAt: {
       type: Date,

@@ -3,7 +3,7 @@ const { ObjectId } = mongoose.Schema
 
 const StockManagSchema = new mongoose.Schema(
   {
-    item: {
+    itemId: {
       type: ObjectId,
       ref: 'StockItems',
       require: true,
@@ -12,15 +12,20 @@ const StockManagSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
+    movement: {
+      type: String,
+      enum: ['مشتريات', 'منصرف', 'راجع'],
+      require: true
+    },
     Quantity: {
       type: Number,
       default: 0,
       require: true,
     },
-    Balance:{
+    oldBalance:{
       type: Number,
       require: true,
-    },
+    }, 
     newBalance:{
       type: Number,
       require: true,
@@ -40,11 +45,10 @@ const StockManagSchema = new mongoose.Schema(
     actionAt: {
       type: Date,
     },
-    status: {
-      type: String,
-      enum: ['مشتريات', 'منصرف', 'راجع'],
-      require: true
-    },
+    updatedAt: {
+      type: Date,
+      default: Date.now
+     }
   },
   {
     timestamps: true,
