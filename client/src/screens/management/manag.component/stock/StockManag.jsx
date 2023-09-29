@@ -95,9 +95,7 @@ const StockManag = () => {
       console.log(error)
     }
   }
-  useEffect(() => {
-    setnewBalance(oldCost + cost)
-  }, [cost])
+
   
 
   useEffect(() => {
