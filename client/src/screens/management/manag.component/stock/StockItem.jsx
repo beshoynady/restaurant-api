@@ -4,29 +4,16 @@ import { detacontext } from '../../../../App'
 const StockItem = () => {
 
 
-  const [pagination, setpagination] = useState(5)
-  const EditPagination = (e) => {
-    if (e.target.innerHTML == 'Next') {
-      setpagination(pagination + 5)
-    } else if (e.target.innerHTML == 'Previous') {
-      if (pagination <= 5) {
-        setpagination(5)
-      } else {
-        setpagination(pagination - 5)
-      }
-    } else {
-      setpagination(e.target.innerHTML * 5)
-    }
-  }
 
   const [itemName, setitemName] = useState("");
   const [unit, setunit] = useState('');
   const [Balance, setBalance] = useState(0);
   const [price, setprice] = useState(0);
   const [cost, setcost] = useState();
-  const createAt = Date.now
+  const createAt =Date()
 
   const createitem = async (e, userid) => {
+    console.log(createAt)
     e.preventDefault();
     try {
       const createBy = userid;
@@ -94,7 +81,7 @@ const StockItem = () => {
   return (
     <detacontext.Consumer>
       {
-        ({ userlogininfo, usertitle }) => {
+        ({ userlogininfo, usertitle, pagination, setpagination }) => {
           return (
             <div className="container-xl mlr-auto">
               <div className="table-responsive mt-1">
