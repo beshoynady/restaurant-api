@@ -228,7 +228,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الصنف</label>
-                          <select name="" id="" onSelect={(e)=>{ setunit(e.target.unit) }}>
+                          <select name="" id="" onSelect={(e)=>{setitemId(e.target.value); setunit(e.target.unit) }}>
                           <option >اختر الصنف</option>
                             {StockItems.map((item, i)=>{
                                <option key={i} Value={item._id} unit={item.unit}>{item.itemName}</option>
@@ -239,7 +239,7 @@ const StockManag = () => {
                         <div className="form-group">
                           <label>الكمية</label>
                           <input type='Number' className="form-control" required onChange={(e) =>{setQuantity(e.target.value)}} />
-                          <input type='text' className="form-control" defaultValue={unit} readOnly required/>
+                          {/* <input type='text' className="form-control" defaultValue={unit} readOnly required/> */}
                         </div>
 
                         <div className="form-group">
@@ -248,7 +248,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>التكلفة</label>
-                          <input type='Number' readOnly className="form-control" Value={price*Quantity} onchange={(e)=>setcost(e.target.value)} >{price*Quantity}</input>
+                          <input type='Number'  className="form-control" Value={price*Quantity} onchange={(e)=>setcost(e.target.value)} >{price*Quantity}</input>
                         </div>
                         <div className="form-group">
                           <label>الرصيد الجديد</label>
