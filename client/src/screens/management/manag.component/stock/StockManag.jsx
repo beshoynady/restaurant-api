@@ -21,7 +21,7 @@ const StockManag = () => {
   }
   
   const [unit, setunit] = useState('')
-  const [cost, setcost] = useState(0)
+  const [cost, setcost] = useState('')
   const [oldCost, setoldCost] = useState(0)
   
   // const getiteminfo = (itemid)=>{
@@ -243,11 +243,11 @@ const StockManag = () => {
 
                         <div className="form-group">
                           <label>السعر</label>
-                          <input type='Number' className="form-control" required onChange={(e) =>{ setprice(e.target.value); setcost(20)}} />
+                          <input type='Number' className="form-control" required onChange={(e) =>{ setprice(e.target.value); setcost(e.target.value);setunit(StockItems.filter(i=>i._id == e.target.value)[0].unit)}} />
                         </div>
                         <div className="form-group">
                           <label>التكلفة</label>
-                          <input type='Number' readOnly className="form-control" defaultValue={cost} />
+                          <input type='text' className="form-control" defaultValue={cost} readOnly />
                         </div>
                         <div className="form-group">
                           <label>الرصيد الجديد</label>
