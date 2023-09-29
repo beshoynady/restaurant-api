@@ -228,7 +228,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الصنف</label>
-                          <select name="" id="" onSelect={(e)=>{ getiteminfo(e.target.value); setunit(e.target.unit) }}>
+                          <select name="" id="" onSelect={(e)=>{ setunit(e.target.unit) }}>
                           <option >اختر الصنف</option>
                             {StockItems.map((item, i)=>{
                                <option key={i} Value={item._id} unit={item.unit}>{item.itemName}</option>
