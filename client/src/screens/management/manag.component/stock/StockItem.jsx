@@ -200,6 +200,10 @@ const StockItem = () => {
                           <input type='Number' className="form-control" required onChange={(e) => {setprice(e.target.value); setcost(e.target.value * Balance)} }/>
                         </div>
                         <div className="form-group">
+                          <label>التكلفة</label>
+                          <input type='Number' className="form-control" required  defaultValue={cost} readOnly/>
+                        </div>
+                        <div className="form-group">
                           <label>التاريخ</label>
                           <input type='date' className="form-control" defaultValue={new Date()} required readOnly />
                         </div>
