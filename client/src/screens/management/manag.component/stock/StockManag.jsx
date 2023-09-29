@@ -24,14 +24,14 @@ const StockManag = () => {
   const [cost, setcost] = useState(0)
   const [oldCost, setoldCost] = useState(0)
   
-  const getiteminfo = (itemid)=>{
-    setitemId(itemid);
-    setunit(StockItems.filter(stock => stock._id == itemid).unit);
-    setoldCost(StockItems.filter(stock => stock._id == itemid).cost)
-    console.log(itemid);
-    console.log(StockItems.filter(stock => stock._id == itemid).unit);
-    console.log(StockItems.filter(stock => stock._id == itemid).cost)
-  }
+  // const getiteminfo = (itemid)=>{
+  //   setitemId(itemid);
+  //   setunit(StockItems.filter(stock => stock._id == itemid).unit);
+  //   setoldCost(StockItems.filter(stock => stock._id == itemid).cost)
+  //   console.log(itemid);
+  //   console.log(StockItems.filter(stock => stock._id == itemid).unit);
+  //   console.log(StockItems.filter(stock => stock._id == itemid).cost)
+  // }
   
   const Stockstatus = ["مشتريات", "منصرف", "راجع"];
   
@@ -230,9 +230,10 @@ const StockManag = () => {
                           <label>الصنف</label>
                           <select name="" id="" onSelect={(e)=>{ getiteminfo(e.target.value); setunit(e.target.unit) }}>
                           <option >اختر الصنف</option>
-                            {StockItems.map((item,i)=>{
-                              return <option key={i} Value={item._id} unit={item.unit}>{item.itemName}</option>
-                            })}
+                            {StockItems.map((item, i)=>{
+                               <option key={i} Value={item._id} unit={item.unit}>{item.itemName}</option>
+                            })
+                            }
                           </select>
                         </div>
                         <div className="form-group">
