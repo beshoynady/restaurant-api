@@ -27,20 +27,29 @@ const StockManag = () => {
   const [Quantity, setQuantity] = useState(0);
   const [price, setprice] = useState(0);
   const [cost, setcost] = useState("")
-  const [oldBalance, setoldBalance] = useState(0)
-  const [Balance, setBalance] = useState(0)
+  const [oldBalance, setoldBalance] = useState()
+  const [Balance, setBalance] = useState()
 
   
   
   const [actionId, setactionId] = useState("")
-  const [actionAt, setactionAt] = useState(new Date())
+  const [actionAt, setactionAt] = useState(Date())
 
   const createStockaction = async (e, userid) => {
     e.preventDefault();
     try {
-      const actionAt = new Date()
+      console.log(itemId)
+      console.log(movement)
+      console.log(Quantity)
+      console.log(cost)
+      console.log(unit)
+      console.log(Balance)
+      console.log(oldBalance)
+      console.log(price)
+      console.log(actionAt)
       const actionBy = userid;
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, unit,Quantity, price,cost, movement,actionBy, actionAt ,Balance});
+      console.log(actionBy)
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity,cost, unit, Balance,oldBalance, price,actionBy,actionAt});
       console.log(response.data);
       getallStockaction()
     } catch (error) {
