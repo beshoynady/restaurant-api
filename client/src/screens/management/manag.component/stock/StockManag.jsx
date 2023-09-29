@@ -10,9 +10,8 @@ const StockManag = () => {
   const getaStockItems = async () => {
     try {
       const response = await axios.get('https://restaurant-api-blush.vercel.app/api/stockitem/');
-      const StockItems = await response.data;
       console.log(response.data)
-      setStockItems(StockItems)
+      setStockItems(response.data)
 
     } catch (error) {
       console.log(error)
@@ -49,7 +48,8 @@ const StockManag = () => {
       console.log(actionAt)
       const actionBy = userid;
       console.log(actionBy)
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity,cost, unit, Balance,oldBalance, price,actionBy,actionAt});
+
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity, cost, unit, Balance,oldBalance, price,actionBy,actionAt});
       console.log(response.data);
       getallStockaction()
     } catch (error) {
