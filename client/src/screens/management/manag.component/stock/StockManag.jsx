@@ -120,6 +120,11 @@ const StockManag = () => {
     getaStockItems()
     getallStockaction()
   }, [])
+  useEffect(() => {
+    console.log(itemId)
+  }, [itemId])
+  
+
   return (
     <detacontext.Consumer>
       {
