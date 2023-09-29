@@ -33,7 +33,7 @@ const StockManag = () => {
   
   
   const [actionId, setactionId] = useState("")
-  const [actionAt, setactionAt] = useState(Date())
+  const actionAt= Date()
 
   const createStockaction = async (e, userid) => {
     e.preventDefault();
@@ -106,7 +106,9 @@ const StockManag = () => {
   }
 
   const calcBalance=(quantity) => {
-    if(movement='منصرف'){
+    console.log('+++++++++')
+    console.log(quantity)
+    if(movement=='منصرف'){
       setBalance(oldBalance - quantity)
     }else{
       setBalance(oldBalance + quantity)
@@ -250,7 +252,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الرصيد الجديد</label>
-                          <input type='Number' className="form-control" required defaultValue={Balance} />
+                          <input type='Number' className="form-control" required defaultValue={Balance} readOnly/>
                         </div>
                         <div className="form-group">
                           <label>التاريخ</label>
