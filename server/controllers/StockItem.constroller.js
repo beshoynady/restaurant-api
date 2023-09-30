@@ -1,4 +1,4 @@
-const StockItemsModel = require('../models/SٍٍٍtockItems.model');
+const StockItemsModel = require('../models/StockItems.model');
 
 
 const CreateStockItem = async (req, res) => {

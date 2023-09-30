@@ -43,12 +43,14 @@ const UpdateStockAction = async (req, res, next) => {
 
 const getAllStockActions =async (req, res) =>{
     try {
-        const allaction = StockManagModel.find()
+        const allaction =await StockManagModel.find({})
         res.status(200).json(allaction)
     } catch (error) {
         res.status(404).json({ message : error.message});
     }
 }
+
+
 const getoneStockActions =async (req, res) =>{
     try {
         const actionid =await req.params.actionid;
