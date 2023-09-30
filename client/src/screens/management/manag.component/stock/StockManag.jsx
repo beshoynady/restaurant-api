@@ -120,7 +120,9 @@ const StockManag = () => {
     getaStockItems()
     getallStockaction()
   }, [])
+
   return (
+  AllStockactions?
     <detacontext.Consumer>
       {
         ({ userlogininfo, usertitle, EditPagination, pagination }) => {
@@ -328,7 +330,8 @@ const StockManag = () => {
       }
     </detacontext.Consumer>
 
-  )
+    :''
+    )
 }
 
 export default StockManag
