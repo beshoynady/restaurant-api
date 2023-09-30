@@ -26,8 +26,8 @@ const StockManag = () => {
   const [Quantity, setQuantity] = useState(0);
   const [price, setprice] = useState(0);
   const [cost, setcost] = useState("")
-  const [oldBalance, setoldBalance] = useState()
-  const [Balance, setBalance] = useState()
+  const [oldBalance, setoldBalance] = useState(0)
+  const [Balance, setBalance] = useState(0)
 
 
 
