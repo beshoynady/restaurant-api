@@ -153,12 +153,12 @@ const StockManag = () => {
                         </th>
                         <th>م</th>
                         <th>اسم الصنف</th>
+                        <th>الحركة</th>
                         <th>الكمية</th>
                         <th>الوحدة</th>
-                        <th>الحالة</th>
                         <th>السعر</th>
                         <th>الثمن</th>
-                        <th>الرصيد</th>
+                        <th>الرصيدالقديم</th>
                         <th>الرصيد الجديد</th>
                         <th>تاريخ الحركه</th>
                         <th>تم بواسطه</th>
@@ -178,12 +178,13 @@ const StockManag = () => {
                               </td>
                               <td>{i + 1}</td>
                               <td>{action.item}</td>
+                              <td>{action.movement}</td>
                               <td>{action.Quantity}</td>
                               <td>{action.unit}</td>
-                              <td>{action.movement}</td>
                               <td>{action.price}</td>
                               <td>{action.cost}</td>
-                              <td>{action.balance}</td>
+                              <td>{action.oldBalance}</td>
+                              <td>{action.Balance}</td>
                               <td>{action.actionAt}</td>
                               <td>{usertitle(action.actionBy)}</td>
                               <td>
