@@ -25,11 +25,11 @@ const StockManagSchema = new mongoose.Schema(
     oldBalance:{
       type: Number,
       require: true,
-    }, 
-    newBalance:{
+    },
+    Balance:{
       type: Number,
       require: true,
-    },
+    }, 
     price: {
       type: Number,
       require: true,
@@ -41,6 +41,7 @@ const StockManagSchema = new mongoose.Schema(
     actionBy: {
       type: ObjectId,
       ref: 'User',
+      require: true
     },
     actionAt: {
       type: Date,
