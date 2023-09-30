@@ -34,7 +34,7 @@ const getAllStockItems = async (req, res) => {
 
 const getoneItem = async (req, res) => {
     try {
-        const itemId = req.params.itemId;
+        const itemId =await req.params.itemId;
         const oneItem = await StockItemsModel.findById(itemId);
         res.status(200).json(oneItem);
     } catch (err) {
@@ -61,7 +61,7 @@ const updateStockItem = async (req, res) => {
 
 const movements = async(req, res)=>{
     try {
-        const itemId = req.params.item
+        const itemId =await req.params.item
         const updatedstockitem = await StockItemsModel.findByIdAndUpdate({ _id: itemId },{ Balance, cost, price});
         res.status(200).json(updatedstockitem)        
     } catch (error) {
