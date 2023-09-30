@@ -12,8 +12,8 @@ const createStockAction = async (req, res, next) => {
         const Balance = await req.body.Balance;
         const price = await req.body.price;
         const cost = await req.body.cost;
-        const actionBy = await req.body.addBy;
-        const actionAt = await req.body.addAt;
+        const actionBy = await req.body.actionBy;
+        const actionAt = await req.body.actionAt;
         
         const itemadded = StockManagModel.create({itemId, movement, Quantity,cost, unit, Balance,oldBalance, price,actionBy,actionAt })
         res.status(200).json(itemadded)
