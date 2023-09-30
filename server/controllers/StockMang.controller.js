@@ -64,7 +64,7 @@ const getoneStockActions =async (req, res) =>{
 const DeleteStockAction= async (req, res) => {
     try {
         const actionid = await req.params.actionid;
-        const deletedAction = StockManagModel.findByIdAndDelete({_id: actionid})
+        const deletedAction =await StockManagModel.findByIdAndDelete(actionid)
         res.status(200).json(deletedAction)
     } catch (error) {
         res.status( 404 ).json({message: error.message});
