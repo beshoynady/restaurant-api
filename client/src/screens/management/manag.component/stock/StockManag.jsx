@@ -104,13 +104,15 @@ const StockManag = () => {
     }
   }
 
-  const calcBalance = (quantity) => {
+  const calcBalance = () => {
     console.log('+++++++++')
     console.log(quantity)
     if (movement == 'منصرف') {
-      setBalance(oldBalance - quantity)
+      setBalance(oldBalance - Quantity)
+      return Balance
     } else {
-      setBalance(oldBalance + quantity)
+      setBalance(oldBalance + Quantity)
+      return Balance
     }
   }
 
@@ -240,7 +242,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الكمية</label>
-                          <input type='Number' className="form-control" required onChange={(e) => { setQuantity(e.target.value); calcBalance(e.target.value) }} />
+                          <input type='Number' className="form-control" required onChange={(e) => { setQuantity(e.target.value); calcBalance() }} />
                           <input type='text' className="form-control" defaultValue={unit} readOnly />
                         </div>
 
@@ -251,6 +253,10 @@ const StockManag = () => {
                         <div className="form-group">
                           <label>التكلفة</label>
                           <input type='Number' className="form-control" defaultValue={cost} readOnly />
+                        </div>
+                        <div className="form-group">
+                          <label>الرصيد</label>
+                          <input type='Number' className="form-control" required defaultValue={oldBalance} readOnly />
                         </div>
                         <div className="form-group">
                           <label>الرصيد الجديد</label>
