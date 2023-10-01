@@ -108,7 +108,7 @@ const StockManag = () => {
 
   const calcBalance = () => {
     console.log('+++++++++')
-    console.log(quantity)
+    console.log(Quantity)
     if (movement == 'منصرف') {
       setBalance(oldBalance - Quantity)
       return Balance
