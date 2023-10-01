@@ -48,10 +48,12 @@ const StockManag = () => {
       console.log(actionAt)
       const actionBy = userid;
       console.log(actionBy)
-
+      const changeItem = await axios.put('https://restaurant-api-blush.vercel.app/api/stockitem/',{itemId,Balance,price})
+      if(changeItem.status == 200){
       const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity, cost, unit, Balance, oldBalance, price, actionBy, actionAt });
       console.log(response.data);
       getallStockaction()
+    }
     } catch (error) {
       console.log(error)
     }
