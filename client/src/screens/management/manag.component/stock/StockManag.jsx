@@ -268,7 +268,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الرصيد الجديد</label>
-                          <input type='Number' className="form-control" required defaultValue={Balance} readOnly />
+                          <input type='Number' className="form-control" required defaultValue={newBalance} readOnly />
                         </div>
                         <div className="form-group">
                           <label>التاريخ</label>
