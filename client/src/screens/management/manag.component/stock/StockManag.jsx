@@ -46,7 +46,7 @@ const StockManag = () => {
       console.log(unit)
       console.log(newBalance)
       console.log(oldBalance)
-      console.log(price)
+      console.log(typeof(price))
       console.log(actionAt)
       const actionBy = userid;
 
