@@ -44,7 +44,7 @@ const StockManag = () => {
       console.log(Quantity)
       console.log(cost)
       console.log(unit)
-      console.log(Balance)
+      console.log(newBalance)
       console.log(oldBalance)
       console.log(price)
       console.log(actionAt)
@@ -53,7 +53,7 @@ const StockManag = () => {
       console.log(actionBy)
       const changeItem = await axios.put('https://restaurant-api-blush.vercel.app/api/stockitem/',{itemId,newBalance,newcost,price})
       if(changeItem.status == 200){
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity, cost, unit, Balance, oldBalance, price, actionBy, actionAt });
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity, cost, unit,'Balance':newBalance, oldBalance, price, actionBy, actionAt });
       console.log(response.data);
       getallStockaction()
     }
@@ -192,7 +192,7 @@ const StockManag = () => {
                               <td>{action.price}</td>
                               <td>{action.cost}</td>
                               <td>{action.oldBalance}</td>
-                              <td>{action.Balance}</td>
+                              <td>{action.newBalance}</td>
                               <td>{action.actionAt}</td>
                               <td>{usertitle(action.actionBy)}</td>
                               <td>
@@ -241,7 +241,7 @@ const StockManag = () => {
                           <label>الصنف</label>
                           <select name="" id="" onChange={(e) => { setitemId(e.target.value); setunit(StockItems.filter(i => i._id == e.target.value)[0].unit); 
                           setoldBalance(StockItems.filter(i => i._id == e.target.value)[0].Balance);
-                          setoldCost(StockItems.filter(i => i._id == e.target.value)[0].Balance).cost }}>
+                          setoldCost(StockItems.filter(i => i._id == e.target.value)[0].cost) }}>
                             <option >اختر الصنف</option>
                             {StockItems.map((item, i) => {
                               return <option key={i} value={item._id}>{item.itemName}</option>
