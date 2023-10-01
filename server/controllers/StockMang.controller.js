@@ -9,7 +9,7 @@ const createStockAction = async (req, res, next) => {
         const movement = await req.body.movement;
         const Quantity = await req.body.Quantity;
         const oldBalance = await req.body.oldBalance;
-        const Balance = await req.body.Balance;
+        const Balance = await req.body.newBalance;
         const price = await req.body.price;
         const cost = await req.body.cost;
         const actionBy = await req.body.actionBy;
