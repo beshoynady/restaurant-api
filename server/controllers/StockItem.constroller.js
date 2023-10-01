@@ -51,8 +51,7 @@ const updateStockItem = async (req, res) => {
         const cost = await req.body.cost;
         const createBy = await req.body.createBy;             
 
-        const updatedstockitem = await StockItemsModel.findByIdAndUpdate({ _id: itemId },{ itemName, unit, Balance,cost, price,createBy});
-        updatedstockitem.save();
+        const updatedstockitem = await StockItemsModel.findByIdAndUpdate({_id: itemId },{ itemName, unit, Balance,cost, price,createBy}, { new: true });
         res.status(200).json(updatedstockitem);
     } catch (err) {
         res.status(500).json({ err: err });
