@@ -198,6 +198,14 @@ const StockManag = () => {
                                 </span>
                               </td>
                               <td>{i + 1}</td>
+                              <td>{StockItems.filter(item=>item._id == action.itemId)[0].itemName }</td>
+                              <td>{action.movement}</td>
+                              <td>{action.Quantity}</td>
+                              <td>{action.unit}</td>
+                              <td>{action.price}</td>
+                              <td>{action.cost}</td>
+                              <td>{action.oldBalance}</td>
+                              <td>{action.Balance}</td>
                               <td>{action.actionAt}</td>
                               <td>{usertitle(action.actionBy)}</td>
                               <td>
