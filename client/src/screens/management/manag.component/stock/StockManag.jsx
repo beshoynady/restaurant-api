@@ -117,6 +117,7 @@ const StockManag = () => {
       setnewBalance(oldBalance - quantity)
       setnewcost(oldCost - cost)
     } else {
+      console.log(oldBalance + quantity)
       setnewBalance(oldBalance + quantity)
       setnewcost(oldCost + cost)
     }
@@ -192,7 +193,7 @@ const StockManag = () => {
                               <td>{action.price}</td>
                               <td>{action.cost}</td>
                               <td>{action.oldBalance}</td>
-                              <td>{action.newBalance}</td>
+                              <td>{action.Balance}</td>
                               <td>{action.actionAt}</td>
                               <td>{usertitle(action.actionBy)}</td>
                               <td>
@@ -256,7 +257,7 @@ const StockManag = () => {
 
                         <div className="form-group">
                           <label>السعر</label>
-                          <input type='Number' className="form-control" required onChange={(e) => { setprice(e.target.value); setcost(e.target.value * Quantity); }} />
+                          <input type='Number' className="form-control" required onChange={(e) => { setprice(e.target.value); setcost(e.target.value * Quantity);console.log(e.target.value * Quantity) }} />
                         </div>
                         <div className="form-group">
                           <label>التكلفة</label>
@@ -264,15 +265,15 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الرصيد</label>
-                          <input type='Number' className="form-control" required defaultValue={oldBalance} readOnly />
+                          <input type='Number' className="form-control" defaultValue={oldBalance} readOnly />
                         </div>
                         <div className="form-group">
                           <label>الرصيد الجديد</label>
-                          <input type='Number' className="form-control" required defaultValue={newBalance} readOnly />
+                          <input type='Number' className="form-control" defaultValue={newBalance} readOnly />
                         </div>
                         <div className="form-group">
                           <label>التاريخ</label>
-                          <input type="datetime-local" className="form-control" defaultValue={Date()} required readOnly />
+                          <input type="datetime-local" className="form-control" defaultValue={actionAt} readOnly />
                         </div>
                       </div>
                       <div className="modal-footer">
