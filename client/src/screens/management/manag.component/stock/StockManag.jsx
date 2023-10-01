@@ -51,7 +51,7 @@ const StockManag = () => {
       const actionBy = userid;
 
       console.log(actionBy)
-      const changeItem = await axios.put('https://restaurant-api-blush.vercel.app/api/stockitem/',{itemId,newBalance,newcost,price})
+      const changeItem = await axios.put(`https://restaurant-api-blush.vercel.app/api/stockitem/movement/${itemId}`,{newBalance,newcost,price})
       console.log(changeItem)
 
     //   if(changeItem.status == 200){

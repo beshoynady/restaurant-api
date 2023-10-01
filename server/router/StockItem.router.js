@@ -7,5 +7,5 @@ const router = express.Router();
 
 router.route('/').post(CreateStockItem).get(getAllStockItems);
 router.route('/:itemId').get(getoneItem).delete(deleteItem).put(updateStockItem);
-router.route('/movement').put(movements)
+router.route('/movement/:itemId').put(movements)
 module.exports = router;
