@@ -126,11 +126,11 @@ const StockManag = () => {
 
   useEffect(() => {
     if (movement == 'منصرف') {
-      setnewBalance(oldBalance - Quantity)
+      setnewBalance(Number(oldBalance) - Number(Quantity))
       setnewcost(oldCost - cost)
     } else {
-      console.log(oldBalance + Quantity)
-      setnewBalance(oldBalance + Quantity)
+      console.log(Number(oldBalance) + Number(Quantity))
+      setnewBalance(Number(oldBalance) + Number(Quantity))
       setnewcost(oldCost + cost)
     }
   }, [Quantity])
