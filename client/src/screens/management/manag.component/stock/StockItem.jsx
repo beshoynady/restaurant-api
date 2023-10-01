@@ -226,7 +226,7 @@ const StockItem = () => {
                         </div>
                         <div className="form-group">
                           <label>السعر</label>
-                          <input type='Number' className="form-control" defaultValue={price} required onChange={(e) => setprice(e.target.value)} />
+                          <input type='Number' className="form-control" defaultValue={price} required onChange={(e) => setprice(Number(e.target.value))} />
                         </div>
 
                       </div>
