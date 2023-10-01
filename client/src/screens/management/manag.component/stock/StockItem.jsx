@@ -138,7 +138,7 @@ const StockItem = () => {
                               <td>{item.createAt}</td>
                               <td>{usertitle(item.createBy)}</td>
                               <td>
-                                <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(item._id); setitemName(item.itemName); setBalance(item.Balance); setunit(item.unit); setprice(item.price) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(item._id); setitemName(item.itemName); setBalance(item.Balance); setunit(item.unit); setprice(item.price);setcost(item.cost)}}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#deleteStockItemModal" className="delete" data-toggle="modal" onClick={() => setStockItemid(item._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                               </td>
                             </tr>
@@ -212,21 +212,21 @@ const StockItem = () => {
                         <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                       </div>
                       <div className="modal-body">
-                      <div className="form-group">
+                        <div className="form-group">
                           <label>اسم الصنف</label>
-                          <input type="text" className="form-control" required onChange={(e) => setitemName(e.target.value)} />
+                          <input type="text" className="form-control" defaultValue={itemName} required onChange={(e) => setitemName(e.target.value)} />
                         </div>
                         <div className="form-group">
                           <label>الوحدة</label>
-                          <input type='text' className="form-control" required onChange={(e) => setunit(e.target.value)}></input>
+                          <input type='text' className="form-control" defaultValue={unit} required onChange={(e) => setunit(e.target.value)}></input>
                         </div>
                         <div className="form-group">
                           <label>رصيد افتتاحي</label>
-                          <input type='Number' className="form-control" required onChange={(e) => setBalance(e.target.value)} />
+                          <input type='Number' className="form-control" defaultValue={Balance} required onChange={(e) => setBalance(e.target.value)} />
                         </div>
                         <div className="form-group">
                           <label>السعر</label>
-                          <input type='Number' className="form-control" required onChange={(e) => {setprice(e.target.value); setcost(e.target.value * Balance)} }/>
+                          <input type='Number' className="form-control" defaultValue={price} required onChange={(e) => setprice(Number(e.target.value))} />
                         </div>
                         <div className="form-group">
                           <label>التكلفة</label>
