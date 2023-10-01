@@ -44,16 +44,16 @@ const getoneItem = async (req, res) => {
 
 const updateStockItem = async (req, res) => {
     try {
-        const itemName = await req.body.itemName;
+        const itemId = await req.body.itemId;
         const unit = await req.body.unit;
         const Balance = await req.body.Balance;
         const price = await req.body.price;
         const cost = await req.body.cost;
         const createBy = await req.body.createBy;             
 
-        const newstockitem = await StockItemsModel.findByIdAndUpdate({ _id: itemId },{ itemName, unit, Balance,cost, price,createBy});
-        newstockitem.save();
-        res.status(200).json(newstockitem);
+        const updatedstockitem = await StockItemsModel.findByIdAndUpdate({ _id: itemId },{ itemName, unit, Balance,cost, price,createBy});
+        updatedstockitem.save();
+        res.status(200).json(updatedstockitem);
     } catch (err) {
         res.status(500).json({ err: err });
     }
@@ -66,10 +66,12 @@ const movements = async(req, res)=>{
         const price = await req.body.price;
         const cost = await req.body.newcost;
 
-        const updatedstockitem = await StockItemsModel.findByIdAndUpdate({ _id: itemId },{ Balance, cost, price});
-        res.status(200).json(updatedstockitem)        
+        const moveedstockitem = await StockItemsModel.findByIdAndUpdate({ _id: itemId },{ Balance, cost, price});
+        moveedstockitem.save();
+
+        res.status(200).json(moveedstockitem)        
     } catch (error) {
-        res.status(500).json({ err: error });
+        res.status(500).json(error);
     }
 
 }
