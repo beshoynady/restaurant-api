@@ -10,7 +10,7 @@ const StockItem = () => {
   const [Balance, setBalance] = useState(0);
   const [price, setprice] = useState(0);
   const [cost, setcost] = useState();
-  const createAt =Date()
+  const createAt =new Date()
 
   const createitem = async (e, userid) => {
     console.log(createAt)
@@ -192,7 +192,7 @@ const StockItem = () => {
                         </div>
                         <div className="form-group">
                           <label>التاريخ</label>
-                          <input type='date' className="form-control" defaultValue={createAt} required readOnly />
+                          <input type='text' className="form-control" Value={createAt} required readOnly />
                         </div>
                       </div>
                       <div className="modal-footer">

@@ -34,7 +34,7 @@ const StockManag = () => {
 
 
   const [actionId, setactionId] = useState("")
-  const actionAt = Date()
+  const actionAt = new Date()
 
   const createStockaction = async (e, userid) => {
     e.preventDefault();
@@ -51,12 +51,12 @@ const StockManag = () => {
       const actionBy = userid;
 
       console.log(actionBy)
-      // const changeItem = await axios.put('https://restaurant-api-blush.vercel.app/api/stockitem/movement',{itemId,newBalance,newcost,price})
-      // if(changeItem.status == 200){
+      const changeItem = await axios.put('https://restaurant-api-blush.vercel.app/api/stockitem/movement',{itemId,newBalance,newcost,price})
+      if(changeItem.status == 200){
       const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity, cost, unit,newBalance, oldBalance, price, actionBy, actionAt });
       console.log(response.data);
       getallStockaction()
-    // }
+    }
     } catch (error) {
       console.log(error)
     }
