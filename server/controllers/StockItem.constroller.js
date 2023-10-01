@@ -66,7 +66,7 @@ const movements = async(req, res)=>{
         const price = await req.body.price;
         const cost = await req.body.newcost;
 
-        const moveedstockitem = await StockItemsModel.findByIdAndUpdate({ _id: itemId },{ Balance, cost, price});
+        const moveedstockitem = await StockItemsModel.findByIdAndUpdate({ _id: itemId },{ Balance, cost, price});        
         moveedstockitem.save();
 
         res.status(200).json(moveedstockitem)        
