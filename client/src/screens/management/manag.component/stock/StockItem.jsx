@@ -31,8 +31,7 @@ const StockItem = () => {
     e.preventDefault()
     const createBy = userid
       try {
-        const response = await axios.put(`https://restaurant-api-blush.vercel.app/api/stockitem/${StockItemid}`, {
-          itemName, unit, Balance, price,cost, createBy
+        const response = await axios.put(`https://restaurant-api-blush.vercel.app/api/stockitem/${StockItemid}`, {itemName, unit, Balance, price,cost, createBy
         });
         console.log(response.data);
         if (response) {
@@ -222,15 +221,15 @@ const StockItem = () => {
                         </div>
                         <div className="form-group">
                           <label>رصيد افتتاحي</label>
-                          <input type='Number' className="form-control" defaultValue={Balance} required onChange={(e) => setBalance(e.target.value)} />
+                          <input type='Number' className="form-control" defaultValue={Balance} onChange={(e) =>{setBalance(Number(e.target.value)); setcost(e.target.value * price)}} />
                         </div>
                         <div className="form-group">
                           <label>السعر</label>
-                          <input type='Number' className="form-control" defaultValue={price} required onChange={(e) =>{setprice(Number(e.target.value)); setcost(e.target.value * Balance)}} />
+                          <input type='Number' className="form-control" defaultValue={price} onChange={(e) =>{setprice(Number(e.target.value)); setcost(e.target.value * Balance)}} />
                         </div>
                         <div className="form-group">
                           <label>التكلفة</label>
-                          <input type='Number' className="form-control" required  defaultValue={cost} readOnly/>
+                          <input type='Number' className="form-control" defaultValue={cost} readOnly/>
                         </div>
                       </div>
                       <div className="modal-footer">
