@@ -25,9 +25,11 @@ const StockManag = () => {
   const [unit, setunit] = useState('')
   const [Quantity, setQuantity] = useState(0);
   const [price, setprice] = useState(0);
-  const [cost, setcost] = useState("")
+  const [oldCost, setoldCost] = useState(0)
+  const [newcost, setnewcost] = useState(0)
+  const [cost, setcost] = useState(0)
   const [oldBalance, setoldBalance] = useState(0)
-  const [Balance, setBalance] = useState(0)
+  const [newBalance, setnewBalance] = useState(0)
 
 
 
@@ -47,8 +49,9 @@ const StockManag = () => {
       console.log(price)
       console.log(actionAt)
       const actionBy = userid;
+
       console.log(actionBy)
-      const changeItem = await axios.put('https://restaurant-api-blush.vercel.app/api/stockitem/',{itemId,Balance,price})
+      const changeItem = await axios.put('https://restaurant-api-blush.vercel.app/api/stockitem/',{itemId,newBalance,newcost,price})
       if(changeItem.status == 200){
       const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity, cost, unit, Balance, oldBalance, price, actionBy, actionAt });
       console.log(response.data);
@@ -106,15 +109,16 @@ const StockManag = () => {
     }
   }
 
-  const calcBalance = () => {
+  const calcBalance = (quantity) => {
     console.log('+++++++++')
-    console.log(Quantity)
+    console.log(quantity)
+    setQuantity(quantity)
     if (movement == 'منصرف') {
-      setBalance(oldBalance - Quantity)
-      return Balance
+      setnewBalance(oldBalance - quantity)
+      setnewcost(oldCost - cost)
     } else {
-      setBalance(oldBalance + Quantity)
-      return Balance
+      setnewBalance(oldBalance + quantity)
+      setnewcost(oldCost + cost)
     }
   }
 
@@ -235,7 +239,9 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الصنف</label>
-                          <select name="" id="" onChange={(e) => { setitemId(e.target.value); setunit(StockItems.filter(i => i._id == e.target.value)[0].unit); setoldBalance(StockItems.filter(i => i._id == e.target.value)[0].Balance) }}>
+                          <select name="" id="" onChange={(e) => { setitemId(e.target.value); setunit(StockItems.filter(i => i._id == e.target.value)[0].unit); 
+                          setoldBalance(StockItems.filter(i => i._id == e.target.value)[0].Balance);
+                          setoldCost(StockItems.filter(i => i._id == e.target.value)[0].Balance).cost }}>
                             <option >اختر الصنف</option>
                             {StockItems.map((item, i) => {
                               return <option key={i} value={item._id}>{item.itemName}</option>
@@ -244,7 +250,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الكمية</label>
-                          <input type='Number' className="form-control" required onChange={(e) => { setQuantity(e.target.value); calcBalance() }} />
+                          <input type='Number' className="form-control" required onChange={(e) => { calcBalance(e.target.value) }} />
                           <input type='text' className="form-control" defaultValue={unit} readOnly />
                         </div>
 
