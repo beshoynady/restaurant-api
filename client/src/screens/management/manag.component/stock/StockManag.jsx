@@ -185,7 +185,7 @@ const StockManag = () => {
                                 </span>
                               </td>
                               <td>{i + 1}</td>
-                              <td>{StockItems.filter(item._id == action.item).itemName }</td>
+                              <td>{StockItems.filter(item=>item._id == action.item).itemName }</td>
                               <td>{action.movement}</td>
                               <td>{action.Quantity}</td>
                               <td>{action.unit}</td>
@@ -272,7 +272,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>التاريخ</label>
-                          <input type='Date' className="form-control" defaultValue={Date()} required readOnly />
+                          <input type="datetime-local" className="form-control" defaultValue={Date()} required readOnly />
                         </div>
                       </div>
                       <div className="modal-footer">
