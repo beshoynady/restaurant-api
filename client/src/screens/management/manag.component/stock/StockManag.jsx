@@ -263,7 +263,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الكمية</label>
-                          <input type='Number' className="form-control" required onChange={(e) => {setQuantity(e.target.value); calcBalance(e.target.value) }} />
+                          <input type='Number' className="form-control" required onChange={(e) => {setQuantity(e.target.value);  }} />
                           <input type='text' className="form-control" defaultValue={unit} readOnly />
                         </div>
 
