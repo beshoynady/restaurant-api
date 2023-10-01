@@ -44,7 +44,7 @@ const getoneItem = async (req, res) => {
 
 const updateStockItem = async (req, res) => {
     try {
-        const itemId = await req.body.itemId;
+        const itemId = await req.params.itemId;
         const unit = await req.body.unit;
         const Balance = await req.body.Balance;
         const price = await req.body.price;

@@ -138,7 +138,7 @@ const StockItem = () => {
                               <td>{item.createAt}</td>
                               <td>{usertitle(item.createBy)}</td>
                               <td>
-                                <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(item._id); setitemName(item.itemName); setBalance(item.Balance); setunit(item.unit); setprice(item.price);setcost(item.cost)}}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(item._id); setitemName(item.itemName); setBalance(item.Balance); setunit(item.unit); setprice(item.price)}}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#deleteStockItemModal" className="delete" data-toggle="modal" onClick={() => setStockItemid(item._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                               </td>
                             </tr>
@@ -226,7 +226,7 @@ const StockItem = () => {
                         </div>
                         <div className="form-group">
                           <label>السعر</label>
-                          <input type='Number' className="form-control" defaultValue={price} required onChange={(e) => setprice(Number(e.target.value))} />
+                          <input type='Number' className="form-control" defaultValue={price} required onChange={(e) =>{setprice(Number(e.target.value)); setcost(e.target.value * Balance)}} />
                         </div>
                         <div className="form-group">
                           <label>التكلفة</label>
