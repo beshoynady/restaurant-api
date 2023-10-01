@@ -7,8 +7,8 @@ const StockItem = () => {
 
   const [itemName, setitemName] = useState("");
   const [unit, setunit] = useState('');
-  const [Balance, setBalance] = useState(0);
-  const [price, setprice] = useState(0);
+  const [Balance, setBalance] = useState();
+  const [price, setprice] = useState();
   const [cost, setcost] = useState();
   const createAt =new Date()
 
