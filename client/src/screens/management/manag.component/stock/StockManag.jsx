@@ -54,11 +54,11 @@ const StockManag = () => {
       const changeItem = await axios.put(`https://restaurant-api-blush.vercel.app/api/stockitem/movement/${itemId}`,{newBalance,newcost,price})
       console.log(changeItem)
 
-    //   if(changeItem.status == 200){
-    //   const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity, cost, unit,newBalance, oldBalance, price, actionBy, actionAt });
-    //   console.log(response.data);
-    //   getallStockaction()
-    // }
+      if(changeItem.status == 200){
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity, cost, unit,newBalance, oldBalance, price, actionBy, actionAt });
+      console.log(response.data);
+      getallStockaction()
+    }
     } catch (error) {
       console.log(error)
     }
