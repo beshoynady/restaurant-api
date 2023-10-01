@@ -31,8 +31,8 @@ const StockItem = () => {
     e.preventDefault()
     const createBy = userid
       try {
-        const response = await axios.put('https://restaurant-api-blush.vercel.app/api/stockitem/' + StockItemid, {
-          itemName, unit, Balance, price, createBy
+        const response = await axios.put(`https://restaurant-api-blush.vercel.app/api/stockitem/${StockItemid}`, {
+          itemName, unit, Balance, price,cost, createBy
         });
         console.log(response.data);
         if (response) {
@@ -212,23 +212,26 @@ const StockItem = () => {
                         <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                       </div>
                       <div className="modal-body">
-                        <div className="form-group">
+                      <div className="form-group">
                           <label>اسم الصنف</label>
-                          <input type="text" className="form-control" defaultValue={itemName} required onChange={(e) => setitemName(e.target.value)} />
+                          <input type="text" className="form-control" required onChange={(e) => setitemName(e.target.value)} />
                         </div>
                         <div className="form-group">
                           <label>الوحدة</label>
-                          <input type='text' className="form-control" defaultValue={unit} required onChange={(e) => setunit(e.target.value)}></input>
+                          <input type='text' className="form-control" required onChange={(e) => setunit(e.target.value)}></input>
                         </div>
                         <div className="form-group">
                           <label>رصيد افتتاحي</label>
-                          <input type='Number' className="form-control" defaultValue={Balance} required onChange={(e) => setBalance(e.target.value)} />
+                          <input type='Number' className="form-control" required onChange={(e) => setBalance(e.target.value)} />
                         </div>
                         <div className="form-group">
                           <label>السعر</label>
-                          <input type='Number' className="form-control" defaultValue={price} required onChange={(e) => setprice(Number(e.target.value))} />
+                          <input type='Number' className="form-control" required onChange={(e) => {setprice(e.target.value); setcost(e.target.value * Balance)} }/>
                         </div>
-
+                        <div className="form-group">
+                          <label>التكلفة</label>
+                          <input type='Number' className="form-control" required  defaultValue={cost} readOnly/>
+                        </div>
                       </div>
                       <div className="modal-footer">
                         <input type="button" className="btn btn-danger" data-dismiss="modal" value="إغلاق" />
