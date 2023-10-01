@@ -261,19 +261,19 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>التكلفة</label>
-                          <input type='Number' className="form-control" defaultValue={cost} readOnly />
+                          <input type='Number' className="form-control" Value={cost} readOnly />
                         </div>
                         <div className="form-group">
                           <label>الرصيد</label>
-                          <input type='Number' className="form-control" defaultValue={oldBalance} readOnly />
+                          <input type='text' className="form-control" Value={oldBalance} readOnly />
                         </div>
                         <div className="form-group">
                           <label>الرصيد الجديد</label>
-                          <input type='Number' className="form-control" defaultValue={newBalance} readOnly />
+                          <input type='text' className="form-control" defaultValue={newBalance} readOnly />
                         </div>
                         <div className="form-group">
                           <label>التاريخ</label>
-                          <input type="datetime-local" className="form-control" defaultValue={actionAt} readOnly />
+                          <input type="text" className="form-control" defaultValue={actionAt} readOnly />
                         </div>
                       </div>
                       <div className="modal-footer">
