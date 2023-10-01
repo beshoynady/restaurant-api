@@ -25,9 +25,9 @@ const StockManag = () => {
   const [unit, setunit] = useState('')
   const [Quantity, setQuantity] = useState(0);
   const [price, setprice] = useState(0);
+  const [cost, setcost] = useState(0)
   const [oldCost, setoldCost] = useState(0)
   const [newcost, setnewcost] = useState(0)
-  const [cost, setcost] = useState(0)
   const [oldBalance, setoldBalance] = useState(0)
   const [newBalance, setnewBalance] = useState(0)
 
@@ -109,10 +109,10 @@ const StockManag = () => {
     }
   }
 
-  const calcBalance = (quantity) => {
+  const calcBalance = (qu) => {
     console.log('+++++++++')
     console.log(quantity)
-    setQuantity(quantity)
+    const quantity = Number(qu)
     if (movement == 'منصرف') {
       setnewBalance(oldBalance - quantity)
       setnewcost(oldCost - cost)
@@ -185,7 +185,7 @@ const StockManag = () => {
                                 </span>
                               </td>
                               <td>{i + 1}</td>
-                              <td>{action.item}</td>
+                              <td>{StockItems.filter(item._id == action.item).itemName }</td>
                               <td>{action.movement}</td>
                               <td>{action.Quantity}</td>
                               <td>{action.unit}</td>
@@ -250,7 +250,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>الكمية</label>
-                          <input type='Number' className="form-control" required onChange={(e) => { calcBalance(e.target.value) }} />
+                          <input type='Number' className="form-control" required onChange={(e) => {setQuantity(e.target.value); calcBalance(e.target.value) }} />
                           <input type='text' className="form-control" defaultValue={unit} readOnly />
                         </div>
 
@@ -272,7 +272,7 @@ const StockManag = () => {
                         </div>
                         <div className="form-group">
                           <label>التاريخ</label>
-                          <input type='date' className="form-control" defaultValue={Date()} required readOnly />
+                          <input type='Date' className="form-control" defaultValue={Date()} required readOnly />
                         </div>
                       </div>
                       <div className="modal-footer">
