@@ -190,7 +190,7 @@ const StockManag = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {AllStockactions && AllStockactions.map((action, i) => {
+                      {StockItems && AllStockactions.map((action, i) => {
                         if (i < pagination & i >= pagination - 5) {
                           return (
                             <tr key={i}>
@@ -201,7 +201,7 @@ const StockManag = () => {
                                 </span>
                               </td>
                               <td>{i + 1}</td>
-                              <td>{StockItems.filter(item=>item._id == action.itemId)[0].itemName }</td>
+                              <td>{StockItems?StockItems.filter(item=>item._id == action.itemId)[0].itemName:'' }</td>
                               <td>{action.movement}</td>
                               <td>{action.Quantity}</td>
                               <td>{action.unit}</td>
