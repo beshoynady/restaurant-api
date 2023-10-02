@@ -113,9 +113,13 @@ const StockManag = () => {
   }
 
   const itemname =(id)=>{
-   const name = StockItems.filter(item=>item._id == id)[0].itemName
-   return name
+   const item = StockItems.filter(item=>item._id == id)[0]
+   if(item){
+    return item.itemName
+   }else{
+   return 'غير متوفر'
   }
+}
   // const calcBalance = (qu) => {
   //   console.log('+++++++++')
   //   console.log(quantity)
