@@ -42,6 +42,8 @@ const StockManag = () => {
       console.log(itemId)
       console.log(movement)
       console.log(Quantity)
+      console.log('oldCost')
+      console.log(oldCost)
       console.log(cost)
       console.log(unit)
       console.log(newBalance)
