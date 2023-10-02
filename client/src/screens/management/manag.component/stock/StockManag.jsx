@@ -39,6 +39,38 @@ const StockManag = () => {
   const createStockaction = async (e, userid) => {
     e.preventDefault();
     try {
+      // console.log(itemId)
+      // console.log(movement)
+      // console.log(Quantity)
+      // console.log('oldCost')
+      // console.log(oldCost)
+      // console.log(cost)
+      // console.log(unit)
+      // console.log(newBalance)
+      // console.log(oldBalance)
+      // console.log(typeof(price))
+      // console.log(actionAt)
+      const actionBy = userid;
+
+      // console.log(actionBy)
+      const changeItem = await axios.put(`https://restaurant-api-blush.vercel.app/api/stockitem/movement/${itemId}`,{newBalance,newcost,price})
+      // console.log(changeItem)
+
+      if(changeItem.status == 200){
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity, cost, unit,newBalance, oldBalance, price, actionBy, actionAt });
+      // console.log(response.data);
+      getallStockaction()
+      getaStockItems()
+    }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+  const updateStockaction = async (e, userid) => {
+    e.preventDefault();
+    try {
       console.log(itemId)
       console.log(movement)
       console.log(Quantity)
@@ -49,7 +81,6 @@ const StockManag = () => {
       console.log(newBalance)
       console.log(oldBalance)
       console.log(typeof(price))
-      console.log(actionAt)
       const actionBy = userid;
 
       console.log(actionBy)
@@ -57,7 +88,7 @@ const StockManag = () => {
       console.log(changeItem)
 
       if(changeItem.status == 200){
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity, cost, unit,newBalance, oldBalance, price, actionBy, actionAt });
+      const response = await axios.put('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity, cost, unit,newBalance, oldBalance, price, actionBy });
       console.log(response.data);
       getallStockaction()
       getaStockItems()
@@ -66,26 +97,6 @@ const StockManag = () => {
       console.log(error)
     }
   }
-
-
-  // const editStockaction = async (e,userid) => {
-  //   e.preventDefault()
-  //   const createBy = userid
-  //     try {
-  //       const response = await axios.put('https://restaurant-api-blush.vercel.app/api/stockmanag/' + actionId, {
-  //         item, unit, openingBalance, price, createBy
-  //       });
-  //       console.log(response.data);
-  //       if (response) {
-  //         getallStockaction()
-  //       }
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-
-
-  // }
-
 
   const [AllStockactions, setAllStockactions] = useState([]);
 
@@ -144,7 +155,7 @@ const StockManag = () => {
       console.log(oldCost - cost)
       console.log("cost")
       console.log(cost)
-      console.log("oldcost")
+      console.log("oldCost")
       console.log(oldCost)
       setnewcost(oldCost - cost)
     } else {
@@ -152,7 +163,7 @@ const StockManag = () => {
       setnewBalance(Number(oldBalance) + Number(Quantity))
       console.log("cost")
       console.log(cost)
-      console.log("oldcost")
+      console.log("oldCost")
       console.log(oldCost)
       console.log("newcost")
       console.log(oldCost + cost)
@@ -234,7 +245,7 @@ const StockManag = () => {
                               <td>{action.actionAt}</td>
                               <td>{usertitle(action.actionBy)}</td>
                               <td>
-                                <a href="#editStockactionModal" className="edit" data-toggle="modal" onClick={() => { setactionId(action._id) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#editStockactionModal" className="edit" data-toggle="modal" onClick={() => { setactionId(action._id);setoldBalance(action.oldBalance);setoldCost(action.oldCost) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#deleteStockactionModal" className="delete" data-toggle="modal" onClick={() => setactionId(action._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                               </td>
                             </tr>
@@ -321,42 +332,68 @@ const StockManag = () => {
                   </div>
                 </div>
               </div>
-              {/* <div id="editStockactionModal" className="modal fade">
+              <div id="editStockactionModal" className="modal fade">
                 <div className="modal-dialog">
                   <div className="modal-content">
-                    <form onSubmit={(e)=>editStockaction(e,userlogininfo.id)}>
+                    <form onSubmit={(e) => updateStockaction(e, userlogininfo.id)}>
                       <div className="modal-header">
-                        <h4 className="modal-title">تعديل صنف بالمخزن</h4>
+                        <h4 className="modal-title">اضافه صنف بالمخزن</h4>
                         <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                       </div>
                       <div className="modal-body">
                         <div className="form-group">
-                          <label>اسم الصنف</label>
-                          <input type="text" className="form-control" defaultValue={item} required onChange={(e) => setitem(e.target.value)} />
+                          <label>نوع الحركه</label>
+                          <select name="" id="" onChange={(e) => setmovement(e.target.value)}>
+                            <option >اختر الاجراء</option>
+                            {Stockmovement.map((statu, i) => {
+                              return <option key={i} defaultValue={statu}>{statu}</option>
+                            })}
+                          </select>
                         </div>
                         <div className="form-group">
-                          <label>الوحدة</label>
-                          <input type='text' className="form-control" defaultValue={unit} required onChange={(e) => setunit(e.target.value)}></input>
+                          <label>الصنف</label>
+                          <select name="" id="" onChange={(e) => { setitemId(e.target.value); setunit(StockItems.filter(i => i._id == e.target.value)[0].unit) }}>
+                            <option >اختر الصنف</option>
+                            {StockItems.map((item, i) => {
+                              return <option key={i} value={item._id}>{item.itemName}</option>
+                            })}
+                          </select>
                         </div>
                         <div className="form-group">
-                          <label>رصيد افتتاحي</label>
-                          <input type='Number' className="form-control" defaultValue={openingBalance} required onChange={(e) => setopeningBalance(e.target.value)} />
-                        </div>
-                        <div className="form-group">
-                          <label>السعر</label>
-                          <input type='Number' className="form-control" defaultValue={price} required onChange={(e) => setprice(e.target.value)} />
+                          <label>الكمية</label>
+                          <input type='Number' className="form-control" required onChange={(e) => {setQuantity(e.target.value);  }} />
+                          <input type='text' className="form-control" defaultValue={unit} readOnly />
                         </div>
 
+                        <div className="form-group">
+                          <label>السعر</label>
+                          <input type='Number' className="form-control" required onChange={(e) => { setprice(Number(e.target.value)); setcost(e.target.value * Quantity) }} />
+                        </div>
+                        <div className="form-group">
+                          <label>التكلفة</label>
+                          <input type='Number' className="form-control" Value={cost} readOnly />
+                        </div>
+                        <div className="form-group">
+                          <label>الرصيد</label>
+                          <input type='text' className="form-control" Value={oldBalance} readOnly />
+                        </div>
+                        <div className="form-group">
+                          <label>الرصيد الجديد</label>
+                          <input type='text' className="form-control" Value={newBalance} readOnly />
+                        </div>
+                        <div className="form-group">
+                          <label>التاريخ</label>
+                          <input type="text" className="form-control" Value={actionAt} readOnly />
+                        </div>
                       </div>
                       <div className="modal-footer">
                         <input type="button" className="btn btn-danger" data-dismiss="modal" value="إغلاق" />
-                        <input type="submit" className="btn btn-info" value="Save" />
+                        <input type="submit" className="btn btn-success" value="اضافه" />
                       </div>
                     </form>
                   </div>
                 </div>
-              </div> */}
-
+              </div>
               <div id="deleteStockactionModal" className="modal fade">
                 <div className="modal-dialog">
                   <div className="modal-content">

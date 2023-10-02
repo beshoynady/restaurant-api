@@ -34,6 +34,10 @@ const StockManagSchema = new mongoose.Schema(
       type: Number,
       require: true,
     },
+    oldCost: {
+      type: Number,
+      require: true,
+    },
     cost: {
       type: Number,
       require: true,
