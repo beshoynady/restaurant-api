@@ -25,7 +25,7 @@ const createStockAction = async (req, res, next) => {
 
 const UpdateStockAction = async (req, res, next) => {
     try {
-        const actionid =await req.params.action
+        const actionid =await req.params.actionid
         const itemId = await req.body.itemId
         const unit = await req.body.unit
         const movement = await req.body.movement;
