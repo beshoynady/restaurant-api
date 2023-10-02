@@ -150,6 +150,10 @@ const StockManag = () => {
     } else {
       console.log(Number(oldBalance) + Number(Quantity))
       setnewBalance(Number(oldBalance) + Number(Quantity))
+      console.log("cost")
+      console.log(cost)
+      console.log("oldcost")
+      console.log(oldCost)
       console.log("newcost")
       console.log(oldCost + cost)
       setnewcost(oldCost + cost)
