@@ -16,7 +16,7 @@ const createStockAction = async (req, res, next) => {
         const actionBy = await req.body.actionBy;
         const actionAt = await req.body.actionAt;
         
-        const itemadded = StockManagModel.create({itemId, movement, Quantity,cost,oldCost, unit, Balance,oldBalance, price,actionBy,actionAt })
+        const itemadded =await StockManagModel.create({itemId, movement, Quantity,cost,oldCost, unit, Balance,oldBalance, price,actionBy,actionAt })
         res.status(200).json(itemadded)
     } catch (error) {
         res.status(404).json({message: error.message});
@@ -37,7 +37,7 @@ const UpdateStockAction = async (req, res, next) => {
         const price = await req.body.price;
         const actionBy = await req.body.actionBy;
 
-        const updatedActon = StockManagModel.findByIdAndUpdate({ _id: actionid }, {itemId, movement, Quantity,cost,oldCost, unit, Balance,oldBalance, price,actionBy })
+        const updatedActon =await StockManagModel.findByIdAndUpdate({ _id: actionid }, {itemId, movement, Quantity,cost,oldCost, unit, Balance,oldBalance, price,actionBy })
         res.status(200).json(updatedActon);
     } catch (error) {
         res.status(404).json({message: error.message});
