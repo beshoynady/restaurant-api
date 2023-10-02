@@ -39,26 +39,26 @@ const StockManag = () => {
   const createStockaction = async (e, userid) => {
     e.preventDefault();
     try {
-      // console.log(itemId)
-      // console.log(movement)
-      // console.log(Quantity)
-      // console.log('oldCost')
-      // console.log(oldCost)
-      // console.log(cost)
-      // console.log(unit)
-      // console.log(newBalance)
-      // console.log(oldBalance)
-      // console.log(typeof(price))
-      // console.log(actionAt)
+      console.log(itemId)
+      console.log(movement)
+      console.log(Quantity)
+      console.log('oldCost')
+      console.log(oldCost)
+      console.log(cost)
+      console.log(unit)
+      console.log(newBalance)
+      console.log(oldBalance)
+      console.log(typeof(price))
+      console.log(actionAt)
       const actionBy = userid;
 
-      // console.log(actionBy)
+      console.log(actionBy)
       const changeItem = await axios.put(`https://restaurant-api-blush.vercel.app/api/stockitem/movement/${itemId}`,{newBalance,newcost,price})
-      // console.log(changeItem)
+      console.log(changeItem)
 
       if(changeItem.status == 200){
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity, cost,oldCost,unit,newBalance, oldBalance, price, actionBy, actionAt });
-      // console.log(response.data);
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity, cost, oldCost ,unit,newBalance, oldBalance, price, actionBy, actionAt });
+      console.log(response.data);
       getallStockaction()
       getaStockItems()
     }
