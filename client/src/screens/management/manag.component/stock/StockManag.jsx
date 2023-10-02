@@ -58,6 +58,7 @@ const StockManag = () => {
       const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockmanag/', { itemId, movement, Quantity, cost, unit,newBalance, oldBalance, price, actionBy, actionAt });
       console.log(response.data);
       getallStockaction()
+      getaStockItems()
     }
     } catch (error) {
       console.log(error)
