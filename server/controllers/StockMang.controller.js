@@ -31,10 +31,11 @@ const UpdateStockAction = async (req, res, next) => {
         const movement = await req.body.movement;
         const Quantity = await req.body.Quantity;
         const oldCost = await req.body.oldCost;
+        const cost = await req.body.cost;
         const oldBalance = await req.body.oldBalance;
         const Balance = await req.body.Balance;
         const price = await req.body.price;
-        const cost = await req.body.cost;
+        const actionBy = await req.body.actionBy;
 
         const updatedActon = StockManagModel.findByIdAndUpdate({ _id: actionid }, {itemId, movement, Quantity,cost,oldCost, unit, Balance,oldBalance, price,actionBy })
         res.status(200).json(updatedActon);
