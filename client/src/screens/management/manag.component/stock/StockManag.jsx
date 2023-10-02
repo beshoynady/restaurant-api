@@ -158,7 +158,7 @@ const StockManag = () => {
       console.log(oldCost + cost)
       setnewcost(oldCost + cost)
     }
-  }, [Quantity])
+  }, [Quantity,price])
   
 
 
