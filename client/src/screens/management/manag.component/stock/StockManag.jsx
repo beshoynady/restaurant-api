@@ -112,6 +112,10 @@ const StockManag = () => {
     }
   }
 
+  const itemname =(id)=>{
+   const name = StockItems.filter(item=>item._id == id)[0].itemName
+   return name
+  }
   // const calcBalance = (qu) => {
   //   console.log('+++++++++')
   //   console.log(quantity)
@@ -201,7 +205,7 @@ const StockManag = () => {
                                 </span>
                               </td>
                               <td>{i + 1}</td>
-                              <td>{StockItems?StockItems.filter(item=>item._id == action.itemId)[0].itemName:'' }</td>
+                              <td>{itemname(action.itemId)}</td>
                               <td>{action.movement}</td>
                               <td>{action.Quantity}</td>
                               <td>{action.unit}</td>
