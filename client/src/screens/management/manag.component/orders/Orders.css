@@ -233,9 +233,10 @@ table.table .avatar {
 	resize: vertical;
 }
 .modal .btn {
-	border-radius: 2px;
-	width: 45%;
-  height: 50px;
+  border-radius: 5px;
+  height: 45px;
+  width: 47%;
+  margin: auto;
 }	
 .form-group{
   margin-bottom: 1.1rem;

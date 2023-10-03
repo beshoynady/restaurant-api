@@ -10,7 +10,7 @@ const StockItem = () => {
   const [Balance, setBalance] = useState();
   const [price, setprice] = useState();
   const [cost, setcost] = useState();
-  const createAt =new Date()
+  const createAt =new Date().toLocaleString()
 
   const createitem = async (e, userid) => {
     console.log(createAt)

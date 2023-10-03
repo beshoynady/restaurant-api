@@ -34,7 +34,7 @@ const StockManag = () => {
 
 
   const [actionId, setactionId] = useState("")
-  const actionAt = new Date()
+  const actionAt = new Date().toLocaleString()
 
   const createStockaction = async (e, userid) => {
     e.preventDefault();
