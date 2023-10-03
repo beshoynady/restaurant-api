@@ -196,8 +196,12 @@ table.table .avatar {
   max-height: 100vh;
 }
 .modal .modal-header, .modal .modal-body, .modal .modal-footer {
-	padding: 5px 10px;
+  padding: 5px 10px;
   color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 .modal .modal-content {
 	border-radius: 3px;
@@ -222,6 +226,7 @@ table.table .avatar {
   font-size: 16px;
   font-weight: 600;
   color: #000;
+  width: 75%;
 
 }
 .modal textarea.form-control {
@@ -233,18 +238,23 @@ table.table .avatar {
   height: 50px;
 }	
 .form-group{
+  margin-bottom: 1.1rem;
   display: flex;
+  width: 50%;
+  height: 45px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+
 }
 .modal form label {
-	font-weight: 600;
-  font-size: 14px;
-  width: 50%;
+  font-weight: 600;
+  width: 35%;
   text-align: right;
+  font-size: 14px;
+  padding-right: 5px;
 }	
 .modal form select {
-  width: 70%;
+  width: 45%;
   font-size: 16px;
   border: 2px solid;
   font-weight: 600;
