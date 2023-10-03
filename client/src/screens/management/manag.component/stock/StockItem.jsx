@@ -64,7 +64,7 @@ const StockItem = () => {
     e.preventDefault();
     try {
       const response = await axios.delete(`https://restaurant-api-blush.vercel.app/api/stockitem/${StockItemid}`);
-      if (response) {
+      if (response.status == 200) {
         console.log(response);
         getallStockItem();
       }
@@ -75,7 +75,6 @@ const StockItem = () => {
 
   useEffect(() => {
     getallStockItem()
-    // getallCategories()
   }, [])
   return (
     <detacontext.Consumer>

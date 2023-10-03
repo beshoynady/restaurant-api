@@ -116,10 +116,10 @@ const StockManag = () => {
     e.preventDefault();
     try {
       const response = await axios.delete(`https://restaurant-api-blush.vercel.app/api/stockmanag/${actionId}`);
+      console.log(response);
       if (response) {
-        console.log(response);
         getallStockaction();
-      }
+        }
     } catch (error) {
       console.log(error)
     }
