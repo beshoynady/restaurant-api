@@ -242,7 +242,7 @@ const StockManag = () => {
                               <td>{action.cost}</td>
                               <td>{action.oldBalance}</td>
                               <td>{action.Balance}</td>
-                              <td>{action.actionAt}</td>
+                              <td>{Date(action.actionAt).toLocaleString}</td>
                               <td>{usertitle(action.actionBy)}</td>
                               <td>
                                 <a href="#editStockactionModal" className="edit" data-toggle="modal" onClick={() => { setactionId(action._id);setoldBalance(action.oldBalance);setoldCost(action.oldCost) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
