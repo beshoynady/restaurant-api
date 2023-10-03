@@ -133,7 +133,7 @@ const StockItem = () => {
                               <td>{item.Balance}</td>
                               <td>{item.price}</td>
                               <td>{item.cost}</td>
-                              <td>{item.createAt.toLocaleString}</td>
+                              <td>{item.createAt}</td>
                               <td>{usertitle(item.createBy)}</td>
                               <td>
                                 <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(item._id); setitemName(item.itemName); setBalance(item.Balance); setunit(item.unit); setprice(item.price)}}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
