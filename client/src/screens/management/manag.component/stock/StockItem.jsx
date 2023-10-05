@@ -10,14 +10,14 @@ const StockItem = () => {
   const [Balance, setBalance] = useState();
   const [price, setprice] = useState();
   const [cost, setcost] = useState();
-  const createAt =new Date().toLocaleString()
+  const createAt = new Date().toLocaleString()
 
   const createitem = async (e, userid) => {
     console.log(createAt)
     e.preventDefault();
     try {
       const createBy = userid;
-      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', { itemName, unit, Balance, price,cost,createBy, createAt });
+      const response = await axios.post('https://restaurant-api-blush.vercel.app/api/stockitem/', { itemName, unit, Balance, price, cost, createBy, createAt });
       console.log(response.data);
       getallStockItem()
     } catch (error) {
@@ -27,20 +27,21 @@ const StockItem = () => {
 
   const [StockItemid, setStockItemid] = useState("")
 
-  const editStockItem = async (e,userid) => {
+  const editStockItem = async (e, userid) => {
     e.preventDefault()
     const createBy = userid
-      try {
-        const response = await axios.put(`https://restaurant-api-blush.vercel.app/api/stockitem/${StockItemid}`, {itemName, unit, Balance, price,cost, createBy
-        });
-        console.log(response.data);
-        if (response) {
-          getallStockItem()
-        }
-      } catch (error) {
-        console.log(error)
+    try {
+      const response = await axios.put(`https://restaurant-api-blush.vercel.app/api/stockitem/${StockItemid}`, {
+        itemName, unit, Balance, price, cost, createBy
+      });
+      console.log(response.data);
+      if (response) {
+        getallStockItem()
       }
-    
+    } catch (error) {
+      console.log(error)
+    }
+
 
   }
 
@@ -136,7 +137,7 @@ const StockItem = () => {
                               <td>{item.createAt}</td>
                               <td>{usertitle(item.createBy)}</td>
                               <td>
-                                <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(item._id); setitemName(item.itemName); setBalance(item.Balance); setunit(item.unit); setprice(item.price)}}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#editStockItemModal" className="edit" data-toggle="modal" onClick={() => { setStockItemid(item._id); setitemName(item.itemName); setBalance(item.Balance); setunit(item.unit); setprice(item.price) }}><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#deleteStockItemModal" className="delete" data-toggle="modal" onClick={() => setStockItemid(item._id)}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                               </td>
                             </tr>
@@ -182,11 +183,11 @@ const StockItem = () => {
                         </div>
                         <div className="form-group">
                           <label>السعر</label>
-                          <input type='Number' className="form-control" required onChange={(e) => {setprice(e.target.value); setcost(e.target.value * Balance)} }/>
+                          <input type='Number' className="form-control" required onChange={(e) => { setprice(e.target.value); setcost(e.target.value * Balance) }} />
                         </div>
                         <div className="form-group">
                           <label>التكلفة</label>
-                          <input type='Number' className="form-control" required  defaultValue={cost} readOnly/>
+                          <input type='Number' className="form-control" required defaultValue={cost} readOnly />
                         </div>
                         <div className="form-group">
                           <label>التاريخ</label>
@@ -204,7 +205,7 @@ const StockItem = () => {
               <div id="editStockItemModal" className="modal fade">
                 <div className="modal-dialog">
                   <div className="modal-content">
-                    <form onSubmit={(e)=>editStockItem(e,userlogininfo.id)}>
+                    <form onSubmit={(e) => editStockItem(e, userlogininfo.id)}>
                       <div className="modal-header">
                         <h4 className="modal-title">تعديل صنف بالمخزن</h4>
                         <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -220,15 +221,15 @@ const StockItem = () => {
                         </div>
                         <div className="form-group">
                           <label>رصيد افتتاحي</label>
-                          <input type='Number' className="form-control" defaultValue={Balance} onChange={(e) =>{setBalance(Number(e.target.value)); setcost(e.target.value * price)}} />
+                          <input type='Number' className="form-control" defaultValue={Balance} onChange={(e) => { setBalance(Number(e.target.value)); setcost(e.target.value * price) }} />
                         </div>
                         <div className="form-group">
                           <label>السعر</label>
-                          <input type='Number' className="form-control" defaultValue={price} onChange={(e) =>{setprice(Number(e.target.value)); setcost(e.target.value * Balance)}} />
+                          <input type='Number' className="form-control" defaultValue={price} onChange={(e) => { setprice(Number(e.target.value)); setcost(e.target.value * Balance) }} />
                         </div>
                         <div className="form-group">
                           <label>التكلفة</label>
-                          <input type='Number' className="form-control" defaultValue={cost} readOnly/>
+                          <input type='Number' className="form-control" defaultValue={cost} readOnly />
                         </div>
                       </div>
                       <div className="modal-footer">
