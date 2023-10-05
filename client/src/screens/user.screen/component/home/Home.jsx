@@ -13,10 +13,13 @@ const Home = () => {
             <main className='main-home'>
               <div className="container">
                 <div className="content">
-                  {userlogininfo?<p className='main-title'>مرحبا {usertitle(userlogininfo.id)} في</p>
-                  :id?<p className='main-title'>مرحبا ضيوف {usertitle(id)} في</p>:<p className='main-title'>مرحبا بكم في</p>
+                  {userlogininfo?<p className='main-title'>مرحبا {usertitle(userlogininfo.id)} <br/> في</p>
+
+                  : userlogininfo && id ?<p className='main-title'>مرحبا {usertitle(userlogininfo.id)} علي طاولة {usertitle(id)}  <br/> في</p>
+                  : id?<p className='main-title'>مرحبا ضيوف طاولة {usertitle(id)} <br/> في</p>
+                  :<p className='main-title'>مرحبا بكم  <br/> في</p>
                   }
-                  <p className='main-text'>كافيار للمأكولات البحرية <br />Caviar Seafood</p>
+                  <p className='main-text'>كافيار للمأكولات البحرية <br /> Caviar Seafood</p>
                   <ul className="main-btn">
 
                     {id?<>
