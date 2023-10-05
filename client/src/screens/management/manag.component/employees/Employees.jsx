@@ -75,13 +75,13 @@ const Employees = () => {
     console.log(salary)
     try {
       if(password){
-      const update = await axios.put('https://restaurant-api-blush.vercel.app/api/user/' + userid, { username, password, address, phone, email, isAdmin,isActive, role, salary })
+      const update = await axios.put(`https://restaurant-api-blush.vercel.app/api/user/${userid}`, { username, password, address, phone, email, isAdmin,isActive, role, salary })
       console.log(update)
       if(update){
         getemployees()
       }
   }else{
-      const update = await axios.put('https://restaurant-api-blush.vercel.app/api/user/' + userid, { username, address, phone, email, isAdmin,isActive, role, salary })
+      const update = await axios.put(`https://restaurant-api-blush.vercel.app/api/user/${userid}`, { username, address, phone, email, isAdmin,isActive, role, salary })
       console.log(update)
       if(update){
         getemployees()
