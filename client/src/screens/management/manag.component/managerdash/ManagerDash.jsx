@@ -255,7 +255,7 @@ const ManagerDash = () => {
                           <div className="task-title">
                             <p><i className='bx bx-check-circle'></i> {order.table != null ? usertitle(order.table) : usertitle(order.user)}</p>
                             <p>{order.help?'يحتاج المساعدة': order.isActive == false? 'يحتاج الفاتورة': ''}</p>
-                            {order.help =='يطلب مساعدة'?<button type="button" className="btn btn-primary" onClick={()=>sendwaiter(order._id)}>ارسال ويتر</button>:
+                            {order.help =='يطلب مساعدة'||order.help =='يطلب الفاتورة'?<button type="button" className="btn btn-primary" onClick={()=>sendwaiter(order._id)}>ارسال ويتر</button>:
                             <p>تم ارسال {usertitle(order.waiter)}</p>}
                             <p>{order.table != null ? order.help : order.isActive == false? 'يحتاج الفاتورة': ''}</p>
                           </div>
