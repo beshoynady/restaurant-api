@@ -71,12 +71,13 @@ const ManagerDash = () => {
     const allwaiter = await alluser.data.filter((user) => user.role === 'waiter')
     console.log(allwaiter)
     const waiterActive = await allwaiter.filter((waiter)=> waiter.isActive == true)
+    console.log(waiterActive)
     const listId = []
     if(waiterActive){
     waiterActive.forEach((waiter) => {
       listId.push(waiter._id)
     })}
-    // console.log(listId)
+    console.log(listId)
     if (listId.length > 0) {
       setwaiters(listId)
     }
@@ -85,6 +86,7 @@ const ManagerDash = () => {
   // const [waiter, setwaiter] = useState()
   const specifiedWaiter = () => {
     const ordertakewaiter = allorders.filter((order)=> order.waiter != null)
+    console.log(ordertakewaiter)
     const lastwaiter = ordertakewaiter ? ordertakewaiter[allorders.length - 1].waiter : ''
     console.log(lastwaiter)
 
