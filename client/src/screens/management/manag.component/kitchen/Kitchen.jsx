@@ -49,10 +49,10 @@ const Kitchen = () => {
   const specifiedWaiter = () => {
     const ordertakewaiter = allorders.filter((order)=> order.waiter != null)
     console.log(ordertakewaiter)
-    const lastwaiter = ordertakewaiter ? ordertakewaiter[allorders.length - 1].waiter : ''
+    const lastwaiter = ordertakewaiter.length>0? ordertakewaiter[allorders.length - 1].waiter : ''
     console.log(lastwaiter)
 
-    const indexoflastwaiter = lastwaiter? waiters.indexOf(lastwaiter): 0
+    const indexoflastwaiter = lastwaiter!=''? waiters.indexOf(lastwaiter): 0
 
     console.log(indexoflastwaiter)
     console.log(indexoflastwaiter + 1)
