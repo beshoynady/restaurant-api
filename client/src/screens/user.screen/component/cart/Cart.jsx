@@ -176,6 +176,7 @@ const Cart = (props) => {
                       </div>
                       <div className="total-order">
                         {id?<button className='total-order-btn' onClick={() => checkout()}>طلب الحساب</button>:""}
+                        
                         <button className='total-order-btn' onClick={handlePrint}>طباعه</button>
                         <div className='total-order-details'>
                           <h2>الاجمالي</h2>
