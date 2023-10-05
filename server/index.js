@@ -20,7 +20,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-  origin: "*",
+  origin : 'https://restaurant-demo-jet.vercel.app/',
   methods : ['GET', 'POST', 'PUT' , ' UPDATE', 'DELETE'],
   credentials: true 
 }));
