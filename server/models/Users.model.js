@@ -57,7 +57,7 @@ const userschema = new mongoose.Schema({
     },
     isActive :{
         type: Boolean,
-        defualt : true,
+        default : true,
         require : [true , 'isActive required'],
     }
     
