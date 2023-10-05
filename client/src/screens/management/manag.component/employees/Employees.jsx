@@ -71,6 +71,7 @@ const Employees = () => {
     console.log(phone)
     console.log(email)
     console.log(isAdmin)
+    console.log(isActive)
     console.log(role)
     console.log(salary)
     try {
@@ -159,7 +160,7 @@ const Employees = () => {
                       <td>{e.phone}</td>
                       <td>{e.salary}</td>
                       <td>{e.role}</td>
-                      <td>{e.isActive}</td>
+                      <td>{e.isActive?'متاح':"غير متاح"}</td>
                       <td>
                         <a href="#editEmployeeModal" className="edit" data-toggle="modal"><i className="material-icons" data-toggle="tooltip" title="Edit" onClick={()=>{
                           setuserid(e._id);setusername(e.username);setaddress(e.address);setemail(e.email); setisAdmin(e.isAdmin);setisActive(e.isActive); setphone(e.phone); setrole(e.role); setsalary(e.salary)
