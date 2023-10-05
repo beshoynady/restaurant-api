@@ -22,8 +22,11 @@ const ManagerDash = () => {
 
   const [pending_order, setpending_order] = useState([])
   const [pending_payment, setpending_payment] = useState([])
+  const [allorders, setallorders] = useState([])
+
   const PendingOrder = async () => {
     const res = await axios.get('https://restaurant-api-blush.vercel.app/api/order')
+    setallorders(res.data)
     const recent_status = await res.data.filter((order) => order.status == 'انتظار')
     const recent_payment_status = await res.data.filter((order) => order.payment_status == 'انتظار')
     setpending_order(recent_status)
@@ -62,36 +65,40 @@ const ManagerDash = () => {
 
   // ارسال ويتر 
   const [waiters, setwaiters] = useState([])
-  const getAllWaiter = async()=>{
+  const getAllWaiter = async () => {
     const alluser = await axios.get('https://restaurant-api-blush.vercel.app/api/user')
-    const allwaiter =await alluser.data.filter((user)=>user.role === 'waiter')
+    const allwaiter = await alluser.data.filter((user) => user.role === 'waiter')
     // console.log(allwaiter)
     const listId = []
-    allwaiter.forEach((waiter)=>{
+    allwaiter.forEach((waiter) => {
       listId.push(waiter._id)
     })
     // console.log(listId)
-    if(listId.length>0){
+    if (listId.length > 0) {
       setwaiters(listId)
     }
   }
 
   // const [waiter, setwaiter] = useState()
-  const specifiedWaiter =()=>{
-    const lastwaiter = pending_order? pending_order[pending_order.length-1].waiter:''
+  const specifiedWaiter = () => {
+    const lastwaiter = allorders ? allorders[allorders.length - 1].waiter : ''
     console.log(lastwaiter)
-    const indexoflastwaiter = waiters.indexOf(lastwaiter)
+    if (lastwaiter) {
+      const indexoflastwaiter = waiters.indexOf(lastwaiter)
+    } else {
+      const indexoflastwaiter = 0
+    }
 
     console.log(indexoflastwaiter)
-    console.log(indexoflastwaiter+1)
+    console.log(indexoflastwaiter + 1)
     console.log(waiters.length)
     console.log(waiters)
     // setwaiter(waiters[indexofwaiter+1])
-    if(waiters.length < indexoflastwaiter+1){
+    if (waiters.length == indexoflastwaiter + 1) {
       const waiter = waiters[0]
-      return waiter     
-    }else{
-      const waiter = waiters[indexoflastwaiter+1]
+      return waiter
+    } else {
+      const waiter = waiters[indexoflastwaiter + 1]
       return waiter
     }
   }
@@ -100,7 +107,7 @@ const ManagerDash = () => {
     const help = 'ارسال ويتر';
     const waiter = specifiedWaiter()
     const order = await axios.put('https://restaurant-api-blush.vercel.app/api/order/' + id, {
-      waiter , help
+      waiter, help
     })
     PendingOrder()
     setupdate(!update)
@@ -249,14 +256,14 @@ const ManagerDash = () => {
                     <i className='bx bx-plus'></i>
                   </div>
                   <ul className="task-list">
-                    {pending_payment.filter((order) => order.payment_status == 'انتظار' && order.order_type=='داخلي'&& order.isActive == false || order.help !=='لم يطلب').map((order, i) => {
+                    {pending_payment.filter((order) => order.payment_status == 'انتظار' && order.order_type == 'داخلي' && order.isActive == false || order.help !== 'لم يطلب').map((order, i) => {
                       return (
                         <li className="completed" key={i}>
                           <div className="task-title">
                             <p><i className='bx bx-check-circle'></i> {usertitle(order.table)}</p>
                             <p>{order.help}</p>
-                            {order.help =='يطلب مساعدة' || order.help =='يطلب الفاتورة'?<button type="button" className="btn btn-primary" onClick={()=>sendwaiter(order._id)}>ارسال ويتر</button>:
-                            <p>تم ارسال {usertitle(order.waiter)}</p>}
+                            {order.help == 'يطلب مساعدة' || order.help == 'يطلب الفاتورة' ? <button type="button" className="btn btn-primary" onClick={() => sendwaiter(order._id)}>ارسال ويتر</button> :
+                              <p>تم ارسال {usertitle(order.waiter)}</p>}
                             {/* <p>{order.table != null ? order.help : order.isActive == false? 'يحتاج الفاتورة': ''}</p> */}
                           </div>
                           <i className='bx bx-dots-vertical-rounded'></i>
