@@ -96,10 +96,8 @@ const Employees = () => {
     try {
       console.log(userid)
       const deleted = await axios.delete(`https://restaurant-api-blush.vercel.app/api/user/${userid}`)
-      if(deleted){
       console.log(deleted)
       getemployees()
-    }
     } catch (error) {
       console.log(error)
     }
