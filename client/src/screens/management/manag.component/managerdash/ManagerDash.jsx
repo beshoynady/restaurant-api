@@ -82,13 +82,11 @@ const ManagerDash = () => {
 
   // const [waiter, setwaiter] = useState()
   const specifiedWaiter = () => {
-    const lastwaiter = allorders ? allorders[allorders.length - 1].waiter : ''
+    const ordertakewaiter = allorders.find((order)=> order.waiter != null)
+    const lastwaiter = ordertakewaiter ? ordertakewaiter[allorders.length - 1].waiter : ''
     console.log(lastwaiter)
-    if (lastwaiter) {
-      const indexoflastwaiter = waiters.indexOf(lastwaiter)
-    } else {
-      const indexoflastwaiter = 0
-    }
+
+    const indexoflastwaiter = lastwaiter? waiters.indexOf(lastwaiter): 0
 
     console.log(indexoflastwaiter)
     console.log(indexoflastwaiter + 1)
