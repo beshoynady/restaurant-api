@@ -71,9 +71,10 @@ const ManagerDash = () => {
     // console.log(allwaiter)
     const waiterActive = allwaiter.find((waiter)=> waiter.isActive == true)
     const listId = []
+    if(waiterActive){
     waiterActive.forEach((waiter) => {
       listId.push(waiter._id)
-    })
+    })}
     // console.log(listId)
     if (listId.length > 0) {
       setwaiters(listId)
