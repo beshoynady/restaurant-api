@@ -69,7 +69,7 @@ const ManagerDash = () => {
     const alluser = await axios.get('https://restaurant-api-blush.vercel.app/api/user')
     const allwaiter = await alluser.data.find((user) => user.role === 'waiter')
     // console.log(allwaiter)
-    const waiterActive = allwaiter.find((waiter)=> waiter.isActive == true)
+    const waiterActive = await allwaiter.find((waiter)=> waiter.isActive == true)
     const listId = []
     if(waiterActive){
     waiterActive.forEach((waiter) => {
