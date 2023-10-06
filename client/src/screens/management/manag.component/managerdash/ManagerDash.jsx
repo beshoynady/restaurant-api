@@ -102,8 +102,8 @@ const ManagerDash = () => {
     console.log(order.data)
   }
 
-  setTimeout(()=>{setupdate(!update),2000
-  })
+  setTimeout(setupdate(!update),2000
+  )
 
   useEffect(() => {
     PendingOrder()
