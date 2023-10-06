@@ -3,7 +3,13 @@ const app = express();
 const http = require('http')
 const server = http.createServer(app)
 
-const io = require('socket.io')(server)
+const io = require('socket.io')(server,{
+  cors: {
+   origin: "https://restaurant-demo-amber.vercel.app", //specific origin you want to give access to,
+   methods : ['GET', 'POST', 'PUT' , ' UPDATE', 'DELETE'],
+
+},
+})
 
 io.on('connect', socket=>{
   console.log(socket)
