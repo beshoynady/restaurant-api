@@ -25,14 +25,14 @@ import StockManag from './screens/management/manag.component/stock/StockManag';
 export const detacontext = createContext({})
 
 
+const socket = io('https://restaurant-api-blush.vercel.app',{
+  reconnection:true
+})
 
 
 function App() {
 
 
-const socket = io('https://restaurant-api-blush.vercel.app',{
-  reconnection:true
-})
 //++++++++++++++++++++ pagination ++++++++++
 
   const [pagination, setpagination] = useState(5)
@@ -588,6 +588,9 @@ const socket = io('https://restaurant-api-blush.vercel.app',{
     window.location.href = `https://${window.location.hostname}`;
   }
 
+  useEffect(()=>{
+    console.log('socket front', socket)
+  },[])
 
   useEffect(() => {
     getProducts()
