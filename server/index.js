@@ -2,20 +2,29 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const app = express();
-const http = require('http')
-const server = http.createServer(app);
 
-const socketio = require('socket.io')
-
-const io = socketio(server);
-
-
-io.on('connection', (socket) => {
-  console.log(`⚡: ${socket.id} user just connected!`);
-  socket.on('disconnect', () => {
-    console.log('🔥: A user disconnected');
-  });
+var server = app.listen(4000);
+var io = require('socket.io')(server, {
+    cors: {
+      origin: '*',
+    }
 });
+
+
+// const http = require('http')
+// const server = http.createServer(app);
+
+// const socketio = require('socket.io')
+
+// const io = socketio(server);
+
+
+// io.on('connection', (socket) => {
+//   console.log(`⚡: ${socket.id} user just connected!`);
+//   socket.on('disconnect', () => {
+//     console.log('🔥: A user disconnected');
+//   });
+// });
 
 
 
