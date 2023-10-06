@@ -1,21 +1,15 @@
 const express = require('express');
 const app = express();
 const http = require('http')
-const server = http.createServer(app)
+const server = http.createServer(app);
 
-const io = require('socket.io')(server
-//   ,{
-//   cors: {
-//    origin: "https://restaurant-demo-amber.vercel.app", //specific origin you want to give access to,
-//    methods : ['GET', 'POST', 'PUT' , ' UPDATE', 'DELETE'],
+const socketio = require('socket.io');
+const io = socketio(server);
 
-// },
-// }
-)
 
-io.on('connect', socket=>{
+io.on('connection', socket=>{
   console.log(socket)
-  console.log('connect open')
+  console.log('connection open')
 })
 
 const cors = require('cors');
@@ -53,12 +47,12 @@ app.use(cookieParser());
 app.use(express.json());
 app.use('/',express.static("public"));
 
-// app.get('/',(req, res) => {
-//     res.send('beshoy')
-// })
 app.get('/',(req, res) => {
-    return res.render("index.html")
+    res.send('beshoy')
 })
+// app.get('/',(req, res) => {
+//     return res.render("index.html")
+// })
 
 
 // app.get('/', function (req, res) {
