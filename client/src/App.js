@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import axios from 'axios';
 import './App.css';
 import jwt_decode from "jwt-decode";
-import io from 'socket-io-client'
+import io from 'socket.io-client'
 
 import Userscreen from './screens/user.screen/Userscreen';
 
