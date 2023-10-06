@@ -3,8 +3,8 @@ const cors = require('cors');
 
 const app = express();
 
-import { createServer } from "http";
-import { Server } from "socket.io";
+const { createServer } = require("http");
+const { Server } = require("socket.io");
 const httpServer = createServer(app);
 const io = new Server(httpServer, { 
   cors:{
@@ -14,7 +14,7 @@ const io = new Server(httpServer, {
 
 io.on("connection", (socket) => {
   console.log('someone has connected')
-  socket.on("close", () =>{
+  socket.on("disconnection", () =>{
     console.log('someone left the connection')
   });
 });
