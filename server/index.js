@@ -3,13 +3,15 @@ const app = express();
 const http = require('http')
 const server = http.createServer(app)
 
-const io = require('socket.io')(server,{
-  cors: {
-   origin: "https://restaurant-demo-amber.vercel.app", //specific origin you want to give access to,
-   methods : ['GET', 'POST', 'PUT' , ' UPDATE', 'DELETE'],
+const io = require('socket.io')(server
+//   ,{
+//   cors: {
+//    origin: "https://restaurant-demo-amber.vercel.app", //specific origin you want to give access to,
+//    methods : ['GET', 'POST', 'PUT' , ' UPDATE', 'DELETE'],
 
-},
-})
+// },
+// }
+)
 
 io.on('connect', socket=>{
   console.log(socket)
@@ -51,12 +53,12 @@ app.use(cookieParser());
 app.use(express.json());
 app.use('/',express.static("public"));
 
-app.get('/',(req, res) => {
-    res.send('beshoy')
-})
 // app.get('/',(req, res) => {
-//     return res.render("index.html")
+//     res.send('beshoy')
 // })
+app.get('/',(req, res) => {
+    return res.render("index.html")
+})
 
 
 // app.get('/', function (req, res) {
