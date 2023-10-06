@@ -3,6 +3,22 @@ const cors = require('cors');
 
 const app = express();
 
+import { createServer } from "http";
+import { Server } from "socket.io";
+const httpServer = createServer(app);
+const io = new Server(httpServer, { 
+  cors:{
+    origin: 'https://restaurant-demo-amber.vercel.app'
+  }
+});
+
+io.on("connection", (socket) => {
+  console.log('someone has connected')
+  socket.on("close", () =>{
+    console.log('someone left the connection')
+  });
+});
+
 const dotenv = require('dotenv');
 
 
@@ -59,6 +75,6 @@ app.use('/api/stockmanag', routestockmanag);
 
 const port = process.env.PORT|| 8000;
 
-app.listen(port, (req, res) => {
+httpServer.listen(port, (req, res) => {
     console.log(`listening on port ${port}`);
 });
