@@ -26,7 +26,7 @@ export const detacontext = createContext({})
 
 
 const socket = io('https://restaurant-api-blush.vercel.app',{
-  reconnection:false
+  reconnection:true
 })
 
 
