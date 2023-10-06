@@ -51,12 +51,12 @@ app.use(cookieParser());
 app.use(express.json());
 app.use('/',express.static("public"));
 
-// app.get('/',(req, res) => {
-//     res.send('beshoy')
-// })
 app.get('/',(req, res) => {
-    return res.render("index.html")
+    res.send('beshoy')
 })
+// app.get('/',(req, res) => {
+//     return res.render("index.html")
+// })
 
 
 // app.get('/', function (req, res) {
