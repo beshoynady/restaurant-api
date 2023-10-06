@@ -126,6 +126,7 @@
                     align-items: center;
                     justify-content: space-between;
                     list-style: none;
+                    cursor: pointer;
                     .main-li {
                         width: 130px;
                         height: 60px;
@@ -144,6 +145,7 @@
                             font-size: 22px;
                             color: white;
                             margin: 10px 0px;
+                            cursor: pointer;
                         }    
                     }
                 }

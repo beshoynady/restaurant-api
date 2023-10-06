@@ -443,8 +443,8 @@ function App() {
     }
   }
 
-  const askingForHelp = async (tablenum) => {
-    const tableorder = allorders.filter((o, i) => o.table == tablenum);
+  const askingForHelp = async (tableID) => {
+    const tableorder = allorders.filter((o, i) => o.table == tableID);
     const lasttableorder = tableorder.length > 0 ? tableorder[tableorder.length - 1] : [];
     const lasttableorderactive = await lasttableorder.isActive
 
@@ -453,7 +453,7 @@ function App() {
     const serial = allorders.length > 0 ? allorders[allorders.length - 1].serial + 1 : 1;
     console.log(serial)
     const help = 'يطلب مساعدة';
-    const table = tablenum
+    const table = tableID
     if (!lasttableorderactive) {
       const neworder = await axios.post('https://restaurant-api-blush.vercel.app/api/order/', {
         serial, table, help
