@@ -1,19 +1,25 @@
 const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
 const app = express();
 const http = require('http')
 const server = http.createServer(app);
 
-const socketio = require('socket.io');
+const socketio = require('socket.io')(http, {
+  cors: {
+      origin: "https://vercel.com/beshoynady/restaurant-demo"
+  }
+});
 const io = socketio(server);
 
 
-io.on('connection', socket=>{
-  console.log(socket)
-  console.log('connection open')
-})
+socketio.on('connection', (socket) => {
+  console.log(`⚡: ${socket.id} user just connected!`);
+  socket.on('disconnect', () => {
+    console.log('🔥: A user disconnected');
+  });
+});
 
-const cors = require('cors');
-const dotenv = require('dotenv');
 
 
 const cookieParser = require('cookie-parser')
@@ -50,19 +56,6 @@ app.use('/',express.static("public"));
 app.get('/',(req, res) => {
     res.send('beshoy')
 })
-// app.get('/',(req, res) => {
-//     return res.render("index.html")
-// })
-
-
-// app.get('/', function (req, res) {
-//     // Cookies that have not been signed
-//     console.log('Cookies: ', req.cookies)
-  
-//     // Cookies that have been signed
-//     console.log('Signed Cookies: ', req.signedCookies)
-//   })
-
 
 //ROUTER
 app.use('/api/product', routeproduct)

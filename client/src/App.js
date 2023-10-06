@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import axios from 'axios';
 import './App.css';
 import jwt_decode from "jwt-decode";
-import io from 'socket.io-client'
+import socketIO from "socket.io-client";
 
 import Userscreen from './screens/user.screen/Userscreen';
 
@@ -24,9 +24,8 @@ import StockManag from './screens/management/manag.component/stock/StockManag';
 
 export const detacontext = createContext({})
 
-const socket = io('https://restaurant-api-blush.vercel.app',{
-  reconnection:true
-})
+const socket = socketIO.connect("https://restaurant-api-blush.vercel.app/");
+
 
 
 function App() {
