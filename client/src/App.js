@@ -3,10 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import axios from 'axios';
 import './App.css';
 import jwt_decode from "jwt-decode";
-
+import io from 'socket-io-client'
 
 import Userscreen from './screens/user.screen/Userscreen';
-
 
 import ManagLayout from './screens/management/ManagLayout';
 import ManagerDash from './screens/management/manag.component/managerdash/ManagerDash';
@@ -25,7 +24,15 @@ import StockManag from './screens/management/manag.component/stock/StockManag';
 
 export const detacontext = createContext({})
 
+
+
+
 function App() {
+
+
+const socket = io('https://restaurant-api-blush.vercel.app',{
+  reconnection:true
+})
 //++++++++++++++++++++ pagination ++++++++++
 
   const [pagination, setpagination] = useState(5)
