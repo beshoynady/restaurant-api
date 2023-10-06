@@ -12,11 +12,6 @@ const io = require("socket.io")(server, {
   },
   transports: ['websocket']
 });
-console.log("getSocekt.js : ")
-console.log(msg)
-var rtnMessage = { message: msg };
-io.emit('notify', rtnMessage);
-
 
 io.on("connection", (socket) => {
   console.log('someone has connected',socket);
@@ -24,6 +19,11 @@ io.on("connection", (socket) => {
     console.log('someone left the connection')
   });
 });
+console.log("getSocekt.js : ")
+console.log(msg)
+var rtnMessage = { message: msg };
+io.emit('notify', rtnMessage);
+
 
 const dotenv = require('dotenv');
 
