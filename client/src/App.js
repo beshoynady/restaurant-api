@@ -24,7 +24,7 @@ import StockManag from './screens/management/manag.component/stock/StockManag';
 
 export const detacontext = createContext({})
 
-const socket = socketIO.connect("https://restaurant-api-blush.vercel.app/");
+const socket = socketIO.connect("https://restaurant-api-blush.vercel.app");
 
 
 
