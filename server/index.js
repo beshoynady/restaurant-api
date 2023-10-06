@@ -13,8 +13,8 @@ const io = new Server(httpServer, {
 });
 
 io.on("connection", (socket) => {
-  console.log('someone has connected')
-  socket.on("disconnection", () =>{
+  console.log('someone has connected',socket);
+  socket.on("disconnect", () =>{
     console.log('someone left the connection')
   });
 });
