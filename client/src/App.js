@@ -30,7 +30,6 @@ const socket = socketIO.connect();
 
 function App() {
 
-c
 //++++++++++++++++++++ pagination ++++++++++
 
   const [pagination, setpagination] = useState(5)
