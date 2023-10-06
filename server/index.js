@@ -2,15 +2,16 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-
-const { createServer } = require("http");
-const { Server } = require("socket.io");
-const httpServer = createServer(app);
-const io = new Server(httpServer, { 
-  cors:{
-    origin: 'https://restaurant-demo-amber.vercel.app'
-  }
+const http = require("http");
+var server = http.createServer(app);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "POST"],
+  },
 });
+
 
 io.on("connection", (socket) => {
   console.log('someone has connected',socket);
@@ -49,6 +50,14 @@ app.use(cors({
   methods : ['GET', 'POST', 'PUT' , ' UPDATE', 'DELETE'],
   credentials: true 
 }));
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+  next();
+});
+
 app.use(cookieParser());
 app.use(express.json());
 app.use('/',express.static("public"));
@@ -75,6 +84,6 @@ app.use('/api/stockmanag', routestockmanag);
 
 const port = process.env.PORT|| 8000;
 
-httpServer.listen(port, (req, res) => {
+server.listen(port, (req, res) => {
     console.log(`listening on port ${port}`);
 });

@@ -587,7 +587,7 @@ function App() {
   }
 
   useEffect(() => {
-    const socket = io("https://restaurant-api-blush.vercel.app", {
+    const socket = io.connect("https://restaurant-api-blush.vercel.app", {
       transports: ["websocket"],
     });
     console.log(socket)
