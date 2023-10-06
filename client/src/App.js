@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import axios from 'axios';
 import './App.css';
 import jwt_decode from "jwt-decode";
-import socketIO from "socket.io-client";
 
 import Userscreen from './screens/user.screen/Userscreen';
 
@@ -24,11 +23,11 @@ import StockManag from './screens/management/manag.component/stock/StockManag';
 
 export const detacontext = createContext({})
 
-const socket = socketIO.connect();
 
 
 
 function App() {
+
 
 //++++++++++++++++++++ pagination ++++++++++
 
@@ -585,9 +584,6 @@ function App() {
     window.location.href = `https://${window.location.hostname}`;
   }
 
-  useEffect(()=>{
-    console.log('socket front', socket)
-  },[])
 
   useEffect(() => {
     getProducts()

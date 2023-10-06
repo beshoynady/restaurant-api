@@ -1,16 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const http = require('http')
 
 const app = express();
-const server = http.createServer(app)
-
-const io = require('socket.io')(server)
-
-io.on('connect', socket=>{
-  console.log(socket)
-  console.log('connect open')
-})
 
 const dotenv = require('dotenv');
 
@@ -50,21 +41,6 @@ app.get('/',(req, res) => {
     res.send('beshoy')
 })
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://restaurant-demo-amber.vercel.app/");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-})
-
-
-// app.get('/', function (req, res) {
-//     // Cookies that have not been signed
-//     console.log('Cookies: ', req.cookies)
-  
-//     // Cookies that have been signed
-//     console.log('Signed Cookies: ', req.signedCookies)
-//   })
 
 
 //ROUTER
@@ -83,6 +59,6 @@ app.use('/api/stockmanag', routestockmanag);
 
 const port = process.env.PORT|| 8000;
 
-server.listen(port, (req, res) => {
+app.listen(port, (req, res) => {
     console.log(`listening on port ${port}`);
 });
