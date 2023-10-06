@@ -6,7 +6,7 @@ const http = require("http");
 var server = http.createServer(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: "*",
+    origin: "https://restaurant-demo-amber.vercel.app/",
     methods: ["GET", "POST"],
     credentials: true,
   },
