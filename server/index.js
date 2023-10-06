@@ -83,6 +83,6 @@ app.use('/api/stockmanag', routestockmanag);
 
 const port = process.env.PORT|| 8000;
 
-app.listen(port, (req, res) => {
+server.listen(port, (req, res) => {
     console.log(`listening on port ${port}`);
 });
