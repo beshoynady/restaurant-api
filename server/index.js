@@ -7,11 +7,7 @@ var server = http.createServer(app);
 const io = require("socket.io")(server, {
   cors: {
     origin: "https://restaurant-demo-amber.vercel.app/",
-    methods: ["GET", "POST"],
-    credentials: true,
-  },
-  transports: ['websocket']
-});
+}});
 
 io.on("connection", (socket) => {
   console.log('someone has connected',socket);
