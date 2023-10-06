@@ -54,6 +54,9 @@ app.use('/',express.static("public"));
 app.get('/',(req, res) => {
     res.send('beshoy')
 })
+app.get('/socket.io',(req, res) => {
+    res.send('socket')
+})
 
 // app.get('/', function (req, res) {
 //     // Cookies that have not been signed
