@@ -1,31 +1,18 @@
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv');
+const http = require('http')
+
 const app = express();
+const server = http.createServer(app)
 
-var server = app.listen(4000);
-var io = require('socket.io')(server, {
-    cors: {
-      origin: '*',
-    }
-});
+const io = require('socket.io')(server)
 
+io.on('connect', socket=>{
+  console.log(socket)
+  console.log('connect open')
+})
 
-// const http = require('http')
-// const server = http.createServer(app);
-
-// const socketio = require('socket.io')
-
-// const io = socketio(server);
-
-
-// io.on('connection', (socket) => {
-//   console.log(`⚡: ${socket.id} user just connected!`);
-//   socket.on('disconnect', () => {
-//     console.log('🔥: A user disconnected');
-//   });
-// });
-
+const dotenv = require('dotenv');
 
 
 const cookieParser = require('cookie-parser')
@@ -52,17 +39,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
   origin : 'https://restaurant-demo-amber.vercel.app',
-  methods : ['GET', 'POST', 'PUT', 'UPDATE', 'DELETE'],
+  methods : ['GET', 'POST', 'PUT' , ' UPDATE', 'DELETE'],
   credentials: true 
 }));
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://restaurant-demo-amber.vercel.app");
-  res.setHeader("Access-Control-Allow-Methods", "GET', 'POST', 'PUT', 'UPDATE', 'DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-})
-
 app.use(cookieParser());
 app.use(express.json());
 app.use('/',express.static("public"));
@@ -70,6 +49,23 @@ app.use('/',express.static("public"));
 app.get('/',(req, res) => {
     res.send('beshoy')
 })
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://restaurant-demo-amber.vercel.app/");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+})
+
+
+// app.get('/', function (req, res) {
+//     // Cookies that have not been signed
+//     console.log('Cookies: ', req.cookies)
+  
+//     // Cookies that have been signed
+//     console.log('Signed Cookies: ', req.signedCookies)
+//   })
+
 
 //ROUTER
 app.use('/api/product', routeproduct)
