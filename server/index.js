@@ -7,10 +7,15 @@ var server = http.createServer(app);
 const io = require("socket.io")(server, {
   cors: {
     origin: "*",
-    credentials: true,
     methods: ["GET", "POST"],
+    credentials: true,
   },
+  transports: ['websocket']
 });
+console.log("getSocekt.js : ")
+console.log(msg)
+var rtnMessage = { message: msg };
+io.emit('notify', rtnMessage);
 
 
 io.on("connection", (socket) => {
