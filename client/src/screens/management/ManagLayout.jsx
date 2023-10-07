@@ -11,9 +11,9 @@ import jwt_decode from "jwt-decode";
 const ManagLayout = () => {
 
   const token = localStorage.getItem('token')
-  if (token) {
     const decodetoken = jwt_decode(token)
     const isadmin = decodetoken.userinfo.isAdmin
+    console.log(isadmin)
     if (isadmin) {
       return (
         <div className='manag-screen'>
@@ -26,10 +26,6 @@ const ManagLayout = () => {
     } else {
       return <Navigate to={'/login'} />
     }
-  }else {
-    return <Navigate to={'/login'} />
-  }
-
 
   // if (localStorage.getItem('token')) {
   //   const tokenStorage = localStorage.getItem('token')
