@@ -9,26 +9,28 @@ import jwt_decode from "jwt-decode";
 
 
 const ManagLayout = () => {
+  return(
+    <div>ManagLayout</div>
+  )
 
-    if (localStorage.getItem('token')) {
-      // console.log(localStorage.getItem('token'))
-      const tokenStorage = localStorage.getItem('token')
-      if (tokenStorage) {
-        const decodetoken = jwt_decode(tokenStorage)
-       if(decodetoken.userinfo.isAdmin){
-        return(
-          <div className='manag-screen'>
-            <SideBar />
-            <main className='manag_main'>
-              <NavBar />
-              <Outlet></Outlet>
-            </main>
-          </div>)
-          }
-        }
-      }else{
-            return <Navigate to={'/login'} />
-          }
+    // if (localStorage.getItem('token')) {
+    //   const tokenStorage = localStorage.getItem('token')
+    //   const decodetoken = jwt_decode(tokenStorage)
+    //    if(decodetoken.userinfo.isAdmin){
+    //     return(
+    //       <div className='manag-screen'>
+    //         <SideBar />
+    //         <main className='manag_main'>
+    //           <NavBar />
+    //           <Outlet></Outlet>
+    //         </main>
+    //       </div>)
+    //       }else{
+    //         return <Navigate to={'/login'} />
+    //       }
+    //   }else{
+    //         return <Navigate to={'/login'} />
+    //       }
       }
       
 export default ManagLayout

@@ -25,8 +25,6 @@ import StockManag from './screens/management/manag.component/stock/StockManag';
 export const detacontext = createContext({})
 
 
-
-
 function App() {
 
 
