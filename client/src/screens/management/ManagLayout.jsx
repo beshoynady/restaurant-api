@@ -13,20 +13,22 @@ const ManagLayout = () => {
   const token = localStorage.getItem('token')
   if (token) {
     const decodetoken = jwt_decode(token)
-    return decodetoken
-  }
-  if (decodetoken.userinfo.isAdmin) {
-    return (
-      <div className='manag-screen'>
-        <SideBar />
-        <main className='manag_main'>
-          <NavBar />
-          <Outlet></Outlet>
-        </main>
-      </div>)
-  } else {
+    if (decodetoken.userinfo.isAdmin) {
+      return (
+        <div className='manag-screen'>
+          <SideBar />
+          <main className='manag_main'>
+            <NavBar />
+            <Outlet></Outlet>
+          </main>
+        </div>)
+    } else {
+      return <Navigate to={'/login'} />
+    }
+  }else {
     return <Navigate to={'/login'} />
   }
+
 
   // if (localStorage.getItem('token')) {
   //   const tokenStorage = localStorage.getItem('token')
