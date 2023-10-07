@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import axios from 'axios';
 import './App.css';
 import jwt_decode from "jwt-decode";
-import { io } from "socket.io-client";
 
 
 import Userscreen from './screens/user.screen/Userscreen';
@@ -586,17 +585,6 @@ function App() {
     window.location.href = `https://${window.location.hostname}`;
   }
 
-  useEffect(() => {
-    // const socket = io.connect("https://restaurant-api-blush.vercel.app", {
-      const socket = io();
-      socket.on("notify", (msg) => {
-            console.log("getting socket msg");
-            console.log(msg.message);
-            this.get_socket_message = msg.message;
-      });
-    console.log(socket)
-  }, [])
-
 
   useEffect(() => {
     getProducts()
@@ -604,9 +592,6 @@ function App() {
     getallorders()
     getalltable();
     getallusers();
-    // if (localStorage.getItem('token')) {
-    //   getdatafromtoken()
-    // }
   }, [])
 
 

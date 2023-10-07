@@ -1,17 +1,12 @@
 const express = require('express');
+const connectdb = require('./database/connectdb.js');
+const cookieParser = require('cookie-parser')
 const cors = require('cors');
-
-const app = express();
-const http = require("http");
-const io = require("socket.io")
-const server = http.createServer(app);
-
-
 const dotenv = require('dotenv');
 
+const app = express();
 
-const cookieParser = require('cookie-parser')
-const connectdb = require('./database/connectdb.js');
+
 
 
 
@@ -58,23 +53,10 @@ app.use('/api/auth', routeauth);
 app.use('/api/stockitem', routestockitems);
 app.use('/api/stockmanag', routestockmanag);
 
-io(server);
-io.on("connection", (socket) => {
-  console.log('someone has connected',socket);
-  socket.on("disconnect", () =>{
-    console.log('someone left the connection')
-  });
-});
-console.log("getSocekt.js : ")
-console.log(msg)
-var rtnMessage = { message: msg };
-io.emit('notify', rtnMessage);
-
-
 //open server
 
 const port = process.env.PORT|| 8000;
 
-server.listen(port, (req, res) => {
+app.listen(port, (req, res) => {
     console.log(`listening on port ${port}`);
 });
