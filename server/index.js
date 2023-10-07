@@ -3,19 +3,8 @@ const cors = require('cors');
 
 const app = express();
 const http = require("http");
-var server = http.createServer(app);
 const io = require("socket.io")
-io(server);
-io.on("connection", (socket) => {
-  console.log('someone has connected',socket);
-  socket.on("disconnect", () =>{
-    console.log('someone left the connection')
-  });
-});
-console.log("getSocekt.js : ")
-console.log(msg)
-var rtnMessage = { message: msg };
-io.emit('notify', rtnMessage);
+var server = http.createServer(app);
 
 
 const dotenv = require('dotenv');
@@ -69,6 +58,17 @@ app.use('/api/auth', routeauth);
 app.use('/api/stockitem', routestockitems);
 app.use('/api/stockmanag', routestockmanag);
 
+io(server);
+io.on("connection", (socket) => {
+  console.log('someone has connected',socket);
+  socket.on("disconnect", () =>{
+    console.log('someone left the connection')
+  });
+});
+console.log("getSocekt.js : ")
+console.log(msg)
+var rtnMessage = { message: msg };
+io.emit('notify', rtnMessage);
 
 
 //open server
