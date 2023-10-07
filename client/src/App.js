@@ -4,7 +4,6 @@ import axios from 'axios';
 import './App.css';
 import jwt_decode from "jwt-decode";
 
-
 import Userscreen from './screens/user.screen/Userscreen';
 
 import ManagLayout from './screens/management/ManagLayout';
@@ -25,10 +24,12 @@ import StockManag from './screens/management/manag.component/stock/StockManag';
 export const detacontext = createContext({})
 
 
+
+
 function App() {
 
 
-  //++++++++++++++++++++ pagination ++++++++++
+//++++++++++++++++++++ pagination ++++++++++
 
   const [pagination, setpagination] = useState(5)
   const EditPagination = (e) => {
@@ -300,7 +301,7 @@ function App() {
 
   const CreateCasherOrder = async (casherid, clientname, clientphone, clientaddress, ordertype) => {
     try {
-      const dayorders = allorders.length > 0 ? allorders.filter((order) => new Date(order.createdAt).getDay() == new Date().getDay()) : ''
+      const dayorders =allorders.length > 0 ? allorders.filter((order) => new Date(order.createdAt).getDay() == new Date().getDay()):''
       // const ordernum =  new Date().getHours() == 0 && new Date().getMinutes() >= 0 ?
       //  allorders.find(order => order.createdAt.
       const ordernum = dayorders.length > 0 ? dayorders[dayorders.length - 1].ordernum + 1 : 1
@@ -400,28 +401,28 @@ function App() {
     const lastemployeeorder = employeeorder.length > 0 ? employeeorder[employeeorder.length - 1] : [];
     const lastemployeeorderactive = lastemployeeorder.isActive
 
-    if (lasttableorderactive) {
-      const id = await lasttableorder._id
-      const myorder = await axios.get('https://restaurant-api-blush.vercel.app/api/order/' + id,)
-      const data = myorder.data
-      setmyorder(data)
-      settotalinvoice(data.total)
-      setmyorderid(data._id)
-      setlist_produccts_order(data.products)
-      setorderupdate_date(data.updatedAt)
-      setitemsincart([])
-    } else if (lastemployeeorderactive) {
-      const id = await lastemployeeorder._id
-      const myorder = await axios.get('https://restaurant-api-blush.vercel.app/api/order/' + id,)
-      const data = myorder.data
-      console.log(data)
-      setmyorder(data)
-      setmyorderid(data._id)
-      settotalinvoice(data.total)
-      setlist_produccts_order(data.products)
-      setorderupdate_date(data.updatedAt)
-      setitemsincart([])
-    }
+      if (lasttableorderactive) {
+        const id = await lasttableorder._id
+        const myorder = await axios.get('https://restaurant-api-blush.vercel.app/api/order/' + id,)
+        const data = myorder.data
+        setmyorder(data)
+        settotalinvoice(data.total)
+        setmyorderid(data._id)
+        setlist_produccts_order(data.products)
+        setorderupdate_date(data.updatedAt)
+        setitemsincart([])
+      } else if (lastemployeeorderactive) {
+        const id = await lastemployeeorder._id
+        const myorder = await axios.get('https://restaurant-api-blush.vercel.app/api/order/' + id,)
+        const data = myorder.data
+        console.log(data)
+        setmyorder(data)
+        setmyorderid(data._id)
+        settotalinvoice(data.total)
+        setlist_produccts_order(data.products)
+        setorderupdate_date(data.updatedAt)
+        setitemsincart([])
+      }
   }
 
   const updatecountofsales = async (id) => {
@@ -590,6 +591,9 @@ function App() {
     getallorders()
     getalltable();
     getallusers();
+    // if (localStorage.getItem('token')) {
+    //   getdatafromtoken()
+    // }
   }, [])
 
 
@@ -618,8 +622,8 @@ function App() {
       list_day_order, total_day_salse,
       categoryid, itemsincart, costOrder, additemtocart, increment, descrement,
       createclientorder, checkout, calcTotalSalesOfCategory, updatecountofsales,
-      CreateWaiterOrder, CreateCasherOrder, POSinvoice,
-      EditPagination, pagination
+      CreateWaiterOrder, CreateCasherOrder ,POSinvoice,
+      EditPagination,pagination
     }}>
       <BrowserRouter>
         <Routes>
@@ -637,8 +641,8 @@ function App() {
             <Route path='kitchen' element={<Kitchen />} />
             <Route path='waiter' element={<Waiter />} />
             <Route path='pos' element={<POS />} />
-            <Route path='stockitem' element={<StockItem />} />
-            <Route path='stockmang' element={<StockManag />} />
+            <Route path='stockitem' element={<StockItem/>} />
+            <Route path='stockmang' element={<StockManag/>} />
           </Route>
 
         </Routes>
