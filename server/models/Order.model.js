@@ -16,6 +16,12 @@ const OrderSchema = new mongoose.Schema({
             message: '{VALUE} is not a valid sirial number'
         }
     },
+    ordernum:{
+        type : Number,
+        min: 1,
+        trim: true, 
+    },
+
     products: [
         {
             productid: {
@@ -90,25 +96,44 @@ const OrderSchema = new mongoose.Schema({
         ref: 'User',
         default: null
     },
+    employee: {
+        type: ObjectId,
+        ref: 'User',
+        default: null
+    },
+    name: {
+        type: String,
+        minLength: 3
+    },
+    address: {
+        type: String,
+        default: null,
+    },
+    phone: {
+        type: String,
+        default: null,
+        },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        required: true,
+    },
 
     waiter:{
         type: ObjectId,
         ref: 'User',
         default: null
     },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-        required: true,
-    },
-    isActive: {
-        type: Boolean,
-        default: true,
-        required: true,
+    deliveryMan:{
+        type: ObjectId,
+        ref: 'User',
+        default: null
     },
     help:{
-        type: Boolean,
-        default: false,
+        type: String,
+        default: 'لم يطلب',
+        required: true,
+        enum: ['لم يطلب', 'يطلب مساعدة','يطلب الفاتورة','ارسال ويتر','في الطريق','تمت المساعدة'],
     },
     status: {
         type: String,
@@ -122,6 +147,12 @@ const OrderSchema = new mongoose.Schema({
         default : 'داخلي',
         required: true
     },
+    isActive: {
+        type: Boolean,
+        default: true,
+        required: true,
+    },
+    
     payment_status: {
         type: String,
         default: 'انتظار',

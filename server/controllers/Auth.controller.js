@@ -45,41 +45,40 @@ const login = async (req, res) => {
             return res.status(404).json({ message: 'phone or password is required' });
         }
 
-        const finduser = await Usermodel.findOne({ phone: phone });
 
+        const finduser = await Usermodel.findOne({ phone: phone });
         if (!finduser) {
             return res.status(400).json({ message: 'this user not founded' })
+        } else {
+            const match = bcrypt.compare(password, finduser.password, function(err, result) {
+                if (!result) {
+                    return res.status(401).json({ message: "Wrong Password" })
+                } else {
+                    const accessToken = jwt.sign({
+                        userinfo: {
+                            id: finduser._id,
+                            isAdmin: finduser.isAdmin,
+                            role: finduser.role
+                        }
+                    }, process.env.jwt_secret_key,
+                        { expiresIn: process.env.jwt_expire }
+                    )
+                    if (!accessToken) {
+                        return res.status(401).json({ message: "accessToken not sign" })
+                    }
+    
+                    res.status(200).json({ finduser, accessToken })
+    
+                }          
+            });
+
         }
 
-        const match = await bcrypt.compare(password, finduser.password);
 
-        if (!match) return res.status(401).json({ message: "Wrong Password" });
 
-        const accessToken = jwt.sign({
-            userinfo: {
-                id: finduser._id,
-                isAdmin: finduser.isAdmin,
-                role: finduser.role
-            }
-        }, process.env.jwt_secret_key,
-            { expiresIn: process.env.jwt_expire }
-        )
-        // const refreshToken = jwt.sign({
-        //     userinfo: {
-        //         id: finduser._id
-        //     }
-        // }, process.env.jwt_refresh_key,
-        //     { expiresIn: process.env.jwt_refresh_expire, }
-        // )
-        // res.cookie("jwt", accessToken, {
-        //     httpOnly: true,
-        //     secure: true,
-        //     sameSite: 'none',
-        //     maxAge: 1 * 24 * 60 * 60 * 1000
-        // })
-        res.status(200).json({finduser, accessToken})
+        // res.status(200).json(finduser)
     } catch (error) {
-        res.status(404).json(error);
+        res.status(404).send('error');
     }
 }
 
