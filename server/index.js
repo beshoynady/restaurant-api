@@ -46,11 +46,11 @@ connectdb();
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use(cors({
-  origin : 'https://restaurant-demo-amber.vercel.app',
-  methods : ['GET', 'POST', 'PUT' , ' UPDATE', 'DELETE'],
-  credentials: true 
-}));
+// app.use(cors({
+//   origin : 'https://restaurant-demo-amber.vercel.app',
+//   methods : ['GET', 'POST', 'PUT' , ' UPDATE', 'DELETE'],
+//   credentials: true 
+// }));
 
 app.use(cookieParser());
 app.use(express.json());
