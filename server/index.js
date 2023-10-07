@@ -4,11 +4,8 @@ const cors = require('cors');
 const app = express();
 const http = require("http");
 var server = http.createServer(app);
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "https://restaurant-demo-amber.vercel.app/",
-}});
-
+const io = require("socket.io")
+io(server);
 io.on("connection", (socket) => {
   console.log('someone has connected',socket);
   socket.on("disconnect", () =>{
@@ -46,11 +43,11 @@ connectdb();
 app.use(express.urlencoded({ extended: true }));
 
 
-// app.use(cors({
-//   origin : 'https://restaurant-demo-amber.vercel.app',
-//   methods : ['GET', 'POST', 'PUT' , ' UPDATE', 'DELETE'],
-//   credentials: true 
-// }));
+app.use(cors({
+  origin : 'https://restaurant-demo-amber.vercel.app',
+  methods : ['GET', 'POST', 'PUT' , ' UPDATE', 'DELETE'],
+  credentials: true 
+}));
 
 app.use(cookieParser());
 app.use(express.json());
