@@ -1,12 +1,13 @@
 const express = require('express');
-const connectdb = require('./database/connectdb.js');
-const cookieParser = require('cookie-parser')
 const cors = require('cors');
-const dotenv = require('dotenv');
 
 const app = express();
 
+const dotenv = require('dotenv');
 
+
+const cookieParser = require('cookie-parser')
+const connectdb = require('./database/connectdb.js');
 
 
 
@@ -32,7 +33,6 @@ app.use(cors({
   methods : ['GET', 'POST', 'PUT' , ' UPDATE', 'DELETE'],
   credentials: true 
 }));
-
 app.use(cookieParser());
 app.use(express.json());
 app.use('/',express.static("public"));
@@ -52,6 +52,8 @@ app.use('/api/order', routeorder);
 app.use('/api/auth', routeauth);
 app.use('/api/stockitem', routestockitems);
 app.use('/api/stockmanag', routestockmanag);
+
+
 
 //open server
 
