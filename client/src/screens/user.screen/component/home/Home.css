@@ -115,7 +115,6 @@
     align-items: center;
     justify-content: space-between;
     list-style: none;
-    cursor: pointer;
   }
   .main-home .container .content .main-btn .main-li {
     width: 130px;
@@ -136,6 +135,5 @@
     font-size: 22px;
     color: white;
     margin: 10px 0px;
-    cursor: pointer;
   }
 }/*# sourceMappingURL=Home.css.map */

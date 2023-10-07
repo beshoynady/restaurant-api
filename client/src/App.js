@@ -4,7 +4,9 @@ import axios from 'axios';
 import './App.css';
 import jwt_decode from "jwt-decode";
 
+
 import Userscreen from './screens/user.screen/Userscreen';
+
 
 import ManagLayout from './screens/management/ManagLayout';
 import ManagerDash from './screens/management/manag.component/managerdash/ManagerDash';
@@ -23,12 +25,7 @@ import StockManag from './screens/management/manag.component/stock/StockManag';
 
 export const detacontext = createContext({})
 
-
-
-
 function App() {
-
-
 //++++++++++++++++++++ pagination ++++++++++
 
   const [pagination, setpagination] = useState(5)
@@ -446,8 +443,8 @@ function App() {
     }
   }
 
-  const askingForHelp = async (tableID) => {
-    const tableorder = allorders.filter((o, i) => o.table == tableID);
+  const askingForHelp = async (tablenum) => {
+    const tableorder = allorders.filter((o, i) => o.table == tablenum);
     const lasttableorder = tableorder.length > 0 ? tableorder[tableorder.length - 1] : [];
     const lasttableorderactive = await lasttableorder.isActive
 
@@ -456,7 +453,7 @@ function App() {
     const serial = allorders.length > 0 ? allorders[allorders.length - 1].serial + 1 : 1;
     console.log(serial)
     const help = 'يطلب مساعدة';
-    const table = tableID
+    const table = tablenum
     if (!lasttableorderactive) {
       const neworder = await axios.post('https://restaurant-api-blush.vercel.app/api/order/', {
         serial, table, help
@@ -488,13 +485,13 @@ function App() {
 
 
   const usertitle = (id) => {
-    const istable = alltable.find((table, i) => table._id == id);
-    const isuser = allusers.find((user, i) => user._id == id)
+    const istable = alltable.find((table, i) => table._id === id);
+    const isuser = allusers.find((user, i) => user._id === id)
     if (istable) {
-      const table_num = alltable.find((table, i) => table._id == id).tablenum
+      const table_num = alltable.find((table, i) => table._id === id).tablenum
       return table_num
     } else if (isuser) {
-      const user_name = allusers.find((user, i) => user._id == id).username
+      const user_name = allusers.find((user, i) => user._id === id).username
       return user_name
     }
   }

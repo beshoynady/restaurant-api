@@ -2,9 +2,9 @@ import React, { useEffect, useState, useRef } from 'react'
 import { detacontext } from '../../../../App'
 import { useParams } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
+
+
 import './Cart.css'
-
-
 
 const Cart = (props) => {
   const open_cart = props.opencart
@@ -90,7 +90,7 @@ const Cart = (props) => {
                       </div>
                       <div className="total-order">
 
-                        {id ? <button className='total-order-btn' onClick={() => createclientorder(id)}>تاكيد الطلب</button> : userlogininfo ? <button className='total-order-btn' onClick={() => createclientorder(userlogininfo.id)}>تاكيد الطلب</button>
+                        {userlogininfo ? <button className='total-order-btn' onClick={() => createclientorder(userlogininfo.id)}>تاكيد الطلب</button> : id ? <button className='total-order-btn' onClick={() => createclientorder(id)}>تاكيد الطلب</button>
                           : ''}
 
                         <div className='total-order-details'>
@@ -175,8 +175,7 @@ const Cart = (props) => {
                         </div>
                       </div>
                       <div className="total-order">
-                        {id?<button className='total-order-btn' onClick={() => checkout()}>طلب الحساب</button>:""}
-                        
+                        <button className='total-order-btn' onClick={() => checkout()}>طلب الحساب</button>
                         <button className='total-order-btn' onClick={handlePrint}>طباعه</button>
                         <div className='total-order-details'>
                           <h2>الاجمالي</h2>

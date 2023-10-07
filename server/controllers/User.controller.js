@@ -35,7 +35,6 @@ const createuser = async (req, res, next) => {
             userinfo: {
                 id: newUser._id,
                 isAdmin: newUser.isAdmin,
-                isActive: newUser.isActive,
                 role: newUser.role
             }
         }, process.env.jwt_secret_key,
@@ -75,7 +74,6 @@ const updateuser = async (req, res) => {
         const phone = await req.body.phone;
         const role = await req.body.role;
         const isAdmin = await req.body.isAdmin;
-        const isActive = await req.body.isActive;
 
         const pass = await req.body.password;
         
@@ -89,23 +87,22 @@ const updateuser = async (req, res) => {
         }
         if(pass){
             const password = await bcrypt.hash(pass, 10);
-            const updateuser = await Usermodel.findByIdAndUpdate(id, { username, email, phone, salary, address, password, isAdmin,isActive, role }, { new: true });
+            const updateuser = await Usermodel.findByIdAndUpdate(id, { username, email, phone, salary, address, password, isAdmin, role }, { new: true });
             res.status(200).json(updateuser)
         }else{
-            const updateuser = await Usermodel.findByIdAndUpdate(id, { username, email, phone, salary, address, isAdmin,isActive, role }, { new: true });
+            const updateuser = await Usermodel.findByIdAndUpdate(id, { username, email, phone, salary, address, isAdmin, role }, { new: true });
             res.status(200).json(updateuser)
         }
-        const accessToken = jwt.sign({
-            userinfo: {
-                id: newUser._id,
-                isAdmin: newUser.isAdmin,
-                isActive: newUser.isActive,
-                role: newUser.role
-            }
-        }, process.env.jwt_secret_key,
-            { expiresIn: process.env.jwt_expire }
-        )
-        res.status(200).json({ accessToken, updateuser })
+        // const accessToken = jwt.sign({
+        //     userinfo: {
+        //         id: newUser._id,
+        //         isAdmin: newUser.isAdmin,
+        //         role: newUser.role
+        //     }
+        // }, process.env.jwt_secret_key,
+        //     { expiresIn: process.env.jwt_expire }
+        // )
+        // res.status(200).json({ accessToken, updateuser })
     } catch (err) { res.status(400).json(err) }
 }
 

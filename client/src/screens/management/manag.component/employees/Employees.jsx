@@ -34,8 +34,7 @@ const Employees = () => {
   const [address, setaddress] = useState("")
   const [phone, setphone] = useState("")
   const [email, setemail] = useState("")
-  const [isAdmin, setisAdmin] = useState(true)
-  const [isActive, setisActive] = useState(true)
+  const [isAdmin, setisAdmin] = useState("")
   const [role, setrole] = useState("")
   const [salary, setsalary] = useState()
 
@@ -71,18 +70,17 @@ const Employees = () => {
     console.log(phone)
     console.log(email)
     console.log(isAdmin)
-    console.log(isActive)
     console.log(role)
     console.log(salary)
     try {
       if(password){
-      const update = await axios.put(`https://restaurant-api-blush.vercel.app/api/user/${userid}`, { username, password, address, phone, email, isAdmin,isActive, role, salary })
+      const update = await axios.put('https://restaurant-api-blush.vercel.app/api/user/' + userid, { username, password, address, phone, email, isAdmin, role, salary })
       console.log(update)
       if(update){
         getemployees()
       }
   }else{
-      const update = await axios.put(`https://restaurant-api-blush.vercel.app/api/user/${userid}`, { username, address, phone, email, isAdmin,isActive, role, salary })
+      const update = await axios.put('https://restaurant-api-blush.vercel.app/api/user/' + userid, { username, address, phone, email, isAdmin, role, salary })
       console.log(update)
       if(update){
         getemployees()
@@ -97,8 +95,10 @@ const Employees = () => {
     try {
       console.log(userid)
       const deleted = await axios.delete(`https://restaurant-api-blush.vercel.app/api/user/${userid}`)
+      if(deleted){
       console.log(deleted)
       getemployees()
+    }
     } catch (error) {
       console.log(error)
     }
@@ -137,9 +137,8 @@ const Employees = () => {
                 <th>الاسم</th>
                 <th>العنوان</th>
                 <th>الموبايل</th>
-                <th>الراتب</th>
                 <th>الوظيفه</th>
-                <th>الحالة</th>
+                <th>الراتب</th>
                 <th>اجراءات</th>
               </tr>
             </thead>
@@ -158,12 +157,11 @@ const Employees = () => {
                       <td>{e.username}</td>
                       <td>{e.address}</td>
                       <td>{e.phone}</td>
-                      <td>{e.salary}</td>
                       <td>{e.role}</td>
-                      <td>{e.isActive?'متاح':"غير متاح"}</td>
+                      <td>{e.salary}</td>
                       <td>
                         <a href="#editEmployeeModal" className="edit" data-toggle="modal"><i className="material-icons" data-toggle="tooltip" title="Edit" onClick={()=>{
-                          setuserid(e._id);setusername(e.username);setaddress(e.address);setemail(e.email); setisAdmin(e.isAdmin);setisActive(e.isActive); setphone(e.phone); setrole(e.role); setsalary(e.salary)
+                          setuserid(e._id);setusername(e.username);setaddress(e.address);setemail(e.email); setisAdmin(e.isAdmin); setphone(e.phone); setrole(e.role); setsalary(e.salary)
                         }}>&#xE254;</i></a>
                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal"><i className="material-icons" data-toggle="tooltip" title="Delete" onClick={()=> setuserid(e._id)}>&#xE872;</i></a>
                       </td>
@@ -281,13 +279,6 @@ const Employees = () => {
                   <select form="carform" required defaultValue={isAdmin} onChange={(e) => setisAdmin(e.target.value)}>
                     <option value={true}>ادمن</option>
                     <option value={false}>ليس ادمن</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label>الحالة</label>
-                  <select form="carform" required defaultValue={isActive} onChange={(e) => setisActive(e.target.value)}>
-                    <option value={true}>متاح</option>
-                    <option value={false}>ليس متاح</option>
                   </select>
                 </div>
                 <div className="form-group">
