@@ -588,13 +588,7 @@ function App() {
 
   useEffect(() => {
     // const socket = io.connect("https://restaurant-api-blush.vercel.app", {
-      const socket = io('https://restaurant-api-blush.vercel.app', {
-        withCredentials: true,
-        forceNew: true,
-        reconnectionAttempts: "Infinity", //avoid having user reconnect manually in order to prevent dead clients after a server restart
-        timeout: 10000, //before connect_error and connect_timeout are emitted.
-        transports: ['websocket']
-      });
+      const socket = io();
       socket.on("notify", (msg) => {
             console.log("getting socket msg");
             console.log(msg.message);
